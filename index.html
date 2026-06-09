@@ -3,6 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDTOR BY RAJKUMAR</title>
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --text-main: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            margin: 0;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 30px;
+        }
+
+        .upload-box {
+            border: 2px dashed rgba(56, 189, 248, 0.4);
+            padding: 30px 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            background: rgba(56, 189, 248, 0.02);
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        #preview-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .preview-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .control-group {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(168, 85, 247, 0.4);
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>VIDTOR</h1>
+    <div class="subtitle">BY RAJKUMAR</div>
+    <div class="tagline">VID-eo + crea-TOR + RAJKUMAR</div>
+
+    <div class="upload-box" onclick="document.getElementById('imageInput').click()">
+        <div class="upload-icon">📸</div>
+        <div style="font-weight:700;">Photos Select Karein</div>
+        <div style="font-size:0.8rem; opacity:0.6; margin-top:5px;">Ek ya zyada photo chunien</div>
+        <input type="file" id="imageInput" accept="image/*" multiple style="display:none;" onchange="handleImages(this)">
+    </div>
+
+    <div id="preview-container"></div>
+
+    <div class="control-group">
+        <label>Video Ki Duration (Length):</label>
+        <select id="durationInput">
+            <option value="3">3 Seconds Video</option>
+            <option value="5" selected>5 Seconds Video</option>
+            <option value="10">10 Seconds Video</option>
+            <option value="15">15 Seconds Video</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="generateVideo()">Build Video</button>
+    <div class="status" id="statusLabel"></div>
+</div>
+
+<!-- Web Video Creator Library -->
+<script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
+<script>
+    let imageArray = [];
+
+    function handleImages(input) {
+        const container = document.getElementById('preview-container');
+        container.innerHTML = '';
+        imageArray = [];
+
+        if (input.files ? input.files.length : 0) {
+            Array.from(input.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageArray.push(e.target.result);
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('preview-img');
+                    container.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+            document.getElementById('statusLabel').innerText = `${input.files.length} photo select ho gayi hai!`;
+        }
+    }
+
+    function generateVideo() {
+        if (imageArray.length === 0) {
+            alert('Bhai, pehle kam se kam ek photo to select karo!');
+            return;
+        }
+
+        const statusLabel = document.getElementById('statusLabel');
+        statusLabel.innerText = 'Video ban rahi hai... thoda sabr karein...';
+
+        const totalDuration = parseInt(document.getElementById('durationInput').value);
+        const fps = 10; // Frames per second
+        const totalFrames = totalDuration * fps;
+        
+        const video = new Whammy.Video(fps);
+        
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        const img = new Image();
+        img.src = imageArray[0]; // Pehli photo uthayega
+        
+        img.onload = function() {
+            // High-Quality Video Resolution (720p aspect ratio)
+            canvas.width = 1280;
+            canvas.height = 720;
+            
+            // Image ko background par fitting rules ke sath draw karna
+            let scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            let x = (canvas.width / 2) - (img.width * scale) / 2;
+            let y = (canvas.height / 2) - (img.height * scale) / 2;
+            
+            ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+            const dataURL = canvas.toDataURL('image/webp', 0.8);
+
+            // Agar 1 hi photo hai to usi ko loop karega, agar zyada hain to baakiyo ko bhi jodedga
+            for (let i = 0; i < totalFrames; i++) {
+                if (imageArray.length > 1) {
+                    // Agar multi-photo hain to switch karega
+                    let currentImgIdx = Math.floor((i / totalFrames) * imageArray.length);
+                    let multiImg = new Image();
+                    multiImg.src = imageArray[currentImgIdx];
+                    ctx.drawImage(multiImg, x, y, img.width * scale, img.height * scale);
+                    video.add(canvas);
+                } else {
+                    // Ek photo ke liye wahi frame repeat hoga
+                    video.add(canvas);
+                }
+            }
+
+            const output = video.compile();
+            const url = URL.createObjectURL(output);
+            
+            statusLabel.innerText = '🎉 Video Taiyar Ho Gayi!';
+            
+            // Auto Download Video
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `VIDTOR_${Date.now()}.webm`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
+</script>
+
+</body>
+</html>
+
     <title>VIDTOR | Developed by Rajkumar</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
