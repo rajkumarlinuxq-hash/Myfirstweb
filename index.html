@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI - Cinematic Multi-Engine Particle Matrix</title>
+    <title>VIDTOR AI - Multi-Cube 3D Kinetic Neural Matrix</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@900&family=Orbitron:wght@600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
@@ -14,7 +14,7 @@
             --neon-pink: #ff007f;
             --neon-purple: #9d4edd;
             --dark-space: #020208;
-            --glass-sheet: rgba(10, 10, 28, 0.82);
+            --glass-sheet: rgba(10, 10, 28, 0.85);
             --border-glow: rgba(0, 240, 255, 0.18);
             --cube-color: #00f0ff;
         }
@@ -22,45 +22,55 @@
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            margin: 0; padding: 130px 20px 40px 20px;
+            margin: 0; padding: 140px 20px 40px 20px;
             background-color: var(--dark-space); color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh; overflow-x: hidden; position: relative;
         }
 
-        /* 🌌 STREAMING NEBULA CLOUD CLUSTER BACKGROUND */
+        /* 🌌 BACKGROUND NEBULA OVERLAY */
         body::before {
-            content: ""; position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
-            background: radial-gradient(circle at 20% 25%, rgba(0, 240, 255, 0.15) 0%, transparent 45%),
-                        radial-gradient(circle at 80% 75%, rgba(255, 0, 127, 0.15) 0%, transparent 45%);
-            z-index: -3; pointer-events: none;
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.12) 0%, transparent 50%);
+            z-index: -3; pointer-events: none; position: fixed;
         }
 
-        /* --- 🎰 20+ MULTI-AXIS KINETIC FLOATING ANIMATION LOGOS --- */
-        .kinetic-scroll-particle {
-            position: absolute; z-index: -2; pointer-events: none; text-align: center;
-            animation: vectorFloatEngine var(--speed, 12s) ease-in-out infinite alternate;
-            opacity: var(--op, 0.25);
+        /* 🎲 🎰 20+ MULTI-AXIS KINETIC FLOATING 3D CUBES INTERFACE */
+        .kinetic-bg-stage {
+            position: absolute; width: 60px; height: 60px; perspective: 400px; z-index: -1; pointer-events: none;
+            animation: globalFloatEngine var(--speed, 12s) ease-in-out infinite alternate;
+            opacity: 0.4;
         }
-        .kinetic-title-main {
-            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: var(--sz, 1.4rem);
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            letter-spacing: 1.5px;
+        .kinetic-cube-mesh {
+            width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
+            animation: spinCube var(--spin-speed, 8s) linear infinite;
         }
-        .kinetic-signature-sub {
-            font-family: 'Alex Brush', cursive; font-size: var(--sub-sz, 1.3rem);
-            color: #ffffff; text-shadow: 0 0 8px var(--neon-pink); display: block; margin-top: -4px;
+        .kinetic-cube-face {
+            position: absolute; width: 60px; height: 60px; background: rgba(5, 5, 18, 0.85);
+            border: 2px solid var(--cube-color); display: flex; align-items: center; justify-content: center;
+            font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 8px var(--cube-color); box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
+            transition: border-color 0.4s, text-shadow 0.4s;
+        }
+        .k-front  { transform: rotateY(0deg) translateZ(30px); }
+        .k-back   { transform: rotateY(180deg) translateZ(30px); }
+        .k-top    { transform: rotateX(90deg) translateZ(30px); }
+        .k-bottom { transform: rotateX(-90deg) translateZ(30px); }
+        .k-left   { transform: rotateY(-90deg) translateZ(30px); }
+        .k-right  { transform: rotateY(90deg) translateZ(30px); }
+
+        @keyframes spinCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+        @keyframes globalFloatEngine {
+            0% { transform: translateY(0) scale(0.9); }
+            100% { transform: translateY(-80px) scale(1.1); }
         }
 
-        @keyframes vectorFloatEngine {
-            0% { transform: translateY(0) rotate(0deg) scale(0.95); }
-            50% { transform: translateY(-35px) rotate(var(--rot, 8deg)) scale(1.05); }
-            100% { transform: translateY(-70px) rotate(var(--rot-end, -8deg)) scale(0.95); }
-        }
-
-        /* --- STABLE HEADER CONFIGURATION (LEFT BRAND TEXT MATRIX / RIGHT RK LOGO) --- */
+        /* --- STABLE HEADER MANAGEMENT --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: 95px;
             background: rgba(2, 2, 8, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -69,10 +79,12 @@
             padding: 0 35px; z-index: 5000; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
         
+        /* 👈 LEFT BRAND TEXT LAYER */
         .header-left-brand { display: flex; flex-direction: column; cursor: pointer; text-decoration: none; }
         .header-title-text { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-shadow: 0 0 12px rgba(0, 240, 255, 0.3); }
-        .header-signature-text { font-family: 'Alex Brush', cursive; font-size: 1.5rem; color: #ffbc00; text-shadow: 0 0 10px rgba(255,188,0,0.3); margin-top: -6px; padding-left: 2px; }
+        .header-signature-text { font-family: 'Alex Brush', cursive; font-size: 1.5rem; color: #ffbc00; text-shadow: 0 0 10px rgba(255,188,0,0.3); margin-top: -6px; }
 
+        /* 👉 RIGHT SIDE GLOWING RK INTERACTIVE DRAWER TRIGGER LOGO */
         .header-right-rk-logo {
             width: 54px; height: 54px; border-radius: 50%;
             background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
@@ -83,10 +95,10 @@
         }
         .header-right-rk-logo:hover { transform: scale(1.1) rotate(12deg); box-shadow: 0 0 30px var(--neon-pink); border-color: var(--neon-pink); }
 
-        /* --- COLLAPSIBLE SLIDE INTERFACE ACCELERATOR --- */
+        /* --- COLLAPSIBLE SLIDE MENU DRAWER --- */
         .side-navigation-panel {
             position: fixed; top: 0; right: -360px; width: 340px; height: 100vh;
-            background: rgba(3, 3, 12, 0.97); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            background: rgba(3, 3, 12, 0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border-left: 2px solid var(--neon-cyan); box-shadow: -10px 0 40px rgba(0,0,0,0.8);
             z-index: 9000; padding: 120px 25px 40px 25px; display: flex; flex-direction: column;
             gap: 25px; transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto;
@@ -102,7 +114,6 @@
             border-radius: 12px; cursor: pointer; transition: 0.3s;
         }
         .tool-selection-row:hover { background: rgba(0, 240, 255, 0.08); border-color: var(--neon-cyan); transform: translateX(-5px); }
-        .tool-selection-row span { font-size: 1.3rem; }
         .tool-selection-title { font-family: 'Orbitron', sans-serif; font-size: 0.88rem; font-weight: 700; color: #fff; }
         
         .about-infobox-card { background: rgba(157, 78, 221, 0.05); border: 1px solid rgba(157, 78, 221, 0.2); border-radius: 16px; padding: 18px; font-size: 0.85rem; line-height: 1.6; color: #b0b0c5; }
@@ -110,16 +121,12 @@
         /* --- CONTENT WRAPPER HUB --- */
         .workspace-master-container { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; gap: 35px; position: relative; z-index: 10; }
         
-        /* 🎲 PRECISION 1S COLOR TRANSITION 3D CUBE STAGE */
+        /* 🎲 MAIN FOCUS CENTRAL 3D CUBE */
         .stage-3d-viewport { width: 100%; height: 160px; perspective: 800px; display: flex; align-items: center; justify-content: center; }
-        .cube-matrix-mesh { width: 80px; height: 80px; position: relative; transform-style: preserve-3d; animation: continuousCubeMotion 8s linear infinite; }
-        @keyframes continuousCubeMotion {
-            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
-        }
+        .cube-matrix-mesh { width: 80px; height: 80px; position: relative; transform-style: preserve-3d; animation: spinCube 8s linear infinite; }
         
         .cube-wall-structural {
-            position: absolute; width: 80px; height: 80px; background: rgba(4, 4, 14, 0.92); border: 3px solid var(--cube-color);
+            position: absolute; width: 80px; height: 80px; background: rgba(4, 4, 14, 0.95); border: 3px solid var(--cube-color);
             display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #ffffff;
             text-shadow: 0 0 15px var(--cube-color); box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2); transition: border-color 0.4s, text-shadow 0.4s;
         }
@@ -130,10 +137,10 @@
         .face-left   { transform: rotateY(-90deg) translateZ(40px); }
         .face-right  { transform: rotateY(90deg) translateZ(40px); }
 
-        /* --- VISUAL DISPLAY CARDS ARCHITECTURE --- */
         .brand-hero-title-group { text-align: center; max-width: 700px; }
         .hero-primary-heading { font-family: 'Orbitron', sans-serif; font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin: 0; background: linear-gradient(to right, var(--neon-cyan), #ffffff, var(--neon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
+        /* --- CORE APPLICATION FORM PANEL --- */
         .control-console-card {
             width: 100%; max-width: 650px; background: var(--glass-sheet); border: 2px solid var(--border-glow); border-radius: 28px; padding: 35px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.7); position: relative; overflow: hidden; backdrop-filter: blur(15px);
@@ -169,51 +176,21 @@
 </head>
 <body>
 
-    <div class="kinetic-scroll-particle" style="top:12%; left:8%; --speed:10s; --op:0.3; --sz:1.5rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:18%; right:5%; --speed:14s; --op:0.2; --sz:1.3rem; --rot:12deg; --rot-end:-12deg;">
-        <span class="kinetic-title-main">RK CLUSTER</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:28%; left:3%; --speed:11s; --op:0.25; --sz:1.4rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:36%; right:10%; --speed:13s; --op:0.18; --sz:1.2rem; --rot:-10deg; --rot-end:10deg;">
-        <span class="kinetic-title-main">RK MACHINE</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:48%; left:6%; --speed:9s; --op:0.32; --sz:1.6rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:58%; right:4%; --speed:15s; --op:0.22; --sz:1.3rem;">
-        <span class="kinetic-title-main">NEURAL NEST</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:66%; left:2%; --speed:12s; --op:0.15; --sz:1.2rem; --rot:15deg;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:74%; right:12%; --speed:10s; --op:0.28; --sz:1.5rem;">
-        <span class="kinetic-title-main">RK MATRIX</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:84%; left:5%; --speed:16s; --op:0.2; --sz:1.3rem; --rot:-15deg;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:94%; right:6%; --speed:11s; --op:0.35; --sz:1.5rem;">
-        <span class="kinetic-title-main">RK SYSTEMS</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:105%; left:10%; --speed:14s; --op:0.18; --sz:1.2rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:115%; right:8%; --speed:12s; --op:0.26; --sz:1.4rem;">
-        <span class="kinetic-title-main">RK TERMINAL</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:125%; left:4%; --speed:10s; --op:0.3; --sz:1.6rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:138%; right:14%; --speed:13s; --op:0.22; --sz:1.3rem;">
-        <span class="kinetic-title-main">ENGINE ALPHA</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
-    <div class="kinetic-scroll-particle" style="top:148%; left:8%; --speed:15s; --op:0.15; --sz:1.2rem;">
-        <span class="kinetic-title-main">VIDTOR AI</span><span class="kinetic-signature-sub">by Rajkumar</span>
-    </div>
+    <div class="kinetic-bg-stage" style="top:5%; left:10%; --speed:9s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:12%; right:8%; --speed:14s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
+    <div class="kinetic-bg-stage" style="top:22%; left:4%; --speed:11s; --spin-speed:6s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:30%; right:12%; --speed:13s; --spin-speed:9s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VID</div><div class="kinetic-cube-face k-back">VID</div><div class="kinetic-cube-face k-top">VID</div><div class="kinetic-cube-face k-bottom">VID</div><div class="kinetic-cube-face k-left">VID</div><div class="kinetic-cube-face k-right">VID</div></div></div>
+    <div class="kinetic-bg-stage" style="top:42%; left:8%; --speed:10s; --spin-speed:4s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:52%; right:5%; --speed:16s; --spin-speed:11s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
+    <div class="kinetic-bg-stage" style="top:62%; left:3%; --speed:12s; --spin-speed:8s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:72%; right:15%; --speed:8s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VIDTOR</div><div class="kinetic-cube-face k-back">VIDTOR</div><div class="kinetic-cube-face k-top">VIDTOR</div><div class="kinetic-cube-face k-bottom">VIDTOR</div><div class="kinetic-cube-face k-left">VIDTOR</div><div class="kinetic-cube-face k-right">VIDTOR</div></div></div>
+    <div class="kinetic-bg-stage" style="top:82%; left:7%; --speed:15s; --spin-speed:10s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:92%; right:6%; --speed:11s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
+    <div class="kinetic-bg-stage" style="top:104%; left:12%; --speed:13s; --spin-speed:6s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:114%; right:9%; --speed:10s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VID</div><div class="kinetic-cube-face k-back">VID</div><div class="kinetic-cube-face k-top">VID</div><div class="kinetic-cube-face k-bottom">VID</div><div class="kinetic-cube-face k-left">VID</div><div class="kinetic-cube-face k-right">VID</div></div></div>
+    <div class="kinetic-bg-stage" style="top:126%; left:5%; --speed:17s; --spin-speed:12s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
+    <div class="kinetic-bg-stage" style="top:136%; right:14%; --speed:12s; --spin-speed:8s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
+    <div class="kinetic-bg-stage" style="top:146%; left:9%; --speed:14s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VIDTOR</div><div class="kinetic-cube-face k-back">VIDTOR</div><div class="kinetic-cube-face k-top">VIDTOR</div><div class="kinetic-cube-face k-bottom">VIDTOR</div><div class="kinetic-cube-face k-left">VIDTOR</div><div class="kinetic-cube-face k-right">VIDTOR</div></div></div>
 
     <header>
         <div class="header-left-brand" onclick="window.location.reload()">
@@ -226,22 +203,22 @@
     <div class="side-navigation-panel" id="globalNavDrawer">
         <button style="position:absolute; top:25px; right:25px; background:none; border:none; color:var(--neon-pink); font-size:2rem; cursor:pointer; font-weight:bold;" onclick="toggleNavigationPanelDrawer()">×</button>
         
-        <h4 class="drawer-section-title">Available AI Models</h4>
+        <h4 class="drawer-section-title">Available AI Tools</h4>
         <div class="tools-selection-grid">
-            <div class="tool-selection-row" onclick="applyModelPathToConsole('black-forest-labs/FLUX.1-dev', 'image')">
-                <span>🖼️</span>
+            <div class="tool-selection-row" onclick="activateModelEndpoint('black-forest-labs/FLUX.1-dev', 'image')">
+                <span style="font-size:1.3rem;">🖼️</span>
                 <div><span class="tool-selection-title">FLUX.1 Ultra Real</span></div>
             </div>
-            <div class="tool-selection-row" onclick="applyModelPathToConsole('stabilityai/stable-diffusion-xl-base-1.0', 'image')">
-                <span>🎨</span>
+            <div class="tool-selection-row" onclick="activateModelEndpoint('stabilityai/stable-diffusion-xl-base-1.0', 'image')">
+                <span style="font-size:1.3rem;">🎨</span>
                 <div><span class="tool-selection-title">Stable Diffusion XL</span></div>
             </div>
-            <div class="tool-selection-row" onclick="applyModelPathToConsole('Qwen/Qwen2.5-72B-Instruct', 'text')">
-                <span>🤖</span>
+            <div class="tool-selection-row" onclick="activateModelEndpoint('Qwen/Qwen2.5-72B-Instruct', 'text')">
+                <span style="font-size:1.3rem;">🤖</span>
                 <div><span class="tool-selection-title">Qwen 2.5 Expert AI</span></div>
             </div>
-            <div class="tool-selection-row" onclick="applyModelPathToConsole('meta-llama/Llama-3.1-8B-Instruct', 'text')">
-                <span>💬</span>
+            <div class="tool-selection-row" onclick="activateModelEndpoint('meta-llama/Llama-3.1-8B-Instruct', 'text')">
+                <span style="font-size:1.3rem;">💬</span>
                 <div><span class="tool-selection-title">Llama 3.1 Suite Engine</span></div>
             </div>
         </div>
@@ -269,7 +246,7 @@
             <h1 class="hero-primary-heading">Neural Engine Matrix</h1>
         </div>
 
-        <div class="control-console-card">
+        <div class="control-console-card" id="mainTerminalConsole">
             
             <div class="input-group-container">
                 <label>1. Server Access Authentication Token:</label>
@@ -312,7 +289,7 @@
     <div class="devotional-footer-stamp">RADHE RADHE</div>
 
     <script>
-        // Real-Time 1-Second Neon Color Spectrum Shifting Loop
+        // 1-Second Neon Color Spectrum Shifting Matrix Loop
         const neonColorSpectrum = ['#00f0ff', '#ff007f', '#9d4edd', '#00ffcc', '#ffbc00', '#ff3333'];
         let runningColorPointer = 0;
         setInterval(() => {
@@ -320,18 +297,30 @@
             document.documentElement.style.setProperty('--cube-color', neonColorSpectrum[runningColorPointer]);
         }, 1000);
 
-        // UI Panel Drawer Actions
+        // Sidebar Controller Hooks
         function toggleNavigationPanelDrawer() {
             document.getElementById('globalNavDrawer').classList.toggle('panel-active');
         }
 
-        function applyModelPathToConsole(path, type) {
+        // 🔥 CLICK TO OPEN & FILL AI TOOL DIRECTLY
+        function activateModelEndpoint(path, type) {
             document.getElementById('appModelPathSelector').value = path;
             document.getElementById('appProcessingFormat').value = type;
+            
+            // Close Drawer Smoothly
             toggleNavigationPanelDrawer();
+
+            // Smooth Scroll & Auto Focus Input field
+            const targetConsole = document.getElementById('mainTerminalConsole');
+            targetConsole.scrollIntoView({ behavior: 'smooth' });
+            
+            // Focus Flash Effect
+            setTimeout(() => {
+                document.getElementById('appPromptString').focus();
+            }, 800);
         }
 
-        // Processing Fetch Engine Core
+        // Data Streams Execution Matrix
         async function executeNeuralClusterPipeline() {
             const token = document.getElementById('appSecureToken').value.trim();
             const modelPath = document.getElementById('appModelPathSelector').value.trim();
@@ -344,12 +333,12 @@
             const textWrapper = document.getElementById('appTextOutputWrapper');
             const downloadBtn = document.getElementById('appGlobalDownloadBtn');
 
-            if(!token) { alert("Rajkumar bhai, pehle Token key add karo!"); return; }
-            if(!modelPath) { alert("Rajkumar bhai, AI Model matrix configuration path blank hai!"); return; }
-            if(!prompt) { alert("Rajkumar bhai, Processing command input string is required!"); return; }
+            if(!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
+            if(!modelPath) { alert("Rajkumar bhai, Model verification path cannot be empty!"); return; }
+            if(!prompt) { alert("Rajkumar bhai, Input command query prompt required!"); return; }
 
             logs.classList.remove('success-stream-logs');
-            logs.innerText = `⚡ Initializing high-speed secure cluster stream on [${modelPath}]...`;
+            logs.innerText = `⚡ Running matrix cluster pipelines on [${modelPath}]...`;
             graphicWrapper.style.display = "none";
             textWrapper.style.display = "none";
             downloadBtn.style.display = "none";
@@ -364,8 +353,8 @@
                     }
                 );
 
-                if (!response.ok) throw new Error(`Metrics State Error: ${response.status}`);
-                logs.innerText = "⏳ Buffer verification resolved. Transpiling dataset layers...";
+                if (!response.ok) throw new Error(`Server Status: ${response.status}`);
+                logs.innerText = "⏳ Compiling and injecting response asset files...";
 
                 if(processType === 'image') {
                     const receivedBlob = await response.blob();
@@ -378,10 +367,10 @@
                     textWrapper.style.display = "block";
                 }
                 logs.classList.add('success-stream-logs');
-                logs.innerText = "🎉 Success: Asset matrix generation completely finished!";
+                logs.innerText = "🎉 Success: Process completely finished!";
             } catch (error) {
-                logs.innerText = "❌ Halted: Target Node Processing Timeout or Token Verification Error.";
-                alert("Rajkumar bhai ek baar authentication variables verify karo!");
+                logs.innerText = "❌ Error: Target Node Timeout or Token Authentication Denied.";
+                alert("Rajkumar bhai tokens ya input directories debug karo!");
             }
         }
 
@@ -390,7 +379,7 @@
             if(frame.src) {
                 const triggerAnchor = document.createElement('a');
                 triggerAnchor.href = frame.src;
-                triggerAnchor.download = `VIDTOR_NETWORK_OUTPUT_${Date.now()}.png`;
+                triggerAnchor.download = `VIDTOR_3D_MATRIX_ASSET_${Date.now()}.png`;
                 document.body.appendChild(triggerAnchor); triggerAnchor.click(); document.body.removeChild(triggerAnchor);
             }
         }
