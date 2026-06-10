@@ -152,11 +152,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- EXCLUSIVE BEAUTIFUL CURSIVE HOME TAB --- */
+        /* --- HOME TAB WITH CURSIVE TYPOGRAPHY & 3D MOTION GENERATOR DISPLAY --- */
         .cursive-title {
             font-family: 'Great Vibes', cursive;
             font-size: 4.5rem;
-            margin: 10px 0;
+            margin: 5px 0;
             background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -165,17 +165,70 @@
 
         .cursive-subtitle {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--asmani);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             opacity: 0.9;
         }
 
+        /* EXCLUSIVE 3D LOOP FLOATING STAGE INTERFACE (INSPIRED BY SHORTS oOhH_6RDrHY) */
+        .motion-stage-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin: 25px 0;
+            perspective: 1000px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+        }
+
+        .track-3d-loop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            animation: rotationPath3D 12s linear infinite;
+        }
+
+        @keyframes rotationPath3D {
+            0% { transform: translateZ(-100px) rotateY(0deg); }
+            100% { transform: translateZ(-100px) rotateY(360deg); }
+        }
+
+        .floating-item-card {
+            position: absolute;
+            width: 100px;
+            height: 130px;
+            border-radius: 12px;
+            border: 2px solid var(--asmani);
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 78, 221, 0.2));
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: white;
+            backface-visibility: visible;
+        }
+
+        /* Arranging Items symmetrically in a 3D circle track */
+        .item-1 { transform: rotateY(0deg) translateZ(140px); }
+        .item-2 { transform: rotateY(72deg) translateZ(140px); }
+        .item-3 { transform: rotateY(144deg) translateZ(140px); }
+        .item-4 { transform: rotateY(216deg) translateZ(140px); }
+        .item-5 { transform: rotateY(288deg) translateZ(140px); }
+
         .home-welcome-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             opacity: 0.75;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
 
@@ -201,7 +254,7 @@
             transform: translateY(-2px);
         }
 
-        /* UTILITY INNER HEADINGS */
+        /* UTILITY HEADINGS */
         h2 {
             font-size: 1.8rem;
             font-weight: 800;
@@ -278,6 +331,17 @@
     <div class="page-panel active-panel" id="panel-home">
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
+        
+        <div class="motion-stage-container">
+            <div class="track-3d-loop">
+                <div class="floating-item-card item-1">Photo AI</div>
+                <div class="floating-item-card item-2">Video AI</div>
+                <div class="floating-item-card item-3">Text Suite</div>
+                <div class="floating-item-card item-4">IG Boost</div>
+                <div class="floating-item-card item-5">Analytics</div>
+            </div>
+        </div>
+
         <p class="home-welcome-text">
             Welcome to a premium world of artificial intelligence. Experience seamless image generation, cinematic motion video creation, and high-fidelity social media automation tools crafted to perfection.
         </p>
@@ -315,186 +379,5 @@
         <p class="description">Integrated Subtitle Graphics Suite</p>
         <div class="input-wrapper">
             <label>Upload Base Graphic Layout:</label>
-            <input type="file" id="p2vtFile" accept="image/*">
-        </div>
-        <div class="input-wrapper">
-            <label>Sub-text Script Input:</label>
-            <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
-        </div>
-        <button class="btn-action" onclick="runToolProcessing('p2vtStatus', 'Rendering Hybrid Text Video Layer...')">Generate Hybrid Video</button>
-        <div class="live-status" id="p2vtStatus"></div>
-    </div>
-
-    <div class="page-panel" id="panel-ig-likes">
-        <h2>Instagram Likes Plus</h2>
-        <p class="description">Target Metric Distribution System</p>
-        <div class="input-wrapper">
-            <label>Instagram Target Post Link:</label>
-            <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
-        </div>
-        <button class="btn-action" onclick="runToolProcessing('igLStatus', 'Connecting to Instagram Post Matrix API...')">Inject Likes</button>
-        <div class="live-status" id="igLStatus"></div>
-    </div>
-
-    <div class="page-panel" id="panel-ig-followers">
-        <h2>Reel 1K Followers Booster</h2>
-        <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
-        <div class="input-wrapper">
-            <label>Instagram Profile Username:</label>
-            <input type="text" id="igUser" placeholder="Enter profile handle username...">
-        </div>
-        <button class="btn-action" onclick="runToolProcessing('igFStatus', 'Deploying Algorithm Optimization Pipeline...')">Deploy Growth</button>
-        <div class="live-status" id="igFStatus"></div>
-    </div>
-
-    <div class="page-panel" id="panel-about">
-        <h2>About Website</h2>
-        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6;">
-            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
-        </p>
-        <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
-    </div>
-
-    <div class="devotional-outro">RADHE RADHE</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
-    <script>
-        function toggleNavigationMenu() {
-            const dropdown = document.getElementById('navDropdown');
-            dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function switchPanel(panelId) {
-            document.getElementById('navDropdown').style.display = 'none';
-            
-            const allPanels = document.querySelectorAll('.page-panel');
-            allPanels.forEach(panel => panel.classList.remove('active-panel'));
-            
-            const activePanel = document.getElementById('panel-' + panelId);
-            if(activePanel) {
-                activePanel.classList.add('active-panel');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        // Live Action Status Engine
-        function runToolProcessing(statusId, initialMessage) {
-            const label = document.getElementById(statusId);
-            label.innerText = "⚡ " + initialMessage;
-            setTimeout(() => {
-                label.innerText = "⏳ Running Algorithmic Optimizations...";
-                setTimeout(() => {
-                    label.innerText = "🎉 Process Successfully Completed by Rajkumar AI Engine!";
-                }, 2000);
-            }, 1500);
-        }
-
-        // Real Photo To Video Compilation Runtime Engine
-        function runVideoGeneration() {
-            const fileInput = document.getElementById('p2vFile');
-            const promptInput = document.getElementById('p2vPrompt').value.toLowerCase().trim();
-            const statusLabel = document.getElementById('p2vStatus');
-
-            if (!fileInput.files || !fileInput.files[0]) {
-                alert("Rajkumar bhai, please select an image first!");
-                return;
-            }
-
-            const allowedKeywords = ['vidtor', 'photo to video', 'image to video', 'free image to video', 'free photo to video'];
-            const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
-
-            if (promptInput === "" || !isMatch) {
-                alert("Rajkumar bhai, please use keywords like 'vidtor' or 'photo to video' in the prompt field.");
-                return;
-            }
-
-            statusLabel.innerText = '⚡ Initializing Canvas Frame Buffer...';
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const fps = 12;
-                const duration = 4;
-                const totalFrames = duration * fps;
-                const video = new Whammy.Video(fps);
-                
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = 1280; canvas.height = 720;
-                
-                const mainImg = new Image();
-                mainImg.src = e.target.result;
-                
-                mainImg.onload = function() {
-                    const textFramesCount = Math.floor(1.5 * fps);
-                    const motionFramesCount = totalFrames - textFramesCount;
-
-                    for (let i = 0; i < motionFramesCount; i++) {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        let progress = i / motionFramesCount;
-                        let zoom = 1.0 + (progress * 0.16);
-                        
-                        ctx.save();
-                        ctx.translate(canvas.width / 2, canvas.height / 2);
-                        ctx.scale(zoom, zoom);
-                        
-                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
-                        let w = mainImg.width * scale; let h = mainImg.height * scale;
-                        ctx.drawImage(mainImg, -w/2, -h/2, w, h);
-                        ctx.restore();
-                        
-                        // Floating Watermark Sign
-                        ctx.save();
-                        let logoYOffset = Math.sin(i * 0.4) * 7;
-                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
-                        ctx.textAlign = "right";
-                        ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
-                        ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
-                        ctx.restore();
-                        
-                        video.add(canvas);
-                    }
-
-                    // RADHE RADHE OUTRO SCREEN
-                    for (let j = 0; j < textFramesCount; j++) {
-                        ctx.fillStyle = "#050811";
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        ctx.font = "bold 80px 'Cinzel', serif";
-                        ctx.textAlign = "center";
-                        
-                        let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-                        gradient.addColorStop(0, "#ff9933"); gradient.addColorStop(0.5, "#ffffff"); gradient.addColorStop(1, "#ff9933");
-                        ctx.fillStyle = gradient;
-                        
-                        let alpha = Math.min(j / (fps * 0.5), 1);
-                        ctx.globalAlpha = alpha;
-                        ctx.fillText("RADHE RADHE", canvas.width / 2, canvas.height / 2 + 25);
-                        ctx.globalAlpha = 1.0;
-                        
-                        video.add(canvas);
-                    }
-
-                    const outputVideo = video.compile();
-                    const outputUrl = URL.createObjectURL(outputVideo);
-                    statusLabel.innerText = '🎉 Video Downloaded Successfully!';
-                    
-                    const downloader = document.createElement('a');
-                    downloader.href = outputUrl;
-                    downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
-                    document.body.appendChild(downloader);
-                    downloader.click();
-                    document.body.removeChild(downloader);
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
-                document.getElementById('navDropdown').style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
 
 
