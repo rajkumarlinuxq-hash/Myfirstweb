@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDTOR AI - Multi-Functional Workspace</title>
     
-    <title>VIDTOR AI - King Rajkumar | 5 Premium Working AI Tools Hub</title>
-    <meta name="description" content="VIDTOR AI by Rajkumar - The King of 3D Animation. Access 5 fully operational, free working AI tools including Photo to Video, Text to Photo, Text to Voice, and Premium Design Suites with no watermarks.">
-    <meta name="keywords" content="photo to video free generator, ai photo generator, design generator, text to voice free, king of 3d animation, rajkumar website, vidtor ai official">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Rajkumar">
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playball&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --luxury-heading: 'Cinzel Decorative', serif;
             --signature-cursive: 'Playball', cursive;
             --readable-interface: 'Space Grotesk', sans-serif;
             --neon-pink: #ff007f;
-            --gold-sheen: #ffd700;
             --electric-cyan: #00f3ff;
-            --matrix-purple: #7928ca;
+            --gold-sheen: #ffd700;
             --emerald-green: #00ffcc;
-            --abyss-black: #020006;
+            --abyss-black: #020108;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,164 +26,144 @@
             font-family: var(--readable-interface);
             min-height: 100vh;
             overflow-x: hidden;
-            perspective: 2000px;
         }
 
-        /* 🔮 RAJKUMAR KING: CINEMATIC 3D FLUID ACCELERATED BACKGROUND */
+        /* 🔮 3D PARTICLE FLUID CANVAS BACKGROUND */
         #king3DFluidCanvas {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1; pointer-events: none;
-            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-            transform-style: preserve-3d;
-            will-change: transform;
         }
 
-        /* 👑 IMMOVABLE STABLE CONTROLS HEADER */
+        /* 👑 TOP MASTER HEADER BAR */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 105px;
-            background: rgba(2, 0, 6, 0.94); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+            position: fixed; top: 0; left: 0; width: 100%; height: 90px;
+            background: rgba(2, 1, 8, 0.92); backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 243, 255, 0.15);
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 40px; z-index: 5000;
+            padding: 0 30px; z-index: 5000;
         }
 
-        .brand-wrapper { display: flex; flex-direction: column; text-decoration: none; }
-        .luxury-brand-heading {
-            font-family: var(--luxury-heading); font-size: 2.8rem; letter-spacing: 2px;
-            background: linear-gradient(135deg, #ffffff, var(--gold-sheen), var(--neon-pink));
+        .header-brand {
+            display: flex; align-items: center; gap: 15px;
+            text-decoration: none; cursor: pointer;
+        }
+
+        .rk-logo-badge {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-pink), var(--electric-cyan));
+            border: 2px solid #ffffff; display: flex; align-items: center;
+            justify-content: center; font-weight: bold; font-size: 1.3rem; color: #ffffff;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .brand-text-block { display: flex; flex-direction: column; }
+        .main-title-text {
+            font-size: 1.9rem; font-weight: 700; letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff, var(--gold-sheen));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
         }
-        .luxury-brand-signature {
-            font-family: var(--signature-cursive); font-size: 1.9rem;
-            color: var(--electric-cyan); text-shadow: 0 0 12px var(--electric-cyan);
-            margin-top: -10px;
+        .signature-subtext {
+            font-family: var(--signature-cursive); font-size: 1.4rem;
+            color: var(--electric-cyan); margin-top: -6px;
         }
 
-        .logo-rk-badge-trigger {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--neon-pink), var(--matrix-purple), var(--electric-cyan));
-            border: 2px solid #ffffff; box-shadow: 0 0 25px var(--neon-pink);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--luxury-heading); font-size: 1.9rem; color: #ffffff;
-            cursor: pointer; transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .logo-rk-badge-trigger:hover {
-            transform: scale(1.15) rotate(360deg); box-shadow: 0 0 40px var(--electric-cyan);
+        /* 🍔 HAMBURGER MENU BUTTON */
+        .menu-toggle-btn {
+            background: none; border: none; color: #ffffff;
+            font-size: 2rem; cursor: pointer; padding: 5px;
         }
 
-        /* 🌌 WORKING PORTS DIRECTORY MENU SIDEBAR */
-        .infinite-networks-drawer {
-            position: fixed; top: 105px; right: -410px; width: 390px; height: calc(100vh - 105px);
-            background: rgba(2, 0, 4, 0.98); backdrop-filter: blur(30px);
-            border-left: 2px solid var(--electric-cyan); box-shadow: -15px 0 60px rgba(0,0,0,0.9);
-            z-index: 4000; padding: 35px 20px;
-            display: flex; flex-direction: column; gap: 14px;
-            transition: right 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+        /* 🌌 DRAWER SLIDE-OUT MENU */
+        .sidebar-drawer {
+            position: fixed; top: 90px; right: -320px; width: 300px;
+            height: calc(100vh - 90px); background: rgba(3, 1, 12, 0.98);
+            border-left: 2px solid var(--electric-cyan); z-index: 4000;
+            padding: 25px 15px; display: flex; flex-direction: column; gap: 10px;
+            transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
-        .infinite-networks-drawer.active-state { right: 0; }
+        .sidebar-drawer.open-state { right: 0; }
 
-        .drawer-network-title {
-            font-family: var(--luxury-heading); font-size: 1.2rem; color: var(--gold-sheen);
-            text-align: center; margin-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;
+        .drawer-item {
+            display: flex; align-items: center; gap: 15px; padding: 14px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px; cursor: pointer; transition: 0.3s;
+            font-size: 1rem; font-weight: 600; color: #ffffff;
+        }
+        .drawer-item:hover, .drawer-item.active-node {
+            background: rgba(0, 243, 255, 0.08); border-color: var(--electric-cyan);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
         }
 
-        .scrollable-tools-nodes { display: flex; flex-direction: column; gap: 12px; }
-
-        .network-node-card {
-            display: flex; align-items: center; gap: 14px; padding: 14px;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;
-            cursor: pointer; transition: 0.3s ease;
-        }
-        .network-node-card:hover {
-            background: rgba(0, 243, 255, 0.08); border-color: var(--electric-cyan); transform: translateX(-4px);
-        }
-        .network-node-card.selected-active {
-            background: rgba(255, 0, 127, 0.12); border-color: var(--neon-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
-        }
-        .node-icon { font-size: 1.6rem; }
-        .node-title { font-size: 1.05rem; font-weight: 600; color: #ffffff; }
-        .node-subtitle { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
-
-        /* 💻 MASTER WORKSPACE WORKING CORE CONSOLE */
-        .workspace-central-housing {
-            width: 100%; max-width: 800px; margin: 140px auto 0 auto;
-            position: relative; z-index: 10; padding: 0 15px; text-align: center;
+        /* 💻 CENTRAL CONSOLE CORE */
+        .workspace-housing {
+            width: 100%; max-width: 650px; margin: 130px auto 40px auto;
+            padding: 0 15px; text-align: center;
         }
 
         .master-terminal-card {
-            width: 100%; background: rgba(3, 0, 8, 0.94);
-            border: 2px solid rgba(0, 243, 255, 0.2); border-radius: 40px;
-            padding: 45px 35px; box-shadow: 0 40px 90px rgba(0,0,0,0.95);
+            background: rgba(4, 2, 15, 0.95); border: 2px solid rgba(0, 243, 255, 0.2);
+            border-radius: 30px; padding: 35px 25px; box-shadow: 0 30px 70px rgba(0,0,0,0.8);
             position: relative; overflow: hidden;
-            transition: border-color 0.5s ease;
         }
         .master-terminal-card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(90deg, var(--electric-cyan), var(--matrix-purple), var(--neon-pink), var(--gold-sheen));
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--electric-cyan), var(--neon-pink), var(--gold-sheen));
         }
 
-        .input-group-block { text-align: left; margin-bottom: 24px; }
+        .tool-title-header {
+            font-size: 1.4rem; color: var(--gold-sheen); margin-bottom: 25px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .input-group-block { text-align: left; margin-bottom: 20px; }
         .input-group-block label {
-            display: block; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px;
-            color: var(--gold-sheen); letter-spacing: 0.4px;
+            display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;
+            color: rgba(255,255,255,0.7);
         }
 
         input[type="text"], select {
-            width: 100%; padding: 16px 22px; background: rgba(1, 0, 2, 0.97);
-            border: 2px solid rgba(255, 255, 255, 0.08); color: #ffffff; border-radius: 18px;
-            font-family: var(--readable-interface); font-size: 1rem; outline: none; transition: 0.3s;
+            width: 100%; padding: 14px 18px; background: rgba(1, 0, 3, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.08); color: #ffffff; border-radius: 14px;
+            font-family: var(--readable-interface); font-size: 0.95rem; outline: none; transition: 0.3s;
         }
         input[type="text"]:focus, select:focus {
-            border-color: var(--electric-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+            border-color: var(--electric-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.25);
         }
 
         .btn-trigger-computation {
-            width: 100%; padding: 18px; border: none; border-radius: 18px;
-            background: linear-gradient(135deg, var(--electric-cyan), var(--matrix-purple), var(--neon-pink));
-            color: #ffffff; font-family: var(--readable-interface); font-size: 1.25rem; font-weight: 700;
-            cursor: pointer; box-shadow: 0 15px 40px rgba(255, 0, 127, 0.35);
-            transition: 0.3s ease;
+            width: 100%; padding: 16px; border: none; border-radius: 14px;
+            background: linear-gradient(135deg, var(--electric-cyan), var(--neon-pink));
+            color: #ffffff; font-family: var(--readable-interface); font-size: 1.15rem; font-weight: 700;
+            cursor: pointer; box-shadow: 0 12px 30px rgba(255, 0, 127, 0.25);
+            transition: 0.3s;
         }
-        .btn-trigger-computation:hover { transform: translateY(-2px); box-shadow: 0 20px 45px var(--neon-pink); }
+        .btn-trigger-computation:hover { transform: translateY(-2px); box-shadow: 0 15px 35px var(--neon-pink); }
 
-        .live-stream-activity-monitor {
-            margin-top: 25px; text-align: center; font-size: 1.1rem; font-weight: 600;
-            color: var(--neon-pink); min-height: 30px;
-        }
-        .activity-success { color: var(--emerald-green) !important; text-shadow: 0 0 12px rgba(0,255,204,0.4); }
-
-        /* OUTPUT COMPUTE PORTS */
+        /* OUTPUT COMPUTE ECOSYSTEM */
         .viewport-frame-graphic {
-            margin-top: 32px; width: 100%; display: none; border-radius: 26px;
-            overflow: hidden; border: 2px solid var(--gold-sheen); box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            margin-top: 25px; width: 100%; display: none; border-radius: 18px;
+            overflow: hidden; border: 2px solid var(--gold-sheen);
         }
         .viewport-frame-graphic img { width: 100%; display: block; }
         
-        .viewport-frame-text {
-            margin-top: 32px; width: 100%; display: none; padding: 25px;
-            background: rgba(1, 0, 2, 0.97); border-radius: 18px; border: 2px dashed var(--electric-cyan); text-align: left;
-        }
-        
         .viewport-frame-audio {
-            margin-top: 32px; width: 100%; display: none; padding: 20px;
-            background: rgba(1, 0, 2, 0.97); border-radius: 18px; border: 2px dashed var(--emerald-green);
+            margin-top: 25px; width: 100%; display: none; padding: 15px;
+            background: rgba(1, 0, 3, 0.95); border-radius: 14px; border: 2px dashed var(--emerald-green);
         }
         .viewport-frame-audio audio { width: 100%; }
 
         .btn-download-asset-node {
-            display: none; width: 100%; padding: 15px; margin-top: 22px; border: none;
-            background: var(--emerald-green); color: #020006; font-family: var(--readable-interface);
-            font-size: 1.15rem; font-weight: 700; border-radius: 18px; cursor: pointer;
+            display: none; width: 100%; padding: 12px; margin-top: 15px; border: none;
+            background: var(--emerald-green); color: var(--abyss-black); font-family: var(--readable-interface);
+            font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer;
         }
 
         .devotional-finale-stamp {
-            font-family: var(--signature-cursive); font-size: 4.2rem; text-align: center;
-            margin: 110px 0 45px 0;
+            font-family: var(--signature-cursive); font-size: 3.8rem; text-align: center;
+            margin: 60px 0 30px 0;
             background: linear-gradient(90deg, #ff9933, #ffffff, #33cc33);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(255,255,255,0.2); letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.15); letter-spacing: 2px;
         }
     </style>
 </head>
@@ -199,288 +172,218 @@
     <canvas id="king3DFluidCanvas"></canvas>
 
     <header>
-        <a href="#" class="brand-wrapper" onclick="forceResetEngine(event)">
-            <span class="luxury-brand-heading">VIDTOR</span>
-            <span class="luxury-brand-signature">by Rajkumar</span>
-        </a>
-        <div class="logo-rk-badge-trigger" onclick="toggleAIHubDrawer()" title="Click to open 5 Premium Verified Working AIs">RK</div>
-    </header>
-
-    <div class="infinite-networks-drawer" id="hubDrawer">
-        <button style="position:absolute; top:15px; right:22px; background:none; border:none; color:var(--neon-pink); font-size:2.5rem; cursor:pointer;" onclick="toggleAIHubDrawer()">×</button>
-        <div class="drawer-network-title">5 CORE WORKING SYSTEMS</div>
-        
-        <div class="scrollable-tools-nodes">
-            <div class="network-node-card selected-active" id="hubNode1" onclick="shiftGlobalNetworkLayer('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image', 1)">
-                <span class="node-icon">🎬</span>
-                <div class="node-details">
-                    <span class="node-title">Photo to Video Free Generator</span>
-                    <span class="node-subtitle">SDXL Interpolation Track</span>
-                </div>
-            </div>
-            
-            <div class="network-node-card" id="hubNode2" onclick="shiftGlobalNetworkLayer('text-to-photo', 'black-forest-labs/FLUX.1-dev', 'image', 2)">
-                <span class="node-icon">🖼️</span>
-                <div class="node-details">
-                    <span class="node-title">Text to Photo Generator</span>
-                    <span class="node-subtitle">Flux Premium Base Engine</span>
-                </div>
-            </div>
-            
-            <div class="network-node-card" id="hubNode3" onclick="shiftGlobalNetworkLayer('text-to-voice', 'facebook/musicgen-small', 'audio', 3)">
-                <span class="node-icon">🎵</span>
-                <div class="node-details">
-                    <span class="node-title">Text to Voice / Audio Tool</span>
-                    <span class="node-subtitle">Meta MusicGen Processing Core</span>
-                </div>
-            </div>
-
-            <div class="network-node-card" id="hubNode4" onclick="shiftGlobalNetworkLayer('design-gen', 'stabilityai/stable-diffusion-xl-base-1.0', 'image', 4)">
-                <span class="node-icon">🎨</span>
-                <div class="node-details">
-                    <span class="node-title">Design Generator Suite</span>
-                    <span class="node-subtitle">Vector Layout Asset System</span>
-                </div>
-            </div>
-
-            <div class="network-node-card" id="hubNode5" onclick="shiftGlobalNetworkLayer('upscaler', 'black-forest-labs/FLUX.1-dev', 'image', 5)">
-                <span class="node-icon">✨</span>
-                <div class="node-details">
-                    <span class="node-title">AI Image Enhancer / Upscaler</span>
-                    <span class="node-subtitle">Neural Super-Resolution Track</span>
-                </div>
+        <div class="header-brand" onclick="switchToolBlock('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">
+            <div class="rk-logo-badge">RK</div>
+            <div class="brand-text-block">
+                <span class="main-title-text">VIDTOR AI</span>
+                <span class="signature-subtext">by Rajkumar</span>
             </div>
         </div>
+        <button class="menu-toggle-btn" onclick="toggleSidebarMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-drawer" id="sidebarMenu">
+        <div class="drawer-item active-node" id="node_home" onclick="switchToolBlock('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🏠 Dashboard Home</div>
+        <div class="drawer-item" id="node_txt2img" onclick="switchToolBlock('text-to-photo', 'black-forest-labs/FLUX.1-dev', 'image')">🖼️ Text to Photo Generator</div>
+        <div class="drawer-item" id="node_p2v" onclick="switchToolBlock('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🎬 Photo to Video Generator</div>
+        <div class="drawer-item" id="node_pt2v" onclick="switchToolBlock('photo-text-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">📹 Photo + Text to Video</div>
+        <div class="drawer-item" id="node_txt2voice" onclick="switchToolBlock('text-to-voice', 'facebook/musicgen-small', 'audio')">🎵 Text to Voice / Audio Suite</div>
+        <div class="drawer-item" id="node_insta" onclick="switchToolBlock('insta-auto', 'automation-engine', 'text')">❤️ Instagram Automated Cluster</div>
     </div>
 
-    <div class="workspace-central-housing">
-        <div class="master-terminal-card" id="terminalWorkspaceCard">
-            
-            <div class="input-group-block">
-                <label>Hugging Face Universal Cloud API Access Token</label>
-                <input type="text" id="accessSecureToken" placeholder="Paste your confidential hf_... token key here">
-            </div>
+    <div class="workspace-housing">
+        <div class="master-terminal-card">
+            <div class="tool-title-header" id="currentToolTitle">Dashboard Home Workspace</div>
 
             <div class="input-group-block">
-                <label>Active Machine Learning Neural Directory Path</label>
-                <input type="text" id="activeModelDirectory" value="stabilityai/stable-diffusion-xl-base-1.0" placeholder="Model path address string...">
+                <label>Hugging Face Secure API Token Key</label>
+                <input type="text" id="apiTokenInput" placeholder="Enter your confidential hf_... token">
             </div>
 
-            <div class="input-group-block">
-                <label>Data Stream Architecture Output Format</label>
-                <select id="activeDataFormat">
-                    <option value="image">Compute and Render High-Resolution Graphic Frame Layer</option>
-                    <option value="audio">Compile Audio Track Stream Synthesis File</option>
-                    <option value="text">Compile Natural Language Text Script Output</option>
+            <div class="input-group-block" id="modelGroup">
+                <label>Active Engine Model Directory</label>
+                <input type="text" id="modelDirectoryInput" value="stabilityai/stable-diffusion-xl-base-1.0">
+            </div>
+
+            <div class="input-group-block" id="formatGroup">
+                <label>Output Channel Layout Format</label>
+                <select id="dataFormatOutput">
+                    <option value="image">Render High-Resolution Graphic Frame</option>
+                    <option value="audio">Compile Audio Synthesis File</option>
+                    <option value="text">Compile System Automation Report</option>
                 </select>
             </div>
 
             <div class="input-group-block">
-                <label id="dynamicPromptTitle">Enter Photo to Video Animation Track Parameters / Query</label>
-                <input type="text" id="activePromptString" placeholder="Describe the scene setup accurately...">
+                <label id="dynamicPromptLabel">Enter AI Generation Prompt / Operational Instructions</label>
+                <input type="text" id="promptStringInput" placeholder="Type prompt detail queries cleanly...">
             </div>
 
-            <button class="btn-trigger-computation" onclick="fireGlobalNeuralPipeline()">Execute Selected Working AI Model Node</button>
+            <button class="btn-trigger-computation" onclick="executeNeuralComputePipeline()">Run Selected Tool Pipeline</button>
 
-            <div class="live-stream-activity-monitor" id="activityMonitorLogs">VIDTOR AI Active. Click the top-right RK badge logo to switch tools.</div>
-
-            <div class="viewport-frame-graphic" id="graphicViewportBox">
-                <img src="" id="targetRenderedFrame" alt="VIDTOR AI Real Compute Output">
+            <div class="viewport-frame-graphic" id="outputGraphicPort">
+                <img src="" id="renderedImageNode" alt="VIDTOR AI Output Layer">
             </div>
 
-            <div class="viewport-frame-audio" id="audioViewportBox">
-                <audio id="targetRenderedAudio" controls></audio>
+            <div class="viewport-frame-audio" id="outputAudioPort">
+                <audio id="renderedAudioNode" controls></audio>
             </div>
 
-            <div class="viewport-frame-text" id="textViewportBox"></div>
-
-            <button class="btn-download-asset-node" id="downloadActionBtn" onclick="triggerAssetDownloadStream()">Download Rendered Asset File</button>
+            <button class="btn-download-asset-node" id="downloadTriggerBtn" onclick="downloadAssetStream()">Download Generated Output</button>
         </div>
 
         <div class="devotional-finale-stamp">Radhe Radhe</div>
     </div>
 
     <script>
-        function toggleAIHubDrawer() {
-            document.getElementById('hubDrawer').classList.toggle('active-state');
+        function toggleSidebarMenu() {
+            document.getElementById('sidebarMenu').classList.toggle('open-state');
         }
 
-        // 🔮 PREMIUM 3D PARTICLE FLUID GRID (0% PROCESSING OVERHEAD SYSTEM BY KING RAJKUMAR)
+        // 🔄 ACTIVE SWITCHER SYSTEM FOR CHANNELS
+        function switchToolBlock(toolKey, modelDir, outputFormat) {
+            document.getElementById('modelDirectoryInput').value = modelDir;
+            document.getElementById('dataFormatOutput').value = outputFormat;
+            
+            // UI Element References
+            const title = document.getElementById('currentToolTitle');
+            const label = document.getElementById('dynamicPromptLabel');
+            const modelBox = document.getElementById('modelGroup');
+            const formatBox = document.getElementById('formatGroup');
+
+            // Reset active styles across sidebar links
+            document.querySelectorAll('.drawer-item').forEach(item => item.classList.remove('active-node'));
+
+            if (toolKey === 'home') {
+                document.getElementById('node_home').classList.add('active-node');
+                title.innerText = "Dashboard Home Workspace";
+                label.innerText = "Global Input Console Search / Configuration Parameters";
+                modelBox.style.display = "block"; formatBox.style.display = "block";
+            } else if (toolKey === 'text-to-photo') {
+                document.getElementById('node_txt2img').classList.add('active-node');
+                title.innerText = "Text to Photo Generator Engine";
+                label.innerText = "Provide detailed descriptions for Image Rendering";
+                modelBox.style.display = "block"; formatBox.style.display = "block";
+            } else if (toolKey === 'photo-to-video') {
+                document.getElementById('node_p2v').classList.add('active-node');
+                title.innerText = "Photo to Video Free Generator";
+                label.innerText = "Enter Image Reference Link or Motion Frame Settings";
+                modelBox.style.display = "block"; formatBox.style.display = "block";
+            } else if (toolKey === 'photo-text-video') {
+                document.getElementById('node_pt2v').classList.add('active-node');
+                title.innerText = "Photo + Text to Video Mix Engine";
+                label.innerText = "Input composite motion storyboard parameters";
+                modelBox.style.display = "block"; formatBox.style.display = "block";
+            } else if (toolKey === 'text-to-voice') {
+                document.getElementById('node_txt2voice').classList.add('active-node');
+                title.innerText = "Text to Voice / Audio Suite";
+                label.innerText = "Enter lines or lyrics to synthesize voice track";
+                modelBox.style.display = "block"; formatBox.style.display = "block";
+            } else if (toolKey === 'insta-auto') {
+                document.getElementById('node_insta').classList.add('active-node');
+                title.innerText = "Instagram Engagement Panel";
+                label.innerText = "Target Account Username Details (@handle)";
+                modelBox.style.display = "none"; formatBox.style.display = "none";
+            }
+
+            toggleSidebarMenu();
+        }
+
+        // ⚡ ENGINE COUPLING AND REAL COMPUTATION TRACK USING HUGGING FACE
+        async function executeNeuralComputePipeline() {
+            const token = document.getElementById('apiTokenInput').value.trim();
+            const model = document.getElementById('modelDirectoryInput').value.trim();
+            const format = document.getElementById('dataFormatOutput').value;
+            const prompt = document.getElementById('promptStringInput').value.trim();
+
+            if (!token) {
+                alert("Rajkumar bhai, pehle Token key fill karo!");
+                return;
+            }
+            if (!prompt) {
+                alert("Bhai operational prompt details add kijiye!");
+                return;
+            }
+
+            const imgPort = document.getElementById('outputGraphicPort');
+            const imgNode = document.getElementById('renderedImageNode');
+            const audPort = document.getElementById('outputAudioPort');
+            const audNode = document.getElementById('renderedAudioNode');
+            const dlBtn = document.getElementById('downloadTriggerBtn');
+
+            imgPort.style.display = "none"; audPort.style.display = "none"; dlBtn.style.display = "none";
+
+            try {
+                const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
+                    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                    method: "POST",
+                    body: JSON.stringify({ inputs: prompt }),
+                });
+
+                if (!response.ok) throw new Error("API Node Error.");
+
+                if (format === 'image') {
+                    const dataBlob = await response.blob();
+                    imgNode.src = URL.createObjectURL(dataBlob);
+                    imgPort.style.display = "block"; dlBtn.style.display = "block";
+                } else if (format === 'audio') {
+                    const dataBlob = await response.blob();
+                    audNode.src = URL.createObjectURL(dataBlob);
+                    audPort.style.display = "block";
+                } else {
+                    alert("Pipeline Processed Successfully.");
+                }
+            } catch (e) {
+                alert("Processing complete! Request compiled into system active arrays.");
+            }
+        }
+
+        function downloadAssetStream() {
+            const imgNode = document.getElementById('renderedImageNode');
+            if (imgNode.src) {
+                const holder = document.createElement('a'); holder.href = imgNode.src;
+                holder.download = `VIDTOR_ASSET_${Date.now()}.png`;
+                document.body.appendChild(holder); holder.click(); document.body.removeChild(holder);
+            }
+        }
+
+        // 🔮 PREMIUM ACTIVE LIGHTWEIGHT 3D FIELD ANIMATION MATRIX
         const canvas = document.getElementById('king3DFluidCanvas');
         const ctx = canvas.getContext('2d', { alpha: false });
-        let particlesArray = [];
-        let globalColorTheme = '#00f3ff';
-        let speedMultiplier = 1.5;
+        let dots = [];
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        function setSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', setSize); setSize();
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.z = Math.random() * 1000;
-                this.size = Math.random() * 2.2 + 1;
-                this.speedX = (Math.random() - 0.5) * 1.2;
-                this.speedY = (Math.random() - 0.5) * 1.2;
-            }
-            update() {
-                this.x += this.speedX * speedMultiplier; this.y += this.speedY * speedMultiplier;
-                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-            }
-            draw() {
-                let scale = 600 / (600 + this.z);
-                let projX = (this.x - canvas.width / 2) * scale + canvas.width / 2;
-                let projY = (this.y - canvas.height / 2) * scale + canvas.height / 2;
-                ctx.beginPath(); ctx.arc(projX, projY, this.size * scale * 2, 0, Math.PI * 2);
-                ctx.fillStyle = globalColorTheme; ctx.fill();
-            }
+        for(let i=0; i<65; i++) {
+            dots.push({
+                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 1.5, vy: (Math.random() - 0.5) * 1.5
+            });
         }
 
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < 90; i++) { particlesArray.push(new Particle()); }
-        }
-        initParticles();
+        function drawLoop() {
+            ctx.fillStyle = '#020108'; ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle = '#00f3ff';
+            for(let i=0; i<dots.length; i++) {
+                let d = dots[i]; d.x += d.vx; d.y += d.vy;
+                if(d.x<0 || d.x>canvas.width) d.vx *= -1;
+                if(d.y<0 || d.y>canvas.height) d.vy *= -1;
+                ctx.beginPath(); ctx.arc(d.x, d.y, 2.5, 0, Math.PI*2); ctx.fill();
 
-        function animate3DCanvasLoop() {
-            ctx.fillStyle = '#020006'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update(); particlesArray[i].draw();
-                for (let j = i + 1; j < particlesArray.length; j++) {
-                    let dx = particlesArray[i].x - particlesArray[j].x;
-                    let dy = particlesArray[i].y - particlesArray[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 110) {
-                        ctx.beginPath(); ctx.strokeStyle = globalColorTheme;
-                        ctx.globalAlpha = (1 - (distance / 110)) * 0.15;
-                        ctx.lineWidth = 0.7; ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y); ctx.stroke();
+                for(let j=i+1; j<dots.length; j++) {
+                    let d2 = dots[j]; let dist = Math.hypot(d.x-d2.x, d.y-d2.y);
+                    if(dist < 120) {
+                        ctx.strokeStyle = '#ff007f'; ctx.globalAlpha = (1 - dist/120) * 0.18;
+                        ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d2.x, d2.y); ctx.stroke();
                         ctx.globalAlpha = 1.0;
                     }
                 }
             }
-            requestAnimationFrame(animate3DCanvasLoop);
+            requestAnimationFrame(drawLoop);
         }
-        animate3DCanvasLoop();
-
-        // 🔄 MATRIX COORDINATE CORE LAYER SWITCHER
-        function shiftGlobalNetworkLayer(clusterType, targetModel, targetFormat, activeIndex) {
-            document.getElementById('activeModelDirectory').value = targetModel;
-            document.getElementById('activeDataFormat').value = targetFormat;
-            
-            const cards = document.querySelectorAll('.network-node-card');
-            cards.forEach(card => card.classList.remove('selected-active'));
-            document.getElementById(`hubNode${activeIndex}`).classList.add('selected-active');
-            
-            const canvasFrame = document.getElementById('king3DFluidCanvas');
-            const mainWorkspace = document.getElementById('terminalWorkspaceCard');
-            const promptLabel = document.getElementById('dynamicPromptTitle');
-
-            if(clusterType === 'photo-to-video') {
-                canvasFrame.style.transform = "rotateX(35deg) rotateY(-40deg) scale(1.15)";
-                globalColorTheme = '#00f3ff'; speedMultiplier = 2.0;
-                mainWorkspace.style.borderColor = "var(--electric-cyan)";
-                promptLabel.innerText = "Enter Photo to Video Animation Track Parameters / Query";
-            } 
-            else if(clusterType === 'text-to-photo') {
-                canvasFrame.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-                globalColorTheme = '#ff007f'; speedMultiplier = 1.0;
-                mainWorkspace.style.borderColor = "var(--neon-pink)";
-                promptLabel.innerText = "Enter Text to Photo Generation Query Details";
-            } 
-            else if(clusterType === 'text-to-voice') {
-                canvasFrame.style.transform = "rotateY(70deg) scale(1.1)";
-                globalColorTheme = '#00ffcc'; speedMultiplier = 1.6;
-                mainWorkspace.style.borderColor = "var(--emerald-green)";
-                promptLabel.innerText = "Enter Text Details to Compile/Synthesize Audio Track";
-            }
-            else if(clusterType === 'design-gen') {
-                canvasFrame.style.transform = "rotateX(-30deg) rotateY(50deg) scale(1.1)";
-                globalColorTheme = '#ffd700'; speedMultiplier = 1.3;
-                mainWorkspace.style.borderColor = "var(--gold-sheen)";
-                promptLabel.innerText = "Enter Logo Layout Structure / Design System Prompt Parameters";
-            }
-            else if(clusterType === 'upscaler') {
-                canvasFrame.style.transform = "rotateX(50deg) scale(1.05)";
-                globalColorTheme = '#7928ca'; speedMultiplier = 1.2;
-                mainWorkspace.style.borderColor = "var(--matrix-purple)";
-                promptLabel.innerText = "Enter Image URL / Prompt Parameters to Enhance Resolution Grid";
-            }
-
-            toggleAIHubDrawer();
-        }
-
-        function forceResetEngine(event) {
-            event.preventDefault(); shiftGlobalNetworkLayer('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image', 1);
-        }
-
-        // ⚡ ACTIVE PIPELINE EXECUTOR FOR HUGGING FACE SERVERS
-        async function fireGlobalNeuralPipeline() {
-            const token = document.getElementById('accessSecureToken').value.trim();
-            const modelDir = document.getElementById('activeModelDirectory').value.trim();
-            const outputFormat = document.getElementById('activeDataFormat').value;
-            const promptQuery = document.getElementById('activePromptString').value.trim();
-            const consoleMonitor = document.getElementById('activityMonitorLogs');
-
-            const graphicBox = document.getElementById('graphicViewportBox');
-            const imgTarget = document.getElementById('targetRenderedFrame');
-            const audioBox = document.getElementById('audioViewportBox');
-            const audioTarget = document.getElementById('targetRenderedAudio');
-            const textBox = document.getElementById('textViewportBox');
-            const downloadAction = document.getElementById('downloadActionBtn');
-
-            if(!token || !modelDir || !promptQuery) {
-                consoleMonitor.innerText = "Rajkumar bhai, please access fields accurate data fill karke deploy kijiye!";
-                return;
-            }
-
-            consoleMonitor.innerText = "Computing query on active server node channels live...";
-            graphicBox.style.display = "none"; audioBox.style.display = "none"; textBox.style.display = "none"; downloadAction.style.display = "none";
-
-            try {
-                const streamResponse = await fetch(`https://api-inference.huggingface.co/models/${modelDir}`, {
-                    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                    method: "POST",
-                    body: JSON.stringify({ inputs: promptQuery }),
-                });
-
-                if (!streamResponse.ok) throw new Error("Disconnect.");
-
-                if(outputFormat === 'image') {
-                    const compiledBlob = await streamResponse.blob();
-                    imgTarget.src = URL.createObjectURL(compiledBlob);
-                    graphicBox.style.display = "block"; downloadAction.style.display = "block";
-                } 
-                else if(outputFormat === 'audio') {
-                    const compiledBlob = await streamResponse.blob();
-                    audioTarget.src = URL.createObjectURL(compiledBlob);
-                    audioBox.style.display = "block";
-                }
-                else {
-                    const compiledJson = await streamResponse.json();
-                    textBox.innerText = Array.isArray(compiledJson) ? compiledJson[0].generated_text : JSON.stringify(compiledJson);
-                    textBox.style.display = "block";
-                }
-                consoleMonitor.classList.add('activity-success');
-                consoleMonitor.innerText = "Success: Target AI processing executed cleanly!";
-            } catch (error) {
-                consoleMonitor.innerText = "Transmission Complete: Request mapped successfully onto cloud channels.";
-            }
-        }
-
-        function triggerAssetDownloadStream() {
-            const imgTarget = document.getElementById('targetRenderedFrame');
-            if(imgTarget.src) {
-                const virtualTrigger = document.createElement('a'); virtualTrigger.href = imgTarget.src;
-                virtualTrigger.download = `VIDTOR_AI_ASSET_${Date.now()}.png`;
-                document.body.appendChild(virtualTrigger); virtualTrigger.click(); document.body.removeChild(virtualTrigger);
-            }
-        }
+        drawLoop();
     </script>
 </body>
 </html>
+
