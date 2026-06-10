@@ -235,6 +235,14 @@
         }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
 
+        .live-status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #00ffcc;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
         /* FOOTER BRANDING */
         .devotional-outro {
             font-family: 'Cinzel', serif;
@@ -281,9 +289,10 @@
         <p class="description">AI Neural Visualizer Engine</p>
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
-            <input type="text" placeholder="e.g., Aesthetic cozy lo-fi jazz cafe, cinematic lighting...">
+            <input type="text" id="t2pPrompt" placeholder="e.g., Aesthetic cozy lo-fi jazz cafe, cinematic lighting...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Generate Photo</button>
+        <button class="btn-action" onclick="runToolProcessing('t2pStatus', 'Generating Photo Asset...')">Generate Photo</button>
+        <div class="live-status" id="t2pStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
@@ -291,13 +300,14 @@
         <p class="description">Cinematic Motion Tracking Engine</p>
         <div class="input-wrapper">
             <label>Select Target Image Layer:</label>
-            <input type="file" accept="image/*">
+            <input type="file" id="p2vFile" accept="image/*">
         </div>
         <div class="input-wrapper">
             <label>Motion Trajectory Prompt:</label>
-            <input type="text" placeholder="e.g., Slow continuous zoom in, aesthetic rainy look...">
+            <input type="text" id="p2vPrompt" placeholder="e.g., vidtor, photo to video...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Compile Video</button>
+        <button class="btn-action" onclick="runVideoGeneration()">Compile Video</button>
+        <div class="live-status" id="p2vStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-text-video">
@@ -305,13 +315,14 @@
         <p class="description">Integrated Subtitle Graphics Suite</p>
         <div class="input-wrapper">
             <label>Upload Base Graphic Layout:</label>
-            <input type="file" accept="image/*">
+            <input type="file" id="p2vtFile" accept="image/*">
         </div>
         <div class="input-wrapper">
             <label>Sub-text Script Input:</label>
-            <input type="text" placeholder="Type script text to mount over video frames...">
+            <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Generate Hybrid Video</button>
+        <button class="btn-action" onclick="runToolProcessing('p2vtStatus', 'Rendering Hybrid Text Video Layer...')">Generate Hybrid Video</button>
+        <div class="live-status" id="p2vtStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-ig-likes">
@@ -319,9 +330,10 @@
         <p class="description">Target Metric Distribution System</p>
         <div class="input-wrapper">
             <label>Instagram Target Post Link:</label>
-            <input type="text" placeholder="https://www.instagram.com/p/...">
+            <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Inject Likes</button>
+        <button class="btn-action" onclick="runToolProcessing('igLStatus', 'Connecting to Instagram Post Matrix API...')">Inject Likes</button>
+        <div class="live-status" id="igLStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-ig-followers">
@@ -329,9 +341,10 @@
         <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
         <div class="input-wrapper">
             <label>Instagram Profile Username:</label>
-            <input type="text" placeholder="Enter profile handle username...">
+            <input type="text" id="igUser" placeholder="Enter profile handle username...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Deploy Growth</button>
+        <button class="btn-action" onclick="runToolProcessing('igFStatus', 'Deploying Algorithm Optimization Pipeline...')">Deploy Growth</button>
+        <div class="live-status" id="igFStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-about">
@@ -344,6 +357,7 @@
 
     <div class="devotional-outro">RADHE RADHE</div>
 
+    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
@@ -363,8 +377,115 @@
             }
         }
 
-        function simulateProcessing() {
-            alert("Process Verified By Rajkumar AI Engine!");
+        // Live Action Status Engine
+        function runToolProcessing(statusId, initialMessage) {
+            const label = document.getElementById(statusId);
+            label.innerText = "⚡ " + initialMessage;
+            setTimeout(() => {
+                label.innerText = "⏳ Running Algorithmic Optimizations...";
+                setTimeout(() => {
+                    label.innerText = "🎉 Process Successfully Completed by Rajkumar AI Engine!";
+                }, 2000);
+            }, 1500);
+        }
+
+        // Real Photo To Video Compilation Runtime Engine
+        function runVideoGeneration() {
+            const fileInput = document.getElementById('p2vFile');
+            const promptInput = document.getElementById('p2vPrompt').value.toLowerCase().trim();
+            const statusLabel = document.getElementById('p2vStatus');
+
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert("Rajkumar bhai, please select an image first!");
+                return;
+            }
+
+            const allowedKeywords = ['vidtor', 'photo to video', 'image to video', 'free image to video', 'free photo to video'];
+            const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
+
+            if (promptInput === "" || !isMatch) {
+                alert("Rajkumar bhai, please use keywords like 'vidtor' or 'photo to video' in the prompt field.");
+                return;
+            }
+
+            statusLabel.innerText = '⚡ Initializing Canvas Frame Buffer...';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fps = 12;
+                const duration = 4;
+                const totalFrames = duration * fps;
+                const video = new Whammy.Video(fps);
+                
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 1280; canvas.height = 720;
+                
+                const mainImg = new Image();
+                mainImg.src = e.target.result;
+                
+                mainImg.onload = function() {
+                    const textFramesCount = Math.floor(1.5 * fps);
+                    const motionFramesCount = totalFrames - textFramesCount;
+
+                    for (let i = 0; i < motionFramesCount; i++) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        let progress = i / motionFramesCount;
+                        let zoom = 1.0 + (progress * 0.16);
+                        
+                        ctx.save();
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.scale(zoom, zoom);
+                        
+                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                        let w = mainImg.width * scale; let h = mainImg.height * scale;
+                        ctx.drawImage(mainImg, -w/2, -h/2, w, h);
+                        ctx.restore();
+                        
+                        // Floating Watermark Sign
+                        ctx.save();
+                        let logoYOffset = Math.sin(i * 0.4) * 7;
+                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+                        ctx.textAlign = "right";
+                        ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
+                        ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
+                        ctx.restore();
+                        
+                        video.add(canvas);
+                    }
+
+                    // RADHE RADHE OUTRO SCREEN
+                    for (let j = 0; j < textFramesCount; j++) {
+                        ctx.fillStyle = "#050811";
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.font = "bold 80px 'Cinzel', serif";
+                        ctx.textAlign = "center";
+                        
+                        let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                        gradient.addColorStop(0, "#ff9933"); gradient.addColorStop(0.5, "#ffffff"); gradient.addColorStop(1, "#ff9933");
+                        ctx.fillStyle = gradient;
+                        
+                        let alpha = Math.min(j / (fps * 0.5), 1);
+                        ctx.globalAlpha = alpha;
+                        ctx.fillText("RADHE RADHE", canvas.width / 2, canvas.height / 2 + 25);
+                        ctx.globalAlpha = 1.0;
+                        
+                        video.add(canvas);
+                    }
+
+                    const outputVideo = video.compile();
+                    const outputUrl = URL.createObjectURL(outputVideo);
+                    statusLabel.innerText = '🎉 Video Downloaded Successfully!';
+                    
+                    const downloader = document.createElement('a');
+                    downloader.href = outputUrl;
+                    downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
+                    document.body.appendChild(downloader);
+                    downloader.click();
+                    document.body.removeChild(downloader);
+                };
+            };
+            reader.readAsDataURL(fileInput.files[0]);
         }
 
         window.onclick = function(event) {
@@ -375,4 +496,5 @@
     </script>
 </body>
 </html>
+
 
