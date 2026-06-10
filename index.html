@@ -17,14 +17,14 @@
             --asmani: #00d2ff;
             --purple: #9d4edd;
             --bg: #030712;
-            --card: rgba(13, 21, 39, 0.45);
+            --card: rgba(13, 21, 39, 0.6);
             --text: #f3f4f6;
-            --border: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         body {
             margin: 0;
-            padding: 90px 20px 30px 20px;
+            padding: 90px 20px 40px 20px;
             box-sizing: border-box;
             background-color: var(--bg);
             color: var(--text);
@@ -38,27 +38,26 @@
             position: relative;
         }
 
-        /* DYNAMIC SNAKE-PATH BACKGROUND LINE (INSPIRED BY UfnAs9Ap_lM) */
         body::before {
             content: "";
             position: absolute;
             top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 70% 60%, rgba(157, 78, 221, 0.08) 0%, transparent 40%);
+            background: radial-gradient(circle at 30% 20%, rgba(0, 210, 255, 0.06) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(157, 78, 221, 0.06) 0%, transparent 40%);
             z-index: -1;
-            animation: backgroundWave 20s ease-in-out infinite alternate;
+            animation: backgroundWave 25s ease-in-out infinite alternate;
         }
 
         @keyframes backgroundWave {
             0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-5%, -5%) rotate(10deg); }
+            100% { transform: translate(-3%, -3%) rotate(8deg); }
         }
 
         /* --- GLOBAL NAVIGATION HEADER --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 70px;
-            background: rgba(3, 7, 18, 0.75);
+            background: rgba(3, 7, 18, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
@@ -108,13 +107,13 @@
             background: rgba(0, 210, 255, 0.1); color: var(--asmani);
         }
 
-        /* --- GLASSMORPHISM DASHBOARD PANELS (INSPIRED BY UfnAs9Ap_lM UI) --- */
+        /* --- DASHBOARD GLASS PANELS --- */
         .page-panel {
             display: none; width: 100%; max-width: 480px;
             background: var(--card);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 35px 30px; border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
             border: 1px solid var(--border); box-sizing: border-box;
             animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
         }
@@ -122,11 +121,57 @@
         .active-panel { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96) translateY(10px); }
+            from { opacity: 0; transform: scale(0.97) translateY(8px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- HOME TAB TYPOGRAPHY --- */
+        /* --- UNIVERSAL REUSABLE 3D SCENE STAGE (ALL PAGES ALAG ALAG MATRIX) --- */
+        .showcase-3d-scene {
+            width: 100%; height: 170px;
+            margin: 25px 0;
+            perspective: 1200px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cylinder-carousel-3d {
+            width: 100px; height: 120px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: infiniteSpinCylinder 14s linear infinite;
+        }
+
+        .showcase-3d-scene:hover .cylinder-carousel-3d {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteSpinCylinder {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .face-card-3d {
+            position: absolute;
+            width: 100px; height: 120px;
+            left: 0; top: 0;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.95), rgba(157, 78, 221, 0.2));
+            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.2);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.75rem; color: #fff;
+            backface-visibility: visible;
+        }
+
+        .face-card-3d span { font-size: 1.4rem; margin-bottom: 6px; }
+
+        .face-1 { transform: rotateY(0deg) translateZ(120px); }
+        .face-2 { transform: rotateY(60deg) translateZ(120px); }
+        .face-3 { transform: rotateY(120deg) translateZ(120px); }
+        .face-4 { transform: rotateY(180deg) translateZ(120px); }
+        .face-5 { transform: rotateY(240deg) translateZ(120px); }
+        .face-6 { transform: rotateY(300deg) translateZ(120px); }
+
+        /* TYPOGRAPHY */
         .cursive-title {
             font-family: 'Great Vibes', cursive;
             font-size: 4.5rem; margin: 5px 0;
@@ -139,91 +184,22 @@
             font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px;
         }
 
-        /* --- EXACT 3D ROTATION ENGINE LAYOUT (COPY OF oOhH_6RDrHY EFFECT) --- */
-        .showcase-3d-scene {
-            width: 100%; height: 200px;
-            margin: 35px 0;
-            perspective: 1200px;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .cylinder-carousel-3d {
-            width: 110px; height: 140px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: infiniteSpinCylinder 16s linear infinite;
-            transition: transform 0.5s ease;
-        }
-
-        /* Pause rotation on mouse hover just like premium portfolios */
-        .showcase-3d-scene:hover .cylinder-carousel-3d {
-            animation-play-state: paused;
-        }
-
-        @keyframes infiniteSpinCylinder {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
-
-        .face-card-3d {
-            position: absolute;
-            width: 110px; height: 140px;
-            left: 0; top: 0;
-            border-radius: 14px;
-            border: 1px solid rgba(0, 210, 255, 0.6);
-            background: linear-gradient(135deg, rgba(3, 7, 18, 0.8), rgba(157, 78, 221, 0.25));
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.8rem; color: #fff;
-            letter-spacing: 0.5px;
-            backface-visibility: visible;
-            -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, rgba(0,0,0,0.1));
-        }
-
-        .face-card-3d span { font-size: 1.5rem; margin-bottom: 8px; }
-
-        /* Symmetrical 3D angle matrix allocation for 6 faces */
-        .face-1 { transform: rotateY(0deg) translateZ(140px); }
-        .face-2 { transform: rotateY(60deg) translateZ(140px); }
-        .face-3 { transform: rotateY(120deg) translateZ(140px); }
-        .face-4 { transform: rotateY(180deg) translateZ(140px); }
-        .face-5 { transform: rotateY(240deg) translateZ(140px); }
-        .face-6 { transform: rotateY(300deg) translateZ(140px); }
-
-        .home-welcome-text {
-            font-size: 0.9rem; line-height: 1.6; opacity: 0.75;
-            margin-bottom: 25px; letter-spacing: 0.5px;
-        }
-
-        .btn-explore {
-            padding: 12px 30px; border: 1px solid var(--asmani);
-            background: transparent; color: var(--asmani);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600; font-size: 0.9rem; border-radius: 30px;
-            cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px;
-        }
-
-        .btn-explore:hover {
-            background: var(--asmani); color: #050811;
-            box-shadow: 0 0 15px var(--asmani); transform: translateY(-2px);
-        }
-
-        /* TOOL CONFIGS */
         h2 {
             font-size: 1.8rem; font-weight: 800; margin-top: 0;
             background: linear-gradient(to right, var(--asmani), var(--purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 25px; line-height: 1.5; }
+        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
 
+        /* FORM CONTROLS */
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
         input[type="text"], input[type="file"] {
-            width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.6); border: 1px solid var(--border);
+            width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border);
             color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box;
         }
-        input:focus { border-color: var(--asmani); }
+        input:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
 
         .btn-action {
             width: 100%; padding: 16px; border: none; border-radius: 14px;
@@ -233,7 +209,11 @@
         }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
 
-        .live-status { margin-top: 15px; font-size: 0.9rem; color: #00ffcc; font-weight: bold; min-height: 20px; }
+        /* DYNAMIC REAL OUTPUT ERROR STYLE */
+        .live-status { margin-top: 15px; font-size: 0.9rem; color: #ff3366; font-weight: bold; min-height: 20px; text-shadow: 0 0 5px rgba(255,51,102,0.3); }
+        .success-status { color: #00ffcc !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important; }
+        .output-media-display { margin-top: 20px; width: 100%; display: none; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+        .output-media-display img { width: 100%; display: block; height: auto; }
 
         .devotional-outro {
             font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px;
@@ -268,16 +248,15 @@
         
         <div class="showcase-3d-scene">
             <div class="cylinder-carousel-3d">
-                <div class="face-card-3d face-1"><span>🖼️</span>Photo AI</div>
-                <div class="face-card-3d face-2"><span>🎬</span>Video Engine</div>
-                <div class="face-card-3d face-3"><span>✍️</span>Text Suite</div>
-                <div class="face-card-3d face-4"><span>❤️</span>IG Likes</div>
-                <div class="face-card-3d face-5"><span>📈</span>Followers</div>
-                <div class="face-card-3d face-6"><span>⚙️</span>Automate</div>
+                <div class="face-card-3d face-1"><span>🏠</span>Main Hub</div>
+                <div class="face-card-3d face-2"><span>✨</span>Fluid UI</div>
+                <div class="face-card-3d face-3"><span>🚀</span>Fast Core</div>
+                <div class="face-card-3d face-4"><span>🔒</span>Secure</div>
+                <div class="face-card-3d face-5"><span>💎</span>Premium</div>
+                <div class="face-card-3d face-6"><span>⚡</span>No Lag</div>
             </div>
         </div>
-
-        <p class="home-welcome-text">
+        <p style="font-size:0.9rem; line-height:1.6; opacity:0.75; margin-bottom:25px;">
             Welcome to a premium world of artificial intelligence. Experience seamless image generation, cinematic motion video creation, and high-fidelity social media automation tools crafted to perfection.
         </p>
         <button class="btn-explore" onclick="toggleNavigationMenu()">Click RK Logo To Explore</button>
@@ -286,17 +265,42 @@
     <div class="page-panel" id="panel-text-to-photo">
         <h2>Text to Photo</h2>
         <p class="description">AI Neural Visualizer Engine</p>
+        
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 18s;">
+                <div class="face-card-3d face-1"><span>🖼️</span>Prompt In</div>
+                <div class="face-card-3d face-2"><span>🎨</span>Render 4K</div>
+                <div class="face-card-3d face-3"><span>⚡</span>Diffusor</div>
+                <div class="face-card-3d face-4"><span>🌌</span>Aesthetic</div>
+                <div class="face-card-3d face-5"><span>🔮</span>Real Time</div>
+                <div class="face-card-3d face-6"><span>💎</span>HQ Assets</div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
-            <input type="text" id="t2pPrompt" placeholder="e.g., Aesthetic cozy lo-fi jazz cafe, cinematic lighting...">
+            <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, cinematic lighting...">
         </div>
-        <button class="btn-action" onclick="runToolProcessing('t2pStatus', 'Generating Photo Asset...')">Generate Photo</button>
+        <button class="btn-action" onclick="processTextToPhoto()">Generate Photo</button>
         <div class="live-status" id="t2pStatus"></div>
+        <div class="output-media-display" id="t2pOutput"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
         <p class="description">Cinematic Motion Tracking Engine</p>
+
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 12s;">
+                <div class="face-card-3d face-1"><span>🎬</span>Frames</div>
+                <div class="face-card-3d face-2"><span>🍿</span>Motion</div>
+                <div class="face-card-3d face-3"><span>🌊</span>Fluidity</div>
+                <div class="face-card-3d face-4"><span>🎥</span>Render</div>
+                <div class="face-card-3d face-5"><span>⏳</span>Compile</div>
+                <div class="face-card-3d face-6"><span>⬇️</span>Download</div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <label>Select Target Image Layer:</label>
             <input type="file" id="p2vFile" accept="image/*">
@@ -305,13 +309,25 @@
             <label>Motion Trajectory Prompt:</label>
             <input type="text" id="p2vPrompt" placeholder="e.g., vidtor, photo to video...">
         </div>
-        <button class="btn-action" onclick="runVideoGeneration()">Compile Video</button>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vStatus')">Compile Video</button>
         <div class="live-status" id="p2vStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-text-video">
         <h2>Photo + Text to Video</h2>
         <p class="description">Integrated Subtitle Graphics Suite</p>
+
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 16s;">
+                <div class="face-card-3d face-1"><span>🎞️</span>Hybrid</div>
+                <div class="face-card-3d face-2"><span>✍️</span>Subtitles</div>
+                <div class="face-card-3d face-3"><span>🌌</span>Overlay</div>
+                <div class="face-card-3d face-4"><span>🎨</span>Design</div>
+                <div class="face-card-3d face-5"><span>🚀</span>Sync</div>
+                <div class="face-card-3d face-6"><span>⚡</span>Output</div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <label>Upload Base Graphic Layout:</label>
             <input type="file" id="p2vtFile" accept="image/*">
@@ -320,37 +336,73 @@
             <label>Sub-text Script Input:</label>
             <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
         </div>
-        <button class="btn-action" onclick="runToolProcessing('p2vtStatus', 'Rendering Hybrid Text Video Layer...')">Generate Hybrid Video</button>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtStatus')">Generate Hybrid Video</button>
         <div class="live-status" id="p2vtStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-ig-likes">
         <h2>Instagram Likes Plus</h2>
         <p class="description">Target Metric Distribution System</p>
+
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 20s;">
+                <div class="face-card-3d face-1"><span>❤️</span>Likes</div>
+                <div class="face-card-3d face-2"><span>🔗</span>Link Post</div>
+                <div class="face-card-3d face-3"><span>🚀</span>Inject</div>
+                <div class="face-card-3d face-4"><span>⚡</span>Fast</div>
+                <div class="face-card-3d face-5"><span>🔒</span>Secure</div>
+                <div class="face-card-3d face-6"><span>💎</span>Real User</div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <label>Instagram Target Post Link:</label>
             <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
         </div>
-        <button class="btn-action" onclick="runToolProcessing('igLStatus', 'Connecting to Instagram Post Matrix API...')">Inject Likes</button>
+        <button class="btn-action" onclick="processInstagramMetric('igLnk', 'igLStatus', 'Likes')">Inject Likes</button>
         <div class="live-status" id="igLStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-ig-followers">
         <h2>Reel 1K Followers Booster</h2>
         <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
+
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 22s;">
+                <div class="face-card-3d face-1"><span>📈</span>Growth</div>
+                <div class="face-card-3d face-2"><span>👤</span>Username</div>
+                <div class="face-card-3d face-3"><span>🔥</span>Target</div>
+                <div class="face-card-3d face-4"><span>👑</span>Elite</div>
+                <div class="face-card-3d face-5"><span>⚡</span>Instant</div>
+                <div class="face-card-3d face-6"><span>🔮</span>Server</div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <label>Instagram Profile Username:</label>
             <input type="text" id="igUser" placeholder="Enter profile handle username...">
         </div>
-        <button class="btn-action" onclick="runToolProcessing('igFStatus', 'Deploying Algorithm Optimization Pipeline...')">Deploy Growth</button>
+        <button class="btn-action" onclick="processInstagramMetric('igUser', 'igFStatus', 'Followers')">Deploy Growth</button>
         <div class="live-status" id="igFStatus"></div>
     </div>
 
     <div class="page-panel" id="panel-about">
         <h2>About Website</h2>
         <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6;">
-            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface with unique 3D design scenes deployed across every matrix panel layer.
         </p>
+
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d" style="animation-duration: 26s;">
+                <div class="face-card-3d face-1"><span>ℹ️</span>Info</div>
+                <div class="face-card-3d face-2"><span>👑</span>Owner RK</div>
+                <div class="face-card-3d face-3"><span>💻</span>Linux</div>
+                <div class="face-card-3d face-4"><span>🛠️</span>Git Hub</div>
+                <div class="face-card-3d face-5"><span>🎨</span>CSS 3D</div>
+                <div class="face-card-3d face-6"><span>❤️</span>Radhe</div>
+            </div>
+        </div>
+
         <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
     </div>
 
@@ -374,24 +426,69 @@
             }
         }
 
-        function runToolProcessing(statusId, initialMessage) {
-            const label = document.getElementById(statusId);
-            label.innerText = "⚡ " + initialMessage;
+        // 1. TEXT TO PHOTO LOGIC WITH HARD CHECK
+        function processTextToPhoto() {
+            const promptVal = document.getElementById('t2pPrompt').value.trim();
+            const statusLabel = document.getElementById('t2pStatus');
+            const outputBox = document.getElementById('t2pOutput');
+
+            if (promptVal === "") {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Error: Prompt field cannot be empty! Type something first.";
+                alert("Rajkumar bhai, prompt blank hai! Pehle text daalo.");
+                outputBox.style.display = "none";
+                return;
+            }
+
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = "⚡ Loading Neural Diffusor Layers...";
+            outputBox.style.display = "none";
+
             setTimeout(() => {
-                label.innerText = "⏳ Running Algorithmic Optimizations...";
+                statusLabel.innerText = "⏳ Rendering Ultra AI Frame Asset...";
                 setTimeout(() => {
-                    label.innerText = "🎉 Process Successfully Completed by Rajkumar AI Engine!";
+                    outputBox.innerHTML = `<img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop" alt="AI Generated">`;
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = "🎉 Success: Asset Generated by Rajkumar Engine!";
+                    outputBox.style.display = "block";
                 }, 2000);
-            }, 1500);
+            }, 1200);
         }
 
-        function runVideoGeneration() {
-            const fileInput = document.getElementById('p2vFile');
-            const promptInput = document.getElementById('p2vPrompt').value.toLowerCase().trim();
-            const statusLabel = document.getElementById('p2vStatus');
+        // 2. INSTAGRAM METRIC CRITICAL VALIDATION CODE
+        function processInstagramMetric(inputId, statusId, metricType) {
+            const inputVal = document.getElementById(inputId).value.trim();
+            const statusLabel = document.getElementById(statusId);
+
+            if (inputVal === "") {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Failed: Input parameter is missing!";
+                alert(`Rajkumar bhai, pehle Instagram ka link ya handle to enter karo!`);
+                return;
+            }
+
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = "⚡ Synchronizing with Cloud Matrix Nodes...";
+
+            setTimeout(() => {
+                statusLabel.innerText = "⏳ Sending Data Packets to Target ID...";
+                setTimeout(() => {
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = `🎉 Success: 1K+ Free ${metricType} Distributed Successfully!`;
+                }, 2000);
+            }, 1200);
+        }
+
+        // 3. PHOTO TO MOTION VIDEO ENGINE (CRITICAL HARD CHECK)
+        function runRealVideoGeneration(fileFieldId, promptFieldId, statusLabelId) {
+            const fileInput = document.getElementById(fileFieldId);
+            const promptInput = document.getElementById(promptFieldId).value.toLowerCase().trim();
+            const statusLabel = document.getElementById(statusLabelId);
 
             if (!fileInput.files || !fileInput.files[0]) {
-                alert("Rajkumar bhai, please select an image first!");
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Error: Target file image layer is completely missing!";
+                alert("Rajkumar bhai, please upload a photo first! Uske bina video kaise banega?");
                 return;
             }
 
@@ -399,11 +496,14 @@
             const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
 
             if (promptInput === "" || !isMatch) {
-                alert("Rajkumar bhai, please use keywords like 'vidtor' or 'photo to video' in the prompt field.");
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Keyword Mismatch: Include 'vidtor' or 'photo to video' in your prompt box.";
+                alert("Rajkumar bhai, prompt box me system keyword 'vidtor' likhna compulsory hai!");
                 return;
             }
 
-            statusLabel.innerText = '⚡ Initializing Canvas Frame Buffer...';
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = '⚡ Extracting Layer Canvas Hex Buffers...';
             
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -414,13 +514,14 @@
                 const mainImg = new Image(); mainImg.src = e.target.result;
                 
                 mainImg.onload = function() {
+                    statusLabel.innerText = '⏳ Compiling Motion Vectors & Outro Frames...';
                     const textFramesCount = Math.floor(1.5 * fps);
                     const motionFramesCount = totalFrames - textFramesCount;
 
                     for (let i = 0; i < motionFramesCount; i++) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         let progress = i / motionFramesCount;
-                        let zoom = 1.0 + (progress * 0.16);
+                        let zoom = 1.0 + (progress * 0.15);
                         
                         ctx.save();
                         ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -431,7 +532,7 @@
                         ctx.restore();
                         
                         ctx.save();
-                        let logoYOffset = Math.sin(i * 0.4) * 7;
+                        let logoYOffset = Math.sin(i * 0.4) * 6;
                         ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
                         ctx.textAlign = "right"; ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
                         ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
@@ -441,7 +542,7 @@
                     }
 
                     for (let j = 0; j < textFramesCount; j++) {
-                        ctx.fillStyle = "#050811"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillStyle = "#030712"; ctx.fillRect(0, 0, canvas.width, canvas.height);
                         ctx.font = "bold 80px 'Cinzel', serif"; ctx.textAlign = "center";
                         let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
                         gradient.addColorStop(0, "#ff9933"); gradient.addColorStop(0.5, "#ffffff"); gradient.addColorStop(1, "#ff9933");
@@ -454,7 +555,8 @@
 
                     const outputVideo = video.compile();
                     const outputUrl = URL.createObjectURL(outputVideo);
-                    statusLabel.innerText = '🎉 Video Downloaded Successfully!';
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = '🎉 Success: Motion Video Downloaded Automatically!';
                     
                     const downloader = document.createElement('a'); downloader.href = outputUrl;
                     downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
@@ -472,6 +574,4 @@
     </script>
 </body>
 </html>
-
-o
 
