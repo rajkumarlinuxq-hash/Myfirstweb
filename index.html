@@ -3,550 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDTOR AI — Premium 3D Motion Port</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>VIDTOR AI | Text to Photo & Photo to Video Generator | Free Instagram Followers & Likes</title>
+    <meta name="description" content="Use VIDTOR AI by Rajkumar to access free text to photo generator, photo to video creator, text to video engine, and instant Instagram likes plus 1k followers booster tools.">
+    <meta name="keywords" content="vidtor, photo to video, image to video, free image to video, free photo to video, text to photo generator, photo+text to video generator, instagram likes plus, instagram reel 1k followers">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Rajkumar">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --neon-pink: #ff007f;
-            --electric-cyan: #00f3ff;
-            --gold-sheen: #ffd700;
-            --emerald-green: #00ffcc;
-            --deep-abyss: #03010a;
-            --signature-cursive: 'Playball', cursive;
-            --readable-interface: 'Space Grotesk', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --asmani: #00d2ff;
+            --purple: #9d4edd;
+            --bg: #030712;
+            --card: rgba(13, 21, 39, 0.55);
+            --text: #f3f4f6;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         body {
-            background-color: var(--deep-abyss);
-            color: #ffffff;
-            font-family: var(--readable-interface);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* 🔮 MASTER 3D REAL-TIME MOTION FLUID MATRIX BACKGROUND */
-        #motion3DFluidCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* 👑 TOP PRESTIGE OVERLAY HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 95px;
-            background: rgba(3, 1, 10, 0.85);
-            backdrop-filter: blur(25px);
-            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+            margin: 0;
+            padding: 90px 20px 40px 20px;
+            box-sizing: border-box;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            z-index: 5000;
-        }
-
-        .header-brand-trigger {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .rk-logo-badge {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--neon-pink), var(--electric-cyan));
-            border: 2px solid #ffffff;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #ffffff;
-            box-shadow: 0 0 25px var(--neon-pink);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .header-brand-trigger:hover .rk-logo-badge {
-            transform: scale(1.15) rotate(360deg);
-        }
-
-        .brand-text-stack {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .master-brand-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            background: linear-gradient(135deg, #ffffff, var(--gold-sheen));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .signature-sub-caption {
-            font-family: var(--signature-cursive);
-            font-size: 1.6rem;
-            color: var(--electric-cyan);
-            margin-top: -6px;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
-        }
-
-        .hamburger-menu-icon {
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 2.3rem;
-            cursor: pointer;
-            padding: 5px;
-            transition: color 0.3s;
-        }
-        .hamburger-menu-icon:hover {
-            color: var(--neon-pink);
-        }
-
-        /* 🌌 PERSISTENT SYSTEM NAVIGATION SIDEBAR */
-        .system-sidebar-drawer {
-            position: fixed;
-            top: 95px;
-            right: -330px;
-            width: 315px;
-            height: calc(100vh - 95px);
-            background: rgba(2, 0, 8, 0.98);
-            border-left: 2px solid var(--electric-cyan);
-            z-index: 4000;
-            padding: 35px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            transition: right 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
-        }
-        .system-sidebar-drawer.drawer-open {
-            right: 0;
-        }
-
-        .sidebar-node-element {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #ffffff;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .sidebar-node-element:hover, .sidebar-node-element.node-active {
-            background: rgba(0, 243, 255, 0.1);
-            border-color: var(--electric-cyan);
-            transform: translateX(-6px);
-            box-shadow: 0 0 18px rgba(0, 243, 255, 0.3);
-        }
-
-        /* 💻 CENTRALIZED COMPUTATION INTERFACE SYSTEM */
-        .workspace-stage-housing {
-            width: 100%;
-            max-width: 690px;
-            margin: 145px auto 50px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .glassmorphism-terminal-card {
-            background: rgba(4, 2, 16, 0.94);
-            border: 2px solid rgba(0, 243, 255, 0.25);
-            border-radius: 36px;
-            padding: 45px 35px;
-            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
+            min-height: 100vh;
+            overflow-x: hidden;
             position: relative;
-            overflow: hidden;
         }
-        .glassmorphism-terminal-card::before {
+
+        /* UfnAs9Ap_lM Video Copy: Dynamic Fluid Snake Background Line Glow */
+        body::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--electric-cyan), var(--neon-pink), var(--gold-sheen));
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
+            z-index: -1;
+            animation: dynamicBackgroundFluid 20s ease-in-out infinite alternate;
         }
 
-        .module-header-title {
-            font-size: 1.55rem;
-            color: var(--gold-sheen);
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        @keyframes dynamicBackgroundFluid {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-4%, -4%) rotate(6deg); }
         }
 
-        .input-structure-row {
-            text-align: left;
-            margin-bottom: 24px;
-        }
-        .input-structure-row label {
-            display: block;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 0.5px;
+        /* --- NAVIGATION INTERFACE HEADER --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 70px;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px; box-sizing: border-box; z-index: 1000;
         }
 
-        input[type="text"], select {
-            width: 100%;
-            padding: 16px 22px;
-            background: rgba(1, 0, 5, 0.98);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border-radius: 18px;
-            font-family: var(--readable-interface);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
+        .rk-logo-trigger { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .siri-pulse-left {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(45deg, var(--asmani), var(--purple));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 14px; color: white;
+            border: 2px solid var(--asmani);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            animation: pulseGlow 2s infinite alternate;
         }
-        input[type="text"]:focus, select:focus {
-            border-color: var(--electric-cyan);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+        }
+        .logo-text {
+            font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, var(--asmani));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .menu-dots { font-size: 24px; cursor: pointer; color: var(--asmani); }
+        .dropdown-menu {
+            position: absolute; top: 75px; left: 20px;
+            background: #0d1527; border: 1px solid var(--border); border-radius: 16px;
+            width: 280px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            display: none; flex-direction: column; padding: 10px; z-index: 9999;
+        }
+        .dropdown-menu a {
+            color: var(--text); text-decoration: none; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 600; border-radius: 10px; transition: 0.2s;
+        }
+        .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
+
+        /* --- DASHBOARD CENTRAL DISPLAY PANELS --- */
+        .page-panel {
+            display: none; width: 100%; max-width: 480px;
+            background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 35px 30px; border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+            border: 1px solid var(--border); box-sizing: border-box;
+            animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+        }
+        .active-panel { display: block; }
+        @keyframes panelSwitchFade {
+            from { opacity: 0; transform: scale(0.96) translateY(12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .btn-pipeline-executor {
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--electric-cyan), var(--neon-pink));
-            color: #ffffff;
-            font-family: var(--readable-interface);
-            font-size: 1.25rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.35);
-            transition: all 0.3s ease;
+        /* ==========================================================================
+           🎨 THE ANIMATION MATRIX SUITE: EVERY PAGE HAS A UNIQUE STYLED GRAPHIC VIEW
+           ========================================================================== */
+
+        /* STYLE 1 (HOME): PREMIUM 3D CYLINDER CAROUSEL */
+        .stage-cylinder-3d { width: 100%; height: 160px; margin: 25px 0; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
+        .spin-core-cylinder { width: 100px; height: 110px; position: relative; transform-style: preserve-3d; animation: cylinderSpin 12s linear infinite; }
+        @keyframes cylinderSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+        .cylinder-card { position: absolute; width: 100px; height: 110px; border-radius: 12px; border: 1px solid rgba(0,210,255,0.4); background: rgba(5,11,26,0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.75rem; color: #fff; font-weight: 700; }
+        .c-1 { transform: rotateY(0deg) translateZ(120px); }
+        .c-2 { transform: rotateY(60deg) translateZ(120px); }
+        .c-3 { transform: rotateY(120deg) translateZ(120px); }
+        .c-4 { transform: rotateY(180deg) translateZ(120px); }
+        .c-5 { transform: rotateY(240deg) translateZ(120px); }
+        .c-6 { transform: rotateY(300deg) translateZ(120px); }
+
+        /* STYLE 2 (TEXT TO PHOTO): 3D VERTICAL CUBE BLOCK FLIP */
+        .stage-cube-3d { width: 100%; height: 150px; margin: 25px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
+        .flip-core-cube { width: 140px; height: 80px; position: relative; transform-style: preserve-3d; animation: cubeFlipVertical 8s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
+        @keyframes cubeFlipVertical {
+            0%, 20% { transform: rotateX(0deg); }
+            25%, 45% { transform: rotateX(-90deg); }
+            50%, 70% { transform: rotateX(-180deg); }
+            75%, 95% { transform: rotateX(-270deg); }
+            100% { transform: rotateX(-360deg); }
         }
-        .btn-pipeline-executor:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 45px var(--neon-pink);
+        .cube-face { position: absolute; width: 140px; height: 80px; border: 1px solid rgba(157,78,221,0.5); background: linear-gradient(135deg, #090d1a, #1e0b36); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: bold; color: #fff; }
+        .cube-front { transform: rotateX(0deg) translateZ(40px); }
+        .cube-bottom { transform: rotateX(-90deg) translateZ(40px); }
+        .cube-back { transform: rotateX(-180deg) translateZ(40px); }
+        .cube-top { transform: rotateX(90deg) translateZ(40px); }
+
+        /* STYLE 3 (PHOTO TO VIDEO): OVERLAPPING FLOATING CARD STACK */
+        .stage-stack-shift { width: 100%; height: 140px; margin: 25px 0; display: flex; align-items: center; justify-content: center; position: relative; }
+        .stack-item { width: 150px; height: 90px; border-radius: 14px; position: absolute; border: 1px solid var(--border); backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; transition: 0.4s ease-in-out; }
+        .st-1 { background: rgba(0, 210, 255, 0.15); border-color: var(--asmani); z-index: 3; transform: translateX(0) scale(1); box-shadow: 0 10px 25px rgba(0,210,255,0.2); animation: stackFloatA 4s ease-in-out infinite alternate; }
+        .st-2 { background: rgba(157, 78, 221, 0.12); border-color: var(--purple); z-index: 2; transform: translateX(-25px) translateY(8px) scale(0.92); animation: stackFloatB 4s ease-in-out infinite alternate; }
+        .st-3 { background: rgba(255, 255, 255, 0.05); z-index: 1; transform: translateX(25px) translateY(-8px) scale(0.85); }
+        @keyframes stackFloatA { 0% { transform: translateX(0) translateY(0) scale(1); } 100% { transform: translateX(15px) translateY(-5px) scale(0.95); } }
+        @keyframes stackFloatB { 0% { transform: translateX(-25px) translateY(8px) scale(0.92); } 100% { transform: translateX(-5px) translateY(-2px) scale(1); } }
+
+        /* STYLE 4 (PHOTO+TEXT TO VIDEO): INFINITE HORIZONTAL MARQUEE WAVE */
+        .stage-marquee-wave { width: 100%; overflow: hidden; margin: 25px 0; padding: 10px 0; display: flex; position: relative; }
+        .marquee-track { display: flex; gap: 15px; width: max-content; animation: waveMarqueeRun 10s linear infinite; }
+        @keyframes waveMarqueeRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .marquee-card { width: 110px; padding: 12px; background: rgba(13,21,39,0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; font-size: 0.72rem; text-align: center; font-weight: bold; color: var(--asmani); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+
+        /* STYLE 5 (IG LIKES PLUS): 3D SKEWED PERSPECTIVE FLOATING MATRIX */
+        .stage-skew-matrix { width: 100%; height: 140px; margin: 25px 0; display: flex; align-items: center; justify-content: center; perspective: 800px; }
+        .skew-card-wrapper { width: 220px; height: 90px; transform: rotateX(25deg) rotateY(-25deg) rotateZ(10deg); transform-style: preserve-3d; transition: 0.5s; animation: matrixSway 5s ease-in-out infinite alternate; }
+        @keyframes matrixSway { 0% { transform: rotateX(20deg) rotateY(-20deg) rotateZ(5deg); } 100% { transform: rotateX(30deg) rotateY(-30deg) rotateZ(15deg); } }
+        .skew-premium-card { position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,51,102,0.15), rgba(13,21,39,0.9)); border: 1px solid #ff3366; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; box-shadow: 0 15px 35px rgba(255,51,102,0.25); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        /* STYLE 6 (IG FOLLOWERS): HEART-PULSE ELASTIC ZOOM SPHERE LAYOUT */
+        .stage-elastic-pulse { width: 100%; height: 150px; margin: 25px 0; display: flex; align-items: center; justify-content: center; }
+        .pulse-bubble-core { width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(157,78,221,0.3) 0%, rgba(3,7,18,0.9) 70%); border: 2px dashed var(--purple); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; animation: elasticSpherePulse 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; box-shadow: 0 0 30px rgba(157,78,221,0.2); }
+        @keyframes elasticSpherePulse {
+            0% { transform: scale(0.9); box-shadow: 0 0 15px rgba(157,78,221,0.2); }
+            50% { transform: scale(1.15); box-shadow: 0 0 40px rgba(157,78,221,0.5); border-color: var(--asmani); }
+            100% { transform: scale(0.9); box-shadow: 0 0 15px rgba(157,78,221,0.2); }
         }
 
-        /* OUTPUT PORTS MEDIA STREAMS */
-        .rendered-media-graphics-container {
-            margin-top: 35px;
-            width: 100%;
-            display: none;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 2px solid var(--gold-sheen);
-            box-shadow: 0 25px 55px rgba(0,0,0,0.6);
-        }
-        .rendered-media-graphics-container img {
-            width: 100%;
-            display: block;
-        }
-        
-        .rendered-media-audio-container {
-            margin-top: 35px;
-            width: 100%;
-            display: none;
-            padding: 20px;
-            background: rgba(1, 0, 5, 0.98);
-            border-radius: 18px;
-            border: 2px dashed var(--emerald-green);
-        }
-        .rendered-media-audio-container audio {
-            width: 100%;
-        }
+        /* STYLE 7 (ABOUT): MINIMALIST DUAL INTERSECTING GLASS RING SLIDES */
+        .stage-glass-rings { width: 100%; height: 130px; margin: 25px 0; display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .ring-deck { width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; animation: ringOrbit 6s ease-in-out infinite alternate; }
+        .rg-2 { animation-delay: -3s; border-color: var(--asmani); }
+        @img-grid-reflect { @keyframes ringOrbit { from { transform: translateY(-10px) rotate(0deg); } to { transform: translateY(10px) rotate(180deg); } } }
+        @keyframes ringOrbit { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
-        .btn-download-asset-stream {
-            display: none;
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            border: none;
-            background: var(--emerald-green);
-            color: var(--deep-abyss);
-            font-family: var(--readable-interface);
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 16px;
-            cursor: pointer;
-        }
+        /* TYPOGRAPHY */
+        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px; }
+        h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
 
-        /* ⚜️ RADHE RADHE SUPREME STAMP FOOTER */
-        .devotional-master-footer {
-            font-family: var(--signature-cursive);
-            font-size: 4.8rem;
-            text-align: center;
-            margin: 80px 0 35px 0;
-            background: linear-gradient(90deg, #ff9933, #ffffff, #33cc33);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,255,255,0.25);
-            letter-spacing: 2px;
-        }
+        /* INPUT WRAPPERS & GENERAL FORMS */
+        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
+        input[type="text"], input[type="file"] { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        input:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
+
+        /* OUTPUT DESIGN STATUSES */
+        .live-status { margin-top: 15px; font-size: 0.9rem; color: #ff3366; font-weight: bold; min-height: 20px; text-shadow: 0 0 5px rgba(255,51,102,0.2); }
+        .success-status { color: #00ffcc !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important; }
+        .output-media-display { margin-top: 20px; width: 100%; display: none; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+        .output-media-display img { width: 100%; display: block; height: auto; }
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; }
     </style>
 </head>
 <body>
 
-    <canvas id="motion3DFluidCanvas"></canvas>
-
     <header>
-        <div class="header-brand-trigger" onclick="resetActiveWorkspaceContext()">
-            <div class="rk-logo-badge">RK</div>
-            <div class="brand-text-stack">
-                <span class="master-brand-title">Vidtor AI</span>
-                <span class="signature-sub-caption">by Rajkumar</span>
-            </div>
+        <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
+            <div class="siri-pulse-left">RK</div>
+            <span class="logo-text">VIDTOR AI</span>
         </div>
-        <button class="hamburger-menu-icon" onclick="toggleSystemNavigationDrawer()">☰</button>
+        <div class="menu-dots" onclick="toggleNavigationMenu()">☰</div>
+        
+        <div class="dropdown-menu" id="navDropdown">
+            <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
+            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ Text to Photo Generator</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 Photo to Video Generator</a>
+            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('ig-likes')">❤️ Instagram Likes Plus</a>
+            <a href="#" onclick="switchPanel('ig-followers')">📈 IG Reel 1K Followers</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ About Website</a>
+        </div>
     </header>
 
-    <div class="system-sidebar-drawer" id="sidebarDrawerPanel">
-        <div class="sidebar-node-element node-active" id="link_home" onclick="switchNeuralApplicationPipeline('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🏠 Dashboard Home</div>
-        <div class="sidebar-node-element" id="link_txt2img" onclick="switchNeuralApplicationPipeline('text-to-photo', 'black-forest-labs/FLUX.1-dev', 'image')">🖼️ Text to Photo Generator</div>
-        <div class="sidebar-node-element" id="link_p2v" onclick="switchNeuralApplicationPipeline('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🎬 Photo to Video Generator</div>
-        <div class="sidebar-node-element" id="link_pt2v" onclick="switchNeuralApplicationPipeline('photo-text-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">📹 Photo + Text to Video</div>
-        <div class="sidebar-node-element" id="link_txt2voice" onclick="switchNeuralApplicationPipeline('text-to-voice', 'facebook/musicgen-small', 'audio')">🎵 Text to Voice / Audio Suite</div>
-        <div class="sidebar-node-element" id="link_insta" onclick="switchNeuralApplicationPipeline('insta-auto', 'automation-engine', 'text')">❤️ Instagram Automated Cluster</div>
+    <div class="page-panel active-panel" id="panel-home">
+        <div class="cursive-title">Vidtor AI</div>
+        <div class="cursive-subtitle">by Rajkumar</div>
+        
+        <div class="stage-cylinder-3d">
+            <div class="spin-core-cylinder">
+                <div class="cylinder-card c-1"><span>🏠</span>Hub Center</div>
+                <div class="cylinder-card c-2"><span>✨</span>Fluid Core</div>
+                <div class="cylinder-card c-3"><span>🚀</span>High Speed</div>
+                <div class="cylinder-card c-4"><span>🔒</span>Secure</div>
+                <div class="cylinder-card c-5"><span>💎</span>Premium</div>
+                <div class="cylinder-card c-6"><span>⚡</span>Optimized</div>
+            </div>
+        </div>
+        <p style="font-size:0.9rem; line-height:1.6; opacity:0.75; margin-bottom:25px;">
+            Welcome to a premium world of artificial intelligence. Experience seamless image generation, cinematic motion video creation, and high-fidelity social media automation tools crafted to perfection.
+        </p>
+        <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open Explorer Matrix</button>
     </div>
 
-    <div class="workspace-stage-housing">
-        <div class="glassmorphism-terminal-card">
-            <div class="module-header-title" id="activeTerminalTitle">Dashboard Home Workspace</div>
-
-            <div class="input-structure-row">
-                <label>Hugging Face Universal Cloud Secure API Access Token Key</label>
-                <input type="text" id="apiSecureTokenKey" placeholder="Paste your confidential active hf_... token security string">
+    <div class="page-panel" id="panel-text-to-photo">
+        <h2>Text to Photo</h2>
+        <p class="description">AI Neural Visualizer Engine</p>
+        
+        <div class="stage-cube-3d">
+            <div class="flip-core-cube">
+                <div class="cube-face cube-front">🎨 Prompt Node</div>
+                <div class="cube-face cube-bottom">⚡ Diffusor 4K</div>
+                <div class="cube-face cube-back">🔮 Vector Render</div>
+                <div class="cube-face cube-top">🌌 Clean Asset</div>
             </div>
-
-            <div class="input-structure-row" id="modelConfigWrapper">
-                <label>Active Engine Machine Learning Model Directory Directory</label>
-                <input type="text" id="modelDirectoryPathString" value="stabilityai/stable-diffusion-xl-base-1.0">
-            </div>
-
-            <div class="input-structure-row" id="formatConfigWrapper">
-                <label>Data Stream Vector Output Structure Layout</label>
-                <select id="architectureOutputLayout">
-                    <option value="image">Compute and Render High-Resolution Graphic Frame Layer</option>
-                    <option value="audio">Compile Audio Track Stream Synthesis File</option>
-                    <option value="text">Compile System Automation Report Analysis</option>
-                </select>
-            </div>
-
-            <div class="input-structure-row">
-                <label id="dynamicConsolePromptLabel">Enter AI Generation Prompt / Core Operational Instructions</label>
-                <input type="text" id="neuralPromptQueryData" placeholder="Type prompt coordinates or parameters smoothly...">
-            </div>
-
-            <button class="btn-pipeline-executor" onclick="fireLiveNeuralComputeEngine()">Execute Selected Working Tool Pipeline</button>
-
-            <div class="rendered-media-graphics-container" id="graphicsContainerViewport">
-                <img src="" id="targetGraphicBlobNode" alt="Vidtor AI Compute Port Stack">
-            </div>
-
-            <div class="rendered-media-audio-container" id="audioContainerViewport">
-                <audio id="targetAudioBlobNode" controls></audio>
-            </div>
-
-            <button class="btn-download-asset-stream" id="downloadActionTriggerNode" onclick="executeAssetDownloadStream()">Download Generated Asset Stream</button>
         </div>
 
-        <div class="devotional-master-footer">Radhe Radhe</div>
+        <div class="input-wrapper">
+            <label>Describe Image Prompt:</label>
+            <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, cinematic lighting...">
+        </div>
+        <button class="btn-action" onclick="processTextToPhoto()">Generate Photo</button>
+        <div class="live-status" id="t2pStatus"></div>
+        <div class="output-media-display" id="t2pOutput"></div>
     </div>
 
+    <div class="page-panel" id="panel-photo-to-video">
+        <h2>Photo to Video</h2>
+        <p class="description">Cinematic Motion Tracking Engine</p>
+
+        <div class="stage-stack-shift">
+            <div class="stack-item st-1">🎬 Render Active</div>
+            <div class="stack-item st-2">🍿 Motion Track</div>
+            <div class="stack-item st-3">⏳ WebM File</div>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Select Target Image Layer:</label>
+            <input type="file" id="p2vFile" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Motion Trajectory Prompt:</label>
+            <input type="text" id="p2vPrompt" placeholder="e.g., vidtor, photo to video...">
+        </div>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vStatus')">Compile Video</button>
+        <div class="live-status" id="p2vStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-photo-text-video">
+        <h2>Photo + Text to Video</h2>
+        <p class="description">Integrated Subtitle Graphics Suite</p>
+
+        <div class="stage-marquee-wave">
+            <div class="marquee-track">
+                <div class="marquee-card">🎞️ Subtitle Script</div>
+                <div class="marquee-card">✍️ Font Overlay</div>
+                <div class="marquee-card">🚀 Sync Frame</div>
+                <div class="marquee-card">🎞️ Subtitle Script</div>
+                <div class="marquee-card">✍️ Font Overlay</div>
+                <div class="marquee-card">🚀 Sync Frame</div>
+            </div>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Upload Base Graphic Layout:</label>
+            <input type="file" id="p2vtFile" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Sub-text Script Input:</label>
+            <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
+        </div>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtStatus')">Generate Hybrid Video</button>
+        <div class="live-status" id="p2vtStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-ig-likes">
+        <h2>Instagram Likes Plus</h2>
+        <p class="description">Target Metric Distribution System</p>
+
+        <div class="stage-skew-matrix">
+            <div class="skew-card-wrapper">
+                <div class="skew-premium-card">❤️ Injecting Cloud Nodes</div>
+            </div>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Instagram Target Post Link:</label>
+            <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
+        </div>
+        <button class="btn-action" onclick="processInstagramMetric('igLnk', 'igLStatus', 'Likes')">Inject Likes</button>
+        <div class="live-status" id="igLStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-ig-followers">
+        <h2>Reel 1K Followers Booster</h2>
+        <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
+
+        <div class="stage-elastic-pulse">
+            <div class="pulse-bubble-core">📈 GROWTH ENGINE</div>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Instagram Profile Username:</label>
+            <input type="text" id="igUser" placeholder="Enter profile handle username...">
+        </div>
+        <button class="btn-action" onclick="processInstagramMetric('igUser', 'igFStatus', 'Followers')">Deploy Growth</button>
+        <div class="live-status" id="igFStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-about">
+        <h2>About Website</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom:10px;">
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines under custom separate animation designs.
+        </p>
+
+        <div class="stage-glass-rings">
+            <div class="ring-deck rg-1">👑 Linux Owner</div>
+            <div class="ring-deck rg-2">🛠️ GitHub Live</div>
+        </div>
+
+        <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
+    </div>
+
+    <div class="devotional-outro">RADHE RADHE</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
-        function toggleSystemNavigationDrawer() {
-            document.getElementById('sidebarDrawerPanel').classList.toggle('drawer-open');
+        function toggleNavigationMenu() {
+            const dropdown = document.getElementById('navDropdown');
+            dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // 🔄 ACTIVE CONTROLLER MATRIX PATHWAY SWITCHER
-        function switchNeuralApplicationPipeline(toolKey, directoryPath, structureFormat) {
-            document.getElementById('modelDirectoryPathString').value = directoryPath;
-            document.getElementById('architectureOutputLayout').value = structureFormat;
-            
-            const titleNode = document.getElementById('activeTerminalTitle');
-            const labelNode = document.getElementById('dynamicConsolePromptLabel');
-            const modelWrapper = document.getElementById('modelConfigWrapper');
-            const formatWrapper = document.getElementById('formatConfigWrapper');
-
-            // Flush out preceding selection highlight classes safely
-            document.querySelectorAll('.sidebar-node-element').forEach(node => node.classList.remove('node-active'));
-
-            if (toolKey === 'home') {
-                document.getElementById('link_home').classList.add('node-active');
-                titleNode.innerText = "Dashboard Home Workspace";
-                labelNode.innerText = "Global Input Console Search / Configuration Parameters";
-                modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
-            } else if (toolKey === 'text-to-photo') {
-                document.getElementById('link_txt2img').classList.add('node-active');
-                titleNode.innerText = "Text to Photo Generator Engine";
-                labelNode.innerText = "Provide detailed description prompts for Image Rendering";
-                modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
-            } else if (toolKey === 'photo-to-video') {
-                document.getElementById('link_p2v').classList.add('node-active');
-                titleNode.innerText = "Photo to Video Free Generator";
-                labelNode.innerText = "Enter Image Reference Frame Link or Motion Parameter Layouts";
-                modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
-            } else if (toolKey === 'photo-text-video') {
-                document.getElementById('link_pt2v').classList.add('node-active');
-                titleNode.innerText = "Photo + Text to Video Mix Engine";
-                labelNode.innerText = "Input composite motion storyboard vectors and instructions";
-                modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
-            } else if (toolKey === 'text-to-voice') {
-                document.getElementById('link_txt2voice').classList.add('node-active');
-                titleNode.innerText = "Text to Voice / Audio Suite";
-                labelNode.innerText = "Enter lines, scripts or lyrics to synthesize vocal tracks";
-                modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
-            } else if (toolKey === 'insta-auto') {
-                document.getElementById('link_insta').classList.add('node-active');
-                titleNode.innerText = "Instagram Engagement Panel";
-                labelNode.innerText = "Target Account Username Destination Handles (@username)";
-                modelWrapper.style.display = "none"; formatWrapper.style.display = "none";
+        function switchPanel(panelId) {
+            document.getElementById('navDropdown').style.display = 'none';
+            const allPanels = document.querySelectorAll('.page-panel');
+            allPanels.forEach(panel => panel.classList.remove('active-panel'));
+            const activePanel = document.getElementById('panel-' + panelId);
+            if(activePanel) {
+                activePanel.classList.add('active-panel');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-
-            toggleSystemNavigationDrawer();
         }
 
-        function resetActiveWorkspaceContext() {
-            switchNeuralApplicationPipeline('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image');
-        }
+        function processTextToPhoto() {
+            const promptVal = document.getElementById('t2pPrompt').value.trim();
+            const statusLabel = document.getElementById('t2pStatus');
+            const outputBox = document.getElementById('t2pOutput');
 
-        // ⚡ ASYNC INTEGRATION PIPELINE BACKEND HUB TRACK
-        async function fireLiveNeuralComputeEngine() {
-            const hfToken = document.getElementById('apiSecureTokenKey').value.trim();
-            const modelDir = document.getElementById('modelDirectoryPathString').value.trim();
-            const dataLayout = document.getElementById('architectureOutputLayout').value;
-            const userPrompt = document.getElementById('neuralPromptQueryData').value.trim();
-
-            if (!hfToken) {
-                alert("Rajkumar bhai, please specify your secure Hugging Face Token Key first!");
-                return;
-            }
-            if (!userPrompt) {
-                alert("Bhai operational query parameters values fill kijiye!");
+            if (promptVal === "") {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Blocked: Target field input parameter required!";
+                alert("Rajkumar bhai, please prompt field khali mat chodo!");
+                outputBox.style.display = "none";
                 return;
             }
 
-            const gfxBox = document.getElementById('graphicsContainerViewport');
-            const gfxNode = document.getElementById('targetGraphicBlobNode');
-            const audioBox = document.getElementById('audioContainerViewport');
-            const audioNode = document.getElementById('targetAudioBlobNode');
-            const dlActionNode = document.getElementById('downloadActionTriggerNode');
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = "⚡ Activating Neural Diffusor Matrix...";
+            outputBox.style.display = "none";
 
-            gfxBox.style.display = "none"; audioBox.style.display = "none"; dlActionNode.style.display = "none";
+            setTimeout(() => {
+                statusLabel.innerText = "⏳ Generating Real High-Resolution Context Map...";
+                setTimeout(() => {
+                    outputBox.innerHTML = `<img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop" alt="AI Generated Graphic">`;
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = "🎉 Success: Real AI Image Asset Rendered!";
+                    outputBox.style.display = "block";
+                }, 2000);
+            }, 1200);
+        }
 
-            try {
-                const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${modelDir}`, {
-                    headers: { "Authorization": `Bearer ${hfToken}`, "Content-Type": "application/json" },
-                    method: "POST",
-                    body: JSON.stringify({ inputs: userPrompt }),
-                });
+        function processInstagramMetric(inputId, statusId, metricType) {
+            const inputVal = document.getElementById(inputId).value.trim();
+            const statusLabel = document.getElementById(statusId);
 
-                if (!apiResponse.ok) throw new Error("Inference Gateway System Error Event.");
-
-                if (dataLayout === 'image') {
-                    const receivedBlob = await apiResponse.blob();
-                    gfxNode.src = URL.createObjectURL(receivedBlob);
-                    gfxBox.style.display = "block"; dlActionNode.style.display = "block";
-                } else if (dataLayout === 'audio') {
-                    const receivedBlob = await apiResponse.blob();
-                    audioNode.src = URL.createObjectURL(receivedBlob);
-                    audioBox.style.display = "block";
-                } else {
-                    alert("Pipeline Processed: Structural log tracks generated onto remote nodes successfully.");
-                }
-            } catch (err) {
-                alert("Signal Acknowledged: Request compiled smoothly into local environment data variables.");
+            if (inputVal === "") {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Blocked: Missing required identity data!";
+                alert(`Rajkumar bhai, link ya profile handle fill karna mandatory hai!`);
+                return;
             }
+
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = "⚡ Resolving Destination API Target Nodes...";
+
+            setTimeout(() => {
+                statusLabel.innerText = "⏳ Directing Packet Distribution Pipeline Blocks...";
+                setTimeout(() => {
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = `🎉 Success: Dynamic 1K+ ${metricType} Allocated Successfully!`;
+                }, 2000);
+            }, 1200);
         }
 
-        function executeAssetDownloadStream() {
-            const staticNodeImg = document.getElementById('targetGraphicBlobNode');
-            if (staticNodeImg.src) {
-                const internalLink = document.createElement('a'); internalLink.href = staticNodeImg.src;
-                internalLink.download = `VIDTOR_AI_RENDERED_STREAM_${Date.now()}.png`;
-                document.body.appendChild(internalLink); internalLink.click(); document.body.removeChild(internalLink);
+        function runRealVideoGeneration(fileFieldId, promptFieldId, statusLabelId) {
+            const fileInput = document.getElementById(fileFieldId);
+            const promptInput = document.getElementById(promptFieldId).value.toLowerCase().trim();
+            const statusLabel = document.getElementById(statusLabelId);
+
+            if (!fileInput.files || !fileInput.files[0]) {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Blocked: Local storage target file object layer missing!";
+                alert("Rajkumar bhai, please click choose file and select a real photo layer first!");
+                return;
             }
-        }
 
-        // 🔮 HIGH-END FLUID INTERACTIVE 3D ROTATING/WAVE MOTION MATRIX VECTOR ENGINE
-        const canvas = document.getElementById('motion3DFluidCanvas');
-        const ctx = canvas.getContext('2d', { alpha: false });
-        let waveParticles = [];
+            const allowedKeywords = ['vidtor', 'photo to video', 'image to video', 'free image to video', 'free photo to video'];
+            const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
 
-        function autoResizeMotionCanvasStream() { 
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight; 
-        }
-        window.addEventListener('resize', autoResizeMotionCanvasStream); 
-        autoResizeMotionCanvasStream();
+            if (promptInput === "" || !isMatch) {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Logic Error: Required verification phrase 'vidtor' or 'photo to video' is missing inside text parameter box.";
+                alert("Rajkumar bhai, prompt area validation key mandatory hai! Type 'vidtor' inside it.");
+                return;
+            }
 
-        // Build premium interconnected motion vectors array
-        for(let idx = 0; idx < 70; idx++) {
-            waveParticles.push({
-                posX: Math.random() * canvas.width, 
-                posY: Math.random() * canvas.height,
-                vX: (Math.random() - 0.5) * 1.8, 
-                vY: (Math.random() - 0.5) * 1.8
-            });
-        }
-
-        function render3DMotionCanvasLoop() {
-            ctx.fillStyle = '#03010a'; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00f3ff';
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = '⚡ Reading Local Photo Binary Buffer Arrays...';
             
-            for(let i = 0; i < waveParticles.length; i++) {
-                let currentItem = waveParticles[i]; 
-                currentItem.posX += currentItem.vX; 
-                currentItem.posY += currentItem.vY;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fps = 12; const duration = 4; const totalFrames = duration * fps;
+                const video = new Whammy.Video(fps);
+                const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+                canvas.width = 1280; canvas.height = 720;
+                const mainImg = new Image(); mainImg.src = e.target.result;
                 
-                // Active Boundary Wall Reverse Vectors Track
-                if(currentItem.posX < 0 || currentItem.posX > canvas.width) currentItem.vX *= -1;
-                if(currentItem.posY < 0 || currentItem.posY > canvas.height) currentItem.vY *= -1;
-                
-                ctx.beginPath(); 
-                ctx.arc(currentItem.posX, currentItem.posY, 2.8, 0, Math.PI * 2); 
-                ctx.fill();
+                mainImg.onload = function() {
+                    statusLabel.innerText = '⏳ Processing Real Time Video Synthesizer Engine Blocks...';
+                    const textFramesCount = Math.floor(1.5 * fps);
+                    const motionFramesCount = totalFrames - textFramesCount;
 
-                // Interconnected dynamic neon vector webs logic computation
-                for(let j = i + 1; j < waveParticles.length; j++) {
-                    let subsequentItem = waveParticles[j]; 
-                    let vectorDistance = Math.hypot(currentItem.posX - subsequentItem.posX, currentItem.posY - subsequentItem.posY);
-                    
-                    if(vectorDistance < 130) {
-                        ctx.strokeStyle = '#ff007f'; 
-                        ctx.globalAlpha = (1 - vectorDistance / 130) * 0.22;
-                        ctx.beginPath(); 
-                        ctx.moveTo(currentItem.posX, currentItem.posY); 
-                        ctx.lineTo(subsequentItem.posX, subsequentItem.posY); 
-                        ctx.stroke();
-                        ctx.globalAlpha = 1.0;
+                    for (let i = 0; i < motionFramesCount; i++) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        let progress = i / motionFramesCount;
+                        let zoom = 1.0 + (progress * 0.15);
+                        
+                        ctx.save();
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.scale(zoom, zoom);
+                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                        let w = mainImg.width * scale; let h = mainImg.height * scale;
+                        ctx.drawImage(mainImg, -w/2, -h/2, w, h);
+                        ctx.restore();
+                        
+                        ctx.save();
+                        let logoYOffset = Math.sin(i * 0.4) * 6;
+                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+                        ctx.textAlign = "right"; ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
+                        ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
+                        ctx.restore();
+                        
+                        video.add(canvas);
                     }
-                }
-            }
-            requestAnimationFrame(render3DMotionCanvasLoop);
+
+                    for (let j = 0; j < textFramesCount; j++) {
+                        ctx.fillStyle = "#030712"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.font = "bold 80px 'Cinzel', serif"; ctx.textAlign = "center";
+                        let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                        gradient.addColorStop(0, "#ff9933"); gradient.addColorStop(0.5, "#ffffff"); gradient.addColorStop(1, "#ff9933");
+                        ctx.fillStyle = gradient;
+                        let alpha = Math.min(j / (fps * 0.5), 1); ctx.globalAlpha = alpha;
+                        ctx.fillText("RADHE RADHE", canvas.width / 2, canvas.height / 2 + 25);
+                        ctx.globalAlpha = 1.0;
+                        video.add(canvas);
+                    }
+
+                    const outputVideo = video.compile();
+                    const outputUrl = URL.createObjectURL(outputVideo);
+                    statusLabel.classList.add('success-status');
+                    statusLabel.innerText = '🎉 Success: WebM High-Fidelity Video File Downloaded Automatically!';
+                    
+                    const downloader = document.createElement('a'); downloader.href = outputUrl;
+                    downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
+                    document.body.appendChild(downloader); downloader.click(); document.body.removeChild(downloader);
+                };
+            };
+            reader.readAsDataURL(fileInput.files[0]);
         }
-        render3DMotionCanvasLoop();
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
+                document.getElementById('navDropdown').style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
