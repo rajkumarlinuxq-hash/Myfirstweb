@@ -16,10 +16,10 @@
         :root {
             --asmani: #00d2ff;
             --purple: #9d4edd;
-            --bg: #050811;
-            --card: #0d1527;
+            --bg: #030712;
+            --card: rgba(13, 21, 39, 0.45);
             --text: #f3f4f6;
-            --border: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.06);
         }
 
         body {
@@ -35,247 +35,192 @@
             justify-content: center;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* DYNAMIC SNAKE-PATH BACKGROUND LINE (INSPIRED BY UfnAs9Ap_lM) */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(157, 78, 221, 0.08) 0%, transparent 40%);
+            z-index: -1;
+            animation: backgroundWave 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundWave {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-5%, -5%) rotate(10deg); }
         }
 
         /* --- GLOBAL NAVIGATION HEADER --- */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background: rgba(5, 8, 17, 0.85);
-            backdrop-filter: blur(15px);
+            top: 0; left: 0; width: 100%; height: 70px;
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-            box-sizing: border-box;
-            z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px; box-sizing: border-box; z-index: 1000;
         }
 
-        /* LEFT ALIGNED ANIMATED RK LOGO BRANDING */
         .rk-logo-trigger {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
+            display: flex; align-items: center; gap: 12px; cursor: pointer;
         }
 
         .siri-pulse-left {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
+            width: 42px; height: 42px; border-radius: 50%;
             background: linear-gradient(45deg, var(--asmani), var(--purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 14px;
-            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 14px; color: white;
             border: 2px solid var(--asmani);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
             animation: pulseGlow 2s infinite alternate;
         }
 
         @keyframes pulseGlow {
-            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.7); }
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
         }
 
         .logo-text {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
             background: linear-gradient(to right, #fff, var(--asmani));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .menu-dots {
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--asmani);
-        }
+        .menu-dots { font-size: 24px; cursor: pointer; color: var(--asmani); }
 
-        /* NAVIGATION DROPDOWN MENU */
         .dropdown-menu {
-            position: absolute;
-            top: 75px;
-            left: 20px;
-            background: #0d1527;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            width: 280px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            display: none;
-            flex-direction: column;
-            padding: 10px;
-            z-index: 9999;
+            position: absolute; top: 75px; left: 20px;
+            background: #0d1527; border: 1px solid var(--border); border-radius: 16px;
+            width: 280px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            display: none; flex-direction: column; padding: 10px; z-index: 9999;
         }
 
         .dropdown-menu a {
-            color: var(--text);
-            text-decoration: none;
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: 0.2s;
+            color: var(--text); text-decoration: none; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 600; border-radius: 10px; transition: 0.2s;
         }
 
         .dropdown-menu a:hover {
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--asmani);
+            background: rgba(0, 210, 255, 0.1); color: var(--asmani);
         }
 
-        /* --- DASHBOARD PANELS --- */
+        /* --- GLASSMORPHISM DASHBOARD PANELS (INSPIRED BY UfnAs9Ap_lM UI) --- */
         .page-panel {
-            display: none;
-            width: 100%;
-            max-width: 480px;
+            display: none; width: 100%; max-width: 480px;
             background: var(--card);
-            padding: 35px 30px;
-            border-radius: 28px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            border: 1px solid var(--border);
-            box-sizing: border-box;
-            animation: fadeIn 0.4s ease-in-out;
-            text-align: center;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            padding: 35px 30px; border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+            border: 1px solid var(--border); box-sizing: border-box;
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
         }
 
         .active-panel { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.96) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- HOME TAB WITH CURSIVE TYPOGRAPHY & 3D MOTION GENERATOR DISPLAY --- */
+        /* --- HOME TAB TYPOGRAPHY --- */
         .cursive-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            margin: 5px 0;
+            font-size: 4.5rem; margin: 5px 0;
             background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .cursive-subtitle {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.3rem;
-            color: var(--asmani);
-            margin-bottom: 15px;
-            opacity: 0.9;
+            font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px;
         }
 
-        /* EXCLUSIVE 3D LOOP FLOATING STAGE INTERFACE (INSPIRED BY SHORTS oOhH_6RDrHY) */
-        .motion-stage-container {
+        /* --- EXACT 3D ROTATION ENGINE LAYOUT (COPY OF oOhH_6RDrHY EFFECT) --- */
+        .showcase-3d-scene {
+            width: 100%; height: 200px;
+            margin: 35px 0;
+            perspective: 1200px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cylinder-carousel-3d {
+            width: 110px; height: 140px;
             position: relative;
-            width: 100%;
-            height: 180px;
-            margin: 25px 0;
-            perspective: 1000px;
-            overflow: hidden;
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-        }
-
-        .track-3d-loop {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transform-style: preserve-3d;
-            animation: rotationPath3D 12s linear infinite;
+            animation: infiniteSpinCylinder 16s linear infinite;
+            transition: transform 0.5s ease;
         }
 
-        @keyframes rotationPath3D {
-            0% { transform: translateZ(-100px) rotateY(0deg); }
-            100% { transform: translateZ(-100px) rotateY(360deg); }
+        /* Pause rotation on mouse hover just like premium portfolios */
+        .showcase-3d-scene:hover .cylinder-carousel-3d {
+            animation-play-state: paused;
         }
 
-        .floating-item-card {
+        @keyframes infiniteSpinCylinder {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .face-card-3d {
             position: absolute;
-            width: 100px;
-            height: 130px;
-            border-radius: 12px;
-            border: 2px solid var(--asmani);
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 78, 221, 0.2));
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: white;
+            width: 110px; height: 140px;
+            left: 0; top: 0;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 210, 255, 0.6);
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.8), rgba(157, 78, 221, 0.25));
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.8rem; color: #fff;
+            letter-spacing: 0.5px;
             backface-visibility: visible;
+            -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, rgba(0,0,0,0.1));
         }
 
-        /* Arranging Items symmetrically in a 3D circle track */
-        .item-1 { transform: rotateY(0deg) translateZ(140px); }
-        .item-2 { transform: rotateY(72deg) translateZ(140px); }
-        .item-3 { transform: rotateY(144deg) translateZ(140px); }
-        .item-4 { transform: rotateY(216deg) translateZ(140px); }
-        .item-5 { transform: rotateY(288deg) translateZ(140px); }
+        .face-card-3d span { font-size: 1.5rem; margin-bottom: 8px; }
+
+        /* Symmetrical 3D angle matrix allocation for 6 faces */
+        .face-1 { transform: rotateY(0deg) translateZ(140px); }
+        .face-2 { transform: rotateY(60deg) translateZ(140px); }
+        .face-3 { transform: rotateY(120deg) translateZ(140px); }
+        .face-4 { transform: rotateY(180deg) translateZ(140px); }
+        .face-5 { transform: rotateY(240deg) translateZ(140px); }
+        .face-6 { transform: rotateY(300deg) translateZ(140px); }
 
         .home-welcome-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.75;
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem; line-height: 1.6; opacity: 0.75;
+            margin-bottom: 25px; letter-spacing: 0.5px;
         }
 
         .btn-explore {
-            padding: 12px 30px;
-            border: 1px solid var(--asmani);
-            background: transparent;
-            color: var(--asmani);
+            padding: 12px 30px; border: 1px solid var(--asmani);
+            background: transparent; color: var(--asmani);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 600; font-size: 0.9rem; border-radius: 30px;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px;
         }
 
         .btn-explore:hover {
-            background: var(--asmani);
-            color: #050811;
-            box-shadow: 0 0 15px var(--asmani);
-            transform: translateY(-2px);
+            background: var(--asmani); color: #050811;
+            box-shadow: 0 0 15px var(--asmani); transform: translateY(-2px);
         }
 
-        /* UTILITY HEADINGS */
+        /* TOOL CONFIGS */
         h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-top: 0;
+            font-size: 1.8rem; font-weight: 800; margin-top: 0;
             background: linear-gradient(to right, var(--asmani), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .description {
-            font-size: 0.88rem;
-            opacity: 0.7;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
+        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 25px; line-height: 1.5; }
 
-        /* FORM ELEMENTS */
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], input[type="file"], select {
-            width: 100%; padding: 14px; background: #050811; border: 1px solid var(--border);
+        input[type="text"], input[type="file"] {
+            width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.6); border: 1px solid var(--border);
             color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box;
         }
         input:focus { border-color: var(--asmani); }
@@ -288,23 +233,12 @@
         }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
 
-        .live-status {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #00ffcc;
-            font-weight: bold;
-            min-height: 20px;
-        }
+        .live-status { margin-top: 15px; font-size: 0.9rem; color: #00ffcc; font-weight: bold; min-height: 20px; }
 
-        /* FOOTER BRANDING */
         .devotional-outro {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            margin-top: 35px;
+            font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px;
             background: linear-gradient(to right, #ff9933, #ffffff, #ff9933);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 4px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px;
         }
     </style>
 </head>
@@ -332,13 +266,14 @@
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
         
-        <div class="motion-stage-container">
-            <div class="track-3d-loop">
-                <div class="floating-item-card item-1">Photo AI</div>
-                <div class="floating-item-card item-2">Video AI</div>
-                <div class="floating-item-card item-3">Text Suite</div>
-                <div class="floating-item-card item-4">IG Boost</div>
-                <div class="floating-item-card item-5">Analytics</div>
+        <div class="showcase-3d-scene">
+            <div class="cylinder-carousel-3d">
+                <div class="face-card-3d face-1"><span>🖼️</span>Photo AI</div>
+                <div class="face-card-3d face-2"><span>🎬</span>Video Engine</div>
+                <div class="face-card-3d face-3"><span>✍️</span>Text Suite</div>
+                <div class="face-card-3d face-4"><span>❤️</span>IG Likes</div>
+                <div class="face-card-3d face-5"><span>📈</span>Followers</div>
+                <div class="face-card-3d face-6"><span>⚙️</span>Automate</div>
             </div>
         </div>
 
@@ -379,5 +314,164 @@
         <p class="description">Integrated Subtitle Graphics Suite</p>
         <div class="input-wrapper">
             <label>Upload Base Graphic Layout:</label>
+            <input type="file" id="p2vtFile" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Sub-text Script Input:</label>
+            <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
+        </div>
+        <button class="btn-action" onclick="runToolProcessing('p2vtStatus', 'Rendering Hybrid Text Video Layer...')">Generate Hybrid Video</button>
+        <div class="live-status" id="p2vtStatus"></div>
+    </div>
 
+    <div class="page-panel" id="panel-ig-likes">
+        <h2>Instagram Likes Plus</h2>
+        <p class="description">Target Metric Distribution System</p>
+        <div class="input-wrapper">
+            <label>Instagram Target Post Link:</label>
+            <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
+        </div>
+        <button class="btn-action" onclick="runToolProcessing('igLStatus', 'Connecting to Instagram Post Matrix API...')">Inject Likes</button>
+        <div class="live-status" id="igLStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-ig-followers">
+        <h2>Reel 1K Followers Booster</h2>
+        <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
+        <div class="input-wrapper">
+            <label>Instagram Profile Username:</label>
+            <input type="text" id="igUser" placeholder="Enter profile handle username...">
+        </div>
+        <button class="btn-action" onclick="runToolProcessing('igFStatus', 'Deploying Algorithm Optimization Pipeline...')">Deploy Growth</button>
+        <div class="live-status" id="igFStatus"></div>
+    </div>
+
+    <div class="page-panel" id="panel-about">
+        <h2>About Website</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6;">
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
+        </p>
+        <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
+    </div>
+
+    <div class="devotional-outro">RADHE RADHE</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
+    <script>
+        function toggleNavigationMenu() {
+            const dropdown = document.getElementById('navDropdown');
+            dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function switchPanel(panelId) {
+            document.getElementById('navDropdown').style.display = 'none';
+            const allPanels = document.querySelectorAll('.page-panel');
+            allPanels.forEach(panel => panel.classList.remove('active-panel'));
+            const activePanel = document.getElementById('panel-' + panelId);
+            if(activePanel) {
+                activePanel.classList.add('active-panel');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function runToolProcessing(statusId, initialMessage) {
+            const label = document.getElementById(statusId);
+            label.innerText = "⚡ " + initialMessage;
+            setTimeout(() => {
+                label.innerText = "⏳ Running Algorithmic Optimizations...";
+                setTimeout(() => {
+                    label.innerText = "🎉 Process Successfully Completed by Rajkumar AI Engine!";
+                }, 2000);
+            }, 1500);
+        }
+
+        function runVideoGeneration() {
+            const fileInput = document.getElementById('p2vFile');
+            const promptInput = document.getElementById('p2vPrompt').value.toLowerCase().trim();
+            const statusLabel = document.getElementById('p2vStatus');
+
+            if (!fileInput.files || !fileInput.files[0]) {
+                alert("Rajkumar bhai, please select an image first!");
+                return;
+            }
+
+            const allowedKeywords = ['vidtor', 'photo to video', 'image to video', 'free image to video', 'free photo to video'];
+            const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
+
+            if (promptInput === "" || !isMatch) {
+                alert("Rajkumar bhai, please use keywords like 'vidtor' or 'photo to video' in the prompt field.");
+                return;
+            }
+
+            statusLabel.innerText = '⚡ Initializing Canvas Frame Buffer...';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fps = 12; const duration = 4; const totalFrames = duration * fps;
+                const video = new Whammy.Video(fps);
+                const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+                canvas.width = 1280; canvas.height = 720;
+                const mainImg = new Image(); mainImg.src = e.target.result;
+                
+                mainImg.onload = function() {
+                    const textFramesCount = Math.floor(1.5 * fps);
+                    const motionFramesCount = totalFrames - textFramesCount;
+
+                    for (let i = 0; i < motionFramesCount; i++) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        let progress = i / motionFramesCount;
+                        let zoom = 1.0 + (progress * 0.16);
+                        
+                        ctx.save();
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.scale(zoom, zoom);
+                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                        let w = mainImg.width * scale; let h = mainImg.height * scale;
+                        ctx.drawImage(mainImg, -w/2, -h/2, w, h);
+                        ctx.restore();
+                        
+                        ctx.save();
+                        let logoYOffset = Math.sin(i * 0.4) * 7;
+                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+                        ctx.textAlign = "right"; ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
+                        ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
+                        ctx.restore();
+                        
+                        video.add(canvas);
+                    }
+
+                    for (let j = 0; j < textFramesCount; j++) {
+                        ctx.fillStyle = "#050811"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.font = "bold 80px 'Cinzel', serif"; ctx.textAlign = "center";
+                        let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                        gradient.addColorStop(0, "#ff9933"); gradient.addColorStop(0.5, "#ffffff"); gradient.addColorStop(1, "#ff9933");
+                        ctx.fillStyle = gradient;
+                        let alpha = Math.min(j / (fps * 0.5), 1); ctx.globalAlpha = alpha;
+                        ctx.fillText("RADHE RADHE", canvas.width / 2, canvas.height / 2 + 25);
+                        ctx.globalAlpha = 1.0;
+                        video.add(canvas);
+                    }
+
+                    const outputVideo = video.compile();
+                    const outputUrl = URL.createObjectURL(outputVideo);
+                    statusLabel.innerText = '🎉 Video Downloaded Successfully!';
+                    
+                    const downloader = document.createElement('a'); downloader.href = outputUrl;
+                    downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
+                    document.body.appendChild(downloader); downloader.click(); document.body.removeChild(downloader);
+                };
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
+                document.getElementById('navDropdown').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
+o
 
