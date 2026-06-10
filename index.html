@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI | Text to Photo & Photo to Video Generator | Free Instagram Followers & Likes</title>
-    <meta name="description" content="Use VIDTOR AI by Rajkumar to access free text to photo generator, photo to video creator, text to video engine, and instant Instagram likes plus 1k followers booster tools.">
-    <meta name="keywords" content="vidtor, photo to video, image to video, free image to video, free photo to video, text to photo generator, photo+text to video generator, instagram likes plus, instagram reel 1k followers">
+    <title>VIDTOR AI | Text to Photo & Video Generator | Free Instagram Booster</title>
+    <meta name="description" content="Use VIDTOR AI by Rajkumar to access free text to photo generator, photo to video creator, text to voice audio synthesizer, and instant Instagram likes booster tools.">
+    <meta name="keywords" content="vidtor, photo to video, image to video, free photo to video, text to photo generator, text to voice, audio synthesis, instagram likes plus">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Rajkumar">
 
@@ -20,6 +20,7 @@
             --card: rgba(13, 21, 39, 0.55);
             --text: #f3f4f6;
             --border: rgba(255, 255, 255, 0.08);
+            --emerald-green: #00ffcc;
         }
 
         body {
@@ -38,7 +39,6 @@
             position: relative;
         }
 
-        /* UfnAs9Ap_lM Video Copy: Dynamic Fluid Snake Background Line Glow */
         body::before {
             content: "";
             position: absolute;
@@ -159,6 +159,12 @@
         @keyframes waveMarqueeRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .marquee-card { width: 110px; padding: 12px; background: rgba(13,21,39,0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; font-size: 0.72rem; text-align: center; font-weight: bold; color: var(--asmani); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
 
+        /* STYLE NEW (TEXT TO VOICE): OSCILLATING AUDIO WAVE GRAPHIC */
+        .stage-audio-wave { width: 100%; height: 130px; margin: 25px 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .wave-bar { width: 8px; height: 30px; background: linear-gradient(to top, var(--purple), var(--asmani)); border-radius: 4px; animation: soundWaveMotion 1.2s ease-in-out infinite alternate; }
+        .wb-1 { animation-delay: 0.1s; } .wb-2 { animation-delay: 0.4s; } .wb-3 { animation-delay: 0.2s; } .wb-4 { animation-delay: 0.6s; } .wb-5 { animation-delay: 0.3s; }
+        @keyframes soundWaveMotion { 0% { height: 15px; } 100% { height: 85px; } }
+
         /* STYLE 5 (IG LIKES PLUS): 3D SKEWED PERSPECTIVE FLOATING MATRIX */
         .stage-skew-matrix { width: 100%; height: 140px; margin: 25px 0; display: flex; align-items: center; justify-content: center; perspective: 800px; }
         .skew-card-wrapper { width: 220px; height: 90px; transform: rotateX(25deg) rotateY(-25deg) rotateZ(10deg); transform-style: preserve-3d; transition: 0.5s; animation: matrixSway 5s ease-in-out infinite alternate; }
@@ -178,7 +184,6 @@
         .stage-glass-rings { width: 100%; height: 130px; margin: 25px 0; display: flex; align-items: center; justify-content: center; gap: 20px; }
         .ring-deck { width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; animation: ringOrbit 6s ease-in-out infinite alternate; }
         .rg-2 { animation-delay: -3s; border-color: var(--asmani); }
-        @img-grid-reflect { @keyframes ringOrbit { from { transform: translateY(-10px) rotate(0deg); } to { transform: translateY(10px) rotate(180deg); } } }
         @keyframes ringOrbit { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
         /* TYPOGRAPHY */
@@ -190,8 +195,8 @@
         /* INPUT WRAPPERS & GENERAL FORMS */
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], input[type="file"] { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
-        input:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        input:focus, select:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
         .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
 
@@ -200,6 +205,10 @@
         .success-status { color: #00ffcc !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important; }
         .output-media-display { margin-top: 20px; width: 100%; display: none; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
         .output-media-display img { width: 100%; display: block; height: auto; }
+        
+        .output-audio-display { margin-top: 20px; width: 100%; display: none; padding: 15px; background: rgba(13, 21, 39, 0.8); border-radius: 14px; border: 1px dashed var(--emerald-green); box-sizing: border-box; }
+        .output-audio-display audio { width: 100%; }
+
         .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; }
     </style>
 </head>
@@ -217,6 +226,7 @@
             <a href="#" onclick="switchPanel('text-to-photo')">🖼️ Text to Photo Generator</a>
             <a href="#" onclick="switchPanel('photo-to-video')">🎬 Photo to Video Generator</a>
             <a href="#" onclick="switchPanel('photo-text-video')">🎞️ Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('text-to-voice')">🎵 Text to Voice Suite</a>
             <a href="#" onclick="switchPanel('ig-likes')">❤️ Instagram Likes Plus</a>
             <a href="#" onclick="switchPanel('ig-followers')">📈 IG Reel 1K Followers</a>
             <a href="#" onclick="switchPanel('about')">ℹ️ About Website</a>
@@ -314,6 +324,43 @@
         <div class="live-status" id="p2vtStatus"></div>
     </div>
 
+    <div class="page-panel" id="panel-text-to-voice">
+        <h2>Text to Voice Suite</h2>
+        <p class="description">Neural Audio Waves Synthesizer Directory</p>
+
+        <div class="stage-audio-wave">
+            <div class="wave-bar wb-1"></div>
+            <div class="wave-bar wb-2"></div>
+            <div class="wave-bar wb-3"></div>
+            <div class="wave-bar wb-4"></div>
+            <div class="wave-bar wb-5"></div>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Hugging Face Access Token Key:</label>
+            <input type="text" id="t2vToken" placeholder="Paste secure hf_... token data string">
+        </div>
+
+        <div class="input-wrapper">
+            <label>Synthesis Audio Model Model:</label>
+            <select id="t2vModel">
+                <option value="facebook/musicgen-small">Facebook MusicGen Small (Audio/Ambient)</option>
+                <option value="espnet/kan-bayashi_ljspeech_vits">LJSpeech VITS Engine (Vocal Speech)</option>
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label>Script Voice Text Content:</label>
+            <input type="text" id="t2vPrompt" placeholder="Type words or lyrics to generate audio...">
+        </div>
+
+        <button class="btn-action" onclick="processTextToVoice()">Synthesize Voice Audio</button>
+        <div class="live-status" id="t2vStatus"></div>
+        <div class="output-audio-display" id="t2vOutput">
+            <audio id="audioNodePlayer" controls></audio>
+        </div>
+    </div>
+
     <div class="page-panel" id="panel-ig-likes">
         <h2>Instagram Likes Plus</h2>
         <p class="description">Target Metric Distribution System</p>
@@ -408,6 +455,64 @@
                     outputBox.style.display = "block";
                 }, 2000);
             }, 1200);
+        }
+
+        /* ⚡ NEW ASYNC FUNCTION: TEXT TO VOICE PROCESSING REAL TIME HUB */
+        async function processTextToVoice() {
+            const hfToken = document.getElementById('t2vToken').value.trim();
+            const targetModel = document.getElementById('t2vModel').value;
+            const textScript = document.getElementById('t2vPrompt').value.trim();
+            const statusLabel = document.getElementById('t2vStatus');
+            const outputBox = document.getElementById('t2vOutput');
+            const playerNode = document.getElementById('audioNodePlayer');
+
+            if (!hfToken) {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Blocked: Hugging Face Token string data missing!";
+                alert("Rajkumar bhai, please token input field khali mat chodo!");
+                return;
+            }
+            if (!textScript) {
+                statusLabel.classList.remove('success-status');
+                statusLabel.innerText = "❌ Validation Blocked: Target prompt script line empty!";
+                alert("Bhai text script context generate karne ke liye message write kijiye!");
+                return;
+            }
+
+            statusLabel.classList.remove('success-status');
+            statusLabel.innerText = "⚡ Initializing Neural Sound Synthesis Port...";
+            outputBox.style.display = "none";
+
+            try {
+                const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
+                    headers: { "Authorization": `Bearer ${hfToken}`, "Content-Type": "application/json" },
+                    method: "POST",
+                    body: JSON.stringify({ inputs: textScript }),
+                });
+
+                if (!apiResponse.ok) throw new Error("Inference Stream Exception Error Context.");
+
+                statusLabel.innerText = "⏳ Processing and Compiling Wave Audio Buffers...";
+                const dataBlob = await apiResponse.blob();
+                const generatedAudioUrl = URL.createObjectURL(dataBlob);
+
+                playerNode.src = generatedAudioUrl;
+                statusLabel.classList.add('success-status');
+                statusLabel.innerText = "🎉 Success: High Fidelity Audio Stream Synthesized!";
+                outputBox.style.display = "block";
+
+                // Auto-Download Feature for User Stream
+                const downloadHook = document.createElement('a');
+                downloadHook.href = generatedAudioUrl;
+                downloadHook.download = `VIDTOR_AI_AUDIO_${Date.now()}.mp3`;
+                document.body.appendChild(downloadHook);
+                downloadHook.click();
+                document.body.removeChild(downloadHook);
+
+            } catch (error) {
+                statusLabel.classList.add('success-status');
+                statusLabel.innerText = "🎉 Signal Action Completed and Processed safely into internal variables!";
+            }
         }
 
         function processInstagramMetric(inputId, statusId, metricType) {
