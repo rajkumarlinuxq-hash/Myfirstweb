@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidtor AI | Official King Port</title>
+    <title>VIDTOR AI — Premium 3D Motion Port</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -13,403 +13,540 @@
             --electric-cyan: #00f3ff;
             --gold-sheen: #ffd700;
             --emerald-green: #00ffcc;
+            --deep-abyss: #03010a;
             --signature-cursive: 'Playball', cursive;
             --readable-interface: 'Space Grotesk', sans-serif;
-            --background-deep: #020108;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            background-color: var(--background-deep);
+            background-color: var(--deep-abyss);
             color: #ffffff;
             font-family: var(--readable-interface);
             min-height: 100vh;
             overflow-x: hidden;
-            user-select: none;
         }
 
-        /* 🔮 RAJKUMAR KING: ORIGINAL GRAPHICS CANVAS ENGINE */
-        #interactive3DGridCanvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; pointer-events: none;
+        /* 🔮 MASTER 3D REAL-TIME MOTION FLUID MATRIX BACKGROUND */
+        #motion3DFluidCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* 👑 SOVEREIGN FLOATING BRAND HEADER */
+        /* 👑 TOP PRESTIGE OVERLAY HEADER */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 95px;
-            background: rgba(2, 1, 8, 0.93); backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(0, 243, 255, 0.18);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 35px; z-index: 5000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 95px;
+            background: rgba(3, 1, 10, 0.85);
+            backdrop-filter: blur(25px);
+            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 5000;
         }
 
-        .brand-core-trigger {
-            display: flex; align-items: center; gap: 16px;
-            text-decoration: none; cursor: pointer;
+        .header-brand-trigger {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        .rk-sovereign-logo-badge {
-            width: 52px; height: 52px; border-radius: 50%;
+        .rk-logo-badge {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--neon-pink), var(--electric-cyan));
-            border: 2px solid #ffffff; display: flex; align-items: center;
-            justify-content: center; font-weight: bold; font-size: 1.4rem; color: #ffffff;
-            box-shadow: 0 0 20px var(--neon-pink);
-            transition: transform 0.4s ease;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #ffffff;
+            box-shadow: 0 0 25px var(--neon-pink);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .brand-core-trigger:hover .rk-sovereign-logo-badge {
-            transform: scale(1.1) rotate(360deg);
+        .header-brand-trigger:hover .rk-logo-badge {
+            transform: scale(1.15) rotate(360deg);
         }
 
-        .text-stack-identity { display: flex; flex-direction: column; }
-        .brand-master-title {
-            font-size: 2.1rem; font-weight: 700; letter-spacing: 1.5px;
+        .brand-text-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .master-brand-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             background: linear-gradient(135deg, #ffffff, var(--gold-sheen));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .signature-sub-identity {
-            font-family: var(--signature-cursive); font-size: 1.5rem;
-            color: var(--electric-cyan); margin-top: -6px; text-shadow: 0 0 8px var(--electric-cyan);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .sidebar-trigger-icon {
-            background: none; border: none; color: #ffffff;
-            font-size: 2.2rem; cursor: pointer; padding: 5px;
-            transition: color 0.3s ease;
-        }
-        .sidebar-trigger-icon:hover { color: var(--neon-pink); }
-
-        /* 🌌 ORIGINAL PERSISTENT SIDEBAR DRAWER MATRIX */
-        .master-sidebar-drawer {
-            position: fixed; top: 95px; right: -325px; width: 310px;
-            height: calc(100vh - 95px); background: rgba(3, 1, 12, 0.99);
-            border-left: 2px solid var(--electric-cyan); z-index: 4000;
-            padding: 30px 18px; display: flex; flex-direction: column; gap: 12px;
-            transition: right 0.45s cubic-bezier(0.1, 0.9, 0.2, 1);
-        }
-        .master-sidebar-drawer.drawer-active { right: 0; }
-
-        .drawer-node-link {
-            display: flex; align-items: center; gap: 16px; padding: 15px;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 14px; cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1275);
-            font-size: 1.05rem; font-weight: 600; color: #ffffff;
-        }
-        .drawer-node-link:hover, .drawer-node-link.selected-node-active {
-            background: rgba(0, 243, 255, 0.09); border-color: var(--electric-cyan);
-            transform: translateX(-5px); box-shadow: 0 0 15px rgba(0, 243, 255, 0.25);
+        .signature-sub-caption {
+            font-family: var(--signature-cursive);
+            font-size: 1.6rem;
+            color: var(--electric-cyan);
+            margin-top: -6px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
         }
 
-        /* 💻 CENTRALIZED MULTI-FUNCTIONAL MAIN HOUSING PANEL */
-        .central-stage-wrapper {
-            width: 100%; max-width: 680px; margin: 140px auto 40px auto;
-            padding: 0 20px; text-align: center;
+        .hamburger-menu-icon {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2.3rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        .hamburger-menu-icon:hover {
+            color: var(--neon-pink);
         }
 
-        .workspace-master-card {
-            background: rgba(4, 2, 16, 0.96); border: 2px solid rgba(0, 243, 255, 0.25);
-            border-radius: 35px; padding: 40px 30px; box-shadow: 0 35px 85px rgba(0,0,0,0.9);
-            position: relative; overflow: hidden;
+        /* 🌌 PERSISTENT SYSTEM NAVIGATION SIDEBAR */
+        .system-sidebar-drawer {
+            position: fixed;
+            top: 95px;
+            right: -330px;
+            width: 315px;
+            height: calc(100vh - 95px);
+            background: rgba(2, 0, 8, 0.98);
+            border-left: 2px solid var(--electric-cyan);
+            z-index: 4000;
+            padding: 35px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: right 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
         }
-        .workspace-master-card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+        .system-sidebar-drawer.drawer-open {
+            right: 0;
+        }
+
+        .sidebar-node-element {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .sidebar-node-element:hover, .sidebar-node-element.node-active {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--electric-cyan);
+            transform: translateX(-6px);
+            box-shadow: 0 0 18px rgba(0, 243, 255, 0.3);
+        }
+
+        /* 💻 CENTRALIZED COMPUTATION INTERFACE SYSTEM */
+        .workspace-stage-housing {
+            width: 100%;
+            max-width: 690px;
+            margin: 145px auto 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .glassmorphism-terminal-card {
+            background: rgba(4, 2, 16, 0.94);
+            border: 2px solid rgba(0, 243, 255, 0.25);
+            border-radius: 36px;
+            padding: 45px 35px;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
+            position: relative;
+            overflow: hidden;
+        }
+        .glassmorphism-terminal-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
             background: linear-gradient(90deg, var(--electric-cyan), var(--neon-pink), var(--gold-sheen));
         }
 
-        .active-module-header {
-            font-size: 1.5rem; color: var(--gold-sheen); margin-bottom: 28px;
-            text-transform: uppercase; letter-spacing: 1.2px; text-shadow: 0 0 15px rgba(255,215,0,0.25);
+        .module-header-title {
+            font-size: 1.55rem;
+            color: var(--gold-sheen);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
-        .input-block-layer { text-align: left; margin-bottom: 22px; }
-        .input-block-layer label {
-            display: block; font-size: 1rem; font-weight: 600; margin-bottom: 8px;
-            color: rgba(255,255,255,0.75); letter-spacing: 0.3px;
+        .input-structure-row {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .input-structure-row label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
         }
 
         input[type="text"], select {
-            width: 100%; padding: 15px 20px; background: rgba(1, 0, 4, 0.98);
-            border: 2px solid rgba(255, 255, 255, 0.09); color: #ffffff; border-radius: 16px;
-            font-family: var(--readable-interface); font-size: 1rem; outline: none; transition: 0.3s;
+            width: 100%;
+            padding: 16px 22px;
+            background: rgba(1, 0, 5, 0.98);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 18px;
+            font-family: var(--readable-interface);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
         }
         input[type="text"]:focus, select:focus {
-            border-color: var(--electric-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            border-color: var(--electric-cyan);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
         }
 
-        .btn-core-executor {
-            width: 100%; padding: 18px; border: none; border-radius: 16px;
+        .btn-pipeline-executor {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 18px;
             background: linear-gradient(135deg, var(--electric-cyan), var(--neon-pink));
-            color: #ffffff; font-family: var(--readable-interface); font-size: 1.2rem; font-weight: 700;
-            cursor: pointer; box-shadow: 0 14px 35px rgba(255, 0, 127, 0.3);
-            transition: 0.3s ease;
+            color: #ffffff;
+            font-family: var(--readable-interface);
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.35);
+            transition: all 0.3s ease;
         }
-        .btn-core-executor:hover { transform: translateY(-3px); box-shadow: 0 18px 40px var(--neon-pink); }
+        .btn-pipeline-executor:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px var(--neon-pink);
+        }
 
-        /* MULTI-MEDIA HIGH-FIDELITY COMPUTE COMPARTMENTS */
-        .graphics-output-box {
-            margin-top: 30px; width: 100%; display: none; border-radius: 22px;
-            overflow: hidden; border: 2px solid var(--gold-sheen); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        /* OUTPUT PORTS MEDIA STREAMS */
+        .rendered-media-graphics-container {
+            margin-top: 35px;
+            width: 100%;
+            display: none;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--gold-sheen);
+            box-shadow: 0 25px 55px rgba(0,0,0,0.6);
         }
-        .graphics-output-box img { width: 100%; display: block; }
+        .rendered-media-graphics-container img {
+            width: 100%;
+            display: block;
+        }
         
-        .audio-output-box {
-            margin-top: 30px; width: 100%; display: none; padding: 18px;
-            background: rgba(1, 0, 4, 0.98); border-radius: 16px; border: 2px dashed var(--emerald-green);
+        .rendered-media-audio-container {
+            margin-top: 35px;
+            width: 100%;
+            display: none;
+            padding: 20px;
+            background: rgba(1, 0, 5, 0.98);
+            border-radius: 18px;
+            border: 2px dashed var(--emerald-green);
         }
-        .audio-output-box audio { width: 100%; }
-
-        .btn-download-master-node {
-            display: none; width: 100%; padding: 14px; margin-top: 18px; border: none;
-            background: var(--emerald-green); color: var(--background-deep); font-family: var(--readable-interface);
-            font-size: 1.05rem; font-weight: 700; border-radius: 14px; cursor: pointer;
+        .rendered-media-audio-container audio {
+            width: 100%;
         }
 
-        .devotional-stamp-footer {
-            font-family: var(--signature-cursive); font-size: 4.5rem; text-align: center;
-            margin: 70px 0 35px 0;
+        .btn-download-asset-stream {
+            display: none;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            background: var(--emerald-green);
+            color: var(--deep-abyss);
+            font-family: var(--readable-interface);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        /* ⚜️ RADHE RADHE SUPREME STAMP FOOTER */
+        .devotional-master-footer {
+            font-family: var(--signature-cursive);
+            font-size: 4.8rem;
+            text-align: center;
+            margin: 80px 0 35px 0;
             background: linear-gradient(90deg, #ff9933, #ffffff, #33cc33);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(255,255,255,0.2); letter-spacing: 2px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,255,255,0.25);
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="interactive3DGridCanvas"></canvas>
+    <canvas id="motion3DFluidCanvas"></canvas>
 
     <header>
-        <div class="brand-core-trigger" onclick="globalSystemResetTrigger()">
-            <div class="rk-sovereign-logo-badge">RK</div>
-            <div class="text-stack-identity">
-                <span class="brand-master-title">Vidtor AI</span>
-                <span class="signature-sub-identity">by Rajkumar</span>
+        <div class="header-brand-trigger" onclick="resetActiveWorkspaceContext()">
+            <div class="rk-logo-badge">RK</div>
+            <div class="brand-text-stack">
+                <span class="master-brand-title">Vidtor AI</span>
+                <span class="signature-sub-caption">by Rajkumar</span>
             </div>
         </div>
-        <button class="sidebar-trigger-icon" onclick="toggleSystemSidebarMenu()">☰</button>
+        <button class="hamburger-menu-icon" onclick="toggleSystemNavigationDrawer()">☰</button>
     </header>
 
-    <div class="master-sidebar-drawer" id="systemSidebarPanel">
-        <div class="drawer-node-link selected-node-active" id="btnLink_home" onclick="shiftActiveApplicationContext('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🏠 Dashboard Home</div>
-        <div class="drawer-node-link" id="btnLink_txt2img" onclick="shiftActiveApplicationContext('text-to-photo', 'black-forest-labs/FLUX.1-dev', 'image')">🖼️ Text to Photo Generator</div>
-        <div class="drawer-node-link" id="btnLink_p2v" onclick="shiftActiveApplicationContext('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🎬 Photo to Video Generator</div>
-        <div class="drawer-node-link" id="btnLink_pt2v" onclick="shiftActiveApplicationContext('photo-text-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">📹 Photo + Text to Video</div>
-        <div class="drawer-node-link" id="btnLink_txt2voice" onclick="shiftActiveApplicationContext('text-to-voice', 'facebook/musicgen-small', 'audio')">🎵 Text to Voice / Audio Suite</div>
-        <div class="drawer-node-link" id="btnLink_insta" onclick="shiftActiveApplicationContext('insta-auto', 'automation-engine', 'text')">❤️ Instagram Automated Cluster</div>
+    <div class="system-sidebar-drawer" id="sidebarDrawerPanel">
+        <div class="sidebar-node-element node-active" id="link_home" onclick="switchNeuralApplicationPipeline('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🏠 Dashboard Home</div>
+        <div class="sidebar-node-element" id="link_txt2img" onclick="switchNeuralApplicationPipeline('text-to-photo', 'black-forest-labs/FLUX.1-dev', 'image')">🖼️ Text to Photo Generator</div>
+        <div class="sidebar-node-element" id="link_p2v" onclick="switchNeuralApplicationPipeline('photo-to-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">🎬 Photo to Video Generator</div>
+        <div class="sidebar-node-element" id="link_pt2v" onclick="switchNeuralApplicationPipeline('photo-text-video', 'stabilityai/stable-diffusion-xl-base-1.0', 'image')">📹 Photo + Text to Video</div>
+        <div class="sidebar-node-element" id="link_txt2voice" onclick="switchNeuralApplicationPipeline('text-to-voice', 'facebook/musicgen-small', 'audio')">🎵 Text to Voice / Audio Suite</div>
+        <div class="sidebar-node-element" id="link_insta" onclick="switchNeuralApplicationPipeline('insta-auto', 'automation-engine', 'text')">❤️ Instagram Automated Cluster</div>
     </div>
 
-    <div class="central-stage-wrapper">
-        <div class="workspace-master-card">
-            <div class="active-module-header" id="workspaceHeaderTitle">Dashboard Home Workspace</div>
+    <div class="workspace-stage-housing">
+        <div class="glassmorphism-terminal-card">
+            <div class="module-header-title" id="activeTerminalTitle">Dashboard Home Workspace</div>
 
-            <div class="input-block-layer">
-                <label>Hugging Face Universal Cloud Secure API Access Token</label>
-                <input type="text" id="hfCloudSecureToken" placeholder="Paste your confidential active hf_... token key here">
+            <div class="input-structure-row">
+                <label>Hugging Face Universal Cloud Secure API Access Token Key</label>
+                <input type="text" id="apiSecureTokenKey" placeholder="Paste your confidential active hf_... token security string">
             </div>
 
-            <div class="input-block-layer" id="modelGroupBlock">
-                <label>Active Neural Machine Learning Model Directory Path</label>
-                <input type="text" id="neuralDirectoryString" value="stabilityai/stable-diffusion-xl-base-1.0">
+            <div class="input-structure-row" id="modelConfigWrapper">
+                <label>Active Engine Machine Learning Model Directory Directory</label>
+                <input type="text" id="modelDirectoryPathString" value="stabilityai/stable-diffusion-xl-base-1.0">
             </div>
 
-            <div class="input-block-layer" id="formatGroupBlock">
-                <label>Data Stream Architecture Output Format Structure</label>
-                <select id="architectureOutputFormat">
+            <div class="input-structure-row" id="formatConfigWrapper">
+                <label>Data Stream Vector Output Structure Layout</label>
+                <select id="architectureOutputLayout">
                     <option value="image">Compute and Render High-Resolution Graphic Frame Layer</option>
                     <option value="audio">Compile Audio Track Stream Synthesis File</option>
                     <option value="text">Compile System Automation Report Analysis</option>
                 </select>
             </div>
 
-            <div class="input-block-layer">
-                <label id="dynamicPromptLabelElement">Enter AI Generation Prompt / Core Operational Parameters</label>
-                <input type="text" id="neuralPromptQueryString" placeholder="Describe layout configurations or queries cleanly...">
+            <div class="input-structure-row">
+                <label id="dynamicConsolePromptLabel">Enter AI Generation Prompt / Core Operational Instructions</label>
+                <input type="text" id="neuralPromptQueryData" placeholder="Type prompt coordinates or parameters smoothly...">
             </div>
 
-            <button class="btn-core-executor" onclick="fireLiveNeuralComputeEngine()">Execute Selected Working Tool Pipeline</button>
+            <button class="btn-pipeline-executor" onclick="fireLiveNeuralComputeEngine()">Execute Selected Working Tool Pipeline</button>
 
-            <div class="graphics-output-box" id="graphicsRenderBox">
-                <img src="" id="targetGraphicBlobNode" alt="Vidtor AI Compute Output Frame">
+            <div class="rendered-media-graphics-container" id="graphicsContainerViewport">
+                <img src="" id="targetGraphicBlobNode" alt="Vidtor AI Compute Port Stack">
             </div>
 
-            <div class="audio-output-box" id="audioRenderBox">
+            <div class="rendered-media-audio-container" id="audioContainerViewport">
                 <audio id="targetAudioBlobNode" controls></audio>
             </div>
 
-            <button class="btn-download-master-node" id="globalDownloadActionTrigger" onclick="triggerAssetStreamDownload()">Download Generated Asset Output</button>
+            <button class="btn-download-asset-stream" id="downloadActionTriggerNode" onclick="executeAssetDownloadStream()">Download Generated Asset Stream</button>
         </div>
 
-        <div class="devotional-stamp-footer">Radhe Radhe</div>
+        <div class="devotional-master-footer">Radhe Radhe</div>
     </div>
 
     <script>
-        function toggleSystemSidebarMenu() {
-            document.getElementById('systemSidebarPanel').classList.toggle('drawer-active');
+        function toggleSystemNavigationDrawer() {
+            document.getElementById('sidebarDrawerPanel').classList.toggle('drawer-open');
         }
 
-        // 🔄 ACTIVE SWITCHER MATRIX PIPELINE FOR SELECTED MULTI-TOOLS
-        function shiftActiveApplicationContext(toolKey, directoryPath, structureFormat) {
-            document.getElementById('neuralDirectoryString').value = directoryPath;
-            document.getElementById('architectureOutputFormat').value = structureFormat;
+        // 🔄 ACTIVE CONTROLLER MATRIX PATHWAY SWITCHER
+        function switchNeuralApplicationPipeline(toolKey, directoryPath, structureFormat) {
+            document.getElementById('modelDirectoryPathString').value = directoryPath;
+            document.getElementById('architectureOutputLayout').value = structureFormat;
             
-            const titleNode = document.getElementById('workspaceHeaderTitle');
-            const labelNode = document.getElementById('dynamicPromptLabelElement');
-            const modelWrapper = document.getElementById('modelGroupBlock');
-            const formatWrapper = document.getElementById('formatGroupBlock');
+            const titleNode = document.getElementById('activeTerminalTitle');
+            const labelNode = document.getElementById('dynamicConsolePromptLabel');
+            const modelWrapper = document.getElementById('modelConfigWrapper');
+            const formatWrapper = document.getElementById('formatConfigWrapper');
 
-            // Clear absolute previous selection markers completely
-            document.querySelectorAll('.drawer-node-link').forEach(node => node.classList.remove('selected-node-active'));
+            // Flush out preceding selection highlight classes safely
+            document.querySelectorAll('.sidebar-node-element').forEach(node => node.classList.remove('node-active'));
 
             if (toolKey === 'home') {
-                document.getElementById('btnLink_home').classList.add('selected-node-active');
+                document.getElementById('link_home').classList.add('node-active');
                 titleNode.innerText = "Dashboard Home Workspace";
                 labelNode.innerText = "Global Input Console Search / Configuration Parameters";
                 modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
             } else if (toolKey === 'text-to-photo') {
-                document.getElementById('btnLink_txt2img').classList.add('selected-node-active');
+                document.getElementById('link_txt2img').classList.add('node-active');
                 titleNode.innerText = "Text to Photo Generator Engine";
                 labelNode.innerText = "Provide detailed description prompts for Image Rendering";
                 modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
             } else if (toolKey === 'photo-to-video') {
-                document.getElementById('btnLink_p2v').classList.add('selected-node-active');
+                document.getElementById('link_p2v').classList.add('node-active');
                 titleNode.innerText = "Photo to Video Free Generator";
                 labelNode.innerText = "Enter Image Reference Frame Link or Motion Parameter Layouts";
                 modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
             } else if (toolKey === 'photo-text-video') {
-                document.getElementById('btnLink_pt2v').classList.add('selected-node-active');
+                document.getElementById('link_pt2v').classList.add('node-active');
                 titleNode.innerText = "Photo + Text to Video Mix Engine";
                 labelNode.innerText = "Input composite motion storyboard vectors and instructions";
                 modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
             } else if (toolKey === 'text-to-voice') {
-                document.getElementById('btnLink_txt2voice').classList.add('selected-node-active');
+                document.getElementById('link_txt2voice').classList.add('node-active');
                 titleNode.innerText = "Text to Voice / Audio Suite";
                 labelNode.innerText = "Enter lines, scripts or lyrics to synthesize vocal tracks";
                 modelWrapper.style.display = "block"; formatWrapper.style.display = "block";
             } else if (toolKey === 'insta-auto') {
-                document.getElementById('btnLink_insta').classList.add('selected-node-active');
+                document.getElementById('link_insta').classList.add('node-active');
                 titleNode.innerText = "Instagram Engagement Panel";
                 labelNode.innerText = "Target Account Username Destination Handles (@username)";
                 modelWrapper.style.display = "none"; formatWrapper.style.display = "none";
             }
 
-            toggleSystemSidebarMenu();
+            toggleSystemNavigationDrawer();
         }
 
-        function globalSystemResetTrigger() {
-            shiftActiveApplicationContext('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image');
+        function resetActiveWorkspaceContext() {
+            switchNeuralApplicationPipeline('home', 'stabilityai/stable-diffusion-xl-base-1.0', 'image');
         }
 
-        // ⚡ CONNECTIVE LOGIC CORE REAL COMPUTATION SYSTEM FOR LIVE MACHINE MODELS
+        // ⚡ ASYNC INTEGRATION PIPELINE BACKEND HUB TRACK
         async function fireLiveNeuralComputeEngine() {
-            const secretToken = document.getElementById('hfCloudSecureToken').value.trim();
-            const targetModel = document.getElementById('neuralDirectoryString').value.trim();
-            const dataStructure = document.getElementById('architectureOutputFormat').value;
-            const queryInput = document.getElementById('neuralPromptQueryString').value.trim();
+            const hfToken = document.getElementById('apiSecureTokenKey').value.trim();
+            const modelDir = document.getElementById('modelDirectoryPathString').value.trim();
+            const dataLayout = document.getElementById('architectureOutputLayout').value;
+            const userPrompt = document.getElementById('neuralPromptQueryData').value.trim();
 
-            if (!secretToken) {
-                alert("Rajkumar bhai, please add your Hugging Face Secure token data key first!");
+            if (!hfToken) {
+                alert("Rajkumar bhai, please specify your secure Hugging Face Token Key first!");
                 return;
             }
-            if (!queryInput) {
-                alert("Bhai operational query instructions fields fill kijiye!");
+            if (!userPrompt) {
+                alert("Bhai operational query parameters values fill kijiye!");
                 return;
             }
 
-            const imgDisplayFrame = document.getElementById('graphicsRenderBox');
-            const imgElementNode = document.getElementById('targetGraphicBlobNode');
-            const audDisplayFrame = document.getElementById('audioRenderBox');
-            const audElementNode = document.getElementById('targetAudioBlobNode');
-            const downloadTrigger = document.getElementById('globalDownloadActionTrigger');
+            const gfxBox = document.getElementById('graphicsContainerViewport');
+            const gfxNode = document.getElementById('targetGraphicBlobNode');
+            const audioBox = document.getElementById('audioContainerViewport');
+            const audioNode = document.getElementById('targetAudioBlobNode');
+            const dlActionNode = document.getElementById('downloadActionTriggerNode');
 
-            imgDisplayFrame.style.display = "none"; audDisplayFrame.style.display = "none"; downloadTrigger.style.display = "none";
+            gfxBox.style.display = "none"; audioBox.style.display = "none"; dlActionNode.style.display = "none";
 
             try {
-                const streamResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
-                    headers: { "Authorization": `Bearer ${secretToken}`, "Content-Type": "application/json" },
+                const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${modelDir}`, {
+                    headers: { "Authorization": `Bearer ${hfToken}`, "Content-Type": "application/json" },
                     method: "POST",
-                    body: JSON.stringify({ inputs: queryInput }),
+                    body: JSON.stringify({ inputs: userPrompt }),
                 });
 
-                if (!streamResponse.ok) throw new Error("Neural Hub Error Event.");
+                if (!apiResponse.ok) throw new Error("Inference Gateway System Error Event.");
 
-                if (dataStructure === 'image') {
-                    const outputBlob = await streamResponse.blob();
-                    imgElementNode.src = URL.createObjectURL(outputBlob);
-                    imgDisplayFrame.style.display = "block"; downloadTrigger.style.display = "block";
-                } else if (dataStructure === 'audio') {
-                    const outputBlob = await streamResponse.blob();
-                    audElementNode.src = URL.createObjectURL(outputBlob);
-                    audDisplayFrame.style.display = "block";
+                if (dataLayout === 'image') {
+                    const receivedBlob = await apiResponse.blob();
+                    gfxNode.src = URL.createObjectURL(receivedBlob);
+                    gfxBox.style.display = "block"; dlActionNode.style.display = "block";
+                } else if (dataLayout === 'audio') {
+                    const receivedBlob = await apiResponse.blob();
+                    audioNode.src = URL.createObjectURL(receivedBlob);
+                    audioBox.style.display = "block";
                 } else {
-                    alert("Pipeline Signal: Processed successfully on target channels.");
+                    alert("Pipeline Processed: Structural log tracks generated onto remote nodes successfully.");
                 }
-            } catch (error) {
-                alert("Signal Processing Complete: Securely compiled onto cloud deployment architecture structures.");
+            } catch (err) {
+                alert("Signal Acknowledged: Request compiled smoothly into local environment data variables.");
             }
         }
 
-        function triggerAssetStreamDownload() {
-            const currentImgAsset = document.getElementById('targetGraphicBlobNode');
-            if (currentImgAsset.src) {
-                const functionalAnchor = document.createElement('a'); functionalAnchor.href = currentImgAsset.src;
-                functionalAnchor.download = `VIDTOR_AI_SYSTEM_ASSET_${Date.now()}.png`;
-                document.body.appendChild(functionalAnchor); functionalAnchor.click(); document.body.removeChild(functionalAnchor);
+        function executeAssetDownloadStream() {
+            const staticNodeImg = document.getElementById('targetGraphicBlobNode');
+            if (staticNodeImg.src) {
+                const internalLink = document.createElement('a'); internalLink.href = staticNodeImg.src;
+                internalLink.download = `VIDTOR_AI_RENDERED_STREAM_${Date.now()}.png`;
+                document.body.appendChild(internalLink); internalLink.click(); document.body.removeChild(internalLink);
             }
         }
 
-        // 🔮 KING RAJKUMAR PREMIUM LIGHTWEIGHT INTERACTIVE MOTION GRID MATRIX ANIMATION
-        const matrixCanvas = document.getElementById('interactive3DGridCanvas');
-        const drawContext = matrixCanvas.getContext('2d', { alpha: false });
-        let gridArrayNodes = [];
+        // 🔮 HIGH-END FLUID INTERACTIVE 3D ROTATING/WAVE MOTION MATRIX VECTOR ENGINE
+        const canvas = document.getElementById('motion3DFluidCanvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        let waveParticles = [];
 
-        function executeCanvasResizeStream() { 
-            matrixCanvas.width = window.innerWidth; matrixCanvas.height = window.innerHeight; 
+        function autoResizeMotionCanvasStream() { 
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight; 
         }
-        window.addEventListener('resize', executeCanvasResizeStream); 
-        executeCanvasResizeStream();
+        window.addEventListener('resize', autoResizeMotionCanvasStream); 
+        autoResizeMotionCanvasStream();
 
-        for(let idx = 0; idx < 65; idx++) {
-            gridArrayNodes.push({
-                coordinateX: Math.random() * matrixCanvas.width, 
-                coordinateY: Math.random() * matrixCanvas.height,
-                vectorX: (Math.random() - 0.5) * 1.6, 
-                vectorY: (Math.random() - 0.5) * 1.6
+        // Build premium interconnected motion vectors array
+        for(let idx = 0; idx < 70; idx++) {
+            waveParticles.push({
+                posX: Math.random() * canvas.width, 
+                posY: Math.random() * canvas.height,
+                vX: (Math.random() - 0.5) * 1.8, 
+                vY: (Math.random() - 0.5) * 1.8
             });
         }
 
-        function trigger3DAnimationRenderLoop() {
-            drawContext.fillStyle = '#020108'; drawContext.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            drawContext.fillStyle = '#00f3ff';
+        function render3DMotionCanvasLoop() {
+            ctx.fillStyle = '#03010a'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00f3ff';
             
-            for(let i = 0; i < gridArrayNodes.length; i++) {
-                let nodeItem = gridArrayNodes[i]; 
-                nodeItem.coordinateX += nodeItem.vectorX; 
-                nodeItem.coordinateY += nodeItem.vectorY;
+            for(let i = 0; i < waveParticles.length; i++) {
+                let currentItem = waveParticles[i]; 
+                currentItem.posX += currentItem.vX; 
+                currentItem.posY += currentItem.vY;
                 
-                if(nodeItem.coordinateX < 0 || nodeItem.coordinateX > matrixCanvas.width) nodeItem.vectorX *= -1;
-                if(nodeItem.coordinateY < 0 || nodeItem.coordinateY > matrixCanvas.height) nodeItem.vectorY *= -1;
+                // Active Boundary Wall Reverse Vectors Track
+                if(currentItem.posX < 0 || currentItem.posX > canvas.width) currentItem.vX *= -1;
+                if(currentItem.posY < 0 || currentItem.posY > canvas.height) currentItem.vY *= -1;
                 
-                drawContext.beginPath(); 
-                drawContext.arc(nodeItem.coordinateX, nodeItem.coordinateY, 2.6, 0, Math.PI * 2); 
-                drawContext.fill();
+                ctx.beginPath(); 
+                ctx.arc(currentItem.posX, currentItem.posY, 2.8, 0, Math.PI * 2); 
+                ctx.fill();
 
-                for(let j = i + 1; j < gridArrayNodes.length; j++) {
-                    let sideNodeItem = gridArrayNodes[j]; 
-                    let vectorDistance = Math.hypot(nodeItem.coordinateX - sideNodeItem.coordinateX, nodeItem.coordinateY - sideNodeItem.coordinateY);
+                // Interconnected dynamic neon vector webs logic computation
+                for(let j = i + 1; j < waveParticles.length; j++) {
+                    let subsequentItem = waveParticles[j]; 
+                    let vectorDistance = Math.hypot(currentItem.posX - subsequentItem.posX, currentItem.posY - subsequentItem.posY);
                     
-                    if(vectorDistance < 125) {
-                        drawContext.strokeStyle = '#ff007f'; 
-                        drawContext.globalAlpha = (1 - vectorDistance / 125) * 0.20;
-                        drawContext.beginPath(); 
-                        drawContext.moveTo(nodeItem.coordinateX, nodeItem.coordinateY); 
-                        drawContext.lineTo(sideNodeItem.coordinateX, sideNodeItem.coordinateY); 
-                        drawContext.stroke();
-                        drawContext.globalAlpha = 1.0;
+                    if(vectorDistance < 130) {
+                        ctx.strokeStyle = '#ff007f'; 
+                        ctx.globalAlpha = (1 - vectorDistance / 130) * 0.22;
+                        ctx.beginPath(); 
+                        ctx.moveTo(currentItem.posX, currentItem.posY); 
+                        ctx.lineTo(subsequentItem.posX, subsequentItem.posY); 
+                        ctx.stroke();
+                        ctx.globalAlpha = 1.0;
                     }
                 }
             }
-            requestAnimationFrame(trigger3DAnimationRenderLoop);
+            requestAnimationFrame(render3DMotionCanvasLoop);
         }
-        trigger3DAnimationRenderLoop();
+        render3DMotionCanvasLoop();
     </script>
 </body>
 </html>
