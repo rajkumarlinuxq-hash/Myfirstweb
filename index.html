@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Rajkumar">
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -19,7 +19,6 @@
             --bg: #050811;
             --card: #0d1527;
             --text: #f3f4f6;
-            --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
 
@@ -33,7 +32,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* --- GLOBAL NAVIGATION HEADER --- */
@@ -43,7 +44,7 @@
             left: 0;
             width: 100%;
             height: 70px;
-            background: rgba(5, 8, 17, 0.8);
+            background: rgba(5, 8, 17, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
             display: flex;
@@ -60,7 +61,6 @@
             align-items: center;
             gap: 12px;
             cursor: pointer;
-            position: relative;
         }
 
         .siri-pulse-left {
@@ -93,12 +93,10 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* DROP MENU SYSTEM BUTTON */
         .menu-dots {
             font-size: 24px;
             cursor: pointer;
             color: var(--asmani);
-            transition: 0.3s;
         }
 
         /* NAVIGATION DROPDOWN MENU */
@@ -125,9 +123,6 @@
             font-weight: 600;
             border-radius: 10px;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .dropdown-menu a:hover {
@@ -135,7 +130,7 @@
             color: var(--asmani);
         }
 
-        /* --- DASHBOARD CONTAINERS --- */
+        /* --- DASHBOARD PANELS --- */
         .page-panel {
             display: none;
             width: 100%;
@@ -147,6 +142,7 @@
             border: 1px solid var(--border);
             box-sizing: border-box;
             animation: fadeIn 0.4s ease-in-out;
+            text-align: center;
         }
 
         .active-panel { display: block; }
@@ -156,6 +152,56 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- EXCLUSIVE BEAUTIFUL CURSIVE HOME TAB --- */
+        .cursive-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            margin: 10px 0;
+            background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .cursive-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--asmani);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .home-welcome-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.75;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-explore {
+            padding: 12px 30px;
+            border: 1px solid var(--asmani);
+            background: transparent;
+            color: var(--asmani);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-explore:hover {
+            background: var(--asmani);
+            color: #050811;
+            box-shadow: 0 0 15px var(--asmani);
+            transform: translateY(-2px);
+        }
+
+        /* UTILITY INNER HEADINGS */
         h2 {
             font-size: 1.8rem;
             font-weight: 800;
@@ -165,41 +211,14 @@
             -webkit-text-fill-color: transparent;
         }
 
-        p.description {
+        .description {
             font-size: 0.88rem;
             opacity: 0.7;
             margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        /* GRID HOME CARDS */
-        .home-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .tool-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 18px;
-            text-align: left;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .tool-card:hover {
-            border-color: var(--asmani);
-            background: rgba(0, 210, 255, 0.03);
-            transform: translateY(-2px);
-        }
-
-        .tool-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--asmani); }
-        .tool-card p { margin: 0; font-size: 0.82rem; opacity: 0.6; }
-
-        /* UI ELEMENTS */
+        /* FORM ELEMENTS */
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
         input[type="text"], input[type="file"], select {
@@ -244,35 +263,17 @@
             <a href="#" onclick="switchPanel('photo-text-video')">🎞️ Photo+Text to Video</a>
             <a href="#" onclick="switchPanel('ig-likes')">❤️ Instagram Likes Plus</a>
             <a href="#" onclick="switchPanel('ig-followers')">📈 IG Reel 1K Followers</a>
-            <a href="#" onclick="switchPanel('about')">ℹ️ About Developer</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ About Website</a>
         </div>
     </header>
 
     <div class="page-panel active-panel" id="panel-home">
-        <h2>System Workspace</h2>
-        <p class="description">Select any premium creation or automation sub-engine below developed natively by Rajkumar.</p>
-        <div class="home-grid">
-            <div class="tool-card" onclick="switchPanel('text-to-photo')">
-                <h3>Text to Photo Generator</h3>
-                <p>Convert descriptive structural prompts into high-fidelity image visuals instantly.</p>
-            </div>
-            <div class="tool-card" onclick="switchPanel('photo-to-video')">
-                <h3>Photo to Video Generator</h3>
-                <p>Render premium cinematic vector and pan fluid animations from standalone graphics.</p>
-            </div>
-            <div class="tool-card" onclick="switchPanel('photo-text-video')">
-                <h3>Photo + Text to Video</h3>
-                <p>Inject operational runtime textual subtitles directly over rendering dynamic video paths.</p>
-            </div>
-            <div class="tool-card" onclick="switchPanel('ig-likes')">
-                <h3>Instagram Likes Plus</h3>
-                <p>Accelerate content distribution metrics via cloud API link submission networks.</p>
-            </div>
-            <div class="tool-card" onclick="switchPanel('ig-followers')">
-                <h3>Instagram Reel 1K Followers</h3>
-                <p>Optimize visibility algorithms to secure organic active growth targets instantly.</p>
-            </div>
-        </div>
+        <div class="cursive-title">Vidtor AI</div>
+        <div class="cursive-subtitle">by Rajkumar</div>
+        <p class="home-welcome-text">
+            Welcome to a premium world of artificial intelligence. Experience seamless image generation, cinematic motion video creation, and high-fidelity social media automation tools crafted to perfection.
+        </p>
+        <button class="btn-explore" onclick="toggleNavigationMenu()">Click RK Logo To Explore</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
@@ -280,9 +281,9 @@
         <p class="description">AI Neural Visualizer Engine</p>
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
-            <input type="text" placeholder="e.g., Cyberpunk cinematic street, rainy window neon lights...">
+            <input type="text" placeholder="e.g., Aesthetic cozy lo-fi jazz cafe, cinematic lighting...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Generate Creative Photo</button>
+        <button class="btn-action" onclick="simulateProcessing()">Generate Photo</button>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
@@ -294,9 +295,9 @@
         </div>
         <div class="input-wrapper">
             <label>Motion Trajectory Prompt:</label>
-            <input type="text" placeholder="e.g., Slow continuous zoom, right horizontal pan...">
+            <input type="text" placeholder="e.g., Slow continuous zoom in, aesthetic rainy look...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Compile Motion Video</button>
+        <button class="btn-action" onclick="simulateProcessing()">Compile Video</button>
     </div>
 
     <div class="page-panel" id="panel-photo-text-video">
@@ -318,9 +319,9 @@
         <p class="description">Target Metric Distribution System</p>
         <div class="input-wrapper">
             <label>Instagram Target Post Link:</label>
-            <input type="text" placeholder="https://www.instagram.com/p/... marketing matrix">
+            <input type="text" placeholder="https://www.instagram.com/p/...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Inject Engagement Delivery</button>
+        <button class="btn-action" onclick="simulateProcessing()">Inject Likes</button>
     </div>
 
     <div class="page-panel" id="panel-ig-followers">
@@ -328,38 +329,33 @@
         <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
         <div class="input-wrapper">
             <label>Instagram Profile Username:</label>
-            <input type="text" placeholder="Enter handle username without @ character...">
+            <input type="text" placeholder="Enter profile handle username...">
         </div>
-        <button class="btn-action" onclick="simulateProcessing()">Deploy Growth Sequence</button>
+        <button class="btn-action" onclick="simulateProcessing()">Deploy Growth</button>
     </div>
 
     <div class="page-panel" id="panel-about">
-        <h2>About VIDTOR AI</h2>
-        <p class="description" style="text-align: justify; font-size: 0.95rem;">
-            VIDTOR AI is a comprehensive modern web utility suite engineered completely by <strong>Rajkumar</strong>. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
+        <h2>About Website</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6;">
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
         </p>
-        <button class="btn-action" onclick="switchPanel('home')">Return To Main Desk</button>
+        <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
     </div>
 
     <div class="devotional-outro">RADHE RADHE</div>
 
     <script>
-        // Dropdown Toggle Engine
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Seamless Multi-Page Dynamic Tabs Router
         function switchPanel(panelId) {
-            // Close dropdown safely after command execution
             document.getElementById('navDropdown').style.display = 'none';
             
-            // Hide all active view states
             const allPanels = document.querySelectorAll('.page-panel');
             allPanels.forEach(panel => panel.classList.remove('active-panel'));
             
-            // Activate structural panel view requested by click mapping
             const activePanel = document.getElementById('panel-' + panelId);
             if(activePanel) {
                 activePanel.classList.add('active-panel');
@@ -368,10 +364,9 @@
         }
 
         function simulateProcessing() {
-            alert("SaaS Module Core Process Verified By Rajkumar AI Engine!");
+            alert("Process Verified By Rajkumar AI Engine!");
         }
 
-        // Close dropdown when clicking workspace vectors outside layout container bounds
         window.onclick = function(event) {
             if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
                 document.getElementById('navDropdown').style.display = 'none';
