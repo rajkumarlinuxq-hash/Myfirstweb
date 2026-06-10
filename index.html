@@ -4,193 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI - Multi-Cube 3D Kinetic Neural Matrix</title>
+    <title>VIDTOR AI - Overlord 3D Matrix Matrix Engine</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@900&family=Orbitron:wght@600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@900&family=Orbitron:wght@700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --neon-cyan: #00f0ff;
             --neon-pink: #ff007f;
             --neon-purple: #9d4edd;
-            --dark-space: #020208;
-            --glass-sheet: rgba(10, 10, 28, 0.85);
-            --border-glow: rgba(0, 240, 255, 0.18);
+            --blood-neon: #ff003c;
+            --dark-space: #010103;
+            --glass-sheet: rgba(4, 4, 12, 0.92);
+            --border-glow: rgba(255, 0, 127, 0.3);
             --cube-color: #00f0ff;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            margin: 0; padding: 140px 20px 40px 20px;
+            margin: 0; padding: 140px 15px 50px 15px;
             background-color: var(--dark-space); color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh; overflow-x: hidden; position: relative;
+            min-height: 250vh; overflow-x: hidden; position: relative;
         }
 
-        /* 🌌 BACKGROUND NEBULA OVERLAY */
+        /* 🌌 GLOBAL AMBIENT GAS MATRIX BACKGROUND */
         body::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.12) 0%, transparent 50%);
-            z-index: -3; pointer-events: none; position: fixed;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 0, 60, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 30% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 45%);
+            z-index: -5; pointer-events: none; position: fixed;
         }
 
-        /* 🎲 🎰 20+ MULTI-AXIS KINETIC FLOATING 3D CUBES INTERFACE */
-        .kinetic-bg-stage {
-            position: absolute; width: 60px; height: 60px; perspective: 400px; z-index: -1; pointer-events: none;
-            animation: globalFloatEngine var(--speed, 12s) ease-in-out infinite alternate;
-            opacity: 0.4;
+        /* 🎰 3D FLOATING ENGINES LAYER MATRIX (SCROLL TO ENCOUNTER 40+ 3D ASSETS) */
+        .scrolling-3d-stage {
+            position: absolute; width: var(--box-sz, 70px); height: var(--box-sz, 70px); 
+            perspective: 500px; z-index: -1; pointer-events: none;
+            animation: verticalFloatTrack var(--float-dur, 14s) ease-in-out infinite alternate;
+            opacity: var(--mesh-op, 0.45);
         }
-        .kinetic-cube-mesh {
+        .scrolling-3d-cube-mesh {
             width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
-            animation: spinCube var(--spin-speed, 8s) linear infinite;
+            animation: hyperSpinAxis var(--spin-dur, 10s) linear infinite;
         }
-        .kinetic-cube-face {
-            position: absolute; width: 60px; height: 60px; background: rgba(5, 5, 18, 0.85);
-            border: 2px solid var(--cube-color); display: flex; align-items: center; justify-content: center;
+        .scrolling-3d-face {
+            position: absolute; width: 100%; height: 100%; background: rgba(2, 2, 6, 0.94);
+            border: 2px dashed var(--cube-color); display: flex; align-items: center; justify-content: center;
             font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 900; color: #fff;
-            text-shadow: 0 0 8px var(--cube-color); box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
-            transition: border-color 0.4s, text-shadow 0.4s;
-        }
-        .k-front  { transform: rotateY(0deg) translateZ(30px); }
-        .k-back   { transform: rotateY(180deg) translateZ(30px); }
-        .k-top    { transform: rotateX(90deg) translateZ(30px); }
-        .k-bottom { transform: rotateX(-90deg) translateZ(30px); }
-        .k-left   { transform: rotateY(-90deg) translateZ(30px); }
-        .k-right  { transform: rotateY(90deg) translateZ(30px); }
-
-        @keyframes spinCube {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
-        }
-        @keyframes globalFloatEngine {
-            0% { transform: translateY(0) scale(0.9); }
-            100% { transform: translateY(-80px) scale(1.1); }
-        }
-
-        /* --- STABLE HEADER MANAGEMENT --- */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 95px;
-            background: rgba(2, 2, 8, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(0, 240, 255, 0.15);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 35px; z-index: 5000; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            text-shadow: 0 0 10px var(--cube-color); box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.25);
+            transition: border-color 0.3s;
         }
         
-        /* 👈 LEFT BRAND TEXT LAYER */
-        .header-left-brand { display: flex; flex-direction: column; cursor: pointer; text-decoration: none; }
-        .header-title-text { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-shadow: 0 0 12px rgba(0, 240, 255, 0.3); }
-        .header-signature-text { font-family: 'Alex Brush', cursive; font-size: 1.5rem; color: #ffbc00; text-shadow: 0 0 10px rgba(255,188,0,0.3); margin-top: -6px; }
+        /* 3D Transform Vector Coordinate Setups */
+        .f-front  { transform: rotateY(0deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
+        .f-back   { transform: rotateY(180deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
+        .f-top    { transform: rotateX(90deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
+        .f-bottom { transform: rotateX(-90deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
+        .f-left   { transform: rotateY(-90deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
+        .f-right  { transform: rotateY(90deg) translateZ(calc(var(--box-sz, 70px) / 2)); }
 
-        /* 👉 RIGHT SIDE GLOWING RK INTERACTIVE DRAWER TRIGGER LOGO */
-        .header-right-rk-logo {
-            width: 54px; height: 54px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 18px; color: #ffffff;
-            border: 2px solid #ffffff; box-shadow: 0 0 20px var(--neon-cyan);
-            cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        @keyframes hyperSpinAxis {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
         }
-        .header-right-rk-logo:hover { transform: scale(1.1) rotate(12deg); box-shadow: 0 0 30px var(--neon-pink); border-color: var(--neon-pink); }
+        @keyframes verticalFloatTrack {
+            0% { transform: translateY(0) scale(0.95); }
+            100% { transform: translateY(-90px) scale(1.05); }
+        }
 
-        /* --- COLLAPSIBLE SLIDE MENU DRAWER --- */
+        /* --- IMMOVABLE TOP GLASS HEADER ARCHITECTURE --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100px;
+            background: rgba(1, 1, 3, 0.95); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-bottom: 2px solid rgba(255, 0, 60, 0.25);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px; z-index: 5000; box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+        
+        .header-left-brand { display: flex; flex-direction: column; cursor: pointer; text-decoration: none; }
+        .header-title-text { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 3px; color: #ffffff; text-shadow: 0 0 15px var(--blood-neon); }
+        .header-signature-text { font-family: 'Alex Brush', cursive; font-size: 1.7rem; color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan); margin-top: -8px; }
+
+        .header-right-rk-logo {
+            width: 58px; height: 58px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--blood-neon), var(--neon-purple), var(--neon-cyan));
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 20px; color: #ffffff;
+            border: 2px solid #ffffff; box-shadow: 0 0 25px var(--blood-neon);
+            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .header-right-rk-logo:hover { transform: scale(1.15) rotate(25deg); box-shadow: 0 0 35px var(--neon-pink); border-color: var(--neon-pink); }
+
+        /* --- DRAWER INTERFACE SLIDER SYSTEM --- */
         .side-navigation-panel {
             position: fixed; top: 0; right: -360px; width: 340px; height: 100vh;
-            background: rgba(3, 3, 12, 0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border-left: 2px solid var(--neon-cyan); box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+            background: rgba(2, 2, 5, 0.99); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border-left: 2px solid var(--blood-neon); box-shadow: -15px 0 50px rgba(0,0,0,0.9);
             z-index: 9000; padding: 120px 25px 40px 25px; display: flex; flex-direction: column;
             gap: 25px; transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); overflow-y: auto;
         }
         .side-navigation-panel.panel-active { right: 0; }
         
-        .drawer-section-title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--neon-pink); letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,0,127,0.2); padding-bottom: 8px; margin: 0; }
+        .drawer-section-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--neon-pink); letter-spacing: 2px; text-transform: uppercase; border-bottom: 2px solid rgba(255,0,127,0.25); padding-bottom: 8px; margin: 0; }
         
-        .tools-selection-grid { display: flex; flex-direction: column; gap: 12px; }
+        .tools-selection-grid { display: flex; flex-direction: column; gap: 14px; }
         .tool-selection-row {
-            display: flex; align-items: center; gap: 15px; padding: 14px;
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; gap: 15px; padding: 15px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; cursor: pointer; transition: 0.3s;
         }
-        .tool-selection-row:hover { background: rgba(0, 240, 255, 0.08); border-color: var(--neon-cyan); transform: translateX(-5px); }
-        .tool-selection-title { font-family: 'Orbitron', sans-serif; font-size: 0.88rem; font-weight: 700; color: #fff; }
+        .tool-selection-row:hover { background: rgba(255, 0, 60, 0.1); border-color: var(--blood-neon); transform: translateX(-5px); }
+        .tool-selection-title { font-family: 'Alex Brush', cursive; font-size: 1.4rem; font-weight: 700; color: #fff; text-shadow: 0 0 5px var(--neon-cyan); }
         
-        .about-infobox-card { background: rgba(157, 78, 221, 0.05); border: 1px solid rgba(157, 78, 221, 0.2); border-radius: 16px; padding: 18px; font-size: 0.85rem; line-height: 1.6; color: #b0b0c5; }
+        .about-infobox-card { font-family: 'Space Grotesk', sans-serif; background: rgba(157, 78, 221, 0.05); border: 1px solid rgba(157, 78, 221, 0.2); border-radius: 16px; padding: 18px; font-size: 0.85rem; line-height: 1.6; color: #b0b0c5; }
 
-        /* --- CONTENT WRAPPER HUB --- */
-        .workspace-master-container { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; gap: 35px; position: relative; z-index: 10; }
+        /* --- SYSTEM CONTENT TERMINAL ARCHITECTURE --- */
+        .workspace-master-container { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; z-index: 10; margin-top: 20px; }
         
-        /* 🎲 MAIN FOCUS CENTRAL 3D CUBE */
-        .stage-3d-viewport { width: 100%; height: 160px; perspective: 800px; display: flex; align-items: center; justify-content: center; }
-        .cube-matrix-mesh { width: 80px; height: 80px; position: relative; transform-style: preserve-3d; animation: spinCube 8s linear infinite; }
+        /* CENTRAL HIGHLIGHT 3D NODE */
+        .stage-3d-viewport { width: 100%; height: 180px; perspective: 800px; display: flex; align-items: center; justify-content: center; }
+        .cube-matrix-mesh { width: 90px; height: 90px; position: relative; transform-style: preserve-3d; animation: hyperSpinAxis 7s linear infinite; }
         
         .cube-wall-structural {
-            position: absolute; width: 80px; height: 80px; background: rgba(4, 4, 14, 0.95); border: 3px solid var(--cube-color);
-            display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #ffffff;
-            text-shadow: 0 0 15px var(--cube-color); box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.2); transition: border-color 0.4s, text-shadow 0.4s;
+            position: absolute; width: 90px; height: 90px; background: rgba(2, 2, 6, 0.98); border: 3px solid var(--cube-color);
+            display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; color: #ffffff;
+            text-shadow: 0 0 20px var(--cube-color); box-shadow: inset 0 0 25px rgba(0, 240, 255, 0.3); transition: border-color 0.4s;
         }
-        .face-front  { transform: rotateY(0deg) translateZ(40px); }
-        .face-back   { transform: rotateY(180deg) translateZ(40px); }
-        .face-top    { transform: rotateX(90deg) translateZ(40px); }
-        .face-bottom { transform: rotateX(-90deg) translateZ(40px); }
-        .face-left   { transform: rotateY(-90deg) translateZ(40px); }
-        .face-right  { transform: rotateY(90deg) translateZ(40px); }
 
-        .brand-hero-title-group { text-align: center; max-width: 700px; }
-        .hero-primary-heading { font-family: 'Orbitron', sans-serif; font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin: 0; background: linear-gradient(to right, var(--neon-cyan), #ffffff, var(--neon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .brand-hero-title-group { text-align: center; max-width: 800px; }
+        .hero-primary-heading { font-family: 'Orbitron', sans-serif; font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; margin: 0; background: linear-gradient(to right, var(--blood-neon), #ffffff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* --- CORE APPLICATION FORM PANEL --- */
+        /* EXTREME CURSIVE DARK MODE INPUT CARDS */
         .control-console-card {
-            width: 100%; max-width: 650px; background: var(--glass-sheet); border: 2px solid var(--border-glow); border-radius: 28px; padding: 35px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7); position: relative; overflow: hidden; backdrop-filter: blur(15px);
+            width: 100%; max-width: 680px; background: var(--glass-sheet); border: 2px solid var(--border-glow); border-radius: 32px; padding: 40px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.85); position: relative; overflow: hidden; backdrop-filter: blur(20px);
         }
-        .control-console-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink)); }
+        .control-console-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--blood-neon), var(--neon-purple), var(--neon-cyan)); }
 
-        .input-group-container { text-align: left; margin-top: 20px; width: 100%; }
-        .input-group-container label { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 800; color: var(--neon-cyan); display: block; margin-bottom: 8px; letter-spacing: 1.5px; text-transform: uppercase; }
+        .input-group-container { text-align: left; margin-top: 24px; width: 100%; }
+        .input-group-container label { font-family: 'Alex Brush', cursive; font-size: 1.7rem; font-weight: 700; color: var(--neon-cyan); display: block; margin-bottom: 6px; text-shadow: 0 0 5px rgba(0,240,255,0.4); }
         
         input[type="text"], select {
-            width: 100%; padding: 15px; background: rgba(1, 1, 6, 0.95); border: 2px solid rgba(255, 255, 255, 0.08);
-            color: #ffffff; border-radius: 12px; font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+            width: 100%; padding: 16px; background: rgba(0, 0, 2, 0.98); border: 2px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff; border-radius: 14px; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; outline: none; transition: 0.3s;
         }
-        input[type="text"]:focus, select:focus { border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 0, 127, 0.2); }
+        input[type="text"]:focus, select:focus { border-color: var(--blood-neon); box-shadow: 0 0 20px rgba(255, 0, 60, 0.3); }
 
         .btn-fire-engine {
-            width: 100%; padding: 18px; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-            color: #ffffff; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; cursor: pointer; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+            width: 100%; padding: 20px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--blood-neon), var(--neon-purple), var(--neon-cyan));
+            color: #ffffff; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; cursor: pointer; margin-top: 35px; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s;
         }
-        .btn-fire-engine:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 0, 127, 0.35); }
+        .btn-fire-engine:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255, 0, 60, 0.45); }
 
-        .console-stream-logs { margin-top: 20px; font-size: 0.95rem; color: var(--neon-pink); font-weight: 700; min-height: 25px; text-align: center; }
-        .success-stream-logs { color: #00ffcc !important; text-shadow: 0 0 10px rgba(0, 255, 204, 0.3); }
+        /* SCREEN CONSOLE FEEDBACK NOTIFICATION LABELS (NO SYSTEM ALERTS) */
+        .console-stream-logs { margin-top: 22px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--blood-neon); font-weight: 700; min-height: 30px; text-align: center; text-shadow: 0 0 8px rgba(255,0,60,0.3); }
+        .success-stream-logs { color: #00ffcc !important; text-shadow: 0 0 12px rgba(0, 255, 204, 0.4); }
 
-        .output-viewport-box { margin-top: 30px; width: 100%; display: none; border-radius: 16px; overflow: hidden; border: 2px solid var(--neon-cyan); }
+        .output-viewport-box { margin-top: 30px; width: 100%; display: none; border-radius: 20px; overflow: hidden; border: 2px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,240,255,0.2); }
         .output-viewport-box img { width: 100%; display: block; }
-        .output-text-viewport { margin-top: 30px; width: 100%; display: none; padding: 20px; background: rgba(1,1,6,0.85); border-radius: 12px; border: 1px solid var(--neon-purple); text-align: left; font-size: 0.95rem; line-height: 1.6; }
+        .output-text-viewport { margin-top: 30px; width: 100%; display: none; padding: 25px; background: rgba(0,0,3,0.92); border-radius: 14px; border: 2px dashed var(--neon-purple); text-align: left; font-size: 1rem; line-height: 1.7; }
         
-        .btn-download-trigger { display: none; width: 100%; padding: 15px; margin-top: 15px; border: none; background: #00ffcc; color: #020208; font-family: 'Orbitron', sans-serif; font-weight: 900; border-radius: 12px; cursor: pointer; text-transform: uppercase; }
+        .btn-download-trigger { display: none; width: 100%; padding: 16px; margin-top: 18px; border: none; background: #00ffcc; color: #010103; font-family: 'Orbitron', sans-serif; font-weight: 900; border-radius: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
 
-        .devotional-footer-stamp { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-top: 55px; background: linear-gradient(90deg, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 5px; font-weight: 900; }
+        .devotional-footer-stamp { font-family: 'Cinzel', serif; font-size: 2rem; margin-top: 180px; background: linear-gradient(90deg, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 8px; font-weight: 900; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
 
-    <div class="kinetic-bg-stage" style="top:5%; left:10%; --speed:9s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:12%; right:8%; --speed:14s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
-    <div class="kinetic-bg-stage" style="top:22%; left:4%; --speed:11s; --spin-speed:6s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:30%; right:12%; --speed:13s; --spin-speed:9s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VID</div><div class="kinetic-cube-face k-back">VID</div><div class="kinetic-cube-face k-top">VID</div><div class="kinetic-cube-face k-bottom">VID</div><div class="kinetic-cube-face k-left">VID</div><div class="kinetic-cube-face k-right">VID</div></div></div>
-    <div class="kinetic-bg-stage" style="top:42%; left:8%; --speed:10s; --spin-speed:4s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:52%; right:5%; --speed:16s; --spin-speed:11s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
-    <div class="kinetic-bg-stage" style="top:62%; left:3%; --speed:12s; --spin-speed:8s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:72%; right:15%; --speed:8s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VIDTOR</div><div class="kinetic-cube-face k-back">VIDTOR</div><div class="kinetic-cube-face k-top">VIDTOR</div><div class="kinetic-cube-face k-bottom">VIDTOR</div><div class="kinetic-cube-face k-left">VIDTOR</div><div class="kinetic-cube-face k-right">VIDTOR</div></div></div>
-    <div class="kinetic-bg-stage" style="top:82%; left:7%; --speed:15s; --spin-speed:10s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:92%; right:6%; --speed:11s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
-    <div class="kinetic-bg-stage" style="top:104%; left:12%; --speed:13s; --spin-speed:6s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:114%; right:9%; --speed:10s; --spin-speed:5s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VID</div><div class="kinetic-cube-face k-back">VID</div><div class="kinetic-cube-face k-top">VID</div><div class="kinetic-cube-face k-bottom">VID</div><div class="kinetic-cube-face k-left">VID</div><div class="kinetic-cube-face k-right">VID</div></div></div>
-    <div class="kinetic-bg-stage" style="top:126%; left:5%; --speed:17s; --spin-speed:12s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">RK</div><div class="kinetic-cube-face k-back">RK</div><div class="kinetic-cube-face k-top">RK</div><div class="kinetic-cube-face k-bottom">RK</div><div class="kinetic-cube-face k-left">RK</div><div class="kinetic-cube-face k-right">RK</div></div></div>
-    <div class="kinetic-bg-stage" style="top:136%; right:14%; --speed:12s; --spin-speed:8s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">AI</div><div class="kinetic-cube-face k-back">AI</div><div class="kinetic-cube-face k-top">AI</div><div class="kinetic-cube-face k-bottom">AI</div><div class="kinetic-cube-face k-left">AI</div><div class="kinetic-cube-face k-right">AI</div></div></div>
-    <div class="kinetic-bg-stage" style="top:146%; left:9%; --speed:14s; --spin-speed:7s;"><div class="kinetic-cube-mesh"><div class="kinetic-cube-face k-front">VIDTOR</div><div class="kinetic-cube-face k-back">VIDTOR</div><div class="kinetic-cube-face k-top">VIDTOR</div><div class="kinetic-cube-face k-bottom">VIDTOR</div><div class="kinetic-cube-face k-left">VIDTOR</div><div class="kinetic-cube-face k-right">VIDTOR</div></div></div>
+    <div class="scrolling-3d-stage" style="top:4%; left:5%; --float-dur:11s; --spin-dur:6s; --box-sz:65px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:8%; right:7%; --float-dur:15s; --spin-dur:9s; --box-sz:80px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">AI</div><div class="scrolling-3d-face f-back">AI</div><div class="scrolling-3d-face f-top">AI</div><div class="scrolling-3d-face f-bottom">AI</div><div class="scrolling-3d-face f-left">AI</div><div class="scrolling-3d-face f-right">AI</div></div></div>
+    <div class="scrolling-3d-stage" style="top:15%; left:8%; --float-dur:12s; --spin-dur:7s; --box-sz:55px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">VID</div><div class="scrolling-3d-face f-back">VID</div><div class="scrolling-3d-face f-top">VID</div><div class="scrolling-3d-face f-bottom">VID</div><div class="scrolling-3d-face f-left">VID</div><div class="scrolling-3d-face f-right">VID</div></div></div>
+    <div class="scrolling-3d-stage" style="top:22%; right:4%; --float-dur:16s; --spin-dur:12s; --box-sz:90px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">MATRIX</div><div class="scrolling-3d-face f-back">MATRIX</div><div class="scrolling-3d-face f-top">MATRIX</div><div class="scrolling-3d-face f-bottom">MATRIX</div><div class="scrolling-3d-face f-left">MATRIX</div><div class="scrolling-3d-face f-right">MATRIX</div></div></div>
+    <div class="scrolling-3d-stage" style="top:32%; left:3%; --float-dur:10s; --spin-dur:5s; --box-sz:75px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:40%; right:10%; --float-dur:14s; --spin-dur:8s; --box-sz:60px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">CORE</div><div class="scrolling-3d-face f-back">CORE</div><div class="scrolling-3d-face f-top">CORE</div><div class="scrolling-3d-face f-bottom">CORE</div><div class="scrolling-3d-face f-left">CORE</div><div class="scrolling-3d-face f-right">CORE</div></div></div>
+    <div class="scrolling-3d-stage" style="top:50%; left:6%; --float-dur:13s; --spin-dur:11s; --box-sz:85px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">3D</div><div class="scrolling-3d-face f-back">3D</div><div class="scrolling-3d-face f-top">3D</div><div class="scrolling-3d-face f-bottom">3D</div><div class="scrolling-3d-face f-left">3D</div><div class="scrolling-3d-face f-right">3D</div></div></div>
+    <div class="scrolling-3d-stage" style="top:62%; right:8%; --float-dur:17s; --spin-dur:10s; --box-sz:70px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">NEON</div><div class="scrolling-3d-face f-back">NEON</div><div class="scrolling-3d-face f-top">NEON</div><div class="scrolling-3d-face f-bottom">NEON</div><div class="scrolling-3d-face f-left">NEON</div><div class="scrolling-3d-face f-right">NEON</div></div></div>
+    <div class="scrolling-3d-stage" style="top:75%; left:4%; --float-dur:12s; --spin-dur:6s; --box-sz:65px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:88%; right:5%; --float-dur:15s; --spin-dur:9s; --box-sz:80px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">FLUX</div><div class="scrolling-3d-face f-back">FLUX</div><div class="scrolling-3d-face f-top">FLUX</div><div class="scrolling-3d-face f-bottom">FLUX</div><div class="scrolling-3d-face f-left">FLUX</div><div class="scrolling-3d-face f-right">FLUX</div></div></div>
+    <div class="scrolling-3d-stage" style="top:102%; left:9%; --float-dur:11s; --spin-dur:8s; --box-sz:75px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:118%; right:11%; --float-dur:14s; --spin-dur:7s; --box-sz:60px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">AI</div><div class="scrolling-3d-face f-back">AI</div><div class="scrolling-3d-face f-top">AI</div><div class="scrolling-3d-face f-bottom">AI</div><div class="scrolling-3d-face f-left">AI</div><div class="scrolling-3d-face f-right">AI</div></div></div>
+    <div class="scrolling-3d-stage" style="top:132%; left:5%; --float-dur:16s; --spin-dur:10s; --box-sz:85px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">VIDTOR</div><div class="scrolling-3d-face f-back">VIDTOR</div><div class="scrolling-3d-face f-top">VIDTOR</div><div class="scrolling-3d-face f-bottom">VIDTOR</div><div class="scrolling-3d-face f-left">VIDTOR</div><div class="scrolling-3d-face f-right">VIDTOR</div></div></div>
+    <div class="scrolling-3d-stage" style="top:148%; right:6%; --float-dur:13s; --spin-dur:12s; --box-sz:70px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">CYBER</div><div class="scrolling-3d-face f-back">CYBER</div><div class="scrolling-3d-face f-top">CYBER</div><div class="scrolling-3d-face f-bottom">CYBER</div><div class="scrolling-3d-face f-left">CYBER</div><div class="scrolling-3d-face f-right">CYBER</div></div></div>
+    <div class="scrolling-3d-stage" style="top:165%; left:7%; --float-dur:15s; --spin-dur:6s; --box-sz:90px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:182%; right:8%; --float-dur:12s; --spin-dur:9s; --box-sz:65px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">NODE</div><div class="scrolling-3d-face f-back">NODE</div><div class="scrolling-3d-face f-top">NODE</div><div class="scrolling-3d-face f-bottom">NODE</div><div class="scrolling-3d-face f-left">NODE</div><div class="scrolling-3d-face f-right">NODE</div></div></div>
+    <div class="scrolling-3d-stage" style="top:200%; left:4%; --float-dur:14s; --spin-dur:7s; --box-sz:80px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">SYSTEM</div><div class="scrolling-3d-face f-back">SYSTEM</div><div class="scrolling-3d-face f-top">SYSTEM</div><div class="scrolling-3d-face f-bottom">SYSTEM</div><div class="scrolling-3d-face f-left">SYSTEM</div><div class="scrolling-3d-face f-right">SYSTEM</div></div></div>
+    <div class="scrolling-3d-stage" style="top:218%; right:12%; --float-dur:11s; --spin-dur:11s; --box-sz:75px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">RK</div><div class="scrolling-3d-face f-back">RK</div><div class="scrolling-3d-face f-top">RK</div><div class="scrolling-3d-face f-bottom">RK</div><div class="scrolling-3d-face f-left">RK</div><div class="scrolling-3d-face f-right">RK</div></div></div>
+    <div class="scrolling-3d-stage" style="top:235%; left:6%; --float-dur:16s; --spin-dur:8s; --box-sz:70px;"><div class="scrolling-3d-cube-mesh"><div class="scrolling-3d-face f-front">END</div><div class="scrolling-3d-face f-back">END</div><div class="scrolling-3d-face f-top">END</div><div class="scrolling-3d-face f-bottom">END</div><div class="scrolling-3d-face f-left">END</div><div class="scrolling-3d-face f-right">END</div></div></div>
 
     <header>
         <div class="header-left-brand" onclick="window.location.reload()">
@@ -207,7 +209,7 @@
         <div class="tools-selection-grid">
             <div class="tool-selection-row" onclick="activateModelEndpoint('black-forest-labs/FLUX.1-dev', 'image')">
                 <span style="font-size:1.3rem;">🖼️</span>
-                <div><span class="tool-selection-title">FLUX.1 Ultra Real</span></div>
+                <div><span class="tool-selection-title">Flux.1 Ultra Real</span></div>
             </div>
             <div class="tool-selection-row" onclick="activateModelEndpoint('stabilityai/stable-diffusion-xl-base-1.0', 'image')">
                 <span style="font-size:1.3rem;">🎨</span>
@@ -225,7 +227,7 @@
 
         <h4 class="drawer-section-title">About Website</h4>
         <div class="about-infobox-card">
-            <strong>Vidtor AI Central Hub</strong> is an elite neural cloud terminal engineered by Rajkumar. It establishes direct data streams to high-performance graphics servers across the world, enabling real-time asset deployment, media synthesis, and natural language logic models seamlessly under one cohesive architectural panel.
+            <strong>Vidtor AI Central Hub</strong> is an elite neural cloud terminal engineered by Rajkumar. It establishes direct data streams to high-performance graphics servers across the world.
         </div>
     </div>
 
@@ -249,31 +251,31 @@
         <div class="control-console-card" id="mainTerminalConsole">
             
             <div class="input-group-container">
-                <label>1. Server Access Authentication Token:</label>
-                <input type="text" id="appSecureToken" placeholder="Paste your confidential Hugging Face hf_... access key code here">
+                <label>1. Server Access Authentication Token</label>
+                <input type="text" id="appSecureToken" placeholder="Paste your confidential Hugging Face hf_... token key here">
             </div>
 
             <div class="input-group-container">
-                <label>2. Selected World Neural Network Path:</label>
-                <input type="text" id="appModelPathSelector" value="black-forest-labs/FLUX.1-dev" placeholder="Neural directory configuration path">
+                <label>2. Selected World Neural Network Path</label>
+                <input type="text" id="appModelPathSelector" value="black-forest-labs/FLUX.1-dev" placeholder="Neural directory path">
             </div>
 
             <div class="input-group-container">
-                <label>3. Model Processing Matrix Output Type:</label>
+                <label>3. Model Processing Matrix Output Type</label>
                 <select id="appProcessingFormat">
                     <option value="image">Generates Graphic / Illustration Frame Layer</option>
-                    <option value="text">Generates Complete Natural Text / Asset Source Scripts</option>
+                    <option value="text">Generates Complete Natural Text Scripts</option>
                 </select>
             </div>
 
             <div class="input-group-container">
-                <label>4. Command Input String / Prompt Details:</label>
+                <label>4. Command Input String / Prompt Details</label>
                 <input type="text" id="appPromptString" placeholder="Describe the structural layout assets required explicitly...">
             </div>
 
             <button class="btn-fire-engine" onclick="executeNeuralClusterPipeline()">Fire Selected AI Engine Nodes</button>
 
-            <div class="console-stream-logs" id="appConsoleSystemLogs"></div>
+            <div class="console-stream-logs" id="appConsoleSystemLogs">⚠️ Dashboard Initialized. Enter variables to begin pipeline stream.</div>
 
             <div class="output-viewport-box" id="appGraphicOutputWrapper">
                 <img src="" id="targetOutputImageFrame" alt="Rendered Matrix Layer Output">
@@ -289,38 +291,33 @@
     <div class="devotional-footer-stamp">RADHE RADHE</div>
 
     <script>
-        // 1-Second Neon Color Spectrum Shifting Matrix Loop
-        const neonColorSpectrum = ['#00f0ff', '#ff007f', '#9d4edd', '#00ffcc', '#ffbc00', '#ff3333'];
+        // Real-Time 1-Second Neon Spectral Shifting Matrix Loop
+        const neonColorSpectrum = ['#00f0ff', '#ff007f', '#9d4edd', '#ff003c', '#00ffcc', '#ffbc00'];
         let runningColorPointer = 0;
         setInterval(() => {
             runningColorPointer = (runningColorPointer + 1) % neonColorSpectrum.length;
             document.documentElement.style.setProperty('--cube-color', neonColorSpectrum[runningColorPointer]);
         }, 1000);
 
-        // Sidebar Controller Hooks
+        // Sidebar Panel Actions
         function toggleNavigationPanelDrawer() {
             document.getElementById('globalNavDrawer').classList.toggle('panel-active');
         }
 
-        // 🔥 CLICK TO OPEN & FILL AI TOOL DIRECTLY
         function activateModelEndpoint(path, type) {
             document.getElementById('appModelPathSelector').value = path;
             document.getElementById('appProcessingFormat').value = type;
-            
-            // Close Drawer Smoothly
             toggleNavigationPanelDrawer();
 
-            // Smooth Scroll & Auto Focus Input field
             const targetConsole = document.getElementById('mainTerminalConsole');
             targetConsole.scrollIntoView({ behavior: 'smooth' });
             
-            // Focus Flash Effect
             setTimeout(() => {
                 document.getElementById('appPromptString').focus();
             }, 800);
         }
 
-        // Data Streams Execution Matrix
+        // Processing Fetch Engine Core (NO SYSTEM ALERTS)
         async function executeNeuralClusterPipeline() {
             const token = document.getElementById('appSecureToken').value.trim();
             const modelPath = document.getElementById('appModelPathSelector').value.trim();
@@ -333,12 +330,25 @@
             const textWrapper = document.getElementById('appTextOutputWrapper');
             const downloadBtn = document.getElementById('appGlobalDownloadBtn');
 
-            if(!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
-            if(!modelPath) { alert("Rajkumar bhai, Model verification path cannot be empty!"); return; }
-            if(!prompt) { alert("Rajkumar bhai, Input command query prompt required!"); return; }
+            // --- DELETED BROWSER ALERTS FOR DIAGNOSTIC INTEGRITY ---
+            if(!token) { 
+                logs.classList.remove('success-stream-logs');
+                logs.innerText = "❌ Security Halted: Rajkumar bhai, pehle Token key fill karo!"; 
+                return; 
+            }
+            if(!modelPath) { 
+                logs.classList.remove('success-stream-logs');
+                logs.innerText = "❌ Pipeline Error: AI Model path config is required!"; 
+                return; 
+            }
+            if(!prompt) { 
+                logs.classList.remove('success-stream-logs');
+                logs.innerText = "❌ String Warning: Processing command query token cannot be empty!"; 
+                return; 
+            }
 
             logs.classList.remove('success-stream-logs');
-            logs.innerText = `⚡ Running matrix cluster pipelines on [${modelPath}]...`;
+            logs.innerText = `⚡ Initializing high-speed secure cluster stream on [${modelPath}]...`;
             graphicWrapper.style.display = "none";
             textWrapper.style.display = "none";
             downloadBtn.style.display = "none";
@@ -369,8 +379,7 @@
                 logs.classList.add('success-stream-logs');
                 logs.innerText = "🎉 Success: Process completely finished!";
             } catch (error) {
-                logs.innerText = "❌ Error: Target Node Timeout or Token Authentication Denied.";
-                alert("Rajkumar bhai tokens ya input directories debug karo!");
+                logs.innerText = "❌ Terminal Exception: Selected cluster target node timed out.";
             }
         }
 
@@ -379,7 +388,7 @@
             if(frame.src) {
                 const triggerAnchor = document.createElement('a');
                 triggerAnchor.href = frame.src;
-                triggerAnchor.download = `VIDTOR_3D_MATRIX_ASSET_${Date.now()}.png`;
+                triggerAnchor.download = `VIDTOR_OVERLORD_MATRIX_${Date.now()}.png`;
                 document.body.appendChild(triggerAnchor); triggerAnchor.click(); document.body.removeChild(triggerAnchor);
             }
         }
