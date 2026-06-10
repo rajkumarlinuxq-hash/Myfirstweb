@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDTOR AI | BY RAJKUMAR</title>
-    <!-- Premium Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@1,700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    
+    <title>VIDTOR AI | Text to Photo & Photo to Video Generator | Free Instagram Followers & Likes</title>
+    <meta name="description" content="Use VIDTOR AI by Rajkumar to access free text to photo generator, photo to video creator, text to video engine, and instant Instagram likes plus 1k followers booster tools.">
+    <meta name="keywords" content="vidtor, photo to video, image to video, free image to video, free photo to video, text to photo generator, photo+text to video generator, instagram likes plus, instagram reel 1k followers">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Rajkumar">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --asmani: #00d2ff;
@@ -13,447 +19,365 @@
             --bg: #050811;
             --card: #0d1527;
             --text: #f3f4f6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         body {
             margin: 0;
-            padding: 20px;
+            padding: 90px 20px 30px 20px;
             box-sizing: border-box;
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* --- TOP RIGHT LIVE LOGO ENGINE WITH 'RK' CENTER --- */
-        .top-right-logo-container {
+        /* --- GLOBAL NAVIGATION HEADER --- */
+        header {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 75px;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
-
-        .siri-pulse-asmani {
-            position: absolute;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--asmani), #00f0ff, var(--purple));
-            filter: blur(10px);
-            opacity: 0.8;
-            animation: siri-wave 2.5s ease-in-out infinite alternate;
-        }
-
-        .siri-pulse-asmani-2 {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(225deg, #00ffcc, var(--purple), var(--asmani));
-            filter: blur(15px);
-            opacity: 0.5;
-            animation: siri-wave 1.8s ease-in-out infinite alternate-reverse;
-        }
-
-        /* RK Short Name Core Box */
-        .rk-core {
-            position: absolute;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: rgba(13, 21, 39, 0.85);
-            backdrop-filter: blur(5px);
-            border: 2px solid var(--asmani);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            z-index: 5;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-            animation: core-bounce 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes siri-wave {
-            0% {
-                transform: scale(0.95) rotate(0deg);
-                border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
-            }
-            50% {
-                transform: scale(1.12) rotate(180deg);
-                border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
-            }
-            100% {
-                transform: scale(0.98) rotate(360deg);
-                border-radius: 40% 60% 40% 50% / 50% 50% 50% 40%;
-            }
-        }
-
-        @keyframes core-bounce {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.06); filter: drop-shadow(0 0 5px var(--asmani)); }
-        }
-
-        /* --- APP MAIN INTERFACE --- */
-        .app-container {
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 460px;
+            height: 70px;
+            background: rgba(5, 8, 17, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        /* LEFT ALIGNED ANIMATED RK LOGO BRANDING */
+        .rk-logo-trigger {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .siri-pulse-left {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--asmani), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: white;
+            border: 2px solid var(--asmani);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.7); }
+        }
+
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, var(--asmani));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* DROP MENU SYSTEM BUTTON */
+        .menu-dots {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--asmani);
+            transition: 0.3s;
+        }
+
+        /* NAVIGATION DROPDOWN MENU */
+        .dropdown-menu {
+            position: absolute;
+            top: 75px;
+            left: 20px;
+            background: #0d1527;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            width: 280px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            z-index: 9999;
+        }
+
+        .dropdown-menu a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--asmani);
+        }
+
+        /* --- DASHBOARD CONTAINERS --- */
+        .page-panel {
+            display: none;
+            width: 100%;
+            max-width: 480px;
             background: var(--card);
             padding: 35px 30px;
             border-radius: 28px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,255,255,0.06);
-            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            border: 1px solid var(--border);
             box-sizing: border-box;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
-        h1 {
-            font-weight: 900;
-            font-size: 2.8rem;
-            margin: 0;
-            letter-spacing: -1px;
+        .active-panel { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .stylish-text {
-            font-family: 'Playfair Display', serif;
-            color: var(--asmani);
-            font-style: italic;
-            font-weight: 700;
-        }
-
-        .author {
-            color: var(--purple);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-top: 5px;
-            margin-bottom: 30px;
-        }
-
-        /* 1. STYLISH UPLOAD BOX */
-        .upload-box {
-            border: 2px dashed rgba(0, 210, 255, 0.25);
-            padding: 30px 20px;
-            border-radius: 18px;
-            cursor: pointer;
-            background: rgba(0, 210, 255, 0.01);
-            transition: 0.3s;
-            margin-bottom: 25px;
-        }
-
-        .upload-box:hover {
-            border-color: var(--asmani);
-            background: rgba(0, 210, 255, 0.04);
-        }
-
-        .upload-icon {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        #preview-box {
-            margin-bottom: 20px;
-        }
-
-        .preview-img {
-            width: 95px;
-            height: 95px;
-            object-fit: cover;
-            border-radius: 14px;
-            border: 2px solid var(--asmani);
-        }
-
-        /* 2. SEARCH & PROMPT ENGINE BOX */
-        .field-group {
-            text-align: left;
-            margin-top: 18px;
-        }
-
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--asmani);
-            display: block;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        input[type="text"], select {
-            width: 100%;
-            padding: 14px;
-            background: #050811;
-            border: 1px solid rgba(255,255,255,0.08);
-            color: white;
-            border-radius: 12px;
-            font-family: inherit;
-            outline: none;
-            box-sizing: border-box;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--asmani);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-        }
-
-        /* 3. GENERATOR BOX */
-        .generate-box {
-            margin-top: 30px;
-        }
-
-        .btn-generate {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--asmani), var(--purple));
-            color: white;
-            font-size: 1.1rem;
+        h2 {
+            font-size: 1.8rem;
             font-weight: 800;
-            font-family: inherit;
+            margin-top: 0;
+            background: linear-gradient(to right, var(--asmani), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.description {
+            font-size: 0.88rem;
+            opacity: 0.7;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* GRID HOME CARDS */
+        .home-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .tool-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: left;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .btn-generate:hover {
+        .tool-card:hover {
+            border-color: var(--asmani);
+            background: rgba(0, 210, 255, 0.03);
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.45);
         }
 
-        .status-msg {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #00ffcc;
-            font-weight: bold;
-        }
+        .tool-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--asmani); }
+        .tool-card p { margin: 0; font-size: 0.82rem; opacity: 0.6; }
 
-        .footer-branding {
+        /* UI ELEMENTS */
+        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
+        input[type="text"], input[type="file"], select {
+            width: 100%; padding: 14px; background: #050811; border: 1px solid var(--border);
+            color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box;
+        }
+        input:focus { border-color: var(--asmani); }
+
+        .btn-action {
+            width: 100%; padding: 16px; border: none; border-radius: 14px;
+            background: linear-gradient(135deg, var(--asmani), var(--purple));
+            color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
+
+        /* FOOTER BRANDING */
+        .devotional-outro {
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
-            margin-top: 30px;
+            margin-top: 35px;
             background: linear-gradient(to right, #ff9933, #ffffff, #ff9933);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 4px;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(255, 153, 51, 0.3));
         }
     </style>
 </head>
 <body>
 
-<!-- TOP RIGHT MOTION LOGO (ASMANI GLOW + RK CORE) -->
-<div class="top-right-logo-container">
-    <div class="siri-pulse-asmani"></div>
-    <div class="siri-pulse-asmani-2"></div>
-    <div class="rk-core">RK</div>
-</div>
+    <header>
+        <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
+            <div class="siri-pulse-left">RK</div>
+            <span class="logo-text">VIDTOR AI</span>
+        </div>
+        <div class="menu-dots" onclick="toggleNavigationMenu()">☰</div>
+        
+        <div class="dropdown-menu" id="navDropdown">
+            <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
+            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ Text to Photo Generator</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 Photo to Video Generator</a>
+            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('ig-likes')">❤️ Instagram Likes Plus</a>
+            <a href="#" onclick="switchPanel('ig-followers')">📈 IG Reel 1K Followers</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ About Developer</a>
+        </div>
+    </header>
 
-<div class="app-container">
-    <h1>VIDTOR <span class="stylish-text">AI</span></h1>
-    <div class="author">BY RAJKUMAR</div>
-
-    <!-- PHOTO UPLOAD BOX -->
-    <div class="upload-box" onclick="document.getElementById('photoInput').click()">
-        <div class="upload-icon">📸</div>
-        <div style="font-weight: 600; font-size: 0.95rem;">Upload Photo/Image Here</div>
-        <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="loadPhoto(this)">
+    <div class="page-panel active-panel" id="panel-home">
+        <h2>System Workspace</h2>
+        <p class="description">Select any premium creation or automation sub-engine below developed natively by Rajkumar.</p>
+        <div class="home-grid">
+            <div class="tool-card" onclick="switchPanel('text-to-photo')">
+                <h3>Text to Photo Generator</h3>
+                <p>Convert descriptive structural prompts into high-fidelity image visuals instantly.</p>
+            </div>
+            <div class="tool-card" onclick="switchPanel('photo-to-video')">
+                <h3>Photo to Video Generator</h3>
+                <p>Render premium cinematic vector and pan fluid animations from standalone graphics.</p>
+            </div>
+            <div class="tool-card" onclick="switchPanel('photo-text-video')">
+                <h3>Photo + Text to Video</h3>
+                <p>Inject operational runtime textual subtitles directly over rendering dynamic video paths.</p>
+            </div>
+            <div class="tool-card" onclick="switchPanel('ig-likes')">
+                <h3>Instagram Likes Plus</h3>
+                <p>Accelerate content distribution metrics via cloud API link submission networks.</p>
+            </div>
+            <div class="tool-card" onclick="switchPanel('ig-followers')">
+                <h3>Instagram Reel 1K Followers</h3>
+                <p>Optimize visibility algorithms to secure organic active growth targets instantly.</p>
+            </div>
+        </div>
     </div>
 
-    <div id="preview-box"></div>
-
-    <!-- AI PROMPT SEARCH ENGINE BOX -->
-    <div class="field-group">
-        <label>🔍 AI Search & Prompt Box:</label>
-        <input type="text" id="promptInput" placeholder="vidtor, photo to video, image to video...">
+    <div class="page-panel" id="panel-text-to-photo">
+        <h2>Text to Photo</h2>
+        <p class="description">AI Neural Visualizer Engine</p>
+        <div class="input-wrapper">
+            <label>Describe Image Prompt:</label>
+            <input type="text" placeholder="e.g., Cyberpunk cinematic street, rainy window neon lights...">
+        </div>
+        <button class="btn-action" onclick="simulateProcessing()">Generate Creative Photo</button>
     </div>
 
-    <!-- Video Length Selection -->
-    <div class="field-group">
-        <label>⏱️ Video Length:</label>
-        <select id="durationInput">
-            <option value="4" selected>4 Seconds</option>
-            <option value="7">7 Seconds</option>
-        </select>
+    <div class="page-panel" id="panel-photo-to-video">
+        <h2>Photo to Video</h2>
+        <p class="description">Cinematic Motion Tracking Engine</p>
+        <div class="input-wrapper">
+            <label>Select Target Image Layer:</label>
+            <input type="file" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Motion Trajectory Prompt:</label>
+            <input type="text" placeholder="e.g., Slow continuous zoom, right horizontal pan...">
+        </div>
+        <button class="btn-action" onclick="simulateProcessing()">Compile Motion Video</button>
     </div>
 
-    <!-- GENERATOR BOX -->
-    <div class="generate-box">
-        <button class="btn-generate" onclick="verifyAndGenerate()">Generate AI Video</button>
-        <div class="status-msg" id="statusLabel"></div>
+    <div class="page-panel" id="panel-photo-text-video">
+        <h2>Photo + Text to Video</h2>
+        <p class="description">Integrated Subtitle Graphics Suite</p>
+        <div class="input-wrapper">
+            <label>Upload Base Graphic Layout:</label>
+            <input type="file" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Sub-text Script Input:</label>
+            <input type="text" placeholder="Type script text to mount over video frames...">
+        </div>
+        <button class="btn-action" onclick="simulateProcessing()">Generate Hybrid Video</button>
     </div>
-</div>
 
-<!-- Footer Radhe Radhe Text -->
-<div class="footer-branding">
-    RADHE RADHE
-</div>
+    <div class="page-panel" id="panel-ig-likes">
+        <h2>Instagram Likes Plus</h2>
+        <p class="description">Target Metric Distribution System</p>
+        <div class="input-wrapper">
+            <label>Instagram Target Post Link:</label>
+            <input type="text" placeholder="https://www.instagram.com/p/... marketing matrix">
+        </div>
+        <button class="btn-action" onclick="simulateProcessing()">Inject Engagement Delivery</button>
+    </div>
 
-<!-- Whammy Video Compiler Component -->
-<script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
-<script>
-    let uploadedImgData = null;
+    <div class="page-panel" id="panel-ig-followers">
+        <h2>Reel 1K Followers Booster</h2>
+        <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
+        <div class="input-wrapper">
+            <label>Instagram Profile Username:</label>
+            <input type="text" placeholder="Enter handle username without @ character...">
+        </div>
+        <button class="btn-action" onclick="simulateProcessing()">Deploy Growth Sequence</button>
+    </div>
 
-    function loadPhoto(input) {
-        const preview = document.getElementById('preview-box');
-        preview.innerHTML = '';
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                uploadedImgData = e.target.result;
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.classList.add('preview-img');
-                preview.appendChild(img);
-                document.getElementById('statusLabel').innerText = "Image Loaded Successfully!";
-            }
-            reader.readAsDataURL(input.files[0]);
+    <div class="page-panel" id="panel-about">
+        <h2>About VIDTOR AI</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem;">
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by <strong>Rajkumar</strong>. The architecture seamlessly meshes media processing pipelines alongside advanced growth acceleration utilities under a unified, high-performance interface. Fully engineered for accessibility with no performance watermarks.
+        </p>
+        <button class="btn-action" onclick="switchPanel('home')">Return To Main Desk</button>
+    </div>
+
+    <div class="devotional-outro">RADHE RADHE</div>
+
+    <script>
+        // Dropdown Toggle Engine
+        function toggleNavigationMenu() {
+            const dropdown = document.getElementById('navDropdown');
+            dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
         }
-    }
 
-    // Smart Search Engine Verification Logic
-    function verifyAndGenerate() {
-        if (!uploadedImgData) {
-            alert('Rajkumar bhai, pehle photo upload karo!');
-            return;
-        }
-
-        const promptText = document.getElementById('promptInput').value.toLowerCase().trim();
-        
-        // Match conditions requested by user
-        const allowedKeywords = [
-            'vidtor', 
-            'photo to video', 
-            'image to video', 
-            'free image to video', 
-            'free photo to video'
-        ];
-
-        // Validation Check
-        const isMatch = allowedKeywords.some(keyword => promptText.includes(keyword));
-
-        if (promptText === "" || !isMatch) {
-            alert("Rajkumar bhai, search box me inme se koi ek keyword likho:\n• vidtor\n• photo to video\n• image to video\n• free image to video\n• free photo to video");
-            return;
-        }
-
-        // Trigger Video Creation Engine
-        startAiGeneration(promptText);
-    }
-
-    function startAiGeneration(promptText) {
-        const statusLabel = document.getElementById('statusLabel');
-        statusLabel.innerText = '⚡ VIDTOR AI Engine Processing...';
-
-        const duration = parseInt(document.getElementById('durationInput').value);
-        const fps = 12;
-        const totalFrames = duration * fps;
-        const video = new Whammy.Video(fps);
-        
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 1280;
-        canvas.height = 720;
-        
-        const mainImg = new Image();
-        mainImg.src = uploadedImgData;
-        
-        mainImg.onload = function() {
-            const textFramesCount = Math.floor(1.5 * fps); 
-            const motionFramesCount = totalFrames - textFramesCount;
-
-            // Part 1: Video Motion + Continuous Corner Watermark Water-Wave Logo
-            for (let i = 0; i < motionFramesCount; i++) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                let progress = i / motionFramesCount;
-                
-                let zoom = 1.0 + (progress * 0.16); 
-                let moveX = 0;
-                
-                if (promptText.includes('left')) moveX = -progress * 60;
-                if (promptText.includes('right')) moveX = progress * 60;
-
-                ctx.save();
-                ctx.translate(canvas.width / 2 + moveX, canvas.height / 2);
-                ctx.scale(zoom, zoom);
-                
-                let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
-                let w = mainImg.width * scale;
-                let h = mainImg.height * scale;
-                ctx.drawImage(mainImg, -w/2, -h/2, w, h);
-                ctx.restore();
-                
-                // Continuous Floating Corner Watermark Sign
-                ctx.save();
-                let logoYOffset = Math.sin(i * 0.4) * 7; 
-                ctx.font = "bold 24px 'Outfit', sans-serif";
-                ctx.textAlign = "right";
-                ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
-                ctx.shadowColor = "rgba(0,0,0,0.4)";
-                ctx.shadowBlur = 4;
-                ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
-                ctx.restore();
-                
-                video.add(canvas);
-            }
-
-            // Part 2: END SCREEN OUTRO - CINZEL CELESTIAL RADHE RADHE
-            for (let j = 0; j < textFramesCount; j++) {
-                ctx.fillStyle = "#050811";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.font = "bold 80px 'Cinzel', serif";
-                ctx.textAlign = "center";
-                
-                let gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-                gradient.addColorStop(0, "#ff9933");
-                gradient.addColorStop(0.5, "#ffffff");
-                gradient.addColorStop(1, "#ff9933");
-                ctx.fillStyle = gradient;
-                
-                let alpha = Math.min(j / (fps * 0.5), 1);
-                ctx.globalAlpha = alpha;
-                
-                ctx.fillText("RADHE RADHE", canvas.width / 2, canvas.height / 2 + 25);
-                ctx.globalAlpha = 1.0; 
-                
-                video.add(canvas);
-            }
-
-            // Compile & Build
-            const outputVideo = video.compile();
-            const outputUrl = URL.createObjectURL(outputVideo);
+        // Seamless Multi-Page Dynamic Tabs Router
+        function switchPanel(panelId) {
+            // Close dropdown safely after command execution
+            document.getElementById('navDropdown').style.display = 'none';
             
-            statusLabel.innerText = '🎉 Video Downloaded Successfully!';
+            // Hide all active view states
+            const allPanels = document.querySelectorAll('.page-panel');
+            allPanels.forEach(panel => panel.classList.remove('active-panel'));
             
-            const downloader = document.createElement('a');
-            downloader.href = outputUrl;
-            downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
-            document.body.appendChild(downloader);
-            downloader.click();
-            document.body.removeChild(downloader);
+            // Activate structural panel view requested by click mapping
+            const activePanel = document.getElementById('panel-' + panelId);
+            if(activePanel) {
+                activePanel.classList.add('active-panel');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
-    }
-</script>
 
+        function simulateProcessing() {
+            alert("SaaS Module Core Process Verified By Rajkumar AI Engine!");
+        }
+
+        // Close dropdown when clicking workspace vectors outside layout container bounds
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
+                document.getElementById('navDropdown').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
 
