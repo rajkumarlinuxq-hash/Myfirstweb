@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI | Text to Photo & Video Generator | Free Instagram Booster</title>
-    <meta name="description" content="Use VIDTOR AI by Rajkumar to access free text to photo generator, photo to video creator, text to voice audio synthesizer, and instant Instagram likes booster tools.">
-    <meta name="keywords" content="vidtor, photo to video, image to video, free photo to video, text to photo generator, text to voice, audio synthesis, instagram likes plus">
+    <title>VIDTOR AI | 100% Real AI Tool Suite by Rajkumar</title>
+    <meta name="description" content="Use VIDTOR AI by Rajkumar to access real text to photo generator, photo to video creator, text to voice engine, and Instagram premium growth booster tools.">
+    <meta name="keywords" content="vidtor, photo to video, image to video, free image to video, free photo to video, text to photo generator, text to voice, audio synthesis, instagram followers">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Rajkumar">
 
@@ -112,11 +112,18 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
+        /* Token Warning Box */
+        .token-alert {
+            background: rgba(157, 78, 221, 0.15);
+            border: 1px solid var(--purple);
+            padding: 10px; border-radius: 10px; font-size: 0.78rem;
+            color: #d8b4fe; margin-bottom: 15px; text-align: left; line-height: 1.4;
+        }
+
         /* ==========================================================================
-           🎨 THE ANIMATION MATRIX SUITE: EVERY PAGE HAS A UNIQUE STYLED GRAPHIC VIEW
+           🎨 THE ANIMATION MATRIX SUITE
            ========================================================================== */
 
-        /* STYLE 1 (HOME): PREMIUM 3D CYLINDER CAROUSEL */
         .stage-cylinder-3d { width: 100%; height: 160px; margin: 25px 0; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
         .spin-core-cylinder { width: 100px; height: 110px; position: relative; transform-style: preserve-3d; animation: cylinderSpin 12s linear infinite; }
         @keyframes cylinderSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
@@ -128,7 +135,6 @@
         .c-5 { transform: rotateY(240deg) translateZ(120px); }
         .c-6 { transform: rotateY(300deg) translateZ(120px); }
 
-        /* STYLE 2 (TEXT TO PHOTO): 3D VERTICAL CUBE BLOCK FLIP */
         .stage-cube-3d { width: 100%; height: 150px; margin: 25px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
         .flip-core-cube { width: 140px; height: 80px; position: relative; transform-style: preserve-3d; animation: cubeFlipVertical 8s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
         @keyframes cubeFlipVertical {
@@ -144,7 +150,6 @@
         .cube-back { transform: rotateX(-180deg) translateZ(40px); }
         .cube-top { transform: rotateX(90deg) translateZ(40px); }
 
-        /* STYLE 3 (PHOTO TO VIDEO): OVERLAPPING FLOATING CARD STACK */
         .stage-stack-shift { width: 100%; height: 140px; margin: 25px 0; display: flex; align-items: center; justify-content: center; position: relative; }
         .stack-item { width: 150px; height: 90px; border-radius: 14px; position: absolute; border: 1px solid var(--border); backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; transition: 0.4s ease-in-out; }
         .st-1 { background: rgba(0, 210, 255, 0.15); border-color: var(--asmani); z-index: 3; transform: translateX(0) scale(1); box-shadow: 0 10px 25px rgba(0,210,255,0.2); animation: stackFloatA 4s ease-in-out infinite alternate; }
@@ -153,25 +158,21 @@
         @keyframes stackFloatA { 0% { transform: translateX(0) translateY(0) scale(1); } 100% { transform: translateX(15px) translateY(-5px) scale(0.95); } }
         @keyframes stackFloatB { 0% { transform: translateX(-25px) translateY(8px) scale(0.92); } 100% { transform: translateX(-5px) translateY(-2px) scale(1); } }
 
-        /* STYLE 4 (PHOTO+TEXT TO VIDEO): INFINITE HORIZONTAL MARQUEE WAVE */
         .stage-marquee-wave { width: 100%; overflow: hidden; margin: 25px 0; padding: 10px 0; display: flex; position: relative; }
         .marquee-track { display: flex; gap: 15px; width: max-content; animation: waveMarqueeRun 10s linear infinite; }
         @keyframes waveMarqueeRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .marquee-card { width: 110px; padding: 12px; background: rgba(13,21,39,0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; font-size: 0.72rem; text-align: center; font-weight: bold; color: var(--asmani); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
 
-        /* STYLE NEW (TEXT TO VOICE): OSCILLATING AUDIO WAVE GRAPHIC */
         .stage-audio-wave { width: 100%; height: 130px; margin: 25px 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .wave-bar { width: 8px; height: 30px; background: linear-gradient(to top, var(--purple), var(--asmani)); border-radius: 4px; animation: soundWaveMotion 1.2s ease-in-out infinite alternate; }
         .wb-1 { animation-delay: 0.1s; } .wb-2 { animation-delay: 0.4s; } .wb-3 { animation-delay: 0.2s; } .wb-4 { animation-delay: 0.6s; } .wb-5 { animation-delay: 0.3s; }
         @keyframes soundWaveMotion { 0% { height: 15px; } 100% { height: 85px; } }
 
-        /* STYLE 5 (IG LIKES PLUS): 3D SKEWED PERSPECTIVE FLOATING MATRIX */
         .stage-skew-matrix { width: 100%; height: 140px; margin: 25px 0; display: flex; align-items: center; justify-content: center; perspective: 800px; }
         .skew-card-wrapper { width: 220px; height: 90px; transform: rotateX(25deg) rotateY(-25deg) rotateZ(10deg); transform-style: preserve-3d; transition: 0.5s; animation: matrixSway 5s ease-in-out infinite alternate; }
         @keyframes matrixSway { 0% { transform: rotateX(20deg) rotateY(-20deg) rotateZ(5deg); } 100% { transform: rotateX(30deg) rotateY(-30deg) rotateZ(15deg); } }
         .skew-premium-card { position: absolute; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,51,102,0.15), rgba(13,21,39,0.9)); border: 1px solid #ff3366; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; box-shadow: 0 15px 35px rgba(255,51,102,0.25); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        /* STYLE 6 (IG FOLLOWERS): HEART-PULSE ELASTIC ZOOM SPHERE LAYOUT */
         .stage-elastic-pulse { width: 100%; height: 150px; margin: 25px 0; display: flex; align-items: center; justify-content: center; }
         .pulse-bubble-core { width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, rgba(157,78,221,0.3) 0%, rgba(3,7,18,0.9) 70%); border: 2px dashed var(--purple); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; animation: elasticSpherePulse 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; box-shadow: 0 0 30px rgba(157,78,221,0.2); }
         @keyframes elasticSpherePulse {
@@ -180,30 +181,29 @@
             100% { transform: scale(0.9); box-shadow: 0 0 15px rgba(157,78,221,0.2); }
         }
 
-        /* STYLE 7 (ABOUT): MINIMALIST DUAL INTERSECTING GLASS RING SLIDES */
         .stage-glass-rings { width: 100%; height: 130px; margin: 25px 0; display: flex; align-items: center; justify-content: center; gap: 20px; }
         .ring-deck { width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; animation: ringOrbit 6s ease-in-out infinite alternate; }
         .rg-2 { animation-delay: -3s; border-color: var(--asmani); }
         @keyframes ringOrbit { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
-        /* TYPOGRAPHY */
+        /* TYPOGRAPHY & GENERAL STYLES */
         .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px; }
         h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
 
-        /* INPUT WRAPPERS & GENERAL FORMS */
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
         input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
         input:focus, select:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
+        
         .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
 
-        /* OUTPUT DESIGN STATUSES */
         .live-status { margin-top: 15px; font-size: 0.9rem; color: #ff3366; font-weight: bold; min-height: 20px; text-shadow: 0 0 5px rgba(255,51,102,0.2); }
         .success-status { color: #00ffcc !important; text-shadow: 0 0 5px rgba(0,255,204,0.3) !important; }
-        .output-media-display { margin-top: 20px; width: 100%; display: none; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+        
+        .output-media-display { margin-top: 20px; width: 100%; display: none; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; background: #000; }
         .output-media-display img { width: 100%; display: block; height: auto; }
         
         .output-audio-display { margin-top: 20px; width: 100%; display: none; padding: 15px; background: rgba(13, 21, 39, 0.8); border-radius: 14px; border: 1px dashed var(--emerald-green); box-sizing: border-box; }
@@ -227,8 +227,7 @@
             <a href="#" onclick="switchPanel('photo-to-video')">🎬 Photo to Video Generator</a>
             <a href="#" onclick="switchPanel('photo-text-video')">🎞️ Photo+Text to Video</a>
             <a href="#" onclick="switchPanel('text-to-voice')">🎵 Text to Voice Suite</a>
-            <a href="#" onclick="switchPanel('ig-likes')">❤️ Instagram Likes Plus</a>
-            <a href="#" onclick="switchPanel('ig-followers')">📈 IG Reel 1K Followers</a>
+            <a href="#" onclick="switchPanel('ig-likes')">❤️ Premium Growth Panel</a>
             <a href="#" onclick="switchPanel('about')">ℹ️ About Website</a>
         </div>
     </header>
@@ -247,15 +246,22 @@
                 <div class="cylinder-card c-6"><span>⚡</span>Optimized</div>
             </div>
         </div>
+
+        <div class="input-wrapper" style="margin-bottom:20px;">
+            <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
+            <input type="text" id="globalHFToken" placeholder="Paste free hf_... key here to activate AI">
+        </div>
+
         <p style="font-size:0.9rem; line-height:1.6; opacity:0.75; margin-bottom:25px;">
-            Welcome to a premium world of artificial intelligence. Experience seamless image generation, cinematic motion video creation, and high-fidelity social media automation tools crafted to perfection.
+            Welcome to a premium world of artificial intelligence. Master seamless real image generation, cinematic motion tracking, and high-fidelity text synthesis crafted to absolute perfection.
         </p>
         <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
         <h2>Text to Photo</h2>
-        <p class="description">AI Neural Visualizer Engine</p>
+        <p class="description">Real AI Neural Flux Diffusor Engine</p>
+        <div class="token-alert">💡 Note: Is tool ko chalane ke liye Home page par apni Free Hugging Face Token key zaroor daalein!</div>
         
         <div class="stage-cube-3d">
             <div class="flip-core-cube">
@@ -268,16 +274,16 @@
 
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
-            <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, cinematic lighting...">
+            <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, rainy window, anime style...">
         </div>
-        <button class="btn-action" onclick="processTextToPhoto()">Generate Photo</button>
+        <button class="btn-action" onclick="processRealTextToPhoto()">Generate Photo (Flux AI)</button>
         <div class="live-status" id="t2pStatus"></div>
         <div class="output-media-display" id="t2pOutput"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
-        <p class="description">Cinematic Motion Tracking Engine</p>
+        <p class="description">Cinematic Motion Tracking Canvas Engine</p>
 
         <div class="stage-stack-shift">
             <div class="stack-item st-1">🎬 Render Active</div>
@@ -290,10 +296,10 @@
             <input type="file" id="p2vFile" accept="image/*">
         </div>
         <div class="input-wrapper">
-            <label>Motion Trajectory Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="e.g., vidtor, photo to video...">
+            <label>Motion Trajectory Verification Key:</label>
+            <input type="text" id="p2vPrompt" placeholder="Type key phrase 'vidtor' or 'photo to video'">
         </div>
-        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vStatus')">Compile Video</button>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vStatus')">Compile & Download Video</button>
         <div class="live-status" id="p2vStatus"></div>
     </div>
 
@@ -317,8 +323,8 @@
             <input type="file" id="p2vtFile" accept="image/*">
         </div>
         <div class="input-wrapper">
-            <label>Sub-text Script Input:</label>
-            <input type="text" id="p2vtPrompt" placeholder="Type script text to mount over video frames...">
+            <label>Sub-text Script Script overlay:</label>
+            <input type="text" id="p2vtPrompt" placeholder="Type text script to mount over video frames...">
         </div>
         <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtStatus')">Generate Hybrid Video</button>
         <div class="live-status" id="p2vtStatus"></div>
@@ -327,6 +333,7 @@
     <div class="page-panel" id="panel-text-to-voice">
         <h2>Text to Voice Suite</h2>
         <p class="description">Neural Audio Waves Synthesizer Directory</p>
+        <div class="token-alert">💡 Note: Is tool ko chalane ke liye Home page par apni Free Hugging Face Token key zaroor daalein!</div>
 
         <div class="stage-audio-wave">
             <div class="wave-bar wb-1"></div>
@@ -337,21 +344,16 @@
         </div>
 
         <div class="input-wrapper">
-            <label>Hugging Face Access Token Key:</label>
-            <input type="text" id="t2vToken" placeholder="Paste secure hf_... token data string">
-        </div>
-
-        <div class="input-wrapper">
-            <label>Synthesis Audio Model Model:</label>
+            <label>Synthesis Audio Model:</label>
             <select id="t2vModel">
-                <option value="facebook/musicgen-small">Facebook MusicGen Small (Audio/Ambient)</option>
-                <option value="espnet/kan-bayashi_ljspeech_vits">LJSpeech VITS Engine (Vocal Speech)</option>
+                <option value="facebook/musicgen-small">MusicGen Small (Relaxing Piano/Ambient Tracks)</option>
+                <option value="espnet/kan-bayashi_ljspeech_vits">VITS Speech Engine (Clear Human Voice)</option>
             </select>
         </div>
 
         <div class="input-wrapper">
             <label>Script Voice Text Content:</label>
-            <input type="text" id="t2vPrompt" placeholder="Type words or lyrics to generate audio...">
+            <input type="text" id="t2vPrompt" placeholder="Type text context to synthesize into wav format audio...">
         </div>
 
         <button class="btn-action" onclick="processTextToVoice()">Synthesize Voice Audio</button>
@@ -362,43 +364,26 @@
     </div>
 
     <div class="page-panel" id="panel-ig-likes">
-        <h2>Instagram Likes Plus</h2>
-        <p class="description">Target Metric Distribution System</p>
+        <h2>Premium Growth Business Hub</h2>
+        <p class="description">Target Metric Optimization Service Pipeline</p>
 
         <div class="stage-skew-matrix">
             <div class="skew-card-wrapper">
-                <div class="skew-premium-card">❤️ Injecting Cloud Nodes</div>
+                <div class="skew-premium-card">👑 PREMIUM DEALER PORTAL</div>
             </div>
         </div>
 
-        <div class="input-wrapper">
-            <label>Instagram Target Post Link:</label>
-            <input type="text" id="igLnk" placeholder="https://www.instagram.com/p/...">
-        </div>
-        <button class="btn-action" onclick="processInstagramMetric('igLnk', 'igLStatus', 'Likes')">Inject Likes</button>
-        <div class="live-status" id="igLStatus"></div>
-    </div>
+        <p style="font-size:0.85rem; line-height:1.5; opacity:0.8; text-align:justify; margin-bottom:15px;">
+            System Security Notice: Server automation is locked. To order genuine manual high-retention Instagram Followers, Reel Views, and Instant Likes, click below to connect directly with Owner **Rajkumar** to book custom bulk orders.
+        </p>
 
-    <div class="page-panel" id="panel-ig-followers">
-        <h2>Reel 1K Followers Booster</h2>
-        <p class="description">Algorithmic Visibility Synchronization Pipeline</p>
-
-        <div class="stage-elastic-pulse">
-            <div class="pulse-bubble-core">📈 GROWTH ENGINE</div>
-        </div>
-
-        <div class="input-wrapper">
-            <label>Instagram Profile Username:</label>
-            <input type="text" id="igUser" placeholder="Enter profile handle username...">
-        </div>
-        <button class="btn-action" onclick="processInstagramMetric('igUser', 'igFStatus', 'Followers')">Deploy Growth</button>
-        <div class="live-status" id="igFStatus"></div>
+        <button class="btn-action" style="background:linear-gradient(135deg, #ff3366, #9d4edd);" onclick="redirectToOwnerDM()">Contact Rajkumar on Instagram</button>
     </div>
 
     <div class="page-panel" id="panel-about">
         <h2>About Website</h2>
         <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom:10px;">
-            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes media processing pipelines under custom separate animation designs.
+            VIDTOR AI is a comprehensive modern web utility suite engineered completely by Rajkumar. The architecture seamlessly meshes advanced client-side matrix rendering and AI text/image node distributions.
         </p>
 
         <div class="stage-glass-rings">
@@ -429,68 +414,86 @@
             }
         }
 
-        function processTextToPhoto() {
+        // Helper function to get Global Token
+        function getHFToken() {
+            return document.getElementById('globalHFToken').value.trim();
+        }
+
+        // 🖼️ 100% REAL TEXT TO PHOTO CORE (Flux/Black-Forest Inference)
+        async function processRealTextToPhoto() {
+            const token = getHFToken();
             const promptVal = document.getElementById('t2pPrompt').value.trim();
             const statusLabel = document.getElementById('t2pStatus');
             const outputBox = document.getElementById('t2pOutput');
 
-            if (promptVal === "") {
-                statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Validation Blocked: Target field input parameter required!";
-                alert("Rajkumar bhai, please prompt field khali mat chodo!");
-                outputBox.style.display = "none";
+            if (!token) {
+                alert("Rajkumar bhai, please Home page par jaakar apni Hugging Face secure token key enter kijiye!");
+                statusLabel.innerText = "❌ Validation Error: Missing Token String!";
+                return;
+            }
+            if (!promptVal) {
+                alert("Bhai, prompt field khali mat chodo!");
                 return;
             }
 
             statusLabel.classList.remove('success-status');
-            statusLabel.innerText = "⚡ Activating Neural Diffusor Matrix...";
+            statusLabel.innerText = "⚡ Activating Black-Forest Flux Neural Pipeline Node...";
             outputBox.style.display = "none";
 
-            setTimeout(() => {
-                statusLabel.innerText = "⏳ Generating Real High-Resolution Context Map...";
-                setTimeout(() => {
-                    outputBox.innerHTML = `<img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop" alt="AI Generated Graphic">`;
-                    statusLabel.classList.add('success-status');
-                    statusLabel.innerText = "🎉 Success: Real AI Image Asset Rendered!";
-                    outputBox.style.display = "block";
-                }, 2000);
-            }, 1200);
+            try {
+                const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
+                    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                    method: "POST",
+                    body: JSON.stringify({ inputs: promptVal }),
+                });
+
+                if (!response.ok) throw new Error("API Limit or Invalid Token key structure.");
+
+                statusLabel.innerText = "⏳ Compiling Binary Array Streams into 4K Frame...";
+                const imgBlob = await response.blob();
+                const objectUrl = URL.createObjectURL(imgBlob);
+
+                outputBox.innerHTML = `<img src="${objectUrl}" alt="Real AI Graphic Assets">`;
+                statusLabel.classList.add('success-status');
+                statusLabel.innerText = "🎉 Success: Real AI Image Asset Rendered via Flux Engine!";
+                outputBox.style.display = "block";
+
+            } catch (err) {
+                statusLabel.innerText = "❌ API Connection Error. Please verify token structure or system limits.";
+            }
         }
 
-        /* ⚡ NEW ASYNC FUNCTION: TEXT TO VOICE PROCESSING REAL TIME HUB */
+        // 🎵 100% REAL TEXT TO VOICE PROCESSING real TIME HUB
         async function processTextToVoice() {
-            const hfToken = document.getElementById('t2vToken').value.trim();
+            const token = getHFToken();
             const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const statusLabel = document.getElementById('t2vStatus');
             const outputBox = document.getElementById('t2vOutput');
             const playerNode = document.getElementById('audioNodePlayer');
 
-            if (!hfToken) {
-                statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Validation Blocked: Hugging Face Token string data missing!";
-                alert("Rajkumar bhai, please token input field khali mat chodo!");
+            if (!token) {
+                alert("Rajkumar bhai, please Home page par apni Hugging Face token code compile kijiye!");
+                statusLabel.innerText = "❌ Validation Error: Missing Token!";
                 return;
             }
             if (!textScript) {
-                statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Validation Blocked: Target prompt script line empty!";
-                alert("Bhai text script context generate karne ke liye message write kijiye!");
+                alert("Bhai text script write karna mandatory hai!");
                 return;
             }
 
             statusLabel.classList.remove('success-status');
-            statusLabel.innerText = "⚡ Initializing Neural Sound Synthesis Port...";
+            statusLabel.innerText = "⚡ Initializing Neural Sound Synthesis Port Vectors...";
             outputBox.style.display = "none";
 
             try {
                 const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
-                    headers: { "Authorization": `Bearer ${hfToken}`, "Content-Type": "application/json" },
+                    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
                     method: "POST",
                     body: JSON.stringify({ inputs: textScript }),
                 });
 
-                if (!apiResponse.ok) throw new Error("Inference Stream Exception Error Context.");
+                if (!apiResponse.ok) throw new Error("Inference Stream Exception.");
 
                 statusLabel.innerText = "⏳ Processing and Compiling Wave Audio Buffers...";
                 const dataBlob = await apiResponse.blob();
@@ -501,7 +504,7 @@
                 statusLabel.innerText = "🎉 Success: High Fidelity Audio Stream Synthesized!";
                 outputBox.style.display = "block";
 
-                // Auto-Download Feature for User Stream
+                // Auto-Download Hook
                 const downloadHook = document.createElement('a');
                 downloadHook.href = generatedAudioUrl;
                 downloadHook.download = `VIDTOR_AI_AUDIO_${Date.now()}.mp3`;
@@ -510,34 +513,11 @@
                 document.body.removeChild(downloadHook);
 
             } catch (error) {
-                statusLabel.classList.add('success-status');
-                statusLabel.innerText = "🎉 Signal Action Completed and Processed safely into internal variables!";
+                statusLabel.innerText = "❌ Synthesis Node Failed. Please try checking token permission bounds.";
             }
         }
 
-        function processInstagramMetric(inputId, statusId, metricType) {
-            const inputVal = document.getElementById(inputId).value.trim();
-            const statusLabel = document.getElementById(statusId);
-
-            if (inputVal === "") {
-                statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Validation Blocked: Missing required identity data!";
-                alert(`Rajkumar bhai, link ya profile handle fill karna mandatory hai!`);
-                return;
-            }
-
-            statusLabel.classList.remove('success-status');
-            statusLabel.innerText = "⚡ Resolving Destination API Target Nodes...";
-
-            setTimeout(() => {
-                statusLabel.innerText = "⏳ Directing Packet Distribution Pipeline Blocks...";
-                setTimeout(() => {
-                    statusLabel.classList.add('success-status');
-                    statusLabel.innerText = `🎉 Success: Dynamic 1K+ ${metricType} Allocated Successfully!`;
-                }, 2000);
-            }, 1200);
-        }
-
+        // 🎬 100% REAL PHOTO TO VIDEO / MIXED ENGINE VIA WHAMMY
         function runRealVideoGeneration(fileFieldId, promptFieldId, statusLabelId) {
             const fileInput = document.getElementById(fileFieldId);
             const promptInput = document.getElementById(promptFieldId).value.toLowerCase().trim();
@@ -545,18 +525,15 @@
 
             if (!fileInput.files || !fileInput.files[0]) {
                 statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Validation Blocked: Local storage target file object layer missing!";
-                alert("Rajkumar bhai, please click choose file and select a real photo layer first!");
+                statusLabel.innerText = "❌ Validation Blocked: Image file object layer missing!";
+                alert("Rajkumar bhai, please file layer choose kijiye!");
                 return;
             }
 
-            const allowedKeywords = ['vidtor', 'photo to video', 'image to video', 'free image to video', 'free photo to video'];
-            const isMatch = allowedKeywords.some(keyword => promptInput.includes(keyword));
-
-            if (promptInput === "" || !isMatch) {
+            if (promptInput === "") {
                 statusLabel.classList.remove('success-status');
-                statusLabel.innerText = "❌ Logic Error: Required verification phrase 'vidtor' or 'photo to video' is missing inside text parameter box.";
-                alert("Rajkumar bhai, prompt area validation key mandatory hai! Type 'vidtor' inside it.");
+                statusLabel.innerText = "❌ Logic Error: Mandatory verification key missing inside text parameter box.";
+                alert("Rajkumar bhai, verification prompt box me text fill kijiye!");
                 return;
             }
 
@@ -589,11 +566,17 @@
                         ctx.drawImage(mainImg, -w/2, -h/2, w, h);
                         ctx.restore();
                         
+                        // Overlay Dynamic Text
                         ctx.save();
                         let logoYOffset = Math.sin(i * 0.4) * 6;
                         ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
                         ctx.textAlign = "right"; ctx.fillStyle = "rgba(0, 210, 255, 0.85)";
                         ctx.fillText("⚡ VIDTOR AI", canvas.width - 40, 50 + logoYOffset);
+                        
+                        // Custom Overlay script parameter injection
+                        ctx.font = "italic 30px 'Plus Jakarta Sans', sans-serif";
+                        ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
+                        ctx.fillText(promptInput, canvas.width / 2, canvas.height - 60);
                         ctx.restore();
                         
                         video.add(canvas);
@@ -614,7 +597,7 @@
                     const outputVideo = video.compile();
                     const outputUrl = URL.createObjectURL(outputVideo);
                     statusLabel.classList.add('success-status');
-                    statusLabel.innerText = '🎉 Success: WebM High-Fidelity Video File Downloaded Automatically!';
+                    statusLabel.innerText = '🎉 Success: High-Fidelity Video File Downloaded Automatically!';
                     
                     const downloader = document.createElement('a'); downloader.href = outputUrl;
                     downloader.download = `VIDTOR_AI_RK_${Date.now()}.webm`;
@@ -622,6 +605,11 @@
                 };
             };
             reader.readAsDataURL(fileInput.files[0]);
+        }
+
+        // Redirect To Owner Instagram Business DM 
+        function redirectToOwnerDM() {
+            window.open("https://www.instagram.com/", "_blank");
         }
 
         window.onclick = function(event) {
