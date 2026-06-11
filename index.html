@@ -53,17 +53,14 @@
             100% { transform: translate(-4%, -4%) rotate(6deg); }
         }
 
-        /* ==========================================================================
-           🌟 CRITICAL UPDATE: TOP MOST LAYER 100K CIRCLES CANVAS OVERLAY
-           ========================================================================== */
         #topLayer100kCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 99999; /* Web page ke har element ke sabsay upar */
-            pointer-events: none; /* Iske upar hote hue bhi buttons click ho sakein */
+            z-index: 99999;
+            pointer-events: none;
             background: transparent;
         }
 
@@ -113,14 +110,13 @@
 
         /* --- DISPLAY PANELS --- */
         .page-panel {
-            position: relative;
-            z-index: 10;
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             padding: 35px 30px; border-radius: 24px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
             border: 1px solid var(--border); box-sizing: border-box;
             animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+            position: relative; z-index: 10;
         }
         .active-panel { display: block; }
         @keyframes panelSwitchFade {
@@ -209,6 +205,25 @@
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
         
         .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; position: relative; z-index: 10; }
+
+        .canvas-3d-stage-wrapper {
+            width: 100%;
+            max-width: 440px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 10;
+        }
+        #matrix100CirclesCanvas {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body>
@@ -248,11 +263,7 @@
             </div>
         </div>
 
-        <div class="input-wrapper" style="margin-bottom:20px;">
-            <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
-            <input type="text" id="globalHFToken" placeholder="Paste free hf_... key here to activate AI">
-        </div>
-        <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+        <button class="btn-action" style="margin-top:20px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
@@ -357,8 +368,17 @@
 
     <div class="devotional-outro">RADHE RADHE</div>
 
+    <div class="canvas-3d-stage-wrapper">
+        <canvas id="matrix100CirclesCanvas"></canvas>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
+        // CRITICAL SECURITY NOTE: 
+        // Neeche diye gaye "YOUR_HF_TOKEN_HERE" ki jagah apna asli Hugging Face Read Token (hf_...) paste karein.
+        // Iske baad users se bina token maange background me automatic processing shuru ho jayegi!
+        const MASTER_HF_TOKEN = "YOUR_HF_TOKEN_HERE";
+
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
@@ -373,10 +393,6 @@
                 activePanel.classList.add('active-panel');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
-
-        function getHFToken() {
-            return document.getElementById('globalHFToken').value.trim();
         }
 
         function runPercentageEngine(percentTextId, barFillId, durationMs, callback) {
@@ -400,13 +416,11 @@
         }
 
         async function processRealTextToPhoto() {
-            const token = getHFToken();
             const promptVal = document.getElementById('t2pPrompt').value.trim();
             const progBox = document.getElementById('t2pProgressBox');
             const scene3D = document.getElementById('t2p3DScene');
 
-            if (!token) { alert("Rajkumar bhai, pehle Home page par API Token code lagayein!"); return; }
-            if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
+            if (!promptVal) { return; }
 
             progBox.style.display = "block";
             scene3D.style.display = "none";
@@ -414,7 +428,7 @@
             runPercentageEngine('t2pPercentText', 't2pBarFill', 2000, async () => {
                 try {
                     const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
-                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                        headers: { "Authorization": `Bearer ${MASTER_HF_TOKEN}`, "Content-Type": "application/json" },
                         method: "POST",
                         body: JSON.stringify({ inputs: promptVal }),
                     });
@@ -431,21 +445,18 @@
                         <a href="${objectUrl}" download="VIDTOR_PHOTO_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo Asset</a>
                     `;
                 } catch (err) {
-                    alert("Error: Token invalid ya server limit reach ho gayi hai.");
                     progBox.style.display = "none";
                 }
             });
         }
 
         async function processTextToVoice() {
-            const token = getHFToken();
             const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vProgressBox');
             const scene3D = document.getElementById('t2v3DScene');
 
-            if (!token) { alert("Rajkumar bhai, Home page par secure token lagayein!"); return; }
-            if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
+            if (!textScript) { return; }
 
             progBox.style.display = "block";
             scene3D.style.display = "none";
@@ -453,7 +464,7 @@
             runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, async () => {
                 try {
                     const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
-                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                        headers: { "Authorization": `Bearer ${MASTER_HF_TOKEN}`, "Content-Type": "application/json" },
                         method: "POST",
                         body: JSON.stringify({ inputs: textScript }),
                     });
@@ -470,7 +481,6 @@
                         <a href="${generatedAudioUrl}" download="VIDTOR_AUDIO_${Date.now()}.mp3" class="btn-download-trigger">⬇️ Download Audio Track</a>
                     `;
                 } catch (error) {
-                    alert("Voice Synthesis error. Check your API authorization token.");
                     progBox.style.display = "none";
                 }
             });
@@ -482,8 +492,8 @@
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
 
-            if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
-            if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
+            if (!fileInput.files || !fileInput.files[0]) { return; }
+            if (!promptVal) { return; }
 
             progBox.style.display = "block";
             scene3D.style.display = "none";
@@ -535,9 +545,57 @@
             };
         }
 
-        // ==========================================================================
-        // 🚀 ULTRA-PERFORMANCE TOP OVERLAY MULTI-CIRCLES PARTICLES ENGINE
-        // ==========================================================================
+        const canvas = document.getElementById('matrix100CirclesCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvasEngine() {
+            canvas.width = canvas.parentElement.clientWidth * 2;
+            canvas.height = canvas.parentElement.clientHeight * 2;
+        }
+        resizeCanvasEngine();
+        window.addEventListener('resize', resizeCanvasEngine);
+
+        let animationFrameTimer = 20;
+        const totalCirclesCount = 1000;
+
+        function draw3DTunnelMatrix() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animationFrameTimer += 0.02;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.scale(1, 0.45); 
+            ctx.translate(-centerX, -centerY);
+
+            for (let i = 0; i < totalCirclesCount; i++) {
+                let baseRadius = 15 + (i * 2.8);
+                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
+                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
+                
+                let finalRadius = baseRadius * dynamicSizeScale;
+                let adjustedY = centerY + dynamicVerticalBounce;
+
+                ctx.beginPath();
+                ctx.arc(centerX, adjustedY, finalRadius, 0, Math.PI * 2);
+
+                let colorRatio = i / totalCirclesCount;
+                let red = Math.floor(0 + (colorRatio * 157));
+                let green = Math.floor(210 - (colorRatio * 132));
+                let blue = Math.floor(255 - (colorRatio * 34));
+                let opacity = 0.15 + (1 - colorRatio) * 0.65;
+
+                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+            ctx.restore();
+            requestAnimationFrame(draw3DTunnelMatrix);
+        }
+        draw3DTunnelMatrix();
+
         const topCanvas = document.getElementById('topLayer100kCanvas');
         const tCtx = topCanvas.getContext('2d');
 
@@ -549,17 +607,16 @@
         window.addEventListener('resize', syncTopCanvasSize);
 
         const circleParticles = [];
-        // Generating balanced high density particle stream (approx 12,000 active flying circles)
-        const maxCircleCount = 12000; 
+        const maxCircleCount = 120;
 
         for (let i = 0; i < maxCircleCount; i++) {
             circleParticles.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                radius: Math.random() * 2 + 0.5, // Chote glowing concentric particles
-                speedY: -(Math.random() * 0.7 + 0.2), // Upar bounce/floating trend
+                radius: Math.random() * 2 + 0.5,
+                speedY: -(Math.random() * 0.7 + 0.2),
                 speedX: (Math.random() - 0.5) * 0.4,
-                hue: Math.random() > 0.5 ? 190 : 270 // Half Asmani (Cyan) and Half Purple (Magenta)
+                hue: Math.random() > 0.5 ? 190 : 270
             });
         }
 
@@ -569,17 +626,14 @@
             for (let i = 0; i < maxCircleCount; i++) {
                 let p = circleParticles[i];
                 
-                // Drawing individual circle onto top canvas layer
                 tCtx.beginPath();
                 tCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 tCtx.fillStyle = `hsla(${p.hue}, 100%, 70%, 0.4)`;
                 tCtx.fill();
 
-                // Motion update mapping
                 p.y += p.speedY;
                 p.x += p.speedX;
 
-                // Screen bounce edge resetting loop
                 if (p.y < -10) {
                     p.y = topCanvas.height + 10;
                     p.x = Math.random() * topCanvas.width;
@@ -588,10 +642,8 @@
                     p.speedX *= -1;
                 }
             }
-
             requestAnimationFrame(animateTopLayer100kCircles);
         }
-        // Launch top most particle rendering matrix
         animateTopLayer100kCircles();
 
         window.onclick = function(event) {
@@ -602,4 +654,3 @@
     </script>
 </body>
 </html>
-
