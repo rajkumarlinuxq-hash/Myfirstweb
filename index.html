@@ -38,7 +38,6 @@
             position: relative;
         }
 
-        /* NEW FLOATING CIRCLES CANVAS */
         #floatingCirclesBackgroundCanvas {
             position: fixed;
             top: 0;
@@ -50,7 +49,6 @@
             background: transparent;
         }
 
-        /* --- HEADER NAVIGATION --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 70px;
@@ -94,7 +92,6 @@
         }
         .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
 
-        /* --- DISPLAY PANELS --- */
         .page-panel {
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -110,7 +107,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- PROGRESS BAR SUITE --- */
         .progress-box-wrapper {
             margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
@@ -119,7 +115,6 @@
         .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
 
-        /* --- 3D BOY CHARACTER PRESENTATION --- */
         .scene-3d-presenter {
             margin-top: 25px; display: none; width: 100%; perspective: 1000px;
             position: relative; min-height: 300px; background: rgba(5,11,26,0.5);
@@ -446,7 +441,6 @@
             };
         }
 
-        // --- NEW OPTIMIZED 150 HOLOGRAPHIC FLOATING CIRCLES ENGINE ---
         const bgCanvas = document.getElementById('floatingCirclesBackgroundCanvas');
         const bgCtx = bgCanvas.getContext('2d');
 
@@ -458,16 +452,16 @@
         window.addEventListener('resize', resizeBgCanvas);
 
         const circleList = [];
-        const totalCircles = 150; // 100-200 circles range config
+        const totalCircles = 150; 
 
         for (let i = 0; i < totalCircles; i++) {
             circleList.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                radius: Math.random() * 8 + 2, // Varied subtle ring sizes
+                radius: Math.random() * 8 + 2, 
                 speedY: -(Math.random() * 0.7 + 0.2),
                 speedX: (Math.random() - 0.5) * 0.4,
-                hue: Math.random() > 0.5 ? 195 : 275, // Asmani cyan or purple glow
+                hue: Math.random() > 0.5 ? 195 : 275, 
                 alpha: Math.random() * 0.4 + 0.1,
                 isFilled: Math.random() > 0.7 
             });
@@ -478,7 +472,6 @@
 
             for (let i = 0; i < totalCircles; i++) {
                 let c = circleList[i];
-                
                 bgCtx.beginPath();
                 bgCtx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
                 
@@ -513,5 +506,4 @@
         }
     </script>
 </body>
-</html> 
-
+</html>
