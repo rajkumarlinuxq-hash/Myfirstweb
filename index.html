@@ -194,9 +194,6 @@
         
         .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
 
-        /* ==========================================================================
-           🌟 NEW: HIGH-PERFORMANCE 100 CIRCLES 3D MATRIX CANVAS
-           ========================================================================== */
         .canvas-3d-stage-wrapper {
             width: 100%;
             max-width: 440px;
@@ -412,7 +409,7 @@
             const progBox = document.getElementById('t2pProgressBox');
             const scene3D = document.getElementById('t2p3DScene');
 
-            if (!token) { alert("Rajkumar bhai, pehle Home page par API Token code lagayein!"); return; }
+            if (!token) { alert("Rajkumar bhai, pehle Dashboard Home par Token key fill karo!"); return; }
             if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
 
             progBox.style.display = "block";
@@ -451,7 +448,7 @@
             const progBox = document.getElementById('t2vProgressBox');
             const scene3D = document.getElementById('t2v3DScene');
 
-            if (!token) { alert("Rajkumar bhai, Home page par secure token lagayein!"); return; }
+            if (!token) { alert("Rajkumar bhai, pehle Dashboard Home par Token key fill karo!"); return; }
             if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
 
             progBox.style.display = "block";
@@ -484,11 +481,13 @@
         }
 
         function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId) {
+            const token = getHFToken();
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
 
+            if (!token) { alert("Rajkumar bhai, pehle Dashboard Home par Token key fill karo!"); return; }
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
             if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
 
@@ -542,9 +541,6 @@
             };
         }
 
-        // ==========================================================================
-        // JAVASCRIPT REAL-TIME RENDERING ENGINE FOR 90 CONCENTRIC 3D TUNNEL CIRCLES
-        // ==========================================================================
         const canvas = document.getElementById('matrix100CirclesCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -556,26 +552,22 @@
         window.addEventListener('resize', resizeCanvasEngine);
 
         let animationFrameTimer = 0;
-        const totalCirclesCount = 90; // Balanced between 80-100 for high framerate performance
+        const totalCirclesCount = 200;
 
         function draw3DTunnelMatrix() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            animationFrameTimer += 0.02;
+            animationFrameTimer += 0.05;
 
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
 
             ctx.save();
-            // Applying faux 3D tilt perspective projection transformation mapping
             ctx.translate(centerX, centerY);
             ctx.scale(1, 0.45); 
             ctx.translate(-centerX, -centerY);
 
             for (let i = 0; i < totalCirclesCount; i++) {
-                // Progressive radius mapping to simulate stacks stacked on top of each other
                 let baseRadius = 15 + (i * 2.8);
-                
-                // Sinusoidal bounce mapping for individual phase wave motion tracking
                 let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
                 let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
                 
@@ -585,13 +577,10 @@
                 ctx.beginPath();
                 ctx.arc(centerX, adjustedY, finalRadius, 0, Math.PI * 2);
 
-                // Smooth neon shift calculation from cyan (asmani) to purple
                 let colorRatio = i / totalCirclesCount;
                 let red = Math.floor(0 + (colorRatio * 157));
                 let green = Math.floor(210 - (colorRatio * 132));
                 let blue = Math.floor(255 - (colorRatio * 34));
-                
-                // Alpha fading to create depth tunnel ambiance
                 let opacity = 0.15 + (1 - colorRatio) * 0.65;
 
                 ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
@@ -601,7 +590,6 @@
             ctx.restore();
             requestAnimationFrame(draw3DTunnelMatrix);
         }
-        // Launch 3D render loop
         draw3DTunnelMatrix();
 
         window.onclick = function(event) {
