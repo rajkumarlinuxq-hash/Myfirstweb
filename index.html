@@ -209,7 +209,7 @@
         .canvas-3d-stage-wrapper {
             width: 100%;
             max-width: 440px;
-            height: 220px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -374,9 +374,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
-        // CRITICAL SECURITY NOTE: 
-        // Neeche diye gaye "YOUR_HF_TOKEN_HERE" ki jagah apna asli Hugging Face Read Token (hf_...) paste karein.
-        // Iske baad users se bina token maange background me automatic processing shuru ho jayegi!
+        // MASTER HF REPLACEMENT KEY:
         const MASTER_HF_TOKEN = "YOUR_HF_TOKEN_HERE";
 
         function toggleNavigationMenu() {
@@ -545,6 +543,7 @@
             };
         }
 
+        // --- DENSE 3D TUNNEL ENGINE (450 CIRCLES MATRIX) ---
         const canvas = document.getElementById('matrix100CirclesCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -555,25 +554,25 @@
         resizeCanvasEngine();
         window.addEventListener('resize', resizeCanvasEngine);
 
-        let animationFrameTimer = 20;
-        const totalCirclesCount = 1000;
+        let animationFrameTimer = 0;
+        const totalCirclesCount = 450; 
 
         function draw3DTunnelMatrix() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            animationFrameTimer += 0.02;
+            animationFrameTimer += 0.015;
 
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
 
             ctx.save();
             ctx.translate(centerX, centerY);
-            ctx.scale(1, 0.45); 
+            ctx.scale(1, 0.5); 
             ctx.translate(-centerX, -centerY);
 
             for (let i = 0; i < totalCirclesCount; i++) {
-                let baseRadius = 15 + (i * 2.8);
-                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
-                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
+                let baseRadius = 5 + (i * 0.95); 
+                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.04)) * 40;
+                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.02)) * 0.12;
                 
                 let finalRadius = baseRadius * dynamicSizeScale;
                 let adjustedY = centerY + dynamicVerticalBounce;
@@ -585,10 +584,10 @@
                 let red = Math.floor(0 + (colorRatio * 157));
                 let green = Math.floor(210 - (colorRatio * 132));
                 let blue = Math.floor(255 - (colorRatio * 34));
-                let opacity = 0.15 + (1 - colorRatio) * 0.65;
+                let opacity = 0.03 + (1 - colorRatio) * 0.8;
 
                 ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-                ctx.lineWidth = 1.5;
+                ctx.lineWidth = i % 3 === 0 ? 1.8 : 0.8;
                 ctx.stroke();
             }
             ctx.restore();
@@ -596,6 +595,7 @@
         }
         draw3DTunnelMatrix();
 
+        // --- NEW 350 HOLOGRAPHIC FLOATING PARTICLES ENGINE ---
         const topCanvas = document.getElementById('topLayer100kCanvas');
         const tCtx = topCanvas.getContext('2d');
 
@@ -607,16 +607,17 @@
         window.addEventListener('resize', syncTopCanvasSize);
 
         const circleParticles = [];
-        const maxCircleCount = 120;
+        const maxCircleCount = 350; 
 
         for (let i = 0; i < maxCircleCount; i++) {
             circleParticles.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                radius: Math.random() * 2 + 0.5,
-                speedY: -(Math.random() * 0.7 + 0.2),
-                speedX: (Math.random() - 0.5) * 0.4,
-                hue: Math.random() > 0.5 ? 190 : 270
+                radius: Math.random() * 3 + 0.6,
+                speedY: -(Math.random() * 0.8 + 0.3),
+                speedX: (Math.random() - 0.5) * 0.5,
+                hue: Math.random() > 0.4 ? 195 : 275,
+                alpha: Math.random() * 0.5 + 0.2
             });
         }
 
@@ -628,8 +629,12 @@
                 
                 tCtx.beginPath();
                 tCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                tCtx.fillStyle = `hsla(${p.hue}, 100%, 70%, 0.4)`;
+                tCtx.fillStyle = `hsla(${p.hue}, 100%, 75%, ${p.alpha})`;
                 tCtx.fill();
+
+                p.alpha += (Math.random() - 0.5) * 0.02;
+                if (p.alpha < 0.1) p.alpha = 0.1;
+                if (p.alpha > 0.7) p.alpha = 0.7;
 
                 p.y += p.speedY;
                 p.x += p.speedX;
@@ -654,3 +659,4 @@
     </script>
 </body>
 </html>
+
