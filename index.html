@@ -38,7 +38,8 @@
             position: relative;
         }
 
-        #floatingCirclesBackgroundCanvas {
+        /* NEW 3D PULSING TUNNEL CANVAS */
+        #tunnel3DBackgroundCanvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -49,6 +50,7 @@
             background: transparent;
         }
 
+        /* --- HEADER NAVIGATION --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 70px;
@@ -92,6 +94,7 @@
         }
         .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
 
+        /* --- DISPLAY PANELS --- */
         .page-panel {
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -107,6 +110,7 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
+        /* --- PROGRESS BAR SUITE --- */
         .progress-box-wrapper {
             margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
@@ -115,6 +119,7 @@
         .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
 
+        /* --- 3D BOY CHARACTER PRESENTATION --- */
         .scene-3d-presenter {
             margin-top: 25px; display: none; width: 100%; perspective: 1000px;
             position: relative; min-height: 300px; background: rgba(5,11,26,0.5);
@@ -178,7 +183,7 @@
 </head>
 <body>
 
-    <canvas id="floatingCirclesBackgroundCanvas"></canvas>
+    <canvas id="tunnel3DBackgroundCanvas"></canvas>
 
     <header>
         <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
@@ -441,63 +446,66 @@
             };
         }
 
-        const bgCanvas = document.getElementById('floatingCirclesBackgroundCanvas');
-        const bgCtx = bgCanvas.getContext('2d');
+        const canvas3D = document.getElementById('tunnel3DBackgroundCanvas');
+        const ctx3D = canvas3D.getContext('2d');
 
-        function resizeBgCanvas() {
-            bgCanvas.width = window.innerWidth;
-            bgCanvas.height = window.innerHeight;
+        function resize3DCanvas() {
+            canvas3D.width = window.innerWidth;
+            canvas3D.height = window.innerHeight;
         }
-        resizeBgCanvas();
-        window.addEventListener('resize', resizeBgCanvas);
+        resize3DCanvas();
+        window.addEventListener('resize', resize3DCanvas);
 
-        const circleList = [];
-        const totalCircles = 150; 
+        const ringCount = 150; 
+        const ringsArray = [];
 
-        for (let i = 0; i < totalCircles; i++) {
-            circleList.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                radius: Math.random() * 8 + 2, 
-                speedY: -(Math.random() * 0.7 + 0.2),
-                speedX: (Math.random() - 0.5) * 0.4,
-                hue: Math.random() > 0.5 ? 195 : 275, 
-                alpha: Math.random() * 0.4 + 0.1,
-                isFilled: Math.random() > 0.7 
+        for (let i = 0; i < ringCount; i++) {
+            ringsArray.push({
+                phaseOffset: (i / ringCount) * Math.PI * 2, 
+                baseSpeed: 0.008,
+                hue: i % 2 === 0 ? 195 : 275 
             });
         }
 
-        function animateFloatingCirclesSuite() {
-            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+        let animationGlobalTime = 0;
 
-            for (let i = 0; i < totalCircles; i++) {
-                let c = circleList[i];
-                bgCtx.beginPath();
-                bgCtx.arc(c.x, c.y, c.radius, 0, Math.PI * 2);
+        function draw3DRippleTunnelSuite() {
+            ctx3D.clearRect(0, 0, canvas3D.width, canvas3D.height);
+            
+            const centerX = canvas3D.width / 2;
+            const centerY = canvas3D.height / 2;
+            const maxRadius = Math.sqrt(centerX * centerX + centerY * centerY);
+
+            animationGlobalTime += 0.02;
+
+            for (let i = 0; i < ringCount; i++) {
+                let ring = ringsArray[i];
+                let scaleProgress = (ring.phaseOffset + animationGlobalTime) % (Math.PI * 2);
+                let normalizedScale = scaleProgress / (Math.PI * 2); 
+                let currentRadius = normalizedScale * maxRadius;
                 
-                if (c.isFilled) {
-                    bgCtx.fillStyle = `hsla(${c.hue}, 100%, 70%, ${c.alpha})`;
-                    bgCtx.fill();
-                } else {
-                    bgCtx.strokeStyle = `hsla(${c.hue}, 100%, 75%, ${c.alpha + 0.1})`;
-                    bgCtx.lineWidth = 1.2;
-                    bgCtx.stroke();
-                }
+                if (currentRadius <= 1) continue; 
 
-                c.y += c.speedY;
-                c.x += c.speedX;
+                let verticalWaveOffset = Math.sin(animationGlobalTime * 1.5 + normalizedScale * Math.PI * 3) * 45;
+                let adjustedCenterY = centerY + verticalWaveOffset;
 
-                if (c.y < -20) {
-                    c.y = bgCanvas.height + 20;
-                    c.x = Math.random() * bgCanvas.width;
-                }
-                if (c.x < -20 || c.x > bgCanvas.width + 20) {
-                    c.speedX *= -1;
-                }
+                let alphaGlow = Math.sin(normalizedScale * Math.PI); 
+                alphaGlow = Math.max(0, Math.min(0.45, alphaGlow)); 
+
+                ctx3D.beginPath();
+                ctx3D.arc(centerX, adjustedCenterY, currentRadius, 0, Math.PI * 2);
+                
+                ctx3D.strokeStyle = `hsla(${ring.hue}, 100%, 70%, ${alphaGlow})`;
+                ctx3D.lineWidth = 1.0 + (normalizedScale * 3.5); 
+                ctx3D.shadowBlur = normalizedScale * 8;
+                ctx3D.shadowColor = `hsla(${ring.hue}, 100%, 65%, ${alphaGlow})`;
+                
+                ctx3D.stroke();
+                ctx3D.shadowBlur = 0; 
             }
-            requestAnimationFrame(animateFloatingCirclesSuite);
+            requestAnimationFrame(draw3DRippleTunnelSuite);
         }
-        animateFloatingCirclesSuite();
+        draw3DRippleTunnelSuite();
 
         window.onclick = function(event) {
             if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
@@ -507,3 +515,4 @@
     </script>
 </body>
 </html>
+
