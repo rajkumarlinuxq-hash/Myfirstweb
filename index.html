@@ -53,6 +53,20 @@
             100% { transform: translate(-4%, -4%) rotate(6deg); }
         }
 
+        /* ==========================================================================
+           🌟 CRITICAL UPDATE: TOP MOST LAYER 100K CIRCLES CANVAS OVERLAY
+           ========================================================================== */
+        #topLayer100kCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999; /* Web page ke har element ke sabsay upar */
+            pointer-events: none; /* Iske upar hote hue bhi buttons click ho sakein */
+            background: transparent;
+        }
+
         /* --- HEADER NAVIGATION --- */
         header {
             position: fixed;
@@ -99,6 +113,8 @@
 
         /* --- DISPLAY PANELS --- */
         .page-panel {
+            position: relative;
+            z-index: 10;
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             padding: 35px 30px; border-radius: 24px;
@@ -189,34 +205,15 @@
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
         input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
         
-        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; position: relative; z-index: 20; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
         
-        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
-
-        /* ==========================================================================
-           🌟 NEW: HIGH-PERFORMANCE 100 CIRCLES 3D MATRIX CANVAS
-           ========================================================================== */
-        .canvas-3d-stage-wrapper {
-            width: 100%;
-            max-width: 440px;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-            margin-bottom: 25px;
-            position: relative;
-        }
-        #matrix100CirclesCanvas {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border-radius: 16px;
-        }
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; position: relative; z-index: 10; }
     </style>
 </head>
 <body>
+
+    <canvas id="topLayer100kCanvas"></canvas>
 
     <header>
         <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
@@ -359,10 +356,6 @@
     </div>
 
     <div class="devotional-outro">RADHE RADHE</div>
-
-    <div class="canvas-3d-stage-wrapper">
-        <canvas id="matrix100CirclesCanvas"></canvas>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
@@ -543,66 +536,63 @@
         }
 
         // ==========================================================================
-        // JAVASCRIPT REAL-TIME RENDERING ENGINE FOR 90 CONCENTRIC 3D TUNNEL CIRCLES
+        // 🚀 ULTRA-PERFORMANCE TOP OVERLAY MULTI-CIRCLES PARTICLES ENGINE
         // ==========================================================================
-        const canvas = document.getElementById('matrix100CirclesCanvas');
-        const ctx = canvas.getContext('2d');
+        const topCanvas = document.getElementById('topLayer100kCanvas');
+        const tCtx = topCanvas.getContext('2d');
 
-        function resizeCanvasEngine() {
-            canvas.width = canvas.parentElement.clientWidth * 2;
-            canvas.height = canvas.parentElement.clientHeight * 2;
+        function syncTopCanvasSize() {
+            topCanvas.width = window.innerWidth;
+            topCanvas.height = window.innerHeight;
         }
-        resizeCanvasEngine();
-        window.addEventListener('resize', resizeCanvasEngine);
+        syncTopCanvasSize();
+        window.addEventListener('resize', syncTopCanvasSize);
 
-        let animationFrameTimer = 0;
-        const totalCirclesCount = 90; // Balanced between 80-100 for high framerate performance
+        const circleParticles = [];
+        // Generating balanced high density particle stream (approx 12,000 active flying circles)
+        const maxCircleCount = 12000; 
 
-        function draw3DTunnelMatrix() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            animationFrameTimer += 0.02;
+        for (let i = 0; i < maxCircleCount; i++) {
+            circleParticles.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                radius: Math.random() * 2 + 0.5, // Chote glowing concentric particles
+                speedY: -(Math.random() * 0.7 + 0.2), // Upar bounce/floating trend
+                speedX: (Math.random() - 0.5) * 0.4,
+                hue: Math.random() > 0.5 ? 190 : 270 // Half Asmani (Cyan) and Half Purple (Magenta)
+            });
+        }
 
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
+        function animateTopLayer100kCircles() {
+            tCtx.clearRect(0, 0, topCanvas.width, topCanvas.height);
 
-            ctx.save();
-            // Applying faux 3D tilt perspective projection transformation mapping
-            ctx.translate(centerX, centerY);
-            ctx.scale(1, 0.45); 
-            ctx.translate(-centerX, -centerY);
-
-            for (let i = 0; i < totalCirclesCount; i++) {
-                // Progressive radius mapping to simulate stacks stacked on top of each other
-                let baseRadius = 15 + (i * 2.8);
+            for (let i = 0; i < maxCircleCount; i++) {
+                let p = circleParticles[i];
                 
-                // Sinusoidal bounce mapping for individual phase wave motion tracking
-                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
-                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
-                
-                let finalRadius = baseRadius * dynamicSizeScale;
-                let adjustedY = centerY + dynamicVerticalBounce;
+                // Drawing individual circle onto top canvas layer
+                tCtx.beginPath();
+                tCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                tCtx.fillStyle = `hsla(${p.hue}, 100%, 70%, 0.4)`;
+                tCtx.fill();
 
-                ctx.beginPath();
-                ctx.arc(centerX, adjustedY, finalRadius, 0, Math.PI * 2);
+                // Motion update mapping
+                p.y += p.speedY;
+                p.x += p.speedX;
 
-                // Smooth neon shift calculation from cyan (asmani) to purple
-                let colorRatio = i / totalCirclesCount;
-                let red = Math.floor(0 + (colorRatio * 157));
-                let green = Math.floor(210 - (colorRatio * 132));
-                let blue = Math.floor(255 - (colorRatio * 34));
-                
-                // Alpha fading to create depth tunnel ambiance
-                let opacity = 0.15 + (1 - colorRatio) * 0.65;
-
-                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
+                // Screen bounce edge resetting loop
+                if (p.y < -10) {
+                    p.y = topCanvas.height + 10;
+                    p.x = Math.random() * topCanvas.width;
+                }
+                if (p.x < -10 || p.x > topCanvas.width + 10) {
+                    p.speedX *= -1;
+                }
             }
-            ctx.restore();
-            requestAnimationFrame(draw3DTunnelMatrix);
+
+            requestAnimationFrame(animateTopLayer100kCircles);
         }
-        // Launch 3D render loop
-        draw3DTunnelMatrix();
+        // Launch top most particle rendering matrix
+        animateTopLayer100kCircles();
 
         window.onclick = function(event) {
             if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
@@ -612,5 +602,4 @@
     </script>
 </body>
 </html>
-o
 
