@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI | Premium Suite by Rajkumar</title>
-    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced automated intelligence platform with custom canvas engines.">
-    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice">
+    <title>VIDTOR AI | 6-Tool Premium Suite by Rajkumar</title>
+    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines.">
+    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster">
     <meta name="author" content="Rajkumar">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
@@ -38,16 +38,19 @@
             position: relative;
         }
 
-        /* NEW 3D PULSING TUNNEL CANVAS */
-        #tunnel3DBackgroundCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            background: transparent;
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
+            z-index: -1;
+            animation: dynamicBackgroundFluid 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes dynamicBackgroundFluid {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-4%, -4%) rotate(6deg); }
         }
 
         /* --- HEADER NAVIGATION --- */
@@ -102,7 +105,6 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
             border: 1px solid var(--border); box-sizing: border-box;
             animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
-            position: relative; z-index: 10;
         }
         .active-panel { display: block; }
         @keyframes panelSwitchFade {
@@ -166,6 +168,18 @@
         }
         @keyframes fadeInBtn { to { opacity: 1; } }
 
+        /* --- 3D HOME DECORATIONS --- */
+        .stage-cylinder-3d { width: 100%; height: 160px; margin: 25px 0; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
+        .spin-core-cylinder { width: 100px; height: 110px; position: relative; transform-style: preserve-3d; animation: cylinderSpin 12s linear infinite; }
+        @keyframes cylinderSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+        .cylinder-card { position: absolute; width: 100px; height: 110px; border-radius: 12px; border: 1px solid rgba(0,210,255,0.4); background: rgba(5,11,26,0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.75rem; color: #fff; font-weight: 700; }
+        .c-1 { transform: rotateY(0deg) translateZ(120px); }
+        .c-2 { transform: rotateY(60deg) translateZ(120px); }
+        .c-3 { transform: rotateY(120deg) translateZ(120px); }
+        .c-4 { transform: rotateY(180deg) translateZ(120px); }
+        .c-5 { transform: rotateY(240deg) translateZ(120px); }
+        .c-6 { transform: rotateY(300deg) translateZ(120px); }
+
         .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px; }
         h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -175,15 +189,34 @@
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
         input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
         
-        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; position: relative; z-index: 20; }
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
         
-        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; position: relative; z-index: 10; }
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
+
+        /* ==========================================================================
+           🌟 NEW: HIGH-PERFORMANCE 100 CIRCLES 3D MATRIX CANVAS
+           ========================================================================== */
+        .canvas-3d-stage-wrapper {
+            width: 100%;
+            max-width: 440px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        #matrix100CirclesCanvas {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body>
-
-    <canvas id="tunnel3DBackgroundCanvas"></canvas>
 
     <header>
         <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
@@ -206,17 +239,35 @@
     <div class="page-panel active-panel" id="panel-home">
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
-        <button class="btn-action" style="margin-top:40px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+        
+        <div class="stage-cylinder-3d">
+            <div class="spin-core-cylinder">
+                <div class="cylinder-card c-1"><span>🏠</span>Hub Center</div>
+                <div class="cylinder-card c-2"><span>✨</span>Fluid Core</div>
+                <div class="cylinder-card c-3"><span>🚀</span>High Speed</div>
+                <div class="cylinder-card c-4"><span>🔒</span>Secure</div>
+                <div class="cylinder-card c-5"><span>💎</span>Premium</div>
+                <div class="cylinder-card c-6"><span>⚡</span>Optimized</div>
+            </div>
+        </div>
+
+        <div class="input-wrapper" style="margin-bottom:20px;">
+            <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
+            <input type="text" id="globalHFToken" placeholder="Paste free hf_... key here to activate AI">
+        </div>
+        <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
         <h2>Text to Photo</h2>
-        <p class="description">Flux Neural Processing Suite</p>
+        <p class="description">Flux Neural Processing Suite (No Keyword Rules)</p>
+        
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
             <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, rainy window...">
         </div>
         <button class="btn-action" onclick="processRealTextToPhoto()">Generate Photo Asset</button>
+
         <div class="progress-box-wrapper" id="t2pProgressBox">
             <div class="percentage-counter" id="t2pPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
@@ -227,15 +278,17 @@
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
         <p class="description">Cinematic Motion Tracking Canvas Engine</p>
+
         <div class="input-wrapper">
             <label>Select Target Image Layer:</label>
             <input type="file" id="p2vFile" accept="image/*">
         </div>
         <div class="input-wrapper">
             <label>Motion Track Script Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="Enter motion dynamics...">
+            <input type="text" id="p2vPrompt" placeholder="Enter anything (No limits applied)...">
         </div>
         <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene')">Compile Video</button>
+
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vBarFill"></div></div>
@@ -246,15 +299,17 @@
     <div class="page-panel" id="panel-photo-text-video">
         <h2>Photo + Text to Video</h2>
         <p class="description">Integrated Subtitle Graphics Suite</p>
+
         <div class="input-wrapper">
             <label>Upload Base Graphic Layout:</label>
             <input type="file" id="p2vtFile" accept="image/*">
         </div>
         <div class="input-wrapper">
             <label>Sub-text Script Script overlay:</label>
-            <input type="text" id="p2vtPrompt" placeholder="Type text script...">
+            <input type="text" id="p2vtPrompt" placeholder="Type text script to mount over frames...">
         </div>
         <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene')">Generate Hybrid Video</button>
+
         <div class="progress-box-wrapper" id="p2vtProgressBox">
             <div class="percentage-counter" id="p2vtPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vtBarFill"></div></div>
@@ -265,6 +320,7 @@
     <div class="page-panel" id="panel-text-to-voice">
         <h2>Text to Voice Suite</h2>
         <p class="description">Neural Audio Waves Synthesizer Directory</p>
+
         <div class="input-wrapper">
             <label>Synthesis Audio Model:</label>
             <select id="t2vModel">
@@ -274,9 +330,10 @@
         </div>
         <div class="input-wrapper">
             <label>Script Voice Text Content:</label>
-            <input type="text" id="t2vPrompt" placeholder="Type script text...">
+            <input type="text" id="t2vPrompt" placeholder="Type script text to convert to audio waveform...">
         </div>
         <button class="btn-action" onclick="processTextToVoice()">Synthesize Voice Audio</button>
+
         <div class="progress-box-wrapper" id="t2vProgressBox">
             <div class="percentage-counter" id="t2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2vBarFill"></div></div>
@@ -287,21 +344,28 @@
     <div class="page-panel" id="panel-ig-panel">
         <h2>Premium Growth Business Hub</h2>
         <p class="description">Target Metric Optimization Service Pipeline</p>
+        <p style="font-size:0.85rem; line-height:1.5; opacity:0.8; text-align:justify; margin-bottom:15px;">
+            To order high-retention manual Instagram Followers, Reel Views, and Instant Likes, click below to connect directly with Owner **Rajkumar** to book custom orders.
+        </p>
         <button class="btn-action" style="background:linear-gradient(135deg, #ff3366, #9d4edd);" onclick="window.open('https://www.instagram.com/', '_blank')">Contact Rajkumar on Instagram</button>
     </div>
 
     <div class="page-panel" id="panel-about">
         <h2>About Website</h2>
-        <p class="description">VIDTOR AI is a comprehensive modern 6-utility engineering web framework optimized completely by Rajkumar.</p>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6;">
+            VIDTOR AI is a comprehensive modern 6-utility engineering web framework optimized completely by Rajkumar with active responsive pipeline systems.
+        </p>
         <button class="btn-action" onclick="switchPanel('home')">Back to Home</button>
     </div>
 
     <div class="devotional-outro">RADHE RADHE</div>
 
+    <div class="canvas-3d-stage-wrapper">
+        <canvas id="matrix100CirclesCanvas"></canvas>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
-        const MASTER_HF_TOKEN = "YOUR_HF_TOKEN_HERE";
-
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
@@ -318,17 +382,23 @@
             }
         }
 
+        function getHFToken() {
+            return document.getElementById('globalHFToken').value.trim();
+        }
+
         function runPercentageEngine(percentTextId, barFillId, durationMs, callback) {
             let start = 0;
             const textNode = document.getElementById(percentTextId);
             const barNode = document.getElementById(barFillId);
             textNode.innerText = "0%";
             barNode.style.width = "0%";
+            
             const intervalTime = durationMs / 100;
             const interval = setInterval(() => {
                 start++;
                 textNode.innerText = `${start}%`;
                 barNode.style.width = `${start}%`;
+
                 if (start >= 100) {
                     clearInterval(interval);
                     if(callback) callback();
@@ -337,23 +407,29 @@
         }
 
         async function processRealTextToPhoto() {
+            const token = getHFToken();
             const promptVal = document.getElementById('t2pPrompt').value.trim();
             const progBox = document.getElementById('t2pProgressBox');
             const scene3D = document.getElementById('t2p3DScene');
-            if (!promptVal) return;
+
+            if (!token) { alert("Rajkumar bhai, pehle Home page par API Token code lagayein!"); return; }
+            if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
+
             progBox.style.display = "block";
             scene3D.style.display = "none";
 
             runPercentageEngine('t2pPercentText', 't2pBarFill', 2000, async () => {
                 try {
                     const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
-                        headers: { "Authorization": `Bearer ${MASTER_HF_TOKEN}`, "Content-Type": "application/json" },
+                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
                         method: "POST",
                         body: JSON.stringify({ inputs: promptVal }),
                     });
-                    if (!response.ok) throw new Error("Offline");
+                    if (!response.ok) throw new Error("API Offline");
+                    
                     const imgBlob = await response.blob();
                     const objectUrl = URL.createObjectURL(imgBlob);
+
                     progBox.style.display = "none";
                     scene3D.style.display = "block";
                     scene3D.innerHTML = `
@@ -361,29 +437,38 @@
                         <div class="payload-display-frame"><img src="${objectUrl}"></div>
                         <a href="${objectUrl}" download="VIDTOR_PHOTO_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo Asset</a>
                     `;
-                } catch (err) { progBox.style.display = "none"; }
+                } catch (err) {
+                    alert("Error: Token invalid ya server limit reach ho gayi hai.");
+                    progBox.style.display = "none";
+                }
             });
         }
 
         async function processTextToVoice() {
+            const token = getHFToken();
             const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vProgressBox');
             const scene3D = document.getElementById('t2v3DScene');
-            if (!textScript) return;
+
+            if (!token) { alert("Rajkumar bhai, Home page par secure token lagayein!"); return; }
+            if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
+
             progBox.style.display = "block";
             scene3D.style.display = "none";
 
             runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, async () => {
                 try {
                     const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
-                        headers: { "Authorization": `Bearer ${MASTER_HF_TOKEN}`, "Content-Type": "application/json" },
+                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
                         method: "POST",
                         body: JSON.stringify({ inputs: textScript }),
                     });
-                    if (!apiResponse.ok) throw new Error("Exception");
+                    if (!apiResponse.ok) throw new Error("Inference Exception");
+
                     const dataBlob = await apiResponse.blob();
                     const generatedAudioUrl = URL.createObjectURL(dataBlob);
+
                     progBox.style.display = "none";
                     scene3D.style.display = "block";
                     scene3D.innerHTML = `
@@ -391,7 +476,10 @@
                         <div class="payload-display-frame"><audio src="${generatedAudioUrl}" controls autoplay></audio></div>
                         <a href="${generatedAudioUrl}" download="VIDTOR_AUDIO_${Date.now()}.mp3" class="btn-download-trigger">⬇️ Download Audio Track</a>
                     `;
-                } catch (error) { progBox.style.display = "none"; }
+                } catch (error) {
+                    alert("Voice Synthesis error. Check your API authorization token.");
+                    progBox.style.display = "none";
+                }
             });
         }
 
@@ -400,15 +488,20 @@
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
-            if (!fileInput.files || !fileInput.files[0] || !promptVal) return;
+
+            if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
+            if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
+
             progBox.style.display = "block";
             scene3D.style.display = "none";
 
             const reader = new FileReader();
             reader.readAsDataURL(fileInput.files[0]);
+            
             reader.onload = function(e) {
                 const mainImg = new Image();
                 mainImg.src = e.target.result;
+                
                 mainImg.onload = function() {
                     const fps = 10; const duration = 3; const totalFrames = duration * fps;
                     const video = new Whammy.Video(fps);
@@ -419,17 +512,20 @@
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         let progress = i / totalFrames;
                         let zoom = 1.0 + (progress * 0.12);
+                        
                         ctx.save();
                         ctx.translate(canvas.width / 2, canvas.height / 2);
                         ctx.scale(zoom, zoom);
                         let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
                         ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
                         ctx.restore();
+                        
                         ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
                         ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
                         ctx.fillText(promptVal, canvas.width / 2, canvas.height - 40);
                         video.add(canvas);
                     }
+
                     const outputVideo = video.compile();
                     const outputUrl = URL.createObjectURL(outputVideo);
 
@@ -446,66 +542,67 @@
             };
         }
 
-        const canvas3D = document.getElementById('tunnel3DBackgroundCanvas');
-        const ctx3D = canvas3D.getContext('2d');
+        // ==========================================================================
+        // JAVASCRIPT REAL-TIME RENDERING ENGINE FOR 90 CONCENTRIC 3D TUNNEL CIRCLES
+        // ==========================================================================
+        const canvas = document.getElementById('matrix100CirclesCanvas');
+        const ctx = canvas.getContext('2d');
 
-        function resize3DCanvas() {
-            canvas3D.width = window.innerWidth;
-            canvas3D.height = window.innerHeight;
+        function resizeCanvasEngine() {
+            canvas.width = canvas.parentElement.clientWidth * 2;
+            canvas.height = canvas.parentElement.clientHeight * 2;
         }
-        resize3DCanvas();
-        window.addEventListener('resize', resize3DCanvas);
+        resizeCanvasEngine();
+        window.addEventListener('resize', resizeCanvasEngine);
 
-        const ringCount = 150; 
-        const ringsArray = [];
+        let animationFrameTimer = 0;
+        const totalCirclesCount = 90; // Balanced between 80-100 for high framerate performance
 
-        for (let i = 0; i < ringCount; i++) {
-            ringsArray.push({
-                phaseOffset: (i / ringCount) * Math.PI * 2, 
-                baseSpeed: 0.008,
-                hue: i % 2 === 0 ? 195 : 275 
-            });
-        }
+        function draw3DTunnelMatrix() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animationFrameTimer += 0.02;
 
-        let animationGlobalTime = 0;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
 
-        function draw3DRippleTunnelSuite() {
-            ctx3D.clearRect(0, 0, canvas3D.width, canvas3D.height);
-            
-            const centerX = canvas3D.width / 2;
-            const centerY = canvas3D.height / 2;
-            const maxRadius = Math.sqrt(centerX * centerX + centerY * centerY);
+            ctx.save();
+            // Applying faux 3D tilt perspective projection transformation mapping
+            ctx.translate(centerX, centerY);
+            ctx.scale(1, 0.45); 
+            ctx.translate(-centerX, -centerY);
 
-            animationGlobalTime += 0.02;
-
-            for (let i = 0; i < ringCount; i++) {
-                let ring = ringsArray[i];
-                let scaleProgress = (ring.phaseOffset + animationGlobalTime) % (Math.PI * 2);
-                let normalizedScale = scaleProgress / (Math.PI * 2); 
-                let currentRadius = normalizedScale * maxRadius;
+            for (let i = 0; i < totalCirclesCount; i++) {
+                // Progressive radius mapping to simulate stacks stacked on top of each other
+                let baseRadius = 15 + (i * 2.8);
                 
-                if (currentRadius <= 1) continue; 
-
-                let verticalWaveOffset = Math.sin(animationGlobalTime * 1.5 + normalizedScale * Math.PI * 3) * 45;
-                let adjustedCenterY = centerY + verticalWaveOffset;
-
-                let alphaGlow = Math.sin(normalizedScale * Math.PI); 
-                alphaGlow = Math.max(0, Math.min(0.45, alphaGlow)); 
-
-                ctx3D.beginPath();
-                ctx3D.arc(centerX, adjustedCenterY, currentRadius, 0, Math.PI * 2);
+                // Sinusoidal bounce mapping for individual phase wave motion tracking
+                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
+                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
                 
-                ctx3D.strokeStyle = `hsla(${ring.hue}, 100%, 70%, ${alphaGlow})`;
-                ctx3D.lineWidth = 1.0 + (normalizedScale * 3.5); 
-                ctx3D.shadowBlur = normalizedScale * 8;
-                ctx3D.shadowColor = `hsla(${ring.hue}, 100%, 65%, ${alphaGlow})`;
+                let finalRadius = baseRadius * dynamicSizeScale;
+                let adjustedY = centerY + dynamicVerticalBounce;
+
+                ctx.beginPath();
+                ctx.arc(centerX, adjustedY, finalRadius, 0, Math.PI * 2);
+
+                // Smooth neon shift calculation from cyan (asmani) to purple
+                let colorRatio = i / totalCirclesCount;
+                let red = Math.floor(0 + (colorRatio * 157));
+                let green = Math.floor(210 - (colorRatio * 132));
+                let blue = Math.floor(255 - (colorRatio * 34));
                 
-                ctx3D.stroke();
-                ctx3D.shadowBlur = 0; 
+                // Alpha fading to create depth tunnel ambiance
+                let opacity = 0.15 + (1 - colorRatio) * 0.65;
+
+                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
             }
-            requestAnimationFrame(draw3DRippleTunnelSuite);
+            ctx.restore();
+            requestAnimationFrame(draw3DTunnelMatrix);
         }
-        draw3DRippleTunnelSuite();
+        // Launch 3D render loop
+        draw3DTunnelMatrix();
 
         window.onclick = function(event) {
             if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
@@ -515,4 +612,3 @@
     </script>
 </body>
 </html>
-
