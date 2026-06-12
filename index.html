@@ -97,7 +97,7 @@
         }
         .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
 
-        /* --- DISPLAY PANELS WITH INTERACTIVE TILT --- */
+        /* --- DISPLAY PANELS --- */
         .page-panel {
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -105,9 +105,6 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
             border: 1px solid var(--border); box-sizing: border-box;
             animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.1s ease, box-shadow 0.3s ease;
         }
         .active-panel { display: block; }
         @keyframes panelSwitchFade {
@@ -115,51 +112,14 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* --- PROGRESS BAR SUITE WITH INTERNAL 3D HELIX CANVAS --- */
+        /* --- PROGRESS BAR SUITE --- */
         .progress-box-wrapper {
             margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
-            position: relative;
         }
-        .percentage-counter { font-size: 1.4rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; position: relative; z-index: 2; }
-        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative; z-index: 2; }
+        .percentage-counter { font-size: 1.4rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; }
+        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
-        
-        .helix-loading-canvas {
-            width: 100%; height: 50px; background: transparent; margin-top: 10px; display: block;
-        }
-
-        /* --- SPECIAL WARP CANVAS FOR VIDEO COMPILATION --- */
-        #warpCompilationCanvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; display: none; border-radius: 24px; pointer-events: none;
-            opacity: 0.4;
-        }
-
-        /* --- 3D INTERACTIVE MATRIX CUBE --- */
-        .stage-cube-3d { width: 100%; height: 200px; margin: 25px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
-        .matrix-cube-core {
-            width: 100px; height: 100px; position: relative; transform-style: preserve-3d;
-            transform: rotateX(-20deg) rotateY(20deg);
-            animation: cubeAutoSpin 16s linear infinite; cursor: grab;
-        }
-        .matrix-cube-core:active { cursor: grabbing; }
-        @keyframes cubeAutoSpin {
-            from { transform: rotateX(-20deg) rotateY(0deg); }
-            to { transform: rotateX(-20deg) rotateY(360deg); }
-        }
-        .cube-face {
-            position: absolute; width: 100px; height: 100px; background: rgba(13, 21, 39, 0.85);
-            border: 2px solid var(--asmani); box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.5);
-            display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
-            font-weight: 800; color: #fff; text-transform: uppercase; border-radius: 8px;
-        }
-        .face-front  { transform: rotateY(0deg) translateZ(50px); }
-        .face-back   { transform: rotateY(180deg) translateZ(50px); border-color: var(--purple); box-shadow: inset 0 0 15px rgba(157, 78, 221, 0.5); }
-        .face-left   { transform: rotateY(-90deg) translateZ(50px); }
-        .face-right  { transform: rotateY(90deg) translateZ(50px); }
-        .face-top    { transform: rotateX(90deg) translateZ(50px); }
-        .face-bottom { transform: rotateX(-90deg) translateZ(50px); }
 
         /* --- 3D BOY CHARACTER PRESENTATION --- */
         .scene-3d-presenter {
@@ -208,6 +168,18 @@
         }
         @keyframes fadeInBtn { to { opacity: 1; } }
 
+        /* --- 3D HOME DECORATIONS --- */
+        .stage-cylinder-3d { width: 100%; height: 160px; margin: 25px 0; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
+        .spin-core-cylinder { width: 100px; height: 110px; position: relative; transform-style: preserve-3d; animation: cylinderSpin 12s linear infinite; }
+        @keyframes cylinderSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+        .cylinder-card { position: absolute; width: 100px; height: 110px; border-radius: 12px; border: 1px solid rgba(0,210,255,0.4); background: rgba(5,11,26,0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.75rem; color: #fff; font-weight: 700; }
+        .c-1 { transform: rotateY(0deg) translateZ(120px); }
+        .c-2 { transform: rotateY(60deg) translateZ(120px); }
+        .c-3 { transform: rotateY(120deg) translateZ(120px); }
+        .c-4 { transform: rotateY(180deg) translateZ(120px); }
+        .c-5 { transform: rotateY(240deg) translateZ(120px); }
+        .c-6 { transform: rotateY(300deg) translateZ(120px); }
+
         .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 20px; }
         h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -223,9 +195,22 @@
         .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
 
         .canvas-3d-stage-wrapper {
-            width: 100%; max-width: 440px; height: 220px; display: flex; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 25px; position: relative;
+            width: 100%;
+            max-width: 440px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            position: relative;
         }
-        #matrix100CirclesCanvas { width: 100%; height: 100%; background: transparent; border-radius: 16px; }
+        #matrix100CirclesCanvas {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body>
@@ -252,14 +237,14 @@
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
         
-        <div class="stage-cube-3d">
-            <div class="matrix-cube-core" id="interactive3DCube">
-                <div class="cube-face face-front">Vidtor</div>
-                <div class="cube-face face-back">AI Core</div>
-                <div class="cube-face face-left">6-Tools</div>
-                <div class="cube-face face-right">Premium</div>
-                <div class="cube-face face-top">Rajkumar</div>
-                <div class="cube-face face-bottom">Secure</div>
+        <div class="stage-cylinder-3d">
+            <div class="spin-core-cylinder">
+                <div class="cylinder-card c-1"><span>🏠</span>Hub Center</div>
+                <div class="cylinder-card c-2"><span>✨</span>Fluid Core</div>
+                <div class="cylinder-card c-3"><span>🚀</span>High Speed</div>
+                <div class="cylinder-card c-4"><span>🔒</span>Secure</div>
+                <div class="cylinder-card c-5"><span>💎</span>Premium</div>
+                <div class="cylinder-card c-6"><span>⚡</span>Optimized</div>
             </div>
         </div>
 
@@ -283,13 +268,11 @@
         <div class="progress-box-wrapper" id="t2pProgressBox">
             <div class="percentage-counter" id="t2pPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="t2pHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2p3DScene"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
-        <canvas id="warpCompilationCanvas"></canvas>
         <h2>Photo to Video</h2>
         <p class="description">Cinematic Motion Tracking Canvas Engine</p>
 
@@ -301,12 +284,11 @@
             <label>Motion Track Script Prompt:</label>
             <input type="text" id="p2vPrompt" placeholder="Enter anything (No limits applied)...">
         </div>
-        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas')">Compile Video</button>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene')">Compile Video</button>
 
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="p2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2v3DScene"></div>
     </div>
@@ -323,12 +305,11 @@
             <label>Sub-text Script Script overlay:</label>
             <input type="text" id="p2vtPrompt" placeholder="Type text script to mount over frames...">
         </div>
-        <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas')">Generate Hybrid Video</button>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene')">Generate Hybrid Video</button>
 
         <div class="progress-box-wrapper" id="p2vtProgressBox">
             <div class="percentage-counter" id="p2vtPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vtBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="p2vtHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2vt3DScene"></div>
     </div>
@@ -353,7 +334,6 @@
         <div class="progress-box-wrapper" id="t2vProgressBox">
             <div class="percentage-counter" id="t2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2vBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="t2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2v3DScene"></div>
     </div>
@@ -403,138 +383,12 @@
             return document.getElementById('globalHFToken').value.trim();
         }
 
-        /* --- 3D INTERACTIVE TILT FOR CARDS --- */
-        const cards = document.querySelectorAll('.page-panel');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                const angleX = (yc - y) / 18;
-                const angleY = (x - xc) / 18;
-                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-        });
-
-        /* --- 3D INTERACTIVE CUBE DRAG LOGIC --- */
-        const cube = document.getElementById('interactive3DCube');
-        let isDragging = false; let previousMousePosition = { x: 0, y: 0 };
-        let currentRotation = { x: -20, y: 20 };
-
-        window.addEventListener('mousedown', (e) => {
-            if(e.target.closest('#interactive3DCube')) {
-                isDragging = true;
-                cube.style.animation = 'none';
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            }
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const deltaMove = { x: e.clientX - previousMousePosition.x, y: e.clientY - previousMousePosition.y };
-            currentRotation.y += deltaMove.x * 0.6;
-            currentRotation.x -= deltaMove.y * 0.6;
-            cube.style.transform = `rotateX(${currentRotation.x}deg) rotateY(${currentRotation.y}deg)`;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
-        });
-
-        window.addEventListener('mouseup', () => { isDragging = false; });
-
-        /* --- 3D HELIX / DNA WAVE LOADING ANIMATION --- */
-        let loadingTimers = {};
-        function startHelixAnimation(canvasId) {
-            const hCanvas = document.getElementById(canvasId);
-            if(!hCanvas) return;
-            const hCtx = hCanvas.getContext('2d');
-            hCanvas.width = hCanvas.parentElement.clientWidth;
-            hCanvas.height = 50;
-
-            let t = 0;
-            function animate() {
-                hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height);
-                t += 0.08;
-                const totalPoints = 30;
-                for(let i=0; i<totalPoints; i++) {
-                    let x = (hCanvas.width / totalPoints) * i;
-                    let y1 = hCanvas.height/2 + Math.sin(t + i*0.3) * 15;
-                    let y2 = hCanvas.height/2 + Math.sin(t + i*0.3 + Math.PI) * 15;
-                    
-                    hCtx.beginPath(); hCtx.arc(x, y1, 3, 0, Math.PI*2);
-                    hCtx.fillStyle = '#00d2ff'; hCtx.fill();
-                    
-                    hCtx.beginPath(); hCtx.arc(x, y2, 3, 0, Math.PI*2);
-                    hCtx.fillStyle = '#9d4edd'; hCtx.fill();
-
-                    if(i % 2 === 0) {
-                        hCtx.beginPath(); hCtx.moveTo(x, y1); hCtx.lineTo(x, y2);
-                        hCtx.strokeStyle = 'rgba(255,255,255,0.1)'; hCtx.lineWidth = 1; hCtx.stroke();
-                    }
-                }
-                loadingTimers[canvasId] = requestAnimationFrame(animate);
-            }
-            animate();
-        }
-
-        function stopHelixAnimation(canvasId) {
-            cancelAnimationFrame(loadingTimers[canvasId]);
-        }
-
-        /* --- 3D STARFIELD WARP SPEED ANIMATION --- */
-        let warpActive = false;
-        function runWarpSpeedEffect() {
-            const wCanvas = document.getElementById('warpCompilationCanvas');
-            wCanvas.style.display = 'block';
-            wCanvas.width = wCanvas.parentElement.clientWidth;
-            wCanvas.height = wCanvas.parentElement.clientHeight;
-            const wCtx = wCanvas.getContext('2d');
-
-            let stars = [];
-            for(let i=0; i<80; i++) {
-                stars.push({ x: Math.random()*wCanvas.width - wCanvas.width/2, y: Math.random()*wCanvas.height - wCanvas.height/2, z: Math.random()*wCanvas.width });
-            }
-
-            warpActive = true;
-            function drawWarp() {
-                if(!warpActive) { wCtx.clearRect(0,0,wCanvas.width,wCanvas.height); wCanvas.style.display='none'; return; }
-                wCtx.fillStyle = 'rgba(3, 7, 18, 0.2)';
-                wCtx.fillRect(0, 0, wCanvas.width, wCanvas.height);
-                
-                for(let i=0; i<stars.length; i++) {
-                    let s = stars[i];
-                    s.z -= 4;
-                    if(s.z <= 0) { s.z = wCanvas.width; s.x = Math.random()*wCanvas.width - wCanvas.width/2; s.y = Math.random()*wCanvas.height - wCanvas.height/2; }
-                    
-                    let k = 128 / s.z;
-                    let px = s.x * k + wCanvas.width/2;
-                    let py = s.y * k + wCanvas.height/2;
-                    
-                    if(px >= 0 && px <= wCanvas.width && py >= 0 && py <= wCanvas.height) {
-                        let size = (1 - s.z/wCanvas.width) * 4;
-                        wCtx.beginPath(); wCtx.arc(px, py, size, 0, Math.PI*2);
-                        wCtx.fillStyle = '#00d2ff'; wCtx.fill();
-                    }
-                }
-                requestAnimationFrame(drawWarp);
-            }
-            drawWarp();
-        }
-
-        function stopWarpSpeedEffect() { warpActive = false; }
-
-        /* --- PERCENTAGE ENGINE MULTI-THREAD FIX --- */
-        function runPercentageEngine(percentTextId, barFillId, durationMs, helixId, callback) {
+        function runPercentageEngine(percentTextId, barFillId, durationMs, callback) {
             let start = 0;
             const textNode = document.getElementById(percentTextId);
             const barNode = document.getElementById(barFillId);
             textNode.innerText = "0%";
             barNode.style.width = "0%";
-            
-            startHelixAnimation(helixId);
             
             const intervalTime = durationMs / 100;
             const interval = setInterval(() => {
@@ -544,7 +398,6 @@
 
                 if (start >= 100) {
                     clearInterval(interval);
-                    stopHelixAnimation(helixId);
                     if(callback) callback();
                 }
             }, intervalTime);
@@ -559,9 +412,10 @@
             if (!token) { alert("Rajkumar bhai, pehle Dashboard Home par Token key fill karo!"); return; }
             if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
 
-            progBox.style.display = "block"; scene3D.style.display = "none";
+            progBox.style.display = "block";
+            scene3D.style.display = "none";
 
-            runPercentageEngine('t2pPercentText', 't2pBarFill', 2000, 't2pHelixCanvas', async () => {
+            runPercentageEngine('t2pPercentText', 't2pBarFill', 2000, async () => {
                 try {
                     const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
                         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
@@ -573,7 +427,8 @@
                     const imgBlob = await response.blob();
                     const objectUrl = URL.createObjectURL(imgBlob);
 
-                    progBox.style.display = "none"; scene3D.style.display = "block";
+                    progBox.style.display = "none";
+                    scene3D.style.display = "block";
                     scene3D.innerHTML = `
                         <div class="anime-boy-avatar">RK Engine</div>
                         <div class="payload-display-frame"><img src="${objectUrl}"></div>
@@ -596,9 +451,10 @@
             if (!token) { alert("Rajkumar bhai, pehle Dashboard Home par Token key fill karo!"); return; }
             if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
 
-            progBox.style.display = "block"; scene3D.style.display = "none";
+            progBox.style.display = "block";
+            scene3D.style.display = "none";
 
-            runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, 't2vHelixCanvas', async () => {
+            runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, async () => {
                 try {
                     const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
                         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
@@ -610,7 +466,8 @@
                     const dataBlob = await apiResponse.blob();
                     const generatedAudioUrl = URL.createObjectURL(dataBlob);
 
-                    progBox.style.display = "none"; scene3D.style.display = "block";
+                    progBox.style.display = "none";
+                    scene3D.style.display = "block";
                     scene3D.innerHTML = `
                         <div class="anime-boy-avatar">RK Engine</div>
                         <div class="payload-display-frame"><audio src="${generatedAudioUrl}" controls autoplay></audio></div>
@@ -623,8 +480,7 @@
             });
         }
 
-        /* --- HIGH PERFORMANCE INDEPENDENT VIDEO GENERATION ENGINE --- */
-        function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId) {
+        function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId) {
             const token = getHFToken();
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.trim();
@@ -635,57 +491,56 @@
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
             if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
 
-            progBox.style.display = "block"; scene3D.style.display = "none";
+            progBox.style.display = "block";
+            scene3D.style.display = "none";
+
+            const reader = new FileReader();
+            reader.readAsDataURL(fileInput.files[0]);
             
-            if(fileFieldId === 'p2vFile') runWarpSpeedEffect();
+            reader.onload = function(e) {
+                const mainImg = new Image();
+                mainImg.src = e.target.result;
+                
+                mainImg.onload = function() {
+                    const fps = 10; const duration = 3; const totalFrames = duration * fps;
+                    const video = new Whammy.Video(fps);
+                    const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+                    canvas.width = 640; canvas.height = 480;
 
-            // Sahi se percentage counter ko trigger karne ke liye async routing use ki hai
-            runPercentageEngine(percentTextId, barFillId, 3500, helixId, () => {
-                const reader = new FileReader();
-                reader.readAsDataURL(fileInput.files[0]);
-                reader.onload = function(e) {
-                    const mainImg = new Image();
-                    mainImg.src = e.target.result;
-                    mainImg.onload = function() {
-                        const fps = 10; const duration = 3; const totalFrames = duration * fps;
-                        let video = new Whammy.Video(fps);
-                        const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                        canvas.width = 640; canvas.height = 480;
+                    for (let i = 0; i < totalFrames; i++) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        let progress = i / totalFrames;
+                        let zoom = 1.0 + (progress * 0.12);
+                        
+                        ctx.save();
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.scale(zoom, zoom);
+                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                        ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
+                        ctx.restore();
+                        
+                        ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
+                        ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
+                        ctx.fillText(promptVal, canvas.width / 2, canvas.height - 40);
+                        video.add(canvas);
+                    }
 
-                        for (let i = 0; i < totalFrames; i++) {
-                            ctx.clearRect(0, 0, canvas.width, canvas.height);
-                            let progress = i / totalFrames;
-                            let zoom = 1.0 + (progress * 0.12);
-                            
-                            ctx.save();
-                            ctx.translate(canvas.width / 2, canvas.height / 2);
-                            ctx.scale(zoom, zoom);
-                            let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
-                            ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
-                            ctx.restore();
-                            
-                            ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
-                            ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
-                            ctx.fillText(promptVal, canvas.width / 2, canvas.height - 40);
-                            video.add(canvas);
-                        }
+                    const outputVideo = video.compile();
+                    const outputUrl = URL.createObjectURL(outputVideo);
 
-                        let outputVideo = video.compile();
-                        let outputUrl = URL.createObjectURL(outputVideo);
-
-                        stopWarpSpeedEffect();
-                        progBox.style.display = "none"; scene3D.style.display = "block";
+                    runPercentageEngine(percentTextId, barFillId, 3000, () => {
+                        progBox.style.display = "none";
+                        scene3D.style.display = "block";
                         scene3D.innerHTML = `
                             <div class="anime-boy-avatar">RK Engine</div>
                             <div class="payload-display-frame"><video src="${outputUrl}" autoplay loop muted playsinline></video></div>
                             <a href="${outputUrl}" download="VIDTOR_VIDEO_${Date.now()}.webm" class="btn-download-trigger">⬇️ Download Video File</a>
                         `;
-                    };
+                    });
                 };
-            });
+            };
         }
 
-        /* --- 3D BACKGROUND TUNNEL MATRIX LOOP --- */
         const canvas = document.getElementById('matrix100CirclesCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -745,3 +600,4 @@
     </script>
 </body>
 </html>
+
