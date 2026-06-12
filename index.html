@@ -1,130 +1,780 @@
-// Dynamic 3D Jungle Scroll Matrix Engine
-const jCanvas = document.getElementById('jungleCinemaCanvas');
-const jCtx = jCanvas.getContext('2d');
-let scrollFraction = 0;
-
-function initJungleCinemaEngine() {
-    jCanvas.width = window.innerWidth;
-    jCanvas.height = window.innerHeight;
-}
-window.addEventListener('resize', () => { if(jCanvas.style.display === 'block') initJungleCinemaEngine(); });
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if(docHeight <= 0) return;
-    scrollFraction = scrollTop / docHeight;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    if(document.getElementById('panel-about').classList.contains('active-panel')) {
-        render3DJungleProductMatrix(scrollFraction);
-    }
-});
+    <title>VIDTOR AI | 6-Tool Premium Suite by Rajkumar</title>
+    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines.">
+    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster">
+    <meta name="author" content="Rajkumar">
 
-// Ye function bilkul YouTube Shorts jaisa smooth scroll rotation effect dega (Jungle elements ke sath)
-function render3DJungleProductMatrix(fraction) {
-    jCtx.clearRect(0, 0, jCanvas.width, jCanvas.height);
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     
-    // 1. Dynamic Background Color (Deep Forest Twilight to Bright Emerald-Green Glow on scroll)
-    let r = Math.floor(3 + (fraction * 15));
-    let g = Math.floor(7 + (fraction * 45));
-    let b = Math.floor(18 + (fraction * 20));
-    jCtx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-    jCtx.fillRect(0, 0, jCanvas.width, jCanvas.height);
+    <style>
+        :root {
+            --asmani: #00d2ff;
+            --purple: #9d4edd;
+            --bg: #030712;
+            --card: rgba(13, 21, 39, 0.55);
+            --text: #f3f4f6;
+            --border: rgba(255, 255, 255, 0.08);
+            --emerald-green: #00ffcc;
+        }
 
-    const centerX = jCanvas.width / 2;
-    const centerY = jCanvas.height / 2;
+        body {
+            margin: 0;
+            padding: 90px 20px 40px 20px;
+            box-sizing: border-box;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.8s ease;
+        }
 
-    // 2. Cinematic Light Rays (Angles rotate smoothly based on scroll position)
-    jCtx.save();
-    jCtx.globalAlpha = 0.2 + (Math.sin(fraction * Math.PI) * 0.3);
-    let rayAngle = fraction * Math.PI * 2; // Smooth rotation angle
-    let lightGrad = jCtx.createRadialGradient(centerX, centerY, 10, centerX, centerY, jCanvas.width * 0.8);
-    lightGrad.addColorStop(0, '#00ffcc');
-    lightGrad.addColorStop(0.5, 'rgba(157, 78, 221, 0.2)');
-    lightGrad.addColorStop(1, 'transparent');
-    jCtx.fillStyle = lightGrad;
-    
-    jCtx.translate(centerX, centerY);
-    jCtx.rotate(rayAngle);
-    jCtx.fillRect(-jCanvas.width, -jCanvas.height, jCanvas.width * 2, jCanvas.height * 2);
-    jCtx.restore();
+        .global-bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
+            transition: opacity 0.8s ease;
+        }
 
-    // 3. 3D Jungle Tree Matrix Layers (Moves closer & rotates into view on scroll)
-    // Ye mimic karta hai video ke bottle components ke smooth transitions ko!
-    let totalLayers = 12;
-    for (let i = 0; i < totalLayers; i++) {
-        // Depth simulation using scale and alpha
-        let layerOffset = (i / totalLayers);
-        let dynamicProgress = (fraction + layerOffset) % 1.0;
+        #jungleCinemaCanvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            display: none;
+            pointer-events: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 70px;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px; box-sizing: border-box; z-index: 1000;
+        }
+
+        .rk-logo-trigger { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .siri-pulse-left {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(45deg, var(--asmani), var(--purple));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 14px; color: white;
+            border: 2px solid var(--asmani);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            animation: pulseGlow 2s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+        }
+        .logo-text {
+            font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, var(--asmani));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .menu-dots { font-size: 24px; cursor: pointer; color: var(--asmani); }
+        .dropdown-menu {
+            position: absolute; top: 75px; left: 20px;
+            background: #0d1527; border: 1px solid var(--border); border-radius: 16px;
+            width: 290px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            display: none; flex-direction: column; padding: 10px; z-index: 9999;
+        }
+        .dropdown-menu a {
+            color: var(--text); text-decoration: none; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 600; border-radius: 10px; transition: 0.2s;
+            text-align: left;
+        }
+        .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
+
+        .page-panel {
+            display: none; width: 100%; max-width: 480px;
+            background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 35px 30px; border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+            border: 1px solid var(--border); box-sizing: border-box;
+            animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+        }
+        .active-panel { display: block; }
         
-        let scale = Math.pow(dynamicProgress, 2) * 4; // Perspective 3D zoom out/in
-        let alpha = Math.sin(dynamicProgress * Math.PI);
-        if (scale < 0.1) continue;
-
-        jCtx.save();
-        jCtx.translate(centerX, centerY);
+        /* SHURUAT AUR AKHIRI IMAGES K LIYE COMMON STYLING */
+        .rk-showcase-wrapper {
+            width: 100%; max-width: 290px; margin: 20px auto;
+            border-radius: 20px; overflow: hidden;
+            border: 2px solid var(--asmani);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+            transition: 0.4s ease;
+        }
+        .rk-showcase-wrapper:hover {
+            transform: scale(1.03); border-color: var(--purple);
+            box-shadow: 0 0 35px rgba(157, 78, 221, 0.5);
+        }
+        .rk-showcase-img { width: 100%; display: block; height: auto; object-fit: cover; }
         
-        // Circular product/environment rotation like the DRIP website animation
-        let layerRotation = (fraction * Math.PI * 1.5) + (i * 0.5);
-        jCtx.rotate(layerRotation);
-        jCtx.scale(scale, scale);
-        jCtx.globalAlpha = alpha * 0.4;
-
-        // Tree branch details rendering as premium vector matrix nodes
-        jCtx.fillStyle = (i % 2 === 0) ? "rgba(0, 255, 204, 0.7)" : "rgba(157, 78, 221, 0.7)";
+        #panel-about {
+            max-width: 520px;
+            background: rgba(10, 25, 18, 0.65);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+        }
         
-        // Drawing custom 3D environmental abstract patterns/leaves
-        jCtx.beginPath();
-        jCtx.moveTo(0, -50);
-        jCtx.lineTo(30, 20);
-        jCtx.lineTo(-30, 20);
-        jCtx.closePath();
-        jCtx.fill();
+        .scroll-indicator-text {
+            font-size: 0.8rem; color: var(--emerald-green); font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
+            animation: bounceTrack 1.5s infinite alternate;
+        }
+        @keyframes bounceTrack { from { transform: translateY(0); } to { transform: translateY(6px); } }
 
-        // Adding glowing bio-luminescent jungle dots
-        jCtx.fillStyle = "#ffffff";
-        jCtx.beginPath();
-        jCtx.arc(40, -20, 3 / scale, 0, Math.PI * 2);
-        jCtx.fill();
+        @keyframes panelSwitchFade {
+            from { opacity: 0; transform: scale(0.96) translateY(12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
-        jCtx.restore();
-    }
+        .progress-box-wrapper {
+            margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
+            position: relative;
+        }
+        .percentage-counter { font-size: 1.4rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; position: relative; z-index: 2; }
+        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative; z-index: 2; }
+        .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
+        
+        .helix-loading-canvas { width: 100%; height: 50px; background: transparent; margin-top: 10px; display: block; }
 
-    // 4. Centerpiece Glowing 3D AI Matrix Tree (Zooms in and transforms parts dynamically)
-    jCtx.save();
-    jCtx.translate(centerX, centerY);
-    
-    // Zoom and Rotate logic matching the scroll intensity of the laptop touchpad track
-    let mainScale = 1.0 + (fraction * 0.8);
-    let mainRotation = fraction * Math.PI * 0.5; // Smooth 90-degree showcase turn
-    jCtx.scale(mainScale, mainScale);
-    jCtx.rotate(mainRotation);
-    
-    // Draw Core Trunk (Glow effect)
-    jCtx.shadowBlur = 30;
-    jCtx.shadowColor = "#00ffcc";
-    jCtx.fillStyle = "rgba(13, 21, 39, 0.95)";
-    jCtx.strokeStyle = "#00ffcc";
-    jCtx.lineWidth = 4;
-    
-    // Interactive central block drawing
-    jCtx.beginPath();
-    jCtx.rect(-40, -100, 80, 200);
-    jCtx.fill();
-    jCtx.stroke();
-    
-    // 5. Part Detachment Animation (Like the bottle cap opening in the video)
-    // Jab scroll 60% se upar jayega, tab upper canopy alag hokar vertical fly karegi
-    let canopyYOffset = 0;
-    if (fraction > 0.5) {
-        canopyYOffset = -(fraction - 0.5) * 140; // Moves upward smoothly
-    }
-    
-    jCtx.fillStyle = "rgba(0, 210, 255, 0.8)";
-    jCtx.beginPath();
-    jCtx.arc(0, -100 + canopyYOffset, 70, 0, Math.PI, true);
-    jCtx.fill();
+        #warpCompilationCanvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; display: none; border-radius: 24px; pointer-events: none; opacity: 0.4;
+        }
 
-    jCtx.restore();
-}
+        .stage-cube-3d { width: 100%; height: 160px; margin: 15px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
+        .matrix-cube-core {
+            width: 90px; height: 90px; position: relative; transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(20deg);
+            animation: cubeAutoSpin 16s linear infinite; cursor: grab;
+        }
+        .matrix-cube-core:active { cursor: grabbing; }
+        @keyframes cubeAutoSpin {
+            from { transform: rotateX(-20deg) rotateY(0deg); }
+            to { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+        .cube-face {
+            position: absolute; width: 90px; height: 90px; background: rgba(13, 21, 39, 0.85);
+            border: 2px solid var(--asmani); box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.5);
+            display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
+            font-weight: 800; color: #fff; text-transform: uppercase; border-radius: 8px;
+        }
+        .face-front  { transform: rotateY(0deg) translateZ(45px); }
+        .face-back   { transform: rotateY(180deg) translateZ(45px); border-color: var(--purple); box-shadow: inset 0 0 15px rgba(157, 78, 221, 0.5); }
+        .face-left   { transform: rotateY(-90deg) translateZ(45px); }
+        .face-right  { transform: rotateY(90deg) translateZ(45px); }
+        .face-top    { transform: rotateX(90deg) translateZ(45px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(45px); }
+
+        .scene-3d-presenter {
+            margin-top: 25px; display: none; width: 100%; perspective: 1000px;
+            position: relative; min-height: 300px; background: rgba(5,11,26,0.5);
+            border-radius: 16px; border: 1px dashed rgba(0,210,255,0.2); overflow: hidden;
+        }
+        .anime-boy-avatar {
+            position: absolute; bottom: -120px; left: 50%; width: 80px; height: 120px;
+            transform: translateX(-50%); background: linear-gradient(to top, #1e1b4b, #4338ca);
+            border-radius: 20px 20px 5px 5px; border: 2px solid var(--asmani);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 800; color: #fff; text-shadow: 0 1px 2px #000;
+            animation: boyLiftAction 4s cubic-bezier(0.25, 1, 0.5, 1) forwards; z-index: 10;
+        }
+        .anime-boy-avatar::before { content: "👦"; font-size: 2.2rem; margin-bottom: 2px; }
+
+        @keyframes boyLiftAction {
+            0% { bottom: -130px; transform: translateX(-50%) scale(0.8); }
+            25% { bottom: 15px; transform: translateX(-50%) scale(1.1); }
+            60% { bottom: 10px; transform: translateX(-50%) rotate(-5deg); }
+            75% { bottom: 20px; transform: translateX(-50%) scale(1); }
+            100% { bottom: -130px; transform: translateX(-50%) scale(0.7); opacity: 0; }
+        }
+
+        .payload-display-frame {
+            width: 85%; margin: 25px auto; background: #000; border-radius: 12px;
+            border: 2px solid var(--purple); opacity: 0; transform: scale(0.3) translateY(150px);
+            animation: payloadPopUp 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        @keyframes payloadPopUp {
+            0%, 25% { opacity: 0; transform: scale(0.3) translateY(150px); }
+            55% { opacity: 1; transform: scale(1.05) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .payload-display-frame img, .payload-display-frame video, .payload-display-frame audio { width: 100%; display: block; height: auto; }
+
+        .btn-download-trigger {
+            display: inline-block; width: 85%; padding: 14px; margin: 5px 0 25px 0;
+            background: linear-gradient(135deg, var(--emerald-green), #059669);
+            color: #030712; text-decoration: none; border-radius: 12px; font-weight: 800;
+            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,255,204,0.3); opacity: 0;
+            animation: fadeInBtn 0.5s ease forwards; animation-delay: 3s; text-align: center;
+        }
+        @keyframes fadeInBtn { to { opacity: 1; } }
+
+        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 10px; }
+        h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
+
+        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
+        
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
+
+        .canvas-3d-stage-wrapper {
+            width: 100%; max-width: 440px; height: 220px; display: flex; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 25px; position: relative;
+        }
+        #matrix100CirclesCanvas { width: 100%; height: 100%; background: transparent; border-radius: 16px; }
+    </style>
+</head>
+<body>
+
+    <div class="global-bg-overlay" id="globalBgOverlay"></div>
+    <canvas id="jungleCinemaCanvas"></canvas>
+
+    <header>
+        <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
+            <div class="siri-pulse-left">RK</div>
+            <span class="logo-text">VIDTOR AI</span>
+        </div>
+        <div class="menu-dots" onclick="toggleNavigationMenu()">☰</div>
+        
+        <div class="dropdown-menu" id="navDropdown">
+            <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
+            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ 1. Text to Photo Generator</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 2. Photo to Video Generator</a>
+            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 3. Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('text-to-voice')">🎵 4. Text to Voice Suite</a>
+            <a href="#" onclick="switchPanel('ig-panel')">❤️ 5. Premium Growth Panel</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ 6. About Website</a>
+        </div>
+    </header>
+
+    <div class="page-panel active-panel" id="panel-home">
+        <div class="cursive-title">Vidtor AI</div>
+        <div class="cursive-subtitle">by Rajkumar</div>
+        
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core" id="interactive3DCube">
+                <div class="cube-face face-front">Vidtor</div>
+                <div class="cube-face face-back">AI Core</div>
+                <div class="cube-face face-left">6-Tools</div>
+                <div class="cube-face face-right">Premium</div>
+                <div class="cube-face face-top">Rajkumar</div>
+                <div class="cube-face face-bottom">Secure</div>
+            </div>
+        </div>
+
+        <div class="rk-showcase-wrapper">
+            <img src="1000041040.jpg" alt="Vidtor Dashboard Base Image" class="rk-showcase-img">
+        </div>
+
+        <div class="input-wrapper" style="margin-top:15px; margin-bottom:15px;">
+            <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
+            <input type="text" id="globalHFToken" placeholder="Paste free hf_... key here to activate AI">
+        </div>
+        <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+    </div>
+
+    <div class="page-panel" id="panel-text-to-photo">
+        <h2>Text to Photo</h2>
+        <p class="description">Flux Neural Processing Suite (No Keyword Rules)</p>
+        
+        <div class="input-wrapper">
+            <label>Describe Image Prompt:</label>
+            <input type="text" id="t2pPrompt" placeholder="e.g., cozy lo-fi jazz cafe, rainy window...">
+        </div>
+        <button class="btn-action" onclick="processRealTextToPhoto()">Generate Photo Asset</button>
+
+        <div class="progress-box-wrapper" id="t2pProgressBox">
+            <div class="percentage-counter" id="t2pPercentText">0%</div>
+            <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
+            <canvas class="helix-loading-canvas" id="t2pHelixCanvas"></canvas>
+        </div>
+        <div class="scene-3d-presenter" id="t2p3DScene"></div>
+    </div>
+
+    <div class="page-panel" id="panel-photo-to-video">
+        <canvas id="warpCompilationCanvas"></canvas>
+        <h2>Photo to Video</h2>
+        <p class="description">Cinematic Motion Tracking Canvas Engine</p>
+
+        <div class="input-wrapper">
+            <label>Select Target Image Layer:</label>
+            <input type="file" id="p2vFile" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Motion Track Script Prompt:</label>
+            <input type="text" id="p2vPrompt" placeholder="Enter anything (No limits applied)...">
+        </div>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas')">Compile Video</button>
+
+        <div class="progress-box-wrapper" id="p2vProgressBox">
+            <div class="percentage-counter" id="p2vPercentText">0%</div>
+            <div class="bar-track"><div class="bar-fill" id="p2vBarFill"></div></div>
+            <canvas class="helix-loading-canvas" id="p2vHelixCanvas"></canvas>
+        </div>
+        <div class="scene-3d-presenter" id="p2v3DScene"></div>
+    </div>
+
+    <div class="page-panel" id="panel-photo-text-video">
+        <h2>Photo + Text to Video</h2>
+        <p class="description">Integrated Subtitle Graphics Suite</p>
+
+        <div class="input-wrapper">
+            <label>Upload Base Graphic Layout:</label>
+            <input type="file" id="p2vtFile" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>Sub-text Script Script overlay:</label>
+            <input type="text" id="p2vtPrompt" placeholder="Type text script to mount over frames...">
+        </div>
+        <button class="btn-action" onclick="runRealVideoGeneration('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas')">Generate Hybrid Video</button>
+
+        <div class="progress-box-wrapper" id="p2vtProgressBox">
+            <div class="percentage-counter" id="p2vtPercentText">0%</div>
+            <div class="bar-track"><div class="bar-fill" id="p2vtBarFill"></div></div>
+            <canvas class="helix-loading-canvas" id="p2vtHelixCanvas"></canvas>
+        </div>
+        <div class="scene-3d-presenter" id="p2vt3DScene"></div>
+    </div>
+
+    <div class="page-panel" id="panel-text-to-voice">
+        <h2>Text to Voice Suite</h2>
+        <p class="description">Neural Audio Waves Synthesizer Directory</p>
+
+        <div class="input-wrapper">
+            <label>Synthesis Audio Model:</label>
+            <select id="t2vModel">
+                <option value="facebook/musicgen-small">MusicGen Small (Relaxing Piano Tracks)</option>
+                <option value="espnet/kan-bayashi_ljspeech_vits">VITS Speech Engine (Human Voice)</option>
+            </select>
+        </div>
+        <div class="input-wrapper">
+            <label>Script Voice Text Content:</label>
+            <input type="text" id="t2vPrompt" placeholder="Type script text to convert to audio waveform...">
+        </div>
+        <button class="btn-action" onclick="processTextToVoice()">Synthesize Voice Audio</button>
+
+        <div class="progress-box-wrapper" id="t2vProgressBox">
+            <div class="percentage-counter" id="t2vPercentText">0%</div>
+            <div class="bar-track"><div class="bar-fill" id="t2vBarFill"></div></div>
+            <canvas class="helix-loading-canvas" id="t2vHelixCanvas"></canvas>
+        </div>
+        <div class="scene-3d-presenter" id="t2v3DScene"></div>
+    </div>
+
+    <div class="page-panel" id="panel-ig-panel">
+        <h2>Premium Growth Business Hub</h2>
+        <p class="description">Target Metric Optimization Service Pipeline</p>
+        <p style="font-size:0.85rem; line-height:1.5; opacity:0.8; text-align:justify; margin-bottom:15px;">
+            To order high-retention manual Instagram Followers, Reel Views, and Instant Likes, click below to connect directly with Owner **Rajkumar** to book custom orders.
+        </p>
+        <button class="btn-action" style="background:linear-gradient(135deg, #ff3366, #9d4edd);" onclick="window.open('https://www.instagram.com/', '_blank')">Contact Rajkumar on Instagram</button>
+    </div>
+
+    <div class="page-panel" id="panel-about">
+        <h2>About Website</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            VIDTOR AI is a high-end modern 6-utility automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes and advanced HTML5 physics canvas engines.
+        </p>
+        
+        <div class="rk-showcase-wrapper">
+            <img src="1000041122.jpg" alt="Vidtor About End Display Graphic" class="rk-showcase-img">
+        </div>
+
+        <div style="border-top:1px dashed rgba(0,255,204,0.2); padding-top:20px; text-align:justify; font-size:0.88rem; opacity:0.8; line-height:1.7;">
+            <b style="color:var(--emerald-green)">🎥 INTERACTIVE JUNGLE MATRIX SYSTEM:</b><br>
+            Scroll up and down inside this page to manipulate time. A complex mathematical ecosystem triggers frame loops representing deep wild forest growth matrix nodes.
+        </div>
+        
+        <div class="scroll-indicator-text">⬇️ Scroll inside page to view movie ⬇️</div>
+        <div style="height: 350px;"></div>
+        <p class="description" style="color:var(--emerald-green); font-weight:800;">[ END OF MATRIX TIMELINE ]</p>
+        <button class="btn-action" onclick="switchPanel('home')">Back to Dashboard Home</button>
+    </div>
+
+    <div class="devotional-outro">RADHE RADHE</div>
+
+    <div class="canvas-3d-stage-wrapper">
+        <canvas id="matrix100CirclesCanvas"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
+    <script>
+        function toggleNavigationMenu() {
+            const dropdown = document.getElementById('navDropdown');
+            dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function getHFToken() {
+            const tokenInput = document.getElementById('globalHFToken');
+            return tokenInput ? tokenInput.value.trim() : "";
+        }
+
+        function switchPanel(panelId) {
+            document.getElementById('navDropdown').style.display = 'none';
+            const allPanels = document.querySelectorAll('.page-panel');
+            allPanels.forEach(panel => panel.classList.remove('active-panel'));
+            const activePanel = document.getElementById('panel-' + panelId);
+            
+            const overlay = document.getElementById('globalBgOverlay');
+            const jungleCanvas = document.getElementById('jungleCinemaCanvas');
+            
+            overlay.style.opacity = "1";
+            jungleCanvas.style.display = "none";
+            document.body.style.background = "#030712";
+
+            if(activePanel) {
+                activePanel.classList.add('active-panel');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            if(panelId === 'text-to-photo') {
+                document.body.style.background = "linear-gradient(135deg, #050515, #0a1128)";
+            } else if(panelId === 'text-to-voice') {
+                document.body.style.background = "linear-gradient(135deg, #0b0514, #180a2b)";
+            } else if(panelId === 'ig-panel') {
+                document.body.style.background = "linear-gradient(135deg, #1c0510, #030712)";
+            } else if(panelId === 'about') {
+                overlay.style.opacity = "0";
+                jungleCanvas.style.display = "block";
+                initJungleCinemaEngine();
+            }
+        }
+
+        const jCanvas = document.getElementById('jungleCinemaCanvas');
+        const jCtx = jCanvas.getContext('2d');
+        let scrollFraction = 0;
+
+        function initJungleCinemaEngine() {
+            jCanvas.width = window.innerWidth;
+            jCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', () => { if(jCanvas.style.display === 'block') initJungleCinemaEngine(); });
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if(docHeight <= 0) return;
+            scrollFraction = scrollTop / docHeight;
+            
+            if(document.getElementById('panel-about').classList.contains('active-panel')) {
+                renderJungleMovieFrames(scrollFraction);
+            }
+        });
+
+        function renderJungleMovieFrames(fraction) {
+            jCtx.clearRect(0, 0, jCanvas.width, jCanvas.height);
+            let greenFactor = Math.floor(25 + (fraction * 45));
+            jCtx.fillStyle = `rgb(5, ${greenFactor}, 20)`;
+            jCtx.fillRect(0, 0, jCanvas.width, jCanvas.height);
+
+            jCtx.save();
+            jCtx.globalAlpha = 0.15 + (Math.sin(fraction * Math.PI) * 0.15);
+            let rayGradient = jCtx.createLinearGradient(0, 0, jCanvas.width, jCanvas.height);
+            rayGradient.addColorStop(0, '#00ffcc');
+            rayGradient.addColorStop(0.5, 'transparent');
+            jCtx.fillStyle = rayGradient;
+            jCtx.beginPath();
+            jCtx.moveTo(0,0); jCtx.lineTo(jCanvas.width * (0.3 + fraction * 0.7), jCanvas.height); jCtx.lineTo(jCanvas.width, jCanvas.height);
+            jCtx.fill();
+            jCtx.restore();
+
+            jCtx.fillStyle = "rgba(0, 40, 25, 0.4)";
+            for(let i=0; i<15; i++) {
+                let xPosition = (jCanvas.width / 12) * i - (fraction * 80);
+                let treeHeight = jCanvas.height * 0.6 + Math.sin(i * 9) * 80;
+                jCtx.fillRect(xPosition, jCanvas.height - treeHeight, 35, treeHeight);
+            }
+
+            jCtx.fillStyle = "rgba(0, 20, 10, 0.8)";
+            for(let i=0; i<8; i++) {
+                let xPosition = (jCanvas.width / 6) * i - (fraction * 240);
+                let treeHeight = jCanvas.height * 0.8 + Math.cos(i * 7) * 100;
+                jCtx.fillRect(xPosition, jCanvas.height - treeHeight, 60, treeHeight);
+                
+                jCtx.beginPath();
+                jCtx.arc(xPosition + 30, jCanvas.height - treeHeight, 90 + (fraction * 30), 0, Math.PI * 2);
+                jCtx.fill();
+            }
+
+            jCtx.fillStyle = "rgba(0, 255, 204, 0.6)";
+            for(let i=0; i<25; i++) {
+                let leafX = (jCanvas.width * 0.05) * i + Math.sin(fraction * 10 + i) * 50;
+                let leafY = (jCanvas.height * (i/25)) + (fraction * jCanvas.height * 0.5);
+                if (leafY > jCanvas.height) leafY = leafY % jCanvas.height;
+
+                jCtx.save(); jCtx.translate(leafX, leafY); jCtx.rotate(fraction * 4 + i);
+                jCtx.beginPath(); jCtx.ellipse(0, 0, 8, 4, 0, 0, Math.PI*2); jCtx.fill();
+                jCtx.restore();
+            }
+        }
+
+        const cards = document.querySelectorAll('.page-panel');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if(card.id === 'panel-about') return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                const xc = rect.width / 2; const yc = rect.height / 2;
+                const angleX = (yc - y) / 18; const angleY = (x - xc) / 18;
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                if(card.id === 'panel-about') return;
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        const cube = document.getElementById('interactive3DCube');
+        let isDragging = false; let previousMousePosition = { x: 0, y: 0 };
+        let currentRotation = { x: -20, y: 20 };
+
+        window.addEventListener('mousedown', (e) => {
+            if(e.target.closest('#interactive3DCube')) {
+                isDragging = true; cube.style.animation = 'none';
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaMove = { x: e.clientX - previousMousePosition.x, y: e.clientY - previousMousePosition.y };
+            currentRotation.y += deltaMove.x * 0.6; currentRotation.x -= deltaMove.y * 0.6;
+            cube.style.transform = `rotateX(${currentRotation.x}deg) rotateY(${currentRotation.y}deg)`;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        window.addEventListener('mouseup', () => { isDragging = false; });
+
+        let loadingTimers = {};
+        function startHelixAnimation(canvasId) {
+            const hCanvas = document.getElementById(canvasId); if(!hCanvas) return;
+            const hCtx = hCanvas.getContext('2d');
+            hCanvas.width = hCanvas.parentElement.clientWidth; hCanvas.height = 50;
+
+            let t = 0;
+            function animate() {
+                hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height); t += 0.08; const totalPoints = 30;
+                for(let i=0; i<totalPoints; i++) {
+                    let x = (hCanvas.width / totalPoints) * i;
+                    let y1 = hCanvas.height/2 + Math.sin(t + i*0.3) * 15;
+                    let y2 = hCanvas.height/2 + Math.sin(t + i*0.3 + Math.PI) * 15;
+                    
+                    hCtx.beginPath(); hCtx.arc(x, y1, 3, 0, Math.PI*2); hCtx.fillStyle = '#00d2ff'; hCtx.fill();
+                    hCtx.beginPath(); hCtx.arc(x, y2, 3, 0, Math.PI*2); hCtx.fillStyle = '#9d4edd'; hCtx.fill();
+
+                    if(i % 2 === 0) {
+                        hCtx.beginPath(); hCtx.moveTo(x, y1); hCtx.lineTo(x, y2);
+                        hCtx.strokeStyle = 'rgba(255,255,255,0.1)'; hCtx.lineWidth = 1; hCtx.stroke();
+                    }
+                }
+                loadingTimers[canvasId] = requestAnimationFrame(animate);
+            }
+            animate();
+        }
+        function stopHelixAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
+
+        let warpActive = false;
+        function runWarpSpeedEffect() {
+            const wCanvas = document.getElementById('warpCompilationCanvas');
+            wCanvas.style.display = 'block'; wCanvas.width = wCanvas.parentElement.clientWidth; wCanvas.height = wCanvas.parentElement.clientHeight;
+            const wCtx = wCanvas.getContext('2d');
+
+            let stars = [];
+            for(let i=0; i<80; i++) {
+                stars.push({ x: Math.random()*wCanvas.width - wCanvas.width/2, y: Math.random()*wCanvas.height - wCanvas.height/2, z: Math.random()*wCanvas.width });
+            }
+
+            warpActive = true;
+            function drawWarp() {
+                if(!warpActive) { wCtx.clearRect(0,0,wCanvas.width,wCanvas.height); wCanvas.style.display='none'; return; }
+                wCtx.fillStyle = 'rgba(3, 7, 18, 0.2)'; wCtx.fillRect(0, 0, wCanvas.width, wCanvas.height);
+                
+                for(let i=0; i<stars.length; i++) {
+                    let s = stars[i]; s.z -= 4;
+                    if(s.z <= 0) { s.z = wCanvas.width; s.x = Math.random()*wCanvas.width - wCanvas.width/2; s.y = Math.random()*wCanvas.height - wCanvas.height/2; }
+                    let k = 128 / s.z; let px = s.x * k + wCanvas.width/2; let py = s.y * k + wCanvas.height/2;
+                    
+                    if(px >= 0 && px <= wCanvas.width && py >= 0 && py <= wCanvas.height) {
+                        let size = (1 - s.z/wCanvas.width) * 4;
+                        wCtx.beginPath(); wCtx.arc(px, py, size, 0, Math.PI * 2); wCtx.fillStyle = '#00d2ff'; wCtx.fill();
+                    }
+                }
+                requestAnimationFrame(drawWarp);
+            }
+            drawWarp();
+        }
+        function stopWarpSpeedEffect() { warpActive = false; }
+
+        function runPercentageEngine(percentTextId, barFillId, durationMs, helixId, callback) {
+            let start = 0;
+            const textNode = document.getElementById(percentTextId); const barNode = document.getElementById(barFillId);
+            textNode.innerText = "0%"; barNode.style.width = "0%";
+            startHelixAnimation(helixId);
+            
+            const intervalTime = durationMs / 100;
+            const interval = setInterval(() => {
+                start++; textNode.innerText = `${start}%`; barNode.style.width = `${start}%`;
+                if (start >= 100) { clearInterval(interval); stopHelixAnimation(helixId); if(callback) callback(); }
+            }, intervalTime);
+        }
+
+        async function processRealTextToPhoto() {
+            const token = getHFToken(); const promptVal = document.getElementById('t2pPrompt').value.trim();
+            const progBox = document.getElementById('t2pProgressBox'); const scene3D = document.getElementById('t2p3DScene');
+            if (!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
+            if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
+            progBox.style.display = "block"; scene3D.style.display = "none";
+
+            runPercentageEngine('t2pPercentText', 't2pBarFill', 2000, 't2pHelixCanvas', async () => {
+                try {
+                    const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
+                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                        method: "POST",
+                        body: JSON.stringify({ inputs: promptVal }),
+                    });
+                    if (!response.ok) throw new Error("API Offline");
+                    const imgBlob = await response.blob(); const objectUrl = URL.createObjectURL(imgBlob);
+                    progBox.style.display = "none"; scene3D.style.display = "block";
+                    scene3D.innerHTML = `
+                        <div class="anime-boy-avatar">RK Engine</div>
+                        <div class="payload-display-frame"><img src="${objectUrl}"></div>
+                        <a href="${objectUrl}" download="VIDTOR_PHOTO_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo Asset</a>
+                    `;
+                } catch (err) { alert("Error: Token invalid."); progBox.style.display = "none"; }
+            });
+        }
+
+        async function processTextToVoice() {
+            const token = getHFToken(); const targetModel = document.getElementById('t2vModel').value;
+            const textScript = document.getElementById('t2vPrompt').value.trim();
+            const progBox = document.getElementById('t2vProgressBox'); const scene3D = document.getElementById('t2v3DScene');
+            if (!token) { alert("Rajkumar bhai, Home page par secure token lagayein!"); return; }
+            if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
+            progBox.style.display = "block"; scene3D.style.display = "none";
+
+            runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, 't2vHelixCanvas', async () => {
+                try {
+                    const apiResponse = await fetch(`https://api-inference.huggingface.co/models/${targetModel}`, {
+                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                        method: "POST",
+                        body: JSON.stringify({ inputs: textScript }),
+                    });
+                    if (!apiResponse.ok) throw new Error("Inference Exception");
+                    const dataBlob = await apiResponse.blob(); const generatedAudioUrl = URL.createObjectURL(dataBlob);
+                    progBox.style.display = "none"; scene3D.style.display = "block";
+                    scene3D.innerHTML = `
+                        <div class="anime-boy-avatar">RK Engine</div>
+                        <div class="payload-display-frame"><audio src="${generatedAudioUrl}" controls autoplay></audio></div>
+                        <a href="${generatedAudioUrl}" download="VIDTOR_AUDIO_${Date.now()}.mp3" class="btn-download-trigger">⬇️ Download Audio Track</a>
+                    `;
+                } catch (error) { alert("Voice Synthesis token configuration error."); progBox.style.display = "none"; }
+            });
+        }
+
+        function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId) {
+            const token = getHFToken(); const fileInput = document.getElementById(fileFieldId);
+            const promptVal = document.getElementById(promptFieldId).value.trim();
+            const progBox = document.getElementById(progBoxId); const scene3D = document.getElementById(scene3DId);
+
+            if (!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
+            if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
+            if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
+
+            progBox.style.display = "block"; scene3D.style.display = "none";
+            if(fileFieldId === 'p2vFile') runWarpSpeedEffect();
+
+            runPercentageEngine(percentTextId, barFillId, 3500, helixId, () => {
+                const reader = new FileReader(); reader.readAsDataURL(fileInput.files[0]);
+                reader.onload = function(e) {
+                    const mainImg = new Image(); mainImg.src = e.target.result;
+                    mainImg.onload = function() {
+                        const fps = 10; const duration = 3; const totalFrames = duration * fps;
+                        let video = new Whammy.Video(fps);
+                        const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+                        canvas.width = 640; canvas.height = 480;
+
+                        for (let i = 0; i < totalFrames; i++) {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            let progress = i / totalFrames; let zoom = 1.0 + (progress * 0.12);
+                            ctx.save(); ctx.translate(canvas.width / 2, canvas.height / 2); ctx.scale(zoom, zoom);
+                            let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                            ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
+                            ctx.restore();
+                            ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
+                            ctx.fillText(promptVal, canvas.width / 2, canvas.height - 40);
+                            video.add(canvas);
+                        }
+                        let outputVideo = video.compile(); let outputUrl = URL.createObjectURL(outputVideo);
+                        stopWarpSpeedEffect();
+                        progBox.style.display = "none"; scene3D.style.display = "block";
+                        scene3D.innerHTML = `
+                            <div class="anime-boy-avatar">RK Engine</div>
+                            <div class="payload-display-frame"><video src="${outputUrl}" autoplay loop muted playsinline></video></div>
+                            <a href="${outputUrl}" download="VIDTOR_VIDEO_${Date.now()}.webm" class="btn-download-trigger">⬇️ Download Video File</a>
+                        `;
+                    };
+                };
+            });
+        }
+
+        const canvas = document.getElementById('matrix100CirclesCanvas'); const ctx = canvas.getContext('2d');
+        function resizeCanvasEngine() { canvas.width = canvas.parentElement.clientWidth * 2; canvas.height = canvas.parentElement.clientHeight * 2; }
+        resizeCanvasEngine(); window.addEventListener('resize', resizeCanvasEngine);
+
+        let animationFrameTimer = 0; const totalCirclesCount = 200;
+        function draw3DTunnelMatrix() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); animationFrameTimer += 0.05;
+            const centerX = canvas.width / 2; const centerY = canvas.height / 2;
+            ctx.save(); ctx.translate(centerX, centerY); ctx.scale(1, 0.45); ctx.translate(-centerX, -centerY);
+
+            for (let i = 0; i < totalCirclesCount; i++) {
+                let baseRadius = 15 + (i * 2.8);
+                let dynamicVerticalBounce = Math.sin(animationFrameTimer + (i * 0.08)) * 32;
+                let dynamicSizeScale = 1.0 + Math.cos(animationFrameTimer + (i * 0.05)) * 0.08;
+                let finalRadius = baseRadius * dynamicSizeScale; let adjustedY = centerY + dynamicVerticalBounce;
+
+                ctx.beginPath(); ctx.arc(centerX, adjustedY, finalRadius, 0, Math.PI * 2);
+                let colorRatio = i / totalCirclesCount;
+                let red = Math.floor(0 + (colorRatio * 157)); let green = Math.floor(210 - (colorRatio * 132)); let blue = Math.floor(255 - (colorRatio * 34));
+                let opacity = 0.15 + (1 - colorRatio) * 0.65;
+                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`; ctx.lineWidth = 1.5; ctx.stroke();
+            }
+            ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
+        }
+        draw3DTunnelMatrix();
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
+                document.getElementById('navDropdown').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
 
