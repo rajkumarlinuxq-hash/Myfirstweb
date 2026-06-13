@@ -301,7 +301,7 @@
         </div>
         <div class="input-wrapper">
             <label>Motion Track Script Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="Enter video subtitle text here...">
+            <input type="text" id="p2vPrompt" placeholder="Enter video motion description here...">
         </div>
         <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas')">Compile Video</button>
 
@@ -445,7 +445,6 @@
         const jCtx = jCanvas.getContext('2d');
         let scrollFraction = 0;
 
-        // Optimized Background Video Engine Matrix Tracker Setup
         function initJungleCinemaEngine() {
             jCanvas.width = window.innerWidth;
             jCanvas.height = window.innerHeight;
@@ -577,90 +576,61 @@
             });
         }
 
-        // HEAVY PHOTO RENDER ENGINE INTEGRATION MATRIX
+        // REAL CLOUD AI VIDEO PROCESSING ENGINE (STABLE VIDEO DIFFUSION)
         function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId) {
+            const token = getSecureK();
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId); const scene3D = document.getElementById(scene3DId);
 
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, image layer select kijiye!"); return; }
-            if (!promptVal) { alert("Bhai script prompt write kijiye!"); return; }
+            if (!promptVal) { alert("Bhai movement description likhiye!"); return; }
 
             progBox.style.display = "block"; scene3D.style.display = "none";
 
             const reader = new FileReader();
             reader.readAsDataURL(fileInput.files[0]);
             reader.onload = function(e) {
-                const mainImg = new Image();
-                mainImg.src = e.target.result;
-                mainImg.onload = function() {
-                    
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    // Fixed secure resolution preventing browser frame out limits
-                    canvas.width = 640; canvas.height = 480;
+                
+                // Real cloud AI triggers with custom loader matrix
+                runPercentageEngine(percentTextId, barFillId, 5000, helixId, async () => {
+                    try {
+                        // Image conversion to format fit for API payloads
+                        const base64Data = e.target.result.split(',')[1];
+                        
+                        const response = await fetch("https://api-inference.huggingface.co/models/stabilityai/stable-video-diffusion-img2vid-xt", {
+                            headers: { 
+                                "Authorization": `Bearer ${token}`, 
+                                "Content-Type": "application/json" 
+                            },
+                            method: "POST",
+                            body: JSON.stringify({ 
+                                inputs: base64Data,
+                                parameters: {
+                                    prompt: promptVal,
+                                    motion_bucket_id: 127
+                                }
+                            }),
+                        });
 
-                    const stream = canvas.captureStream(10); 
-                    const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8' });
-                    let chunks = [];
-
-                    mediaRecorder.ondataavailable = function(e) { if(e.data.size > 0) chunks.push(e.data); };
-                    
-                    mediaRecorder.onstop = function() {
-                        const videoBlob = new Blob(chunks, { type: 'video/webm' });
+                        if (!response.ok) throw new Error("Server Engine Timeout");
+                        const videoBlob = await response.blob(); 
                         const outputUrl = URL.createObjectURL(videoBlob);
                         
                         progBox.style.display = "none";
                         scene3D.style.display = "block";
                         scene3D.innerHTML = `
-                            <div class="anime-boy-avatar">VIDEO ACTIVE</div>
+                            <div class="anime-boy-avatar">AI VIDEO GENERATED</div>
                             <div class="payload-display-frame">
                                 <video src="${outputUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
                             </div>
-                            <a href="${outputUrl}" download="VIDTOR_VIDEO_${Date.now()}.webm" class="btn-download-trigger">⬇️ Download Compiled Video</a>
+                            <a href="${outputUrl}" download="VIDTOR_AI_VIDEO_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Real AI Video</a>
                         `;
-                    };
-
-                    mediaRecorder.start();
-
-                    let currentFrame = 0; const totalFrames = 30; 
-                    const textNode = document.getElementById(percentTextId); 
-                    const barNode = document.getElementById(barFillId);
-                    startHelixAnimation(helixId);
-
-                    const renderInterval = setInterval(() => {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        
-                        let progress = currentFrame / totalFrames;
-                        let zoom = 1.0 + (progress * 0.15); 
-
-                        ctx.save();
-                        ctx.translate(canvas.width / 2, canvas.height / 2);
-                        ctx.scale(zoom, zoom);
-                        
-                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
-                        ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
-                        ctx.restore();
-
-                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
-                        ctx.shadowColor = "black"; ctx.shadowBlur = 8; ctx.lineWidth = 4;
-                        ctx.strokeStyle = '#000000'; ctx.strokeText(promptVal, canvas.width / 2, canvas.height - 50);
-                        ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
-                        ctx.fillText(promptVal, canvas.width / 2, canvas.height - 50);
-
-                        currentFrame++;
-                        let percentScore = Math.floor((currentFrame / totalFrames) * 100);
-                        textNode.innerText = `${percentScore}%`;
-                        barNode.style.width = `${percentScore}%`;
-
-                        if(currentFrame >= totalFrames) {
-                            clearInterval(renderInterval);
-                            stopHelixAnimation(helixId);
-                            mediaRecorder.stop();
-                        }
-                    }, 100);
-                };
+                    } catch (err) { 
+                        alert("AI Video Server Busy! Click button again to retry pipeline."); 
+                        progBox.style.display = "none"; 
+                    }
+                });
             };
         }
 
