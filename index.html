@@ -112,7 +112,6 @@
         }
         .active-panel { display: block; }
         
-        /* SHURUAT AUR AKHIRI IMAGES K LIYE COMMON STYLING */
         .rk-showcase-wrapper {
             width: 100%; max-width: 290px; margin: 20px auto;
             border-radius: 20px; overflow: hidden;
@@ -289,14 +288,14 @@
         </div>
 
         <div class="rk-showcase-wrapper">
-            <img src="1000041040.jpg" alt="Vidtor Dashboard Base Image" class="rk-showcase-img">
+            <img src="1000006041.jpg" alt="Vidtor Dashboard Core Graphic" class="rk-showcase-img">
         </div>
 
-        <div class="input-wrapper" style="margin-top:15px; margin-bottom:15px;">
+        <div class="input-wrapper" style="margin-top:15px; margin-bottom:15px; display: none;">
             <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
-            <input type="text" id="globalHFToken" placeholder="Paste free hf_... key here to activate AI">
+            <input type="text" id="globalHFToken" value="PASTE_YOUR_HF_TOKEN_HERE">
         </div>
-        <button class="btn-action" style="margin-top:0;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+        <button class="btn-action" style="margin-top:5px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
@@ -647,7 +646,7 @@
         async function processRealTextToPhoto() {
             const token = getHFToken(); const promptVal = document.getElementById('t2pPrompt').value.trim();
             const progBox = document.getElementById('t2pProgressBox'); const scene3D = document.getElementById('t2p3DScene');
-            if (!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
+            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, pehle Token key setup karo code me!"); return; }
             if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
@@ -674,7 +673,7 @@
             const token = getHFToken(); const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vProgressBox'); const scene3D = document.getElementById('t2v3DScene');
-            if (!token) { alert("Rajkumar bhai, Home page par secure token lagayein!"); return; }
+            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, token configure nahi hai!"); return; }
             if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
@@ -702,7 +701,7 @@
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId); const scene3D = document.getElementById(scene3DId);
 
-            if (!token) { alert("Rajkumar bhai, pehle Token key fill karo!"); return; }
+            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, token missing hai!"); return; }
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
             if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
 
@@ -763,7 +762,7 @@
                 let colorRatio = i / totalCirclesCount;
                 let red = Math.floor(0 + (colorRatio * 157)); let green = Math.floor(210 - (colorRatio * 132)); let blue = Math.floor(255 - (colorRatio * 34));
                 let opacity = 0.15 + (1 - colorRatio) * 0.65;
-                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`; ctx.lineWidth = 1.5; ctx.stroke();
+                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`; ctx.lineWidth = 1.5; stroke();
             }
             ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
         }
@@ -777,4 +776,3 @@
     </script>
 </body>
 </html>
-
