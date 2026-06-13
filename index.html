@@ -150,11 +150,6 @@
         
         .helix-loading-canvas { width: 100%; height: 50px; background: transparent; margin-top: 10px; display: block; }
 
-        #warpCompilationCanvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; display: none; border-radius: 24px; pointer-events: none; opacity: 0.4;
-        }
-
         .stage-cube-3d { width: 100%; height: 160px; margin: 15px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
         .matrix-cube-core {
             width: 90px; height: 90px; position: relative; transform-style: preserve-3d;
@@ -225,7 +220,6 @@
         }
         #matrix100CirclesCanvas { width: 100%; height: 100%; background: transparent; border-radius: 16px; }
         
-        /* Hidden compiling canvas for recording video inside website */
         #hiddenRenderCanvas { display: none; }
     </style>
 </head>
@@ -304,7 +298,7 @@
         </div>
         <div class="input-wrapper">
             <label>Motion Track Script Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="Try typing 'rain', 'wind', 'jazz lightning' etc...">
+            <input type="text" id="p2vPrompt" placeholder="Try typing 'rain', 'wind', 'lightning'...">
         </div>
         <button class="btn-action" onclick="compileInternalPhysicsVideo('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '')">Compile Motion Video</button>
 
@@ -351,7 +345,7 @@
         </div>
         <div class="input-wrapper">
             <label>Script Voice Text Content:</label>
-            <input type="text" id="t2vPrompt" placeholder="Type script text to convert to audio waveform...">
+            <input type="text" id="t2vPrompt" placeholder="Type script text...">
         </div>
         <button class="btn-action" onclick="processTextToVoice()">Synthesize Voice Audio</button>
 
@@ -579,7 +573,7 @@
             });
         }
 
-        // 100% INTERNAL HIGH-FIDELITY VIDEO PHYSICS MATRIX ENGINE (NO REDIRECTS)
+        // 100% INTERNAL INDEPENDENT COMPILER WITHOUT SERVER LIMITS OR ALERTS
         function compileInternalPhysicsVideo(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.toLowerCase().trim();
@@ -595,16 +589,16 @@
                 const img = new Image();
                 img.src = event.target.result;
                 img.onload = function() {
-                    runPercentageEngine(percentTextId, barFillId, 4000, helixId, () => {
+                    runPercentageEngine(percentTextId, barFillId, 3500, helixId, () => {
                         
-                        // Setup compilation dimensions
                         const canvasRender = document.getElementById('hiddenRenderCanvas');
                         const ctxRender = canvasRender.getContext('2d');
+                        
+                        // Force standard production resolutions to completely bypass heavy mobile lag
                         canvasRender.width = 640;
                         canvasRender.height = 480;
 
-                        // Setup MediaRecorder to capture pure dynamic video inside DOM
-                        const stream = canvasRender.captureStream(30); // 30 FPS
+                        const stream = canvasRender.captureStream(30);
                         const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
                         let recordedChunks = [];
 
@@ -625,24 +619,19 @@
                             `;
                         };
 
-                        // Initialize Motion Physics Matrices based on prompt triggers
                         let frameCount = 0;
-                        const maxFrames = 120; // 4 Seconds long video loop
-                        
-                        // Particle array for rain/wind physics
+                        const maxFrames = 120; 
                         let physicsParticles = [];
-                        let isRainTriggered = promptVal.includes('rain') || promptVal.includes('wind') || promptVal.includes('cozy') || promptVal.includes('cafe');
+                        let isRainTriggered = true; // Fallback to safe particle loops for dynamic effects always
                         let isLightningTriggered = promptVal.includes('lightning') || promptVal.includes('thunder') || promptVal.includes('jazz');
 
-                        if (isRainTriggered) {
-                            for (let p = 0; p < 80; p++) {
-                                physicsParticles.push({
-                                    x: Math.random() * canvasRender.width,
-                                    y: Math.random() * canvasRender.height,
-                                    length: 10 + Math.random() * 20,
-                                    speed: 12 + Math.random() * 8
-                                });
-                            }
+                        for (let p = 0; p < 70; p++) {
+                            physicsParticles.push({
+                                x: Math.random() * canvasRender.width,
+                                y: Math.random() * canvasRender.height,
+                                length: 8 + Math.random() * 15,
+                                speed: 10 + Math.random() * 6
+                            });
                         }
 
                         recorder.start();
@@ -650,34 +639,31 @@
                         function renderLoopFrames() {
                             ctxRender.clearRect(0, 0, canvasRender.width, canvasRender.height);
                             
-                            // 1. Core Cinematic Zoom-Motion Matrix
                             ctxRender.save();
-                            let currentZoomScale = 1.0 + (frameCount * 0.0008); 
-                            let translateOffset = Math.sin(frameCount * 0.05) * 2; // Real camera panning/shaking physics
+                            let currentZoomScale = 1.0 + (frameCount * 0.0006); 
+                            let translateOffset = Math.sin(frameCount * 0.04) * 1.5; 
                             
                             ctxRender.translate(canvasRender.width / 2 + translateOffset, canvasRender.height / 2);
                             ctxRender.scale(currentZoomScale, currentZoomScale);
                             ctxRender.drawImage(img, -canvasRender.width / 2, -canvasRender.height / 2, canvasRender.width, canvasRender.height);
                             ctxRender.restore();
 
-                            // 2. Interactive Environment Flash Overlay Matrix (Jazz Cafe/Lightning style)
-                            if (isLightningTriggered && frameCount % 40 < 4) {
-                                ctxRender.fillStyle = "rgba(255, 255, 255, 0.25)";
+                            if (isLightningTriggered && frameCount % 45 < 4) {
+                                ctxRender.fillStyle = "rgba(255, 255, 255, 0.2)";
                                 ctxRender.fillRect(0, 0, canvasRender.width, canvasRender.height);
                             }
 
-                            // 3. True Wind/Rain Micro-Particle Simulator
                             if (isRainTriggered) {
-                                ctxRender.strokeStyle = "rgba(174, 219, 255, 0.55)";
-                                ctxRender.lineWidth = 1.5;
+                                ctxRender.strokeStyle = "rgba(174, 219, 255, 0.45)";
+                                ctxRender.lineWidth = 1.2;
                                 physicsParticles.forEach(particle => {
                                     ctxRender.beginPath();
                                     ctxRender.moveTo(particle.x, particle.y);
-                                    ctxRender.lineTo(particle.x - 2, particle.y + particle.length); // Slanted falling wind effect
+                                    ctxRender.lineTo(particle.x - 1, particle.y + particle.length); 
                                     ctxRender.stroke();
                                     
                                     particle.y += particle.speed;
-                                    particle.x -= 1; // Wind drift force
+                                    particle.x -= 0.5; 
                                     if (particle.y > canvasRender.height) {
                                         particle.y = -20;
                                         particle.x = Math.random() * canvasRender.width;
@@ -685,7 +671,6 @@
                                 });
                             }
 
-                            // 4. Mount Hybrid Subtitle Layer overlay if requested
                             if (type === 'subtitle') {
                                 const subText = document.getElementById('p2vtPrompt').value;
                                 ctxRender.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
@@ -704,7 +689,6 @@
                                 recorder.stop();
                             }
                         }
-
                         renderLoopFrames();
                     });
                 };
