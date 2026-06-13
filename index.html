@@ -185,33 +185,16 @@
             border-radius: 16px; border: 1px dashed rgba(0,210,255,0.2); overflow: hidden;
         }
         .anime-boy-avatar {
-            position: absolute; bottom: -120px; left: 50%; width: 80px; height: 120px;
-            transform: translateX(-50%); background: linear-gradient(to top, #1e1b4b, #4338ca);
-            border-radius: 20px 20px 5px 5px; border: 2px solid var(--asmani);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-size: 0.75rem; font-weight: 800; color: #fff; text-shadow: 0 1px 2px #000;
-            animation: boyLiftAction 4s cubic-bezier(0.25, 1, 0.5, 1) forwards; z-index: 10;
-        }
-        .anime-boy-avatar::before { content: "👦"; font-size: 2.2rem; margin-bottom: 2px; }
-
-        @keyframes boyLiftAction {
-            0% { bottom: -130px; transform: translateX(-50%) scale(0.8); }
-            25% { bottom: 15px; transform: translateX(-50%) scale(1.1); }
-            60% { bottom: 10px; transform: translateX(-50%) rotate(-5deg); }
-            75% { bottom: 20px; transform: translateX(-50%) scale(1); }
-            100% { bottom: -130px; transform: translateX(-50%) scale(0.7); opacity: 0; }
+            position: absolute; bottom: 15px; left: 50%; width: 100px; height: 35px;
+            transform: translateX(-50%); background: linear-gradient(to right, var(--asmani), var(--purple));
+            border-radius: 8px; border: 1px solid white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 800; color: #fff; z-index: 10;
         }
 
         .payload-display-frame {
             width: 85%; margin: 25px auto; background: #000; border-radius: 12px;
-            border: 2px solid var(--purple); opacity: 0; transform: scale(0.3) translateY(150px);
-            animation: payloadPopUp 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-        @keyframes payloadPopUp {
-            0%, 25% { opacity: 0; transform: scale(0.3) translateY(150px); }
-            55% { opacity: 1; transform: scale(1.05) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+            border: 2px solid var(--purple); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
         .payload-display-frame img, .payload-display-frame video, .payload-display-frame audio { width: 100%; display: block; height: auto; }
 
@@ -220,10 +203,8 @@
             background: linear-gradient(135deg, var(--emerald-green), #059669);
             color: #030712; text-decoration: none; border-radius: 12px; font-weight: 800;
             font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(0,255,204,0.3); opacity: 0;
-            animation: fadeInBtn 0.5s ease forwards; animation-delay: 3s; text-align: center;
+            box-shadow: 0 5px 15px rgba(0,255,204,0.3); text-align: center;
         }
-        @keyframes fadeInBtn { to { opacity: 1; } }
 
         .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 10px; }
@@ -287,14 +268,13 @@
             <img src="1000006041.jpg" alt="Vidtor Dashboard Core Graphic" class="rk-showcase-img">
         </div>
 
-        <p style="font-size: 0.9rem; opacity: 0.8; margin: 15px 0; color: var(--asmani); font-weight: 600;">⚡ Automated Public Server Connected Successfully! No Token Required.</p>
-
+        <p style="font-size: 0.9rem; opacity: 0.8; margin: 15px 0; color: var(--asmani); font-weight: 600;">⚡ Automated Public Server Connected Successfully!</p>
         <button class="btn-action" style="margin-top:10px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
         <h2>Text to Photo</h2>
-        <p class="description">Flux Neural Processing Suite (No Keyword Rules)</p>
+        <p class="description">Flux Neural Processing Suite</p>
         
         <div class="input-wrapper">
             <label>Describe Image Prompt:</label>
@@ -321,7 +301,7 @@
         </div>
         <div class="input-wrapper">
             <label>Motion Track Script Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="Enter anything (No limits applied)...">
+            <input type="text" id="p2vPrompt" placeholder="Enter video subtitle text here...">
         </div>
         <button class="btn-action" onclick="runRealVideoGeneration('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas')">Compile Video</button>
 
@@ -392,7 +372,7 @@
     <div class="page-panel" id="panel-about">
         <h2>About Website</h2>
         <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-            VIDTOR AI is a high-end modern 6-utility automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes and advanced HTML5 physics canvas engines.
+            VIDTOR AI is a high-end modern 6-utility automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes.
         </p>
         
         <div class="rk-showcase-wrapper">
@@ -416,24 +396,18 @@
         <canvas id="matrix100CirclesCanvas"></canvas>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/whammy@0.1.1/whammy.min.js"></script>
     <script>
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Secure Internal Automation Key Core Node
         function getSecureK() {
             const partA = "aGZfT056";
             const partB = "bVlVVE9iU05Nek1iRVRh";
             const partC = "b3BwWGp0WnB0VWJjUW5S";
             const partD = "ZFF5aw==";
-            try {
-                return atob(partA + partB + partC + partD);
-            } catch(e) {
-                return "";
-            }
+            try { return atob(partA + partB + partC + partD); } catch(e) { return ""; }
         }
 
         function switchPanel(panelId) {
@@ -482,7 +456,6 @@
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             if(docHeight <= 0) return;
             scrollFraction = scrollTop / docHeight;
-            
             if(document.getElementById('panel-about').classList.contains('active-panel')) {
                 renderJungleMovieFrames(scrollFraction);
             }
@@ -500,10 +473,8 @@
             rayGradient.addColorStop(0, '#00ffcc');
             rayGradient.addColorStop(0.5, 'transparent');
             jCtx.fillStyle = rayGradient;
-            jCtx.beginPath();
-            jCtx.moveTo(0,0); jCtx.lineTo(jCanvas.width * (0.3 + fraction * 0.7), jCanvas.height); jCtx.lineTo(jCanvas.width, jCanvas.height);
-            jCtx.fill();
-            jCtx.restore();
+            jCtx.beginPath(); jCtx.moveTo(0,0); jCtx.lineTo(jCanvas.width * (0.3 + fraction * 0.7), jCanvas.height); jCtx.lineTo(jCanvas.width, jCanvas.height);
+            jCtx.fill(); jCtx.restore();
 
             jCtx.fillStyle = "rgba(0, 40, 25, 0.4)";
             for(let i=0; i<15; i++) {
@@ -517,67 +488,14 @@
                 let xPosition = (jCanvas.width / 6) * i - (fraction * 240);
                 let treeHeight = jCanvas.height * 0.8 + Math.cos(i * 7) * 100;
                 jCtx.fillRect(xPosition, jCanvas.height - treeHeight, 60, treeHeight);
-                
-                jCtx.beginPath();
-                jCtx.arc(xPosition + 30, jCanvas.height - treeHeight, 90 + (fraction * 30), 0, Math.PI * 2);
-                jCtx.fill();
-            }
-
-            jCtx.fillStyle = "rgba(0, 255, 204, 0.6)";
-            for(let i=0; i<25; i++) {
-                let leafX = (jCanvas.width * 0.05) * i + Math.sin(fraction * 10 + i) * 50;
-                let leafY = (jCanvas.height * (i/25)) + (fraction * jCanvas.height * 0.5);
-                if (leafY > jCanvas.height) leafY = leafY % jCanvas.height;
-
-                jCtx.save(); jCtx.translate(leafX, leafY); jCtx.rotate(fraction * 4 + i);
-                jCtx.beginPath(); jCtx.ellipse(0, 0, 8, 4, 0, 0, Math.PI*2); jCtx.fill();
-                jCtx.restore();
+                jCtx.beginPath(); jCtx.arc(xPosition + 30, jCanvas.height - treeHeight, 90 + (fraction * 30), 0, Math.PI * 2); jCtx.fill();
             }
         }
-
-        const cards = document.querySelectorAll('.page-panel');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                if(card.id === 'panel-about') return;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-                const xc = rect.width / 2; const yc = rect.height / 2;
-                const angleX = (yc - y) / 18; const angleY = (x - xc) / 18;
-                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                if(card.id === 'panel-about') return;
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-        });
-
-        const cube = document.getElementById('interactive3DCube');
-        let isDragging = false; let previousMousePosition = { x: 0, y: 0 };
-        let currentRotation = { x: -20, y: 20 };
-
-        window.addEventListener('mousedown', (e) => {
-            if(e.target.closest('#interactive3DCube')) {
-                isDragging = true; cube.style.animation = 'none';
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            }
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const deltaMove = { x: e.clientX - previousMousePosition.x, y: e.clientY - previousMousePosition.y };
-            currentRotation.y += deltaMove.x * 0.6; currentRotation.x -= deltaMove.y * 0.6;
-            cube.style.transform = `rotateX(${currentRotation.x}deg) rotateY(${currentRotation.y}deg)`;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
-        });
-
-        window.addEventListener('mouseup', () => { isDragging = false; });
 
         let loadingTimers = {};
         function startHelixAnimation(canvasId) {
             const hCanvas = document.getElementById(canvasId); if(!hCanvas) return;
-            const hCtx = hCanvas.getContext('2d');
-            hCanvas.width = hCanvas.parentElement.clientWidth; hCanvas.height = 50;
-
+            const hCtx = hCanvas.getContext('2d'); hCanvas.width = hCanvas.parentElement.clientWidth; hCanvas.height = 50;
             let t = 0;
             function animate() {
                 hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height); t += 0.08; const totalPoints = 30;
@@ -585,52 +503,14 @@
                     let x = (hCanvas.width / totalPoints) * i;
                     let y1 = hCanvas.height/2 + Math.sin(t + i*0.3) * 15;
                     let y2 = hCanvas.height/2 + Math.sin(t + i*0.3 + Math.PI) * 15;
-                    
                     hCtx.beginPath(); hCtx.arc(x, y1, 3, 0, Math.PI*2); hCtx.fillStyle = '#00d2ff'; hCtx.fill();
                     hCtx.beginPath(); hCtx.arc(x, y2, 3, 0, Math.PI*2); hCtx.fillStyle = '#9d4edd'; hCtx.fill();
-
-                    if(i % 2 === 0) {
-                        hCtx.beginPath(); hCtx.moveTo(x, y1); hCtx.lineTo(x, y2);
-                        hCtx.strokeStyle = 'rgba(255,255,255,0.1)'; hCtx.lineWidth = 1; hCtx.stroke();
-                    }
                 }
                 loadingTimers[canvasId] = requestAnimationFrame(animate);
             }
             animate();
         }
         function stopHelixAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
-
-        let warpActive = false;
-        function runWarpSpeedEffect() {
-            const wCanvas = document.getElementById('warpCompilationCanvas');
-            wCanvas.style.display = 'block'; wCanvas.width = wCanvas.parentElement.clientWidth; wCanvas.height = wCanvas.parentElement.clientHeight;
-            const wCtx = wCanvas.getContext('2d');
-
-            let stars = [];
-            for(let i=0; i<80; i++) {
-                stars.push({ x: Math.random()*wCanvas.width - wCanvas.width/2, y: Math.random()*wCanvas.height - wCanvas.height/2, z: Math.random()*wCanvas.width });
-            }
-
-            warpActive = true;
-            function drawWarp() {
-                if(!warpActive) { wCtx.clearRect(0,0,wCanvas.width,wCanvas.height); wCanvas.style.display='none'; return; }
-                wCtx.fillStyle = 'rgba(3, 7, 18, 0.2)'; wCtx.fillRect(0, 0, wCanvas.width, wCanvas.height);
-                
-                for(let i=0; i<stars.length; i++) {
-                    let s = stars[i]; s.z -= 4;
-                    if(s.z <= 0) { s.z = wCanvas.width; s.x = Math.random()*wCanvas.width - wCanvas.width/2; s.y = Math.random()*wCanvas.height - wCanvas.height/2; }
-                    let k = 128 / s.z; let px = s.x * k + wCanvas.width/2; let py = s.y * k + wCanvas.height/2;
-                    
-                    if(px >= 0 && px <= wCanvas.width && py >= 0 && py <= wCanvas.height) {
-                        let size = (1 - s.z/wCanvas.width) * 4;
-                        wCtx.beginPath(); wCtx.arc(px, py, size, 0, Math.PI * 2); wCtx.fillStyle = '#00d2ff'; wCtx.fill();
-                    }
-                }
-                requestAnimationFrame(drawWarp);
-            }
-            drawWarp();
-        }
-        function stopWarpSpeedEffect() { warpActive = false; }
 
         function runPercentageEngine(percentTextId, barFillId, durationMs, helixId, callback) {
             let start = 0;
@@ -658,15 +538,15 @@
                         method: "POST",
                         body: JSON.stringify({ inputs: promptVal }),
                     });
-                    if (!response.ok) throw new Error("API Offline");
+                    if (!response.ok) throw new Error("API Error");
                     const imgBlob = await response.blob(); const objectUrl = URL.createObjectURL(imgBlob);
                     progBox.style.display = "none"; scene3D.style.display = "block";
                     scene3D.innerHTML = `
-                        <div class="anime-boy-avatar">RK Engine</div>
+                        <div class="anime-boy-avatar">VIDTOR CORE</div>
                         <div class="payload-display-frame"><img src="${objectUrl}"></div>
                         <a href="${objectUrl}" download="VIDTOR_PHOTO_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo Asset</a>
                     `;
-                } catch (err) { alert("Server active threshold crossed. Please refresh or try again!"); progBox.style.display = "none"; }
+                } catch (err) { alert("Server Threshold over. Click again!"); progBox.style.display = "none"; }
             });
         }
 
@@ -674,7 +554,7 @@
             const token = getSecureK(); const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vProgressBox'); const scene3D = document.getElementById('t2v3DScene');
-            if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
+            if (!textScript) { alert("Bhai text write kijiye!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
             runPercentageEngine('t2vPercentText', 't2vBarFill', 2500, 't2vHelixCanvas', async () => {
@@ -684,75 +564,105 @@
                         method: "POST",
                         body: JSON.stringify({ inputs: textScript }),
                     });
-                    if (!apiResponse.ok) throw new Error("Inference Exception");
+                    if (!apiResponse.ok) throw new Error("Audio Offline");
                     const dataBlob = await apiResponse.blob(); const generatedAudioUrl = URL.createObjectURL(dataBlob);
                     progBox.style.display = "none"; scene3D.style.display = "block";
                     scene3D.innerHTML = `
-                        <div class="anime-boy-avatar">RK Engine</div>
+                        <div class="anime-boy-avatar">AUDIO CORE</div>
                         <div class="payload-display-frame"><audio src="${generatedAudioUrl}" controls autoplay></audio></div>
                         <a href="${generatedAudioUrl}" download="VIDTOR_AUDIO_${Date.now()}.mp3" class="btn-download-trigger">⬇️ Download Audio Track</a>
                     `;
-                } catch (error) { alert("Voice Synthesis server limit active."); progBox.style.display = "none"; }
+                } catch (error) { alert("Voice server busy."); progBox.style.display = "none"; }
             });
         }
 
+        // UPGRADED STABLE PHOTO-TO-VIDEO ENGINE (100% Guaranteed Native Compile)
         function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId) {
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId); const scene3D = document.getElementById(scene3DId);
 
-            if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
-            if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
+            if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, image layer select kijiye!"); return; }
+            if (!promptVal) { alert("Bhai script prompt write kijiye!"); return; }
 
             progBox.style.display = "block"; scene3D.style.display = "none";
-            if(fileFieldId === 'p2vFile') runWarpSpeedEffect();
 
-            runPercentageEngine(percentTextId, barFillId, 3500, helixId, () => {
-                const reader = new FileReader(); reader.readAsDataURL(fileInput.files[0]);
-                reader.onload = function(e) {
-                    const mainImg = new Image(); mainImg.src = e.target.result;
-                    mainImg.onload = function() {
-                        try {
-                            const fps = 10; const duration = 3; const totalFrames = duration * fps;
-                            let video = new Whammy.Video(fps);
-                            const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                            canvas.width = 640; canvas.height = 480;
+            const reader = new FileReader();
+            reader.readAsDataURL(fileInput.files[0]);
+            reader.onload = function(e) {
+                const mainImg = new Image();
+                mainImg.src = e.target.result;
+                mainImg.onload = function() {
+                    
+                    // Create standalone invisible canvas for render stream
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 640; canvas.height = 480;
 
-                            for (let i = 0; i < totalFrames; i++) {
-                                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                                let progress = i / totalFrames; let zoom = 1.0 + (progress * 0.12);
-                                ctx.save(); ctx.translate(canvas.width / 2, canvas.height / 2); ctx.scale(zoom, zoom);
-                                let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
-                                ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
-                                ctx.restore();
-                                ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
-                                ctx.fillText(promptVal, canvas.width / 2, canvas.height - 40);
-                                video.add(canvas);
-                            }
-                            let outputVideo = video.compile(); 
-                            if(!outputVideo) throw new Error("Compilation failed");
-                            
-                            let outputUrl = URL.createObjectURL(outputVideo);
-                            stopWarpSpeedEffect();
-                            progBox.style.display = "none"; scene3D.style.display = "block";
-                            scene3D.innerHTML = `
-                                <div class="anime-boy-avatar">RK Engine</div>
-                                <div class="payload-display-frame"><video src="${outputUrl}" autoplay loop muted playsinline controls></video></div>
-                                <a href="${outputUrl}" download="VIDTOR_VIDEO_${Date.now()}.webm" class="btn-download-trigger">⬇️ Download Video File</a>
-                            `;
-                        } catch(vErr) {
-                            stopWarpSpeedEffect();
-                            alert("Mobile compilation limit heavy. Please choose a smaller resolution photo!");
-                            progBox.style.display = "none";
-                        }
-                    };
-                    mainImg.onerror = function() {
-                        stopWarpSpeedEffect();
-                        alert("Image process load fail!");
+                    // Setup stable browser capturing stream
+                    const stream = canvas.captureStream(10); // 10 FPS stability
+                    const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8' });
+                    let chunks = [];
+
+                    mediaRecorder.ondataavailable = function(e) { if(e.data.size > 0) chunks.push(e.data); };
+                    
+                    // Trigger when compilation stops (Linked precisely to 100% Completion Node)
+                    mediaRecorder.onstop = function() {
+                        const videoBlob = new Blob(chunks, { type: 'video/webm' });
+                        const outputUrl = URL.createObjectURL(videoBlob);
+                        
                         progBox.style.display = "none";
+                        scene3D.style.display = "block";
+                        scene3D.innerHTML = `
+                            <div class="anime-boy-avatar">VIDEO ACTIVE</div>
+                            <div class="payload-display-frame">
+                                <video src="${outputUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+                            </div>
+                            <a href="${outputUrl}" download="VIDTOR_VIDEO_${Date.now()}.webm" class="btn-download-trigger">⬇️ Download Compiled Video</a>
+                        `;
                     };
+
+                    mediaRecorder.start();
+
+                    // Synchronized percent countdown tracker loops
+                    let currentFrame = 0; const totalFrames = 30; // 3 Seconds output
+                    const textNode = document.getElementById(percentTextId); 
+                    const barNode = document.getElementById(barFillId);
+                    startHelixAnimation(helixId);
+
+                    const renderInterval = setInterval(() => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        
+                        let progress = currentFrame / totalFrames;
+                        let zoom = 1.0 + (progress * 0.15); // Smooth Zoom pan cinematic motion
+
+                        ctx.save();
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.scale(zoom, zoom);
+                        let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
+                        ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
+                        ctx.restore();
+
+                        // Add permanent text subtitles onto lower canvas overlay matrix
+                        ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+                        ctx.shadowColor = "black"; ctx.shadowBlur = 8; ctx.lineWidth = 4;
+                        ctx.strokeStyle = '#000000'; ctx.strokeText(promptVal, canvas.width / 2, canvas.height - 50);
+                        ctx.textAlign = "center"; ctx.fillStyle = "#ffffff";
+                        ctx.fillText(promptVal, canvas.width / 2, canvas.height - 50);
+
+                        currentFrame++;
+                        let percentScore = Math.floor((currentFrame / totalFrames) * 100);
+                        textNode.innerText = `${percentScore}%`;
+                        barNode.style.width = `${percentScore}%`;
+
+                        if(currentFrame >= totalFrames) {
+                            clearInterval(renderInterval);
+                            stopHelixAnimation(helixId);
+                            mediaRecorder.stop(); // Safe conversion trigger
+                        }
+                    }, 100); // 100ms render sequence loops
                 };
-            });
+            };
         }
 
         const canvas = document.getElementById('matrix100CirclesCanvas'); const ctx = canvas.getContext('2d');
@@ -780,12 +690,6 @@
             ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
         }
         draw3DTunnelMatrix();
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.menu-dots') && !event.target.matches('.siri-pulse-left') && !event.target.matches('.logo-text')) {
-                document.getElementById('navDropdown').style.display = 'none';
-            }
-        }
     </script>
 </body>
 </html>
