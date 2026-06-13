@@ -445,6 +445,7 @@
         const jCtx = jCanvas.getContext('2d');
         let scrollFraction = 0;
 
+        // Optimized Background Video Engine Matrix Tracker Setup
         function initJungleCinemaEngine() {
             jCanvas.width = window.innerWidth;
             jCanvas.height = window.innerHeight;
@@ -576,7 +577,7 @@
             });
         }
 
-        // UPGRADED STABLE PHOTO-TO-VIDEO ENGINE (100% Guaranteed Native Compile)
+        // HEAVY PHOTO RENDER ENGINE INTEGRATION MATRIX
         function runRealVideoGeneration(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId) {
             const fileInput = document.getElementById(fileFieldId);
             const promptVal = document.getElementById(promptFieldId).value.trim();
@@ -594,19 +595,18 @@
                 mainImg.src = e.target.result;
                 mainImg.onload = function() {
                     
-                    // Create standalone invisible canvas for render stream
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
+                    
+                    // Fixed secure resolution preventing browser frame out limits
                     canvas.width = 640; canvas.height = 480;
 
-                    // Setup stable browser capturing stream
-                    const stream = canvas.captureStream(10); // 10 FPS stability
+                    const stream = canvas.captureStream(10); 
                     const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8' });
                     let chunks = [];
 
                     mediaRecorder.ondataavailable = function(e) { if(e.data.size > 0) chunks.push(e.data); };
                     
-                    // Trigger when compilation stops (Linked precisely to 100% Completion Node)
                     mediaRecorder.onstop = function() {
                         const videoBlob = new Blob(chunks, { type: 'video/webm' });
                         const outputUrl = URL.createObjectURL(videoBlob);
@@ -624,8 +624,7 @@
 
                     mediaRecorder.start();
 
-                    // Synchronized percent countdown tracker loops
-                    let currentFrame = 0; const totalFrames = 30; // 3 Seconds output
+                    let currentFrame = 0; const totalFrames = 30; 
                     const textNode = document.getElementById(percentTextId); 
                     const barNode = document.getElementById(barFillId);
                     startHelixAnimation(helixId);
@@ -634,16 +633,16 @@
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         
                         let progress = currentFrame / totalFrames;
-                        let zoom = 1.0 + (progress * 0.15); // Smooth Zoom pan cinematic motion
+                        let zoom = 1.0 + (progress * 0.15); 
 
                         ctx.save();
                         ctx.translate(canvas.width / 2, canvas.height / 2);
                         ctx.scale(zoom, zoom);
+                        
                         let scale = Math.max(canvas.width / mainImg.width, canvas.height / mainImg.height);
                         ctx.drawImage(mainImg, -(mainImg.width*scale)/2, -(mainImg.height*scale)/2, mainImg.width*scale, mainImg.height*scale);
                         ctx.restore();
 
-                        // Add permanent text subtitles onto lower canvas overlay matrix
                         ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
                         ctx.shadowColor = "black"; ctx.shadowBlur = 8; ctx.lineWidth = 4;
                         ctx.strokeStyle = '#000000'; ctx.strokeText(promptVal, canvas.width / 2, canvas.height - 50);
@@ -658,9 +657,9 @@
                         if(currentFrame >= totalFrames) {
                             clearInterval(renderInterval);
                             stopHelixAnimation(helixId);
-                            mediaRecorder.stop(); // Safe conversion trigger
+                            mediaRecorder.stop();
                         }
-                    }, 100); // 100ms render sequence loops
+                    }, 100);
                 };
             };
         }
