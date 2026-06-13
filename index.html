@@ -119,10 +119,6 @@
             box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
             transition: 0.4s ease;
         }
-        .rk-showcase-wrapper:hover {
-            transform: scale(1.03); border-color: var(--purple);
-            box-shadow: 0 0 35px rgba(157, 78, 221, 0.5);
-        }
         .rk-showcase-img { width: 100%; display: block; height: auto; object-fit: cover; }
         
         #panel-about {
@@ -263,8 +259,8 @@
         
         <div class="dropdown-menu" id="navDropdown">
             <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
-            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ 1. Text to Photo Generator</a>
-            <a href="#" onclick="switchPanel('photo-to-video')">🎬 2. Photo to Video Generator</a>
+            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ 1. Text to Photo</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 2. Photo to Video</a>
             <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 3. Photo+Text to Video</a>
             <a href="#" onclick="switchPanel('text-to-voice')">🎵 4. Text to Voice Suite</a>
             <a href="#" onclick="switchPanel('ig-panel')">❤️ 5. Premium Growth Panel</a>
@@ -291,11 +287,13 @@
             <img src="1000006041.jpg" alt="Vidtor Dashboard Core Graphic" class="rk-showcase-img">
         </div>
 
-        <div class="input-wrapper" style="margin-top:15px; margin-bottom:15px; display: none;">
-            <label style="color:var(--purple)">🔑 Global Hugging Face Token:</label>
-            <input type="text" id="globalHFToken" value="PASTE_YOUR_HF_TOKEN_HERE">
+        <div class="input-wrapper" style="margin-top:20px; border: 1px dashed var(--asmani); padding: 15px; border-radius: 14px; background: rgba(0,210,255,0.03);">
+            <label style="color:var(--asmani); text-align: center;">🔑 Secret AI Engine Token Setup</label>
+            <input type="text" id="globalHFToken" placeholder="Paste your hf_... token key here" style="border-color: rgba(0,210,255,0.3); text-align: center;">
+            <p style="font-size: 0.75rem; opacity: 0.6; margin: 8px 0 0 0; text-align: center; color: #fff;">Website kholne ke baad bas ek baar yahan token paste kar dena, fir saare tools ekdum mast chalenge!</p>
         </div>
-        <button class="btn-action" style="margin-top:5px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+
+        <button class="btn-action" style="margin-top:15px;" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
     <div class="page-panel" id="panel-text-to-photo">
@@ -646,7 +644,7 @@
         async function processRealTextToPhoto() {
             const token = getHFToken(); const promptVal = document.getElementById('t2pPrompt').value.trim();
             const progBox = document.getElementById('t2pProgressBox'); const scene3D = document.getElementById('t2p3DScene');
-            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, pehle Token key setup karo code me!"); return; }
+            if (!token) { alert("Rajkumar bhai, pehle Token key setup karo home screen par!"); return; }
             if (!promptVal) { alert("Bhai prompt empty hai!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
@@ -665,7 +663,7 @@
                         <div class="payload-display-frame"><img src="${objectUrl}"></div>
                         <a href="${objectUrl}" download="VIDTOR_PHOTO_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo Asset</a>
                     `;
-                } catch (err) { alert("Error: Token invalid."); progBox.style.display = "none"; }
+                } catch (err) { alert("Error: Token invalid or API problem."); progBox.style.display = "none"; }
             });
         }
 
@@ -673,7 +671,7 @@
             const token = getHFToken(); const targetModel = document.getElementById('t2vModel').value;
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vProgressBox'); const scene3D = document.getElementById('t2v3DScene');
-            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, token configure nahi hai!"); return; }
+            if (!token) { alert("Rajkumar bhai, token configure nahi hai home page par!"); return; }
             if (!textScript) { alert("Bhai text content fill kijiye!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
@@ -701,7 +699,7 @@
             const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId); const scene3D = document.getElementById(scene3DId);
 
-            if (!token || token === "PASTE_YOUR_HF_TOKEN_HERE") { alert("Rajkumar bhai, token missing hai!"); return; }
+            if (!token) { alert("Rajkumar bhai, token missing hai! Dashboard home par jao aur token input karo."); return; }
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, base image choose kijiye!"); return; }
             if (!promptVal) { alert("Bhai overlay text write kijiye!"); return; }
 
@@ -762,7 +760,7 @@
                 let colorRatio = i / totalCirclesCount;
                 let red = Math.floor(0 + (colorRatio * 157)); let green = Math.floor(210 - (colorRatio * 132)); let blue = Math.floor(255 - (colorRatio * 34));
                 let opacity = 0.15 + (1 - colorRatio) * 0.65;
-                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`; ctx.lineWidth = 1.5; stroke();
+                ctx.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`; ctx.lineWidth = 1.5; ctx.stroke();
             }
             ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
         }
