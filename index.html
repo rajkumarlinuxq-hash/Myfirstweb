@@ -46,6 +46,15 @@
             z-index: -2;
             background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
                         radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
+            transition: opacity 0.8s ease;
+        }
+
+        #jungleCinemaCanvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            display: none;
+            pointer-events: none;
         }
 
         header {
@@ -87,6 +96,7 @@
         .dropdown-menu a {
             color: var(--text); text-decoration: none; padding: 12px 16px;
             font-size: 0.95rem; font-weight: 600; border-radius: 10px; transition: 0.2s;
+            text-align: left;
         }
         .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
 
@@ -100,6 +110,27 @@
         }
         .active-panel { display: block; }
         
+        .rk-showcase-wrapper {
+            width: 100%; max-width: 290px; margin: 20px auto;
+            border-radius: 20px; overflow: hidden;
+            border: 2px solid var(--asmani);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+        }
+        .rk-showcase-img { width: 100%; display: block; height: auto; object-fit: cover; }
+        
+        #panel-about {
+            max-width: 520px;
+            background: rgba(10, 25, 18, 0.65);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+        }
+        
+        .scroll-indicator-text {
+            font-size: 0.8rem; color: var(--emerald-green); font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
+            animation: bounceTrack 1.5s infinite alternate;
+        }
+        @keyframes bounceTrack { from { transform: translateY(0); } to { transform: translateY(6px); } }
+
         @keyframes panelSwitchFade {
             from { opacity: 0; transform: scale(0.96) translateY(12px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
@@ -149,7 +180,8 @@
 </head>
 <body>
 
-    <div class="global-bg-overlay"></div>
+    <div class="global-bg-overlay" id="globalBgOverlay"></div>
+    <canvas id="jungleCinemaCanvas"></canvas>
 
     <header>
         <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
@@ -165,6 +197,7 @@
             <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 3. Photo+Text to Video</a>
             <a href="#" onclick="switchPanel('text-to-voice')">🎵 4. Text to Voice Suite</a>
             <a href="#" onclick="switchPanel('ig-panel')">❤️ 5. Premium Growth Panel</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ 6. About Website</a>
         </div>
     </header>
 
@@ -264,6 +297,27 @@
         <button class="btn-action" style="background: linear-gradient(135deg, #ff3366, #9d4edd);" onclick="window.open('https://www.instagram.com/', '_blank')">Connect Orders on Instagram</button>
     </div>
 
+    <div class="page-panel" id="panel-about">
+        <h2>About Website</h2>
+        <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            VIDTOR AI is a high-end modern 6-utility automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes.
+        </p>
+        
+        <div class="rk-showcase-wrapper">
+            <img src="100041122.jpg" alt="Vidtor About End Display Graphic" class="rk-showcase-img" onerror="this.style.display='none'">
+        </div>
+
+        <div style="border-top:1px dashed rgba(0,255,204,0.2); padding-top:20px; text-align:justify; font-size:0.88rem; opacity:0.8; line-height:1.7;">
+            <b style="color:var(--emerald-green)">🎥 INTERACTIVE JUNGLE MATRIX SYSTEM:</b><br>
+            Scroll up and down inside this page to manipulate time. A complex mathematical ecosystem triggers frame loops representing deep wild forest growth matrix nodes.
+        </div>
+        
+        <div class="scroll-indicator-text">⬇️ Scroll inside page to view movie ⬇️</div>
+        <div style="height: 350px;"></div>
+        <p class="description" style="color:var(--emerald-green); font-weight:800;">[ END OF MATRIX TIMELINE ]</p>
+        <button class="btn-action" onclick="switchPanel('home')">Back to Dashboard Home</button>
+    </div>
+
     <div class="devotional-outro">RADHE RADHE</div>
 
     <script>
@@ -276,8 +330,82 @@
             document.getElementById('navDropdown').style.display = 'none';
             document.querySelectorAll('.page-panel').forEach(panel => panel.classList.remove('active-panel'));
             const targeted = document.getElementById('panel-' + panelId);
-            if(targeted) targeted.classList.add('active-panel');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const overlay = document.getElementById('globalBgOverlay');
+            const jungleCanvas = document.getElementById('jungleCinemaCanvas');
+            
+            overlay.style.opacity = "1";
+            jungleCanvas.style.display = "none";
+            document.body.style.background = "#030712";
+
+            if(targeted) {
+                targeted.classList.add('active-panel');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            if(panelId === 'text-to-photo') {
+                document.body.style.background = "linear-gradient(135deg, #050515, #0a1128)";
+            } else if(panelId === 'text-to-voice') {
+                document.body.style.background = "linear-gradient(135deg, #0b0514, #180a2b)";
+            } else if(panelId === 'ig-panel') {
+                document.body.style.background = "linear-gradient(135deg, #1c0510, #030712)";
+            } else if(panelId === 'about') {
+                overlay.style.opacity = "0";
+                jungleCanvas.style.display = "block";
+                initJungleCinemaEngine();
+            }
+        }
+
+        const jCanvas = document.getElementById('jungleCinemaCanvas');
+        const jCtx = jCanvas.getContext('2d');
+        let scrollFraction = 0;
+
+        function initJungleCinemaEngine() {
+            jCanvas.width = window.innerWidth;
+            jCanvas.height = window.innerHeight;
+            renderJungleMovieFrames(0);
+        }
+        window.addEventListener('resize', () => { if(jCanvas.style.display === 'block') initJungleCinemaEngine(); });
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if(docHeight <= 0) return;
+            scrollFraction = scrollTop / docHeight;
+            if(document.getElementById('panel-about').classList.contains('active-panel')) {
+                renderJungleMovieFrames(scrollFraction);
+            }
+        });
+
+        function renderJungleMovieFrames(fraction) {
+            jCtx.clearRect(0, 0, jCanvas.width, jCanvas.height);
+            let greenFactor = Math.floor(25 + (fraction * 45));
+            jCtx.fillStyle = `rgb(5, ${greenFactor}, 20)`;
+            jCtx.fillRect(0, 0, jCanvas.width, jCanvas.height);
+
+            jCtx.save();
+            jCtx.globalAlpha = 0.15 + (Math.sin(fraction * Math.PI) * 0.15);
+            let rayGradient = jCtx.createLinearGradient(0, 0, jCanvas.width, jCanvas.height);
+            rayGradient.addColorStop(0, '#00ffcc');
+            rayGradient.addColorStop(0.5, 'transparent');
+            jCtx.fillStyle = rayGradient;
+            jCtx.beginPath(); jCtx.moveTo(0,0); jCtx.lineTo(jCanvas.width * (0.3 + fraction * 0.7), jCanvas.height); jCtx.lineTo(jCanvas.width, jCanvas.height);
+            jCtx.fill(); jCtx.restore();
+
+            jCtx.fillStyle = "rgba(0, 40, 25, 0.4)";
+            for(let i=0; i<15; i++) {
+                let xPosition = (jCanvas.width / 12) * i - (fraction * 80);
+                let treeHeight = jCanvas.height * 0.6 + Math.sin(i * 9) * 80;
+                jCtx.fillRect(xPosition, jCanvas.height - treeHeight, 35, treeHeight);
+            }
+
+            jCtx.fillStyle = "rgba(0, 20, 10, 0.8)";
+            for(let i=0; i<8; i++) {
+                let xPosition = (jCanvas.width / 6) * i - (fraction * 240);
+                let treeHeight = jCanvas.height * 0.8 + Math.cos(i * 7) * 100;
+                jCtx.fillRect(xPosition, jCanvas.height - treeHeight, 60, treeHeight);
+                jCtx.beginPath(); jCtx.arc(xPosition + 30, jCanvas.height - treeHeight, 90 + (fraction * 30), 0, Math.PI * 2); jCtx.fill();
+            }
         }
 
         function getSecureK() {
@@ -320,7 +448,7 @@
             }, pace);
         }
 
-        // 1. TEXT TO PHOTO (100% REAL FLUX AI)
+        // 1. TEXT TO PHOTO
         async function processTextToPhoto() {
             const prompt = document.getElementById('t2pPrompt').value.trim();
             if(!prompt) return;
@@ -348,7 +476,7 @@
             });
         }
 
-        // 2 & 3. PHOTO TO VIDEO (RUNWAY ML STYLE COMPILER SYSTEM)
+        // 2 & 3. PHOTO TO VIDEO (RUNWAY ML STYLE COMPILER)
         async function processVideoDiffusion(fileId, promptId, boxId, percentId, barId, sceneId, helixId, hasSubtitle) {
             const fileIn = document.getElementById(fileId);
             const prompt = document.getElementById(promptId).value.trim();
@@ -364,10 +492,9 @@
                 img.src = e.target.result;
                 img.onload = function() {
                     runPercentageEngine(percentId, barId, 5000, helixId, () => {
-                        // Runway ML style real rendering matrix via structured high-fps canvas automation pipeline
                         const tempCanvas = document.createElement('canvas');
                         const tempCtx = tempCanvas.getContext('2d');
-                        tempCanvas.width = 640; tempCanvas.height = 360; // 16:9 Cinema widescreen block
+                        tempCanvas.width = 640; tempCanvas.height = 360; 
 
                         const stream = tempCanvas.captureStream(30);
                         let recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
@@ -387,13 +514,12 @@
 
                         recorder.start();
                         let frame = 0;
-                        const totalFrames = 150; // 5 Seconds smooth video loop
+                        const totalFrames = 150; 
 
                         function processDiffusionFrames() {
                             tempCtx.clearRect(0,0, tempCanvas.width, tempCanvas.height);
                             tempCtx.save();
                             
-                            // Runway ML motion parameters simulations (Continuous Cinematic Slow Zoom & Pan)
                             let scale = 1.0 + (frame * 0.0012);
                             let horizontalPan = Math.sin(frame * 0.02) * 5;
                             let verticalPan = (frame * 0.05);
@@ -403,7 +529,6 @@
                             tempCtx.drawImage(img, -tempCanvas.width/2, -tempCanvas.height/2, tempCanvas.width, tempCanvas.height);
                             tempCtx.restore();
 
-                            // Runway ML style atmospheric dynamic layer simulation (Cinematic Micro-Rain Ambient)
                             tempCtx.fillStyle = "rgba(255,255,255,0.08)";
                             for(let i=0; i<15; i++) {
                                 let rx = (Math.random() * tempCanvas.width);
@@ -411,7 +536,6 @@
                                 tempCtx.fillRect(rx, ry, 1.5, 12);
                             }
 
-                            // Subtitle Integration Layer
                             if(hasSubtitle && prompt) {
                                 tempCtx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
                                 tempCtx.fillStyle = "#ffffff";
@@ -435,7 +559,7 @@
             };
         }
 
-        // 4. TEXT TO VOICE SUITE (100% REAL NEURAL SYNTHESIZER)
+        // 4. TEXT TO VOICE SUITE
         async function processTextToVoice() {
             const model = document.getElementById('t2vModel').value;
             const prompt = document.getElementById('t2vPrompt').value.trim();
