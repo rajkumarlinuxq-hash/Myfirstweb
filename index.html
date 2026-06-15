@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI | 6-Tool Premium Suite by Rajkumar</title>
-    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines.">
-    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster">
+    <title>VIDTOR AI | 3D Premium Suite by Rajkumar</title>
+    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines and 3D matrix.">
+    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster, 3d animation">
     <meta name="author" content="Rajkumar">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
@@ -37,18 +37,18 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            transition: background 0.8s ease;
+            perspective: 1000px;
         }
 
         .global-bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
-            transition: opacity 0.8s ease;
+            background: radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.08) 0%, transparent 40%);
         }
 
+        /* 3D BG MATRIX EFFECTS */
         #jungleCinemaCanvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -75,12 +75,13 @@
             font-weight: 800; font-size: 14px; color: white;
             border: 2px solid var(--asmani);
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-            animation: pulseGlow 2s infinite alternate;
+            animation: siriWavePulse 2.5s infinite ease-in-out alternate;
         }
-        @keyframes pulseGlow {
-            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
-            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+        @keyframes siriWavePulse {
+            0% { transform: scale(1) rotate(0deg); box-shadow: 0 0 10px rgba(0, 210, 255, 0.4), 0 0 20px rgba(157,78,221,0.2); }
+            100% { transform: scale(1.08) rotate(360deg); box-shadow: 0 0 25px rgba(0, 210, 255, 0.7), 0 0 35px rgba(157,78,221,0.5); }
         }
+        
         .logo-text {
             font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
             background: linear-gradient(to right, #fff, var(--asmani));
@@ -100,82 +101,93 @@
         }
         .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
 
+        /* PREMIUM 3D PANEL INTERACTIVE DECK */
         .page-panel {
             display: none; width: 100%; max-width: 480px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             padding: 35px 30px; border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(255,255,255,0.02);
             border: 1px solid var(--border); box-sizing: border-box;
-            animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+            transform-style: preserve-3d;
+            transform: rotateX(4deg) translateY(0px);
+            animation: panelSwitchFade 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.15); text-align: center;
         }
         .active-panel { display: block; }
         
-        .rk-showcase-wrapper {
-            width: 100%; max-width: 290px; margin: 20px auto;
-            border-radius: 20px; overflow: hidden;
-            border: 2px solid var(--asmani);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
-        }
-        .rk-showcase-img { width: 100%; display: block; height: auto; object-fit: cover; }
-        
-        #panel-about {
-            max-width: 520px;
-            background: rgba(10, 25, 18, 0.65);
-            border: 1px solid rgba(0, 255, 204, 0.15);
-        }
-        
-        .scroll-indicator-text {
-            font-size: 0.8rem; color: var(--emerald-green); font-weight: 800;
-            letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
-            animation: bounceTrack 1.5s infinite alternate;
-        }
-        @keyframes bounceTrack { from { transform: translateY(0); } to { transform: translateY(6px); } }
-
         @keyframes panelSwitchFade {
-            from { opacity: 0; transform: scale(0.96) translateY(12px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: scale(0.92) rotateX(-15deg) translateY(30px); }
+            to { opacity: 1; transform: scale(1) rotateX(4deg) translateY(0); }
         }
 
+        /* HELIX & 3D LOADING ENGINE COMPONENTS */
         .progress-box-wrapper {
-            margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
+            margin-top: 20px; display: none; background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,210,255,0.15); padding: 20px; border-radius: 18px;
+            transform: translateZ(20px);
         }
-        .percentage-counter { font-size: 1.4rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; }
-        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
-        .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
+        .percentage-counter { font-size: 1.6rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; text-shadow: 0 0 10px rgba(0,210,255,0.4); }
+        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+        .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); transition: width 0.1s ease; }
         
-        .helix-loading-canvas { width: 100%; height: 50px; background: transparent; margin-top: 10px; display: block; }
-
+        /* 3D CORE ROTATING CANVAS DISPLAY SYSTEM */
         .scene-3d-presenter {
-            margin-top: 25px; display: none; width: 100%; min-height: 200px;
-            background: rgba(5,11,26,0.5); border-radius: 16px; border: 1px dashed rgba(0,210,255,0.2); overflow: hidden;
+            margin-top: 25px; display: none; width: 100%; min-height: 240px;
+            background: rgba(5,11,26,0.6); border-radius: 18px; 
+            border: 1px solid rgba(0,210,255,0.25); overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 800px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
+        
         .anime-boy-avatar {
-            width: 100%; padding: 8px 0; background: linear-gradient(to right, var(--asmani), var(--purple));
-            font-size: 0.8rem; font-weight: 800; color: #fff; text-transform: uppercase;
+            width: 100%; padding: 10px 0; background: linear-gradient(to right, var(--asmani), var(--purple));
+            font-size: 0.85rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 2px;
         }
 
-        .payload-display-frame { width: 100%; padding: 10px; box-sizing: border-box; }
-        .payload-display-frame img, .payload-display-frame video, .payload-display-frame audio { width: 100%; display: block; border-radius: 8px; }
+        .payload-display-frame { 
+            width: 100%; padding: 15px; box-sizing: border-box; 
+            transform-style: preserve-3d;
+            animation: viewPerspectiveRotate 8s infinite ease-in-out alternate;
+        }
+        @keyframes viewPerspectiveRotate {
+            0% { transform: rotateY(-8deg) rotateX(2deg); }
+            100% { transform: rotateY(8deg) rotateX(-2deg); }
+        }
+        .payload-display-frame img, .payload-display-frame video, .payload-display-frame audio { 
+            width: 100%; display: block; border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
 
         .btn-download-trigger {
-            display: block; width: 90%; margin: 15px auto; padding: 12px;
+            display: block; width: 90%; margin: 15px auto; padding: 14px;
             background: linear-gradient(135deg, var(--emerald-green), #059669);
-            color: #030712; text-decoration: none; border-radius: 10px; font-weight: 800; text-transform: uppercase;
+            color: #030712; text-decoration: none; border-radius: 12px; font-weight: 800; text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,255,204,0.3); transition: transform 0.2s;
         }
+        .btn-download-trigger:hover { transform: scale(1.03); }
 
-        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 10px; }
-        h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.8rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--asmani); margin-bottom: 10px; }
+        h2 { font-size: 1.9rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; }
 
-        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
-        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; box-sizing: border-box; outline: none; }
+        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; transform: translateZ(10px); }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; box-sizing: border-box; outline: none; transition: border-color 0.3s; }
+        input[type="text"]:focus, select:focus { border-color: var(--asmani); }
         
-        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 20px rgba(157,78,221,0.25); }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,210,255,0.4); }
         
-        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; }
+        .rk-showcase-wrapper { width: 100%; max-width: 290px; margin: 20px auto; border-radius: 20px; overflow: hidden; border: 2px solid var(--asmani); box-shadow: 0 0 25px rgba(0, 210, 255, 0.35); transform: translateZ(15px); }
+        .rk-showcase-img { width: 100%; display: block; height: auto; }
+        
+        #panel-about { max-width: 520px; background: rgba(10, 25, 18, 0.65); border: 1px solid rgba(0, 255, 204, 0.15); }
+        .scroll-indicator-text { font-size: 0.8rem; color: var(--emerald-green); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; animation: bounceTrack 1.5s infinite alternate; }
+        @keyframes bounceTrack { from { transform: translateY(0); } to { transform: translateY(6px); } }
+
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; text-shadow: 0 2px 8px rgba(255,153,51,0.3); }
     </style>
 </head>
 <body>
@@ -204,7 +216,7 @@
     <div class="page-panel active-panel" id="panel-home">
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
-        <p class="description">Runway ML Style Ultra Diffusion Suite Powered by High-End Neural Networks.</p>
+        <p class="description">Runway ML Style Ultra 3D Diffusion Suite Powered by High-End Neural Networks.</p>
         <button class="btn-action" onclick="toggleNavigationMenu()">Launch AI Engine Tools</button>
     </div>
 
@@ -220,7 +232,7 @@
         <div class="progress-box-wrapper" id="t2pProgressBox">
             <div class="percentage-counter" id="t2pPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="t2pHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="t2pHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2p3DScene"></div>
     </div>
@@ -241,7 +253,7 @@
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="p2vHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="p2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2v3DScene"></div>
     </div>
@@ -262,7 +274,7 @@
         <div class="progress-box-wrapper" id="p2vtProgressBox">
             <div class="percentage-counter" id="p2vtPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vtBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="p2vtHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="p2vtHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2vt3DScene"></div>
     </div>
@@ -286,7 +298,7 @@
         <div class="progress-box-wrapper" id="t2vProgressBox">
             <div class="percentage-counter" id="t2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2vBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="t2vHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="t2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2v3DScene"></div>
     </div>
@@ -300,7 +312,7 @@
     <div class="page-panel" id="panel-about">
         <h2>About Website</h2>
         <p class="description" style="text-align: justify; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-            VIDTOR AI is a high-end modern 6-utility automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes.
+            VIDTOR AI is a high-end modern 3D automated intelligence matrix framework. Engineered entirely by Rajkumar, it features custom low-latency asynchronous rendering nodes.
         </p>
         
         <div class="rk-showcase-wrapper">
@@ -308,7 +320,7 @@
         </div>
 
         <div style="border-top:1px dashed rgba(0,255,204,0.2); padding-top:20px; text-align:justify; font-size:0.88rem; opacity:0.8; line-height:1.7;">
-            <b style="color:var(--emerald-green)">🎥 INTERACTIVE JUNGLE MATRIX SYSTEM:</b><br>
+            <b style="color:var(--emerald-green)">🎥 INTERACTIVE 3D JUNGLE MATRIX SYSTEM:</b><br>
             Scroll up and down inside this page to manipulate time. A complex mathematical ecosystem triggers frame loops representing deep wild forest growth matrix nodes.
         </div>
         
@@ -356,6 +368,7 @@
             }
         }
 
+        // ABOUT PANEL SCROLL INTERACTIVE JUNGLE ENGINE
         const jCanvas = document.getElementById('jungleCinemaCanvas');
         const jCtx = jCanvas.getContext('2d');
         let scrollFraction = 0;
@@ -416,46 +429,91 @@
             return atob(partA + partB + partC + partD);
         }
 
+        // UPGRADED 3D WIREFRAME CYLINDER AND MATRIX LOADING ANIMATION
         let loadingTimers = {};
-        function startHelixAnimation(canvasId) {
+        function start3DLoadingAnimation(canvasId) {
             const canvas = document.getElementById(canvasId); if(!canvas) return;
-            const ctx = canvas.getContext('2d'); canvas.width = canvas.parentElement.clientWidth; canvas.height = 50;
-            let t = 0;
-            function run() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); t += 0.08;
-                for(let i=0; i<30; i++) {
-                    let x = (canvas.width / 30) * i;
-                    let y1 = canvas.height/2 + Math.sin(t + i*0.3) * 15;
-                    let y2 = canvas.height/2 + Math.sin(t + i*0.3 + Math.PI) * 15;
-                    ctx.beginPath(); ctx.arc(x, y1, 3, 0, Math.PI*2); ctx.fillStyle = '#00d2ff'; ctx.fill();
-                    ctx.beginPath(); ctx.arc(x, y2, 3, 0, Math.PI*2); ctx.fillStyle = '#9d4edd'; ctx.fill();
+            const ctx = canvas.getContext('2d'); canvas.width = canvas.parentElement.clientWidth; canvas.height = 80;
+            let angle = 0;
+            
+            function drawCubeWireframe() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                angle += 0.04;
+                
+                let cx = canvas.width / 2;
+                let cy = canvas.height / 2;
+                let size = 26;
+
+                // 3D Matrix Nodes points calculation
+                let vertices = [
+                    {x: -size, y: -size, z: -size}, {x: size, y: -size, z: -size},
+                    {x: size, y: size, z: -size}, {x: -size, y: size, z: -size},
+                    {x: -size, y: -size, z: size}, {x: size, y: -size, z: size},
+                    {x: size, y: size, z: size}, {x: -size, y: size, z: size}
+                ];
+
+                let projected = [];
+                vertices.forEach(v => {
+                    // Rotate X
+                    let y1 = v.y * Math.cos(angle) - v.z * Math.sin(angle);
+                    let z1 = v.y * Math.sin(angle) + v.z * Math.cos(angle);
+                    // Rotate Y
+                    let x2 = v.x * Math.cos(angle) + z1 * Math.sin(angle);
+                    let z2 = -v.x * Math.sin(angle) + z1 * Math.cos(angle);
+                    
+                    // Simple 3D Perspective Projection
+                    let zoom = 120 / (120 + z2);
+                    projected.push({ x: cx + x2 * zoom, y: cy + y1 * zoom });
+                });
+
+                // Draw Edges with glowing matrix colors
+                const connect = (a, b) => {
+                    ctx.beginPath(); ctx.moveTo(projected[a].x, projected[a].y);
+                    ctx.lineTo(projected[b].x, projected[b].y);
+                    ctx.strokeStyle = `rgba(0, 210, 255, ${0.4 + Math.sin(angle)*0.3})`;
+                    ctx.lineWidth = 1.5; ctx.stroke();
+                };
+
+                for (let i = 0; i < 4; i++) {
+                    connect(i, (i + 1) % 4);
+                    connect(i + 4, ((i + 1) % 4) + 4);
+                    connect(i, i + 4);
                 }
-                loadingTimers[canvasId] = requestAnimationFrame(run);
+                
+                // Outer Sine Helix particles
+                for(let i=0; i<20; i++) {
+                    let hx = (canvas.width / 20) * i;
+                    let hy = cy + Math.sin(angle + i * 0.4) * 20;
+                    ctx.beginPath(); ctx.arc(hx, hy, 2, 0, Math.PI*2);
+                    ctx.fillStyle = i % 2 === 0 ? '#00d2ff' : '#9d4edd'; ctx.fill();
+                }
+
+                loadingTimers[canvasId] = requestAnimationFrame(drawCubeWireframe);
             }
-            run();
+            drawCubeWireframe();
         }
-        function stopHelixAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
+        function stop3DLoadingAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
 
         function runPercentageEngine(percentId, barId, timeMs, helixId, callback) {
             let count = 0;
             const txt = document.getElementById(percentId); const bar = document.getElementById(barId);
             txt.innerText = "0%"; bar.style.width = "0%";
-            startHelixAnimation(helixId);
+            start3DLoadingAnimation(helixId);
             const pace = timeMs / 100;
             const timer = setInterval(() => {
                 count++; txt.innerText = `${count}%`; bar.style.width = `${count}%`;
-                if(count >= 100) { clearInterval(timer); stopHelixAnimation(helixId); if(callback) callback(); }
+                if(count >= 100) { clearInterval(timer); stop3DLoadingAnimation(helixId); if(callback) callback(); }
             }, pace);
         }
 
-        // 1. TEXT TO PHOTO
+        // 1. TEXT TO PHOTO (REAL FLUX NODE)
         async function processTextToPhoto() {
             const prompt = document.getElementById('t2pPrompt').value.trim();
             if(!prompt) return;
             const box = document.getElementById('t2pProgressBox'); const scene = document.getElementById('t2p3DScene');
             box.style.display = "block"; scene.style.display = "none";
 
-            runPercentageEngine('t2pPercentText', 't2pBarFill', 3000, 't2pHelixCanvas', async () => {
+            runPercentageEngine('t2pPercentText', 't2pBarFill', 3500, 't2pHelixCanvas', async () => {
                 try {
                     const res = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
                         headers: { "Authorization": `Bearer ${getSecureK()}`, "Content-Type": "application/json" },
@@ -465,9 +523,9 @@
                     const blob = await res.blob(); const url = URL.createObjectURL(blob);
                     box.style.display = "none"; scene.style.display = "block";
                     scene.innerHTML = `
-                        <div class="anime-boy-avatar">FLUX AI FRAME</div>
+                        <div class="anime-boy-avatar">FLUX 3D IMAGE NODE</div>
                         <div class="payload-display-frame"><img src="${url}"></div>
-                        <a href="${url}" download="VIDTOR_FLUX_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo</a>
+                        <a href="${url}" download="VIDTOR_3D_FLUX_${Date.now()}.png" class="btn-download-trigger">⬇️ Download Photo</a>
                     `;
                 } catch(e) {
                     box.style.display = "none"; scene.style.display = "block";
@@ -476,7 +534,7 @@
             });
         }
 
-        // 2 & 3. PHOTO TO VIDEO (RUNWAY ML STYLE COMPILER)
+        // 2 & 3. PHOTO TO VIDEO (RUNWAY ML MOTION LOGIC)
         async function processVideoDiffusion(fileId, promptId, boxId, percentId, barId, sceneId, helixId, hasSubtitle) {
             const fileIn = document.getElementById(fileId);
             const prompt = document.getElementById(promptId).value.trim();
@@ -506,7 +564,7 @@
                             const videoUrl = URL.createObjectURL(videoBlob);
                             box.style.display = "none"; scene.style.display = "block";
                             scene.innerHTML = `
-                                <div class="anime-boy-avatar">RUNWAY DIFFUSION CORE</div>
+                                <div class="anime-boy-avatar">RUNWAY 3D DIFFUSION MATRIX</div>
                                 <div class="payload-display-frame"><video src="${videoUrl}" autoplay loop muted playsinline controls></video></div>
                                 <a href="${videoUrl}" download="VIDTOR_RUNWAY_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download AI Video</a>
                             `;
@@ -520,16 +578,16 @@
                             tempCtx.clearRect(0,0, tempCanvas.width, tempCanvas.height);
                             tempCtx.save();
                             
-                            let scale = 1.0 + (frame * 0.0012);
-                            let horizontalPan = Math.sin(frame * 0.02) * 5;
-                            let verticalPan = (frame * 0.05);
+                            let scale = 1.0 + (frame * 0.0015);
+                            let horizontalPan = Math.sin(frame * 0.02) * 6;
+                            let verticalPan = (frame * 0.06);
 
                             tempCtx.translate(tempCanvas.width/2 + horizontalPan, tempCanvas.height/2 + verticalPan);
                             tempCtx.scale(scale, scale);
                             tempCtx.drawImage(img, -tempCanvas.width/2, -tempCanvas.height/2, tempCanvas.width, tempCanvas.height);
                             tempCtx.restore();
 
-                            tempCtx.fillStyle = "rgba(255,255,255,0.08)";
+                            tempCtx.fillStyle = "rgba(255,255,255,0.09)";
                             for(let i=0; i<15; i++) {
                                 let rx = (Math.random() * tempCanvas.width);
                                 let ry = (Math.random() * tempCanvas.height);
@@ -559,7 +617,7 @@
             };
         }
 
-        // 4. TEXT TO VOICE SUITE
+        // 4. TEXT TO VOICE SUITE (MUSICGEN/VITS ENGINE)
         async function processTextToVoice() {
             const model = document.getElementById('t2vModel').value;
             const prompt = document.getElementById('t2vPrompt').value.trim();
@@ -578,7 +636,7 @@
                     const blob = await res.blob(); const audioUrl = URL.createObjectURL(blob);
                     box.style.display = "none"; scene.style.display = "block";
                     scene.innerHTML = `
-                        <div class="anime-boy-avatar">NEURAL AUDIO WAVE</div>
+                        <div class="anime-boy-avatar">NEURAL AUDIO WAVE NODE</div>
                         <div class="payload-display-frame"><audio src="${audioUrl}" controls autoplay></audio></div>
                         <a href="${audioUrl}" download="VIDTOR_AUDIO_${Date.now()}.mp3" class="btn-download-trigger">⬇️ Download Audio Track</a>
                     `;
