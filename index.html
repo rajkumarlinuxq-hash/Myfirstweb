@@ -399,7 +399,6 @@
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Updated Secure Token Function with fresh logic placeholder structure
         function getSecureK() {
             const partA = "aGZfT056";
             const partB = "bVlVVE9iU05Nek1iRVRh";
@@ -574,136 +573,119 @@
             });
         }
 
-        // FIXED 100% INTERNAL COMPILER WITH STABLE RENDERING RESOLUTIONS FOR MOBILE PHONES
-        function compileInternalPhysicsVideo(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
+        // ⭐ UPDATED FOR REAL AI DYNAMIC IMAGE TO VIDEO ENGINE INTERFACE
+        async function compileInternalPhysicsVideo(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
+            const token = getSecureK();
             const fileInput = document.getElementById(fileFieldId);
-            const promptVal = document.getElementById(promptFieldId).value.toLowerCase().trim();
+            const promptVal = document.getElementById(promptFieldId).value.trim();
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
 
             if (!fileInput.files || !fileInput.files[0]) { alert("Rajkumar bhai, image layer select kijiye!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
-            const reader = new FileReader();
-            reader.readAsDataURL(fileInput.files[0]);
-            reader.onload = function(event) {
-                const img = new Image();
-                img.src = event.target.result;
-                img.onload = function() {
-                    runPercentageEngine(percentTextId, barFillId, 3500, helixId, () => {
-                        
-                        const canvasRender = document.getElementById('hiddenRenderCanvas');
-                        const ctxRender = canvasRender.getContext('2d');
-                        
-                        // Optimized to standard mobile production resolution to prevent system limit locks
-                        canvasRender.width = 640;
-                        canvasRender.height = 480;
+            // Convert image file directly to ArrayBuffer/Blob for Real AI Model processing pipeline
+            const imageFile = fileInput.files[0];
 
-                        const stream = canvasRender.captureStream(30);
-                        let recorder;
-                        
-                        // Fallback options for secure browser compiling
-                        try {
-                            recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
-                        } catch(e) {
-                            try {
-                                recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-                            } catch(err) {
-                                recorder = new MediaRecorder(stream);
-                            }
-                        }
-                        
-                        let recordedChunks = [];
-                        recorder.ondataavailable = function(e) { if (e.data.size > 0) recordedChunks.push(e.data); };
-                        
-                        recorder.onstop = function() {
-                            const videoBlob = new Blob(recordedChunks, { type: 'video/mp4' });
-                            const finalVideoUrl = URL.createObjectURL(videoBlob);
-                            
-                            progBox.style.display = "none";
-                            scene3D.style.display = "block";
-                            scene3D.innerHTML = `
-                                <div class="anime-boy-avatar">INTERNAL VIDEO GEN</div>
-                                <div class="payload-display-frame">
-                                    <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
-                                </div>
-                                <a href="${finalVideoUrl}" download="VIDTOR_INTERNAL_MOTION_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Real Motion Video</a>
-                            `;
-                        };
-
-                        let frameCount = 0;
-                        const maxFrames = 120; 
-                        let physicsParticles = [];
-                        let isRainTriggered = true; 
-                        let isLightningTriggered = promptVal.includes('lightning') || promptVal.includes('thunder') || promptVal.includes('rain') || promptVal.includes('jazz');
-
-                        for (let p = 0; p < 70; p++) {
-                            physicsParticles.push({
-                                x: Math.random() * canvasRender.width,
-                                y: Math.random() * canvasRender.height,
-                                length: 8 + Math.random() * 15,
-                                speed: 10 + Math.random() * 6
-                            });
-                        }
-
-                        recorder.start();
-
-                        function renderLoopFrames() {
-                            ctxRender.clearRect(0, 0, canvasRender.width, canvasRender.height);
-                            
-                            ctxRender.save();
-                            let currentZoomScale = 1.0 + (frameCount * 0.0006); 
-                            let translateOffset = Math.sin(frameCount * 0.04) * 1.5; 
-                            
-                            ctxRender.translate(canvasRender.width / 2 + translateOffset, canvasRender.height / 2);
-                            ctxRender.scale(currentZoomScale, currentZoomScale);
-                            ctxRender.drawImage(img, -canvasRender.width / 2, -canvasRender.height / 2, canvasRender.width, canvasRender.height);
-                            ctxRender.restore();
-
-                            if (isLightningTriggered && frameCount % 45 < 4) {
-                                ctxRender.fillStyle = "rgba(255, 255, 255, 0.2)";
-                                ctxRender.fillRect(0, 0, canvasRender.width, canvasRender.height);
-                            }
-
-                            if (isRainTriggered) {
-                                ctxRender.strokeStyle = "rgba(174, 219, 255, 0.45)";
-                                ctxRender.lineWidth = 1.2;
-                                physicsParticles.forEach(particle => {
-                                    ctxRender.beginPath();
-                                    ctxRender.moveTo(particle.x, particle.y);
-                                    ctxRender.lineTo(particle.x - 1, particle.y + particle.length); 
-                                    ctxRender.stroke();
-                                    
-                                    particle.y += particle.speed;
-                                    particle.x -= 0.5; 
-                                    if (particle.y > canvasRender.height) {
-                                        particle.y = -20;
-                                        particle.x = Math.random() * canvasRender.width;
-                                    }
-                                });
-                            }
-
-                            if (type === 'subtitle') {
-                                const subText = document.getElementById('p2vtPrompt').value;
-                                ctxRender.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
-                                ctxRender.fillStyle = "#ffffff";
-                                ctxRender.strokeStyle = "#000000";
-                                ctxRender.lineWidth = 4;
-                                ctxRender.textAlign = "center";
-                                ctxRender.strokeText(subText, canvasRender.width / 2, canvasRender.height - 40);
-                                ctxRender.fillText(subText, canvasRender.width / 2, canvasRender.height - 40);
-                            }
-
-                            frameCount++;
-                            if (frameCount < maxFrames) {
-                                requestAnimationFrame(renderLoopFrames);
-                            } else {
-                                recorder.stop();
-                            }
-                        }
-                        renderLoopFrames();
+            runPercentageEngine(percentTextId, barFillId, 5000, helixId, async () => {
+                try {
+                    // Fetching data from Stability AI Image-to-Video Engine Node
+                    const response = await fetch("https://api-inference.huggingface.co/models/stabilityai/image-to-video-xt", {
+                        headers: { "Authorization": `Bearer ${token}` },
+                        method: "POST",
+                        body: imageFile,
                     });
+
+                    if (!response.ok) throw new Error("AI Server Busy");
+                    const videoBlob = await response.blob();
+                    const finalVideoUrl = URL.createObjectURL(videoBlob);
+                    
+                    progBox.style.display = "none";
+                    scene3D.style.display = "block";
+                    
+                    let subtitleOverlayHTML = "";
+                    if (type === 'subtitle' && promptVal) {
+                        subtitleOverlayHTML = `<div style="position:absolute; bottom:60px; left:50%; transform:translateX(-50%); width:80%; font-weight:800; text-shadow:0 2px 4px #000; color:#fff; font-size:1.1rem; z-index:15;">${promptVal}</div>`;
+                    }
+
+                    scene3D.innerHTML = `
+                        <div class="anime-boy-avatar">REAL AI MOTION</div>
+                        <div class="payload-display-frame" style="position:relative;">
+                            <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+                            ${subtitleOverlayHTML}
+                        </div>
+                        <a href="${finalVideoUrl}" download="VIDTOR_REAL_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Real AI Video</a>
+                    `;
+                } catch (err) { 
+                    alert("Real AI Nodes overloading. Accessing local processing engine instead..."); 
+                    // Fallback to internal loop rendering beautifully if the external heavy AI server drops connections
+                    fallbackLocalRendering(imageFile, promptVal, progBox, scene3D, type);
+                }
+            });
+        }
+
+        function fallbackLocalRendering(fileBlob, promptText, progBox, scene3D, type) {
+            const img = new Image();
+            img.src = URL.createObjectURL(fileBlob);
+            img.onload = function() {
+                const canvasRender = document.getElementById('hiddenRenderCanvas');
+                const ctxRender = canvasRender.getContext('2d');
+                canvasRender.width = 640; canvasRender.height = 480;
+
+                const stream = canvasRender.captureStream(30);
+                const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+                let recordedChunks = [];
+                recorder.ondataavailable = function(e) { if (e.data.size > 0) recordedChunks.push(e.data); };
+                
+                recorder.onstop = function() {
+                    const videoBlob = new Blob(recordedChunks, { type: 'video/mp4' });
+                    const finalVideoUrl = URL.createObjectURL(videoBlob);
+                    progBox.style.display = "none"; scene3D.style.display = "block";
+                    scene3D.innerHTML = `
+                        <div class="anime-boy-avatar">VIDTOR LOCAL AI</div>
+                        <div class="payload-display-frame">
+                            <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+                        </div>
+                        <a href="${finalVideoUrl}" download="VIDTOR_LOCAL_GEN_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Motion Video</a>
+                    `;
                 };
+
+                let frameCount = 0;
+                let physicsParticles = [];
+                for (let p = 0; p < 60; p++) {
+                    physicsParticles.push({ x: Math.random() * 640, y: Math.random() * 480, length: 10, speed: 12 });
+                }
+
+                recorder.start();
+                function localLoop() {
+                    ctxRender.clearRect(0, 0, 640, 480);
+                    ctxRender.save();
+                    // Custom micro displacement loops simulating organic shoulder/face shifts
+                    let humanShiftX = Math.sin(frameCount * 0.08) * 4;
+                    let humanShiftY = Math.cos(frameCount * 0.06) * 3;
+                    ctxRender.translate(320 + humanShiftX, 240 + humanShiftY);
+                    ctxRender.scale(1.02 + (frameCount * 0.0003), 1.02 + (frameCount * 0.0003));
+                    ctxRender.drawImage(img, -320, -240, 640, 480);
+                    ctxRender.restore();
+
+                    if(promptText.includes("rain") || true) {
+                        ctxRender.strokeStyle = "rgba(174, 219, 255, 0.4)";
+                        physicsParticles.forEach(p => {
+                            ctxRender.beginPath(); ctxRender.moveTo(p.x, p.y); ctxRender.lineTo(p.x - 1, p.y + p.length); ctxRender.stroke();
+                            p.y += p.speed; if (p.y > 480) p.y = -10;
+                        });
+                    }
+
+                    if (type === 'subtitle' && promptText) {
+                        ctxRender.font = "bold 22px 'Plus Jakarta Sans', sans-serif"; ctxRender.fillStyle = "#ffffff";
+                        ctxRender.strokeStyle = "#000000"; ctxRender.lineWidth = 4; ctxRender.textAlign = "center";
+                        ctxRender.strokeText(promptText, 320, 440); ctxRender.fillText(promptText, 320, 440);
+                    }
+
+                    frameCount++;
+                    if (frameCount < 120) requestAnimationFrame(localLoop); else recorder.stop();
+                }
+                localLoop();
             };
         }
 
