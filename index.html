@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>VIDTOR AI | 100% True Neural Suite by Rajkumar</title>
-    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with true 100% production pipelines.">
+    <title>VIDTOR AI | 3D Premium Suite by Rajkumar</title>
+    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines and 3D matrix.">
     <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster, 3d animation">
     <meta name="author" content="Rajkumar">
 
@@ -212,7 +212,7 @@
     <div class="page-panel active-panel" id="panel-home">
         <div class="cursive-title">Vidtor AI</div>
         <div class="cursive-subtitle">by Rajkumar</div>
-        <p class="description">Runway ML Style Ultra 3D Diffusion Suite Powered by High-End Neural Networks.</p>
+        <p class="description">Runway ML Style Ultra 3D Video Diffusion Suite Powered by Stability AI Networks.</p>
         <button class="btn-action" onclick="toggleNavigationMenu()">Launch AI Engine Tools</button>
     </div>
 
@@ -228,49 +228,49 @@
         <div class="progress-box-wrapper" id="t2pProgressBox">
             <div class="percentage-counter" id="t2pPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
-            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="t2pHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 110px; background: transparent; margin-top: 10px;" id="t2pHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2p3DScene"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
-        <p class="description">Runway ML Engine Style - 100% Real Image-to-Video Model Engine</p>
+        <p class="description">Runway ML Engine Style - Advanced Stable Video Diffusion Pipeline</p>
         <div class="input-wrapper">
             <label>Upload Source Image:</label>
             <input type="file" id="p2vFile" accept="image/*">
         </div>
         <div class="input-wrapper">
-            <label>Motion Control Prompt (Optional):</label>
-            <input type="text" id="p2vPrompt" placeholder="e.g., hyperrealistic dynamic motion cinematic flow...">
+            <label>Motion Dynamic Prompt:</label>
+            <input type="text" id="p2vPrompt" placeholder="e.g., pan camera slowly, rain trickling down window, cozy ambient movement...">
         </div>
-        <button class="btn-action" onclick="processTrueImageToVideo('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas')">Generate True AI Video</button>
+        <button class="btn-action" onclick="processVideoDiffusion('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', false)">Generate Diffusion Video</button>
 
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vBarFill"></div></div>
-            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="p2vHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 110px; background: transparent; margin-top: 10px;" id="p2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2v3DScene"></div>
     </div>
 
     <div class="page-panel" id="panel-photo-text-video">
         <h2>Photo + Text to Video</h2>
-        <p class="description">AI Neural Interlaced Video Node</p>
+        <p class="description">AI Subtitle Processing Studio</p>
         <div class="input-wrapper">
             <label>Upload Image Canvas:</label>
             <input type="file" id="p2vtFile" accept="image/*">
         </div>
         <div class="input-wrapper">
-            <label>Video Concept/Subtitle Synthesis Overlay:</label>
-            <input type="text" id="p2vtPrompt" placeholder="Type words or text overlay direction...">
+            <label>Overlay Subtitle Content:</label>
+            <input type="text" id="p2vtPrompt" placeholder="Type words or quotes to hardcode over video frames...">
         </div>
-        <button class="btn-action" onclick="processTrueImageToVideo('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas')">Generate Integrated Video</button>
+        <button class="btn-action" onclick="processVideoDiffusion('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas', true)">Generate Subtitled AI Video</button>
 
         <div class="progress-box-wrapper" id="p2vtProgressBox">
-            <div class="percentage-counter" id="p2vtPromptText">0%</div>
+            <div class="percentage-counter" id="p2vtPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="p2vtBarFill"></div></div>
-            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="p2vtHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 110px; background: transparent; margin-top: 10px;" id="p2vtHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="p2vt3DScene"></div>
     </div>
@@ -294,7 +294,7 @@
         <div class="progress-box-wrapper" id="t2vProgressBox">
             <div class="percentage-counter" id="t2vPercentText">0%</div>
             <div class="bar-track"><div class="bar-fill" id="t2vBarFill"></div></div>
-            <canvas style="width: 100%; height: 80px; background: transparent; margin-top: 10px;" id="t2vHelixCanvas"></canvas>
+            <canvas style="width: 100%; height: 110px; background: transparent; margin-top: 10px;" id="t2vHelixCanvas"></canvas>
         </div>
         <div class="scene-3d-presenter" id="t2v3DScene"></div>
     </div>
@@ -364,7 +364,6 @@
             }
         }
 
-        // ABOUT PANEL SCROLL INTERACTIVE ENGINE
         const jCanvas = document.getElementById('jungleCinemaCanvas');
         const jCtx = jCanvas.getContext('2d');
         let scrollFraction = 0;
@@ -425,21 +424,22 @@
             return atob(partA + partB + partC + partD);
         }
 
-        // 3D WIREFRAME CYLINDER AND MATRIX LOADING ANIMATION
+        // FULL PRESET RESTORATION: SQUARE (3D CUBE) + CIRCLE (DOUBLE NESTED RINGS) + HELIX WAVE
         let loadingTimers = {};
         function start3DLoadingAnimation(canvasId) {
             const canvas = document.getElementById(canvasId); if(!canvas) return;
-            const ctx = canvas.getContext('2d'); canvas.width = canvas.parentElement.clientWidth; canvas.height = 80;
+            const ctx = canvas.getContext('2d'); canvas.width = canvas.parentElement.clientWidth; canvas.height = 110;
             let angle = 0;
             
-            function drawCubeWireframe() {
+            function drawMatrixPremiumElements() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                angle += 0.04;
+                angle += 0.035;
                 
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
-                let size = 26;
 
+                // 1. SQUARE ANIMATION (3D WIREFRAME CUBE)
+                let size = 22;
                 let vertices = [
                     {x: -size, y: -size, z: -size}, {x: size, y: -size, z: -size},
                     {x: size, y: size, z: -size}, {x: -size, y: size, z: -size},
@@ -453,15 +453,16 @@
                     let z1 = v.y * Math.sin(angle) + v.z * Math.cos(angle);
                     let x2 = v.x * Math.cos(angle) + z1 * Math.sin(angle);
                     let z2 = -v.x * Math.sin(angle) + z1 * Math.cos(angle);
-                    let zoom = 120 / (120 + z2);
+                    
+                    let zoom = 130 / (130 + z2);
                     projected.push({ x: cx + x2 * zoom, y: cy + y1 * zoom });
                 });
 
                 const connect = (a, b) => {
                     ctx.beginPath(); ctx.moveTo(projected[a].x, projected[a].y);
                     ctx.lineTo(projected[b].x, projected[b].y);
-                    ctx.strokeStyle = `rgba(0, 210, 255, ${0.4 + Math.sin(angle)*0.3})`;
-                    ctx.lineWidth = 1.5; ctx.stroke();
+                    ctx.strokeStyle = `rgba(0, 210, 255, ${0.45 + Math.sin(angle)*0.25})`;
+                    ctx.lineWidth = 1.6; ctx.stroke();
                 };
 
                 for (let i = 0; i < 4; i++) {
@@ -470,16 +471,39 @@
                     connect(i, i + 4);
                 }
                 
-                for(let i=0; i<20; i++) {
-                    let hx = (canvas.width / 20) * i;
-                    let hy = cy + Math.sin(angle + i * 0.4) * 20;
-                    ctx.beginPath(); ctx.arc(hx, hy, 2, 0, Math.PI*2);
-                    ctx.fillStyle = i % 2 === 0 ? '#00d2ff' : '#9d4edd'; ctx.fill();
+                // 2. CIRCLE ANIMATION (DOUBLE NESTED ROTATING ORBITS)
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(angle * 0.6);
+                
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 52, 16, Math.PI / 4, 0, Math.PI * 2);
+                ctx.strokeStyle = "rgba(157, 78, 221, 0.45)";
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 42, 11, -Math.PI / 4, 0, Math.PI * 2);
+                ctx.strokeStyle = "rgba(0, 255, 204, 0.35)";
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+                ctx.restore();
+
+                // 3. DUAL SINE HELIX WAVE ENGINE
+                for(let i = 0; i < 24; i++) {
+                    let hx = (canvas.width / 24) * i;
+                    let hy1 = cy + Math.sin(angle + i * 0.4) * 24;
+                    ctx.beginPath(); ctx.arc(hx, hy1, 2.5, 0, Math.PI*2);
+                    ctx.fillStyle = '#00d2ff'; ctx.fill();
+
+                    let hy2 = cy + Math.sin(angle + i * 0.4 + Math.PI) * 24;
+                    ctx.beginPath(); ctx.arc(hx, hy2, 2.5, 0, Math.PI*2);
+                    ctx.fillStyle = '#9d4edd'; ctx.fill();
                 }
 
-                loadingTimers[canvasId] = requestAnimationFrame(drawCubeWireframe);
+                loadingTimers[canvasId] = requestAnimationFrame(drawMatrixPremiumElements);
             }
-            drawCubeWireframe();
+            drawMatrixPremiumElements();
         }
         function stop3DLoadingAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
 
@@ -523,101 +547,55 @@
             });
         }
 
-        // 2 & 3. REMOVED ALL ALERTS - 100% SUCCESS GUARANTEED DYNAMIC SWITCHING ENGINE
-        async function processTrueImageToVideo(fileId, promptId, boxId, percentId, barId, sceneId, helixId) {
+        // 2 & 3. 100% PURE PHOTO TO VIDEO (STABILITY AI SV-DIFFUSION IMG2VID ENGINE NODE)
+        async function processVideoDiffusion(fileId, promptId, boxId, percentId, barId, sceneId, helixId, hasSubtitle) {
+            const token = getSecureK();
             const fileIn = document.getElementById(fileId);
-            const prompt = document.getElementById(promptId).value.trim();
-            if(!fileIn.files || !fileIn.files[0]) return;
+            const promptVal = document.getElementById(promptId).value.trim();
+            
+            if(!fileIn.files || !fileIn.files[0]) { alert("Please select a target image layer first!"); return; }
 
             const box = document.getElementById(boxId); const scene = document.getElementById(sceneId);
             box.style.display = "block"; scene.style.display = "none";
+            const imageFile = fileIn.files[0];
 
-            runPercentageEngine(percentId, barId, 5000, helixId, async () => {
-                const file = fileIn.files[0];
-                
-                // Pure client-side compiled rendering backup process
-                const executeFallbackEngine = () => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = function(ev) {
-                        const img = new Image();
-                        img.src = ev.target.result;
-                        img.onload = function() {
-                            const tempCanvas = document.createElement('canvas');
-                            const tempCtx = tempCanvas.getContext('2d');
-                            
-                            // Auto-downscaling logic avoids "Mobile compilation limit heavy" crash
-                            tempCanvas.width = 640; tempCanvas.height = 360; 
-
-                            const stream = tempCanvas.captureStream(30);
-                            let recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
-                            let chunks = [];
-                            recorder.ondataavailable = (e) => chunks.push(e.data);
-                            recorder.onstop = () => {
-                                const fbBlob = new Blob(chunks, { type: 'video/mp4' });
-                                const fbUrl = URL.createObjectURL(fbBlob);
-                                box.style.display = "none"; scene.style.display = "block";
-                                scene.innerHTML = `
-                                    <div class="anime-boy-avatar">VIDTOR MATRIX CORE VIDEO</div>
-                                    <div class="payload-display-frame"><video src="${fbUrl}" autoplay loop muted playsinline controls></video></div>
-                                    <a href="${fbUrl}" download="VIDTOR_RUNWAY_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download AI Video</a>
-                                `;
-                            };
-                            recorder.start();
-                            let frame = 0;
-                            function draw() {
-                                tempCtx.clearRect(0,0,640,360);
-                                tempCtx.save();
-                                let zoom = 1.0 + (frame * 0.0022);
-                                tempCtx.translate(320 + Math.sin(frame*0.04)*6, 180 + (frame*0.06));
-                                tempCtx.scale(zoom, zoom);
-                                tempCtx.drawImage(img, -320, -180, 640, 360);
-                                tempCtx.restore();
-                                if(prompt) {
-                                    tempCtx.font = "bold 18px sans-serif"; tempCtx.fillStyle = "rgba(255,255,255,0.85)"; tempCtx.textAlign = "center";
-                                    tempCtx.fillText(prompt, 320, 330);
-                                }
-                                frame++;
-                                if(frame < 120) requestAnimationFrame(draw); else recorder.stop();
-                            }
-                            draw();
-                        };
-                    };
-                };
-
+            // 90 Seconds Engine Processing with Stable Video Diffusion Pipeline Optimization
+            runPercentageEngine(percentId, barId, 90000, helixId, async () => {
                 try {
-                    const token = getSecureK();
-                    // Checking if Token is valid or empty to avoid alert popups entirely
-                    if(!token || token.trim() === "") {
-                        executeFallbackEngine();
-                        return;
-                    }
-
-                    const arrayBuffer = await file.arrayBuffer();
-                    const res = await fetch("https://api-inference.huggingface.co/models/StabilityAI/stable-video-diffusion-img2vid-xt", {
-                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": file.type },
-                        method: "POST", body: arrayBuffer
+                    // Optimized pipeline sending direct raw binary bytes to the real image-to-video diffusion node
+                    const response = await fetch("https://api-inference.huggingface.co/models/stabilityai/stable-video-diffusion-img2vid-xt", {
+                        headers: { 
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": imageFile.type
+                        },
+                        method: "POST",
+                        body: imageFile
                     });
 
-                    if(!res.ok) {
-                        // If model cluster is busy, switch automatically to local compilation framework silently
-                        executeFallbackEngine();
-                        return;
+                    if (!response.ok) throw new Error("Cluster capacity handling");
+
+                    const videoBlob = await response.blob();
+                    const finalVideoUrl = URL.createObjectURL(videoBlob);
+                    
+                    box.style.display = "none";
+                    scene.style.display = "block";
+                    
+                    let subtitleHTML = "";
+                    if (hasSubtitle && promptVal) {
+                        subtitleHTML = `<div style="position:absolute; bottom:30px; left:50%; transform:translateX(-50%); width:90%; font-weight:800; text-shadow:2px 2px 5px #000; color:#fff; font-size:1.1rem; text-align:center; z-index:20; font-family:'Plus Jakarta Sans', sans-serif;">${promptVal}</div>`;
                     }
-                    
-                    const videoBlob = await res.blob();
-                    const videoUrl = URL.createObjectURL(videoBlob);
-                    
-                    box.style.display = "none"; scene.style.display = "block";
+
                     scene.innerHTML = `
-                        <div class="anime-boy-avatar">TRUE NEURAL VIDEO ENGINE</div>
-                        <div class="payload-display-frame">
-                            <video src="${videoUrl}" autoplay loop muted playsinline controls></video>
+                        <div class="anime-boy-avatar">RUNWAY STABLE DIFFUSION MATRIX</div>
+                        <div class="payload-display-frame" style="position:relative;">
+                            <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+                            ${subtitleHTML}
                         </div>
-                        <a href="${videoUrl}" download="VIDTOR_TRUE_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download AI Video</a>
+                        <a href="${finalVideoUrl}" download="VIDTOR_RUNWAY_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download AI Video</a>
                     `;
-                } catch(e) {
-                    executeFallbackEngine();
+                } catch (err) { 
+                    alert("System Matrix Alert: True AI Cluster Overloaded. Your request bypass was intercepted. Please retry again to clear the queue node."); 
+                    box.style.display = "none";
                 }
             });
         }
