@@ -172,7 +172,7 @@
 
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        input[type="text"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
         
         .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
@@ -196,12 +196,11 @@
         
         <div class="dropdown-menu" id="navDropdown">
             <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
-            <a href="#" onclick="switchPanel('text-to-photo')">🖼️ 1. Text to Photo</a>
-            <a href="#" onclick="switchPanel('photo-to-video')">🎬 2. Photo to Video</a>
-            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 3. Photo+Text to Video</a>
-            <a href="#" onclick="switchPanel('text-to-voice')">🎵 4. Text to Voice Suite</a>
-            <a href="#" onclick="switchPanel('ig-panel')">❤️ 5. Premium Growth Panel</a>
-            <a href="#" onclick="switchPanel('about')">ℹ️ 6. About Website</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 1. Photo to Video</a>
+            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 2. Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('text-to-voice')">🎵 3. Text to Voice Suite</a>
+            <a href="#" onclick="switchPanel('ig-panel')">❤️ 4. Premium Growth Panel</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ 5. About Website</a>
         </div>
     </header>
 
@@ -212,10 +211,10 @@
             <div class="matrix-cube-core">
                 <div class="cube-face face-front">Vidtor</div>
                 <div class="cube-face face-back">AI Core</div>
-                <div class="cube-face face-left">6-Tools</div>
+                <div class="cube-face face-left">Secure</div>
                 <div class="cube-face face-right">Premium</div>
                 <div class="cube-face face-top">Rajkumar</div>
-                <div class="cube-face face-bottom">Secure</div>
+                <div class="cube-face face-bottom">API Node</div>
             </div>
         </div>
         <div class="rk-showcase-wrapper">
@@ -224,34 +223,14 @@
         <button class="btn-action" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
     </div>
 
-    <div class="page-panel" id="panel-text-to-photo">
-        <h2>Text to Photo</h2>
-        <p class="description">Flux Neural Processing Engine</p>
-        <div class="input-wrapper">
-            <label>Describe Image Prompt:</label>
-            <input type="text" id="t2pPrompt" placeholder="Describe the scenery...">
-        </div>
-        <button class="btn-action" onclick="processRealTextToPhoto()">Generate Photo Asset</button>
-        <div class="progress-box-wrapper" id="t2pProgressBox">
-            <div class="percentage-counter" id="t2pPercentText">0%</div>
-            <div class="bar-track"><div class="bar-fill" id="t2pBarFill"></div></div>
-            <canvas class="helix-loading-canvas" id="t2pHelixCanvas"></canvas>
-        </div>
-        <div class="scene-3d-presenter" id="t2p3DScene"></div>
-    </div>
-
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
-        <p class="description">100% Pure Generative AI Video Compiler Node</p>
+        <p class="description">100% Secure Generative AI Video Render Node</p>
         <div class="input-wrapper">
-            <label>Select Target Image Layer:</label>
-            <input type="file" id="p2vFile" accept="image/*">
+            <label>Paste Target Image URL:</label>
+            <input type="text" id="p2vUrlInput" placeholder="https://image-link.com/photo.jpg">
         </div>
-        <div class="input-wrapper">
-            <label>Motion Script Prompt:</label>
-            <input type="text" id="p2vPrompt" placeholder="e.g. realistic forest plants blowing in wind, people walking...">
-        </div>
-        <button class="btn-action" onclick="generate100PercentPureAIVideo('p2vFile', 'p2vPrompt', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '')">Compile Real AI Video</button>
+        <button class="btn-action" onclick="generateSecureAIVideo('p2vUrlInput', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '')">Compile Real AI Video</button>
 
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
@@ -265,14 +244,14 @@
         <h2>Photo + Text to Video</h2>
         <p class="description">Integrated AI Subtitle Video Matrix</p>
         <div class="input-wrapper">
-            <label>Upload Base Graphic Layout:</label>
-            <input type="file" id="p2vtFile" accept="image/*">
+            <label>Paste Base Graphic URL:</label>
+            <input type="text" id="p2vtUrlInput" placeholder="https://image-link.com/layout.jpg">
         </div>
         <div class="input-wrapper">
             <label>Subtitle / Text Script Overlay:</label>
             <input type="text" id="p2vtPrompt" placeholder="Type text overlay details...">
         </div>
-        <button class="btn-action" onclick="generate100PercentPureAIVideo('p2vtFile', 'p2vtPrompt', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas', 'subtitle')">Generate Hybrid AI Video</button>
+        <button class="btn-action" onclick="generateSecureAIVideo('p2vtUrlInput', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas', 'subtitle')">Generate Hybrid AI Video</button>
 
         <div class="progress-box-wrapper" id="p2vtProgressBox">
             <div class="percentage-counter" id="p2vtPercentText">0%</div>
@@ -320,17 +299,12 @@
     </div>
 
     <script>
+        // 🚀 AAPKI LIVE RENDER CLUSTER API ka address
+        const SECURE_API_ENDPOINT = "https://vidtor-api-1.onrender.com/v1/generate-video";
+
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
             dropdown.style.display = (dropdown.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function getSecureK() {
-            const partA = "aGZfT056";
-            const partB = "bVlVVE9iU05Nek1iRVRh";
-            const partC = "b3BwWGp0WnB0VWJjUW5S";
-            const partD = "ZFF5aw==";
-            try { return atob(partA + partB + partC + partD); } catch(e) { return ""; }
         }
 
         function switchPanel(panelId) {
@@ -371,28 +345,12 @@
             }, durationMs / 100);
         }
 
-        async function processRealTextToPhoto() {
-            const token = getSecureK(); const promptVal = document.getElementById('t2pPrompt').value.trim();
-            const progBox = document.getElementById('t2pProgressBox'); const scene3D = document.getElementById('t2p3DScene');
-            if (!promptVal) { alert("Prompt configuration is empty!"); return; }
-            progBox.style.display = "block"; scene3D.style.display = "none";
-
-            runPercentageEngine('t2pPercentText', 't2pBarFill', 3000, 't2pHelixCanvas', async () => {
-                try {
-                    const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell", {
-                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                        method: "POST",
-                        body: JSON.stringify({ inputs: promptVal }),
-                    });
-                    if (!response.ok) throw new Error();
-                    const imgBlob = await response.blob(); const objectUrl = URL.createObjectURL(imgBlob);
-                    progBox.style.display = "none"; scene3D.style.display = "block";
-                    scene3D.innerHTML = `<div class="anime-boy-avatar">VIDTOR ENGINE</div><div class="payload-display-frame"><img src="${objectUrl}"></div>`;
-                } catch (err) { alert("Core Server Cluster Busy. Please execute request again."); progBox.style.display = "none"; }
-            });
+        function hexToBlob(hexString, contentType) {
+            const bytes = new Uint8Array(hexString.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+            return new Blob([bytes], { type: contentType });
         }
 
-        async function processTextToVoice() {
+        function processTextToVoice() {
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vPromptProgressBox'); const scene3D = document.getElementById('t2v3DScene');
             if (!textScript) { alert("Please input text documentation script!"); return; }
@@ -405,37 +363,31 @@
             });
         }
 
-        // ⚡ 100% EXCLUSIVE DEEP LEARNING GENERATIVE SERVER RENDER LOOP (ZERO CLIENT KEYFRAMES)
-        async function generate100PercentPureAIVideo(fileFieldId, promptFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
-            const token = getSecureK();
-            const fileInput = document.getElementById(fileFieldId);
-            const promptVal = document.getElementById(promptFieldId).value.trim();
+        // ⚡ NEW SECURE RENDER ENGINE CONTROLLER FOR VIDEOS
+        async function generateSecureAIVideo(urlFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
+            const imgUrl = document.getElementById(urlFieldId).value.trim();
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
+            const promptVal = type === 'subtitle' ? document.getElementById('p2vtPrompt').value.trim() : '';
 
-            if (!fileInput.files || !fileInput.files[0]) { alert("Please select a source image layer first!"); return; }
+            if (!imgUrl) { alert("Bhai, pehle target image ka URL link paste karo!"); return; }
             
             progBox.style.display = "block"; 
             scene3D.style.display = "none";
-            const imageFile = fileInput.files[0];
 
-            // 120 Seconds timeout execution for absolute frame-by-frame rendering calculations
-            runPercentageEngine(percentTextId, barFillId, 120000, helixId, async () => {
+            runPercentageEngine(percentTextId, barFillId, 60000, helixId, async () => {
                 try {
-                    const response = await fetch("https://api-inference.huggingface.co/models/Kwai-VGI/LivePortrait", {
-                        headers: { 
-                            "Authorization": `Bearer ${token}`,
-                            "Content-Type": imageFile.type
-                        },
+                    // Direct Secure API Fetch Call to Render Python Backend Node
+                    const response = await fetch(SECURE_API_ENDPOINT, {
                         method: "POST",
-                        body: imageFile
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ image_url: imgUrl })
                     });
 
-                    if (!response.ok) {
-                        throw new Error("Cluster capacity exceeded.");
-                    }
+                    if (!response.ok) throw new Error();
 
-                    const videoBlob = await response.blob();
+                    const data = await response.json();
+                    const videoBlob = hexToBlob(data.video_bytes, "video/mp4");
                     const finalVideoUrl = URL.createObjectURL(videoBlob);
                     
                     progBox.style.display = "none";
@@ -452,10 +404,10 @@
                             <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
                             ${subtitleHTML}
                         </div>
-                        <a href="${finalVideoUrl}" download="VIDTOR_REAL_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Pure AI Video File</a>
+                        <a href="${finalVideoUrl}" download="VIDTOR_RENDER_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
                     `;
                 } catch (err) { 
-                    alert("Real AI Matrix Update: The serverless nodes took longer than 2 minutes or returned an overload error code. Please ensure your token is active and re-submit the frame layer. Keyframe fallbacks remain locked out."); 
+                    alert("Render Engine Serverless Update: Node took too long to wake up or respond. Please wait 10 seconds and submit again."); 
                     progBox.style.display = "none";
                 }
             });
@@ -474,9 +426,8 @@
                 ctx.beginPath(); ctx.arc(canvas.width/2, canvas.height/2 + Math.sin(animationFrameTimer + i*0.08)*20, radius, 0, Math.PI*2);
                 ctx.strokeStyle = `rgba(0, 210, 255, ${0.1 + (1 - i/150)*0.5})`; ctx.stroke();
             }
-            ctx.restore(); requestAnimationFrame(draw3TunnelMatrix);
+            ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
         }
-        // Fallback safe loop execution binding
         try { requestAnimationFrame(draw3DTunnelMatrix); } catch(e){}
     </script>
 </body>
