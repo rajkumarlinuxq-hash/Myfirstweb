@@ -315,6 +315,7 @@
     </div>
 
     <script>
+        // Target endpoint link configuration
         const SECURE_API_ENDPOINT = "https://vidtor-api-1.onrender.com/v1/generate-video";
 
         function toggleNavigationMenu() {
@@ -378,7 +379,7 @@
             });
         }
 
-        // ⚡ MULTI-FUNCTIONAL SECURE VIDEO COMPILER
+        // ⚡ MULTI-FUNCTIONAL SECURE VIDEO COMPILER WITH CLEAN RUNNERS
         async function generateSecureAIVideo(urlFieldId, fileFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type, motionPromptId) {
             const imgUrlInput = document.getElementById(urlFieldId).value.trim();
             const fileInput = document.getElementById(fileFieldId);
@@ -389,7 +390,7 @@
 
             let targetImgUrl = imgUrlInput;
 
-            // 🔥 AUTOMATIC IN-BROWSER HIGH INTENSITY COMPRESSOR BY RAJKUMAR
+            // Handle Local File Upload Convert with Smart Auto-Compression
             if (fileInput.files && fileInput.files[0]) {
                 const localFile = fileInput.files[0];
                 targetImgUrl = await new Promise((resolve) => {
@@ -399,12 +400,10 @@
                         img.onload = () => {
                             const canvas = document.createElement('canvas');
                             const ctx = canvas.getContext('2d');
-                            // Maximum width aur height secure cluster ke hisab se setup
                             let width = img.width; let height = img.height;
                             if (width > 800) { height *= 800 / width; width = 800; }
                             canvas.width = width; canvas.height = height;
                             ctx.drawImage(img, 0, 0, width, height);
-                            // 0.6 yaani direct 60% compression level matrix without quality distortion
                             resolve(canvas.toDataURL('image/jpeg', 0.6));
                         };
                         img.src = e.target.result;
@@ -413,7 +412,6 @@
                 });
             }
 
-
             if (!targetImgUrl) { alert("Bhai, pehle photo upload karo ya uska URL link paste karo!"); return; }
             
             progBox.style.display = "block"; 
@@ -421,7 +419,6 @@
 
             runPercentageEngine(percentTextId, barFillId, 120000, helixId, async () => {
                 try {
-                    // Send to your Render Python Core Network Node
                     const response = await fetch(SECURE_API_ENDPOINT, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -457,7 +454,7 @@
             });
         }
 
-        // 3D Visual Stage
+        // 3D Visual Stage Engine
         const canvas = document.getElementById('matrix100CirclesCanvas'); const ctx = canvas.getContext('2d');
         function resizeCanvasEngine() { canvas.width = canvas.parentElement.clientWidth * 2; canvas.height = canvas.parentElement.clientHeight * 2; }
         resizeCanvasEngine();
@@ -476,4 +473,3 @@
     </script>
 </body>
 </html>
-
