@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>VIDTOR AI | Premium 6-Tool Suite by Rajkumar</title>
-    <meta name="description" content="VIDTOR AI by Rajkumar - Advanced 6-tool automated intelligence platform with real percent tracking engines.">
-    <meta name="keywords" content="vidtor, photo to video, text to photo, text to voice, instagram booster">
+    <title>VIDTOR AI | Premium 6-Tool OS Matrix</title>
+    <meta name="description" content="VIDTOR AI - Next-Gen Advanced Intelligence Workspace by Rajkumar.">
     <meta name="author" content="Rajkumar">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Great+Vibes&family=Cinzel:wght@700&display=swap" rel="stylesheet">
@@ -15,16 +14,16 @@
         :root {
             --asmani: #00d2ff;
             --purple: #9d4edd;
-            --bg: #030712;
-            --card: rgba(13, 21, 39, 0.55);
+            --bg: #02040a;
+            --card: rgba(10, 18, 36, 0.45);
             --text: #f3f4f6;
-            --border: rgba(255, 255, 255, 0.08);
+            --border: rgba(0, 210, 255, 0.15);
             --emerald-green: #00ffcc;
         }
 
         body {
             margin: 0;
-            padding: 90px 20px 40px 20px;
+            padding: 95px 16px 40px 16px;
             box-sizing: border-box;
             background-color: var(--bg);
             color: var(--text);
@@ -36,156 +35,197 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            transition: background 0.8s ease;
+            touch-action: manipulation;
+        }
+
+        /* Interactive Neon Glow Touch Trail */
+        #pointer-trail-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 99999;
+        }
+        .trail-particle {
+            position: absolute;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--asmani), var(--purple));
+            box-shadow: 0 0 15px var(--asmani), 0 0 30px var(--purple);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: particleFade 0.6s forwards ease-out;
+        }
+        @keyframes particleFade {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
         }
 
         .global-bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.07) 0%, transparent 40%);
+            background: radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 100%, rgba(157, 78, 221, 0.08) 0%, transparent 50%);
         }
 
         header {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 70px;
-            background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            top: 0; left: 0; width: 100%; height: 75px;
+            background: rgba(2, 4, 10, 0.75);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 30px; box-sizing: border-box; z-index: 1000;
+            padding: 0 24px; box-sizing: border-box; z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .rk-logo-trigger { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .siri-pulse-left {
-            width: 42px; height: 42px; border-radius: 50%;
-            background: linear-gradient(45deg, var(--asmani), var(--purple));
+            width: 44px; height: 44px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--asmani), var(--purple));
             display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 14px; color: white;
-            border: 2px solid var(--asmani);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-            animation: pulseGlow 2s infinite alternate;
+            font-weight: 800; font-size: 15px; color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            animation: pulseGlow 3s infinite alternate;
         }
         @keyframes pulseGlow {
             0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
-            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+            100% { transform: scale(1.03); box-shadow: 0 0 25px rgba(157, 78, 221, 0.6); }
         }
         .logo-text {
-            font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
+            font-size: 1.2rem; font-weight: 800; letter-spacing: 1.5px;
             background: linear-gradient(to right, #fff, var(--asmani));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .menu-dots { font-size: 24px; cursor: pointer; color: var(--asmani); }
+        .menu-dots { font-size: 26px; cursor: pointer; color: var(--asmani); transition: 0.3s; }
+        .menu-dots:hover { transform: rotate(90deg); color: var(--purple); }
+
         .dropdown-menu {
-            position: absolute; top: 75px; left: 20px;
-            background: #0d1527; border: 1px solid var(--border); border-radius: 16px;
-            width: 290px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            display: none; flex-direction: column; padding: 10px; z-index: 9999;
+            position: absolute; top: 80px; left: 16px; right: 16px;
+            background: rgba(10, 18, 36, 0.95); backdrop-filter: blur(30px);
+            border: 1px solid var(--border); border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            display: none; flex-direction: column; padding: 12px; z-index: 9999;
         }
         .dropdown-menu a {
-            color: var(--text); text-decoration: none; padding: 12px 16px;
-            font-size: 0.95rem; font-weight: 600; border-radius: 10px; transition: 0.2s;
-            text-align: left;
+            color: var(--text); text-decoration: none; padding: 14px 18px;
+            font-size: 1rem; font-weight: 600; border-radius: 12px; transition: 0.2s;
+            text-align: left; display: flex; align-items: center; gap: 10px;
         }
-        .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.1); color: var(--asmani); }
+        .dropdown-menu a:hover { background: rgba(0, 210, 255, 0.15); color: var(--asmani); transform: translateX(5px); }
 
         .page-panel {
-            display: none; width: 100%; max-width: 480px;
+            display: none; width: 100%; max-width: 460px;
             background: var(--card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            padding: 35px 30px; border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+            padding: 30px 24px; border-radius: 28px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.05);
             border: 1px solid var(--border); box-sizing: border-box;
-            animation: panelSwitchFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+            animation: panelSwitchFade 0.5s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
         }
         .active-panel { display: block; }
+        @keyframes panelSwitchFade {
+            0% { opacity: 0; transform: translateY(15px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
         
+        /* 🌌 EXCLUSIVE 3D KINETIC MULTI-ANGLE OSCILLATOR ANIMATION */
+        .stage-cube-3d { width: 100%; height: 150px; margin: 15px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
+        .matrix-cube-core {
+            width: 85px; height: 85px; position: relative; transform-style: preserve-3d;
+            animation: cubeAutoSpin 14s linear infinite;
+        }
+        @keyframes cubeAutoSpin {
+            0% { transform: rotateX(-25deg) rotateY(0deg) rotateZ(0deg); }
+            50% { transform: rotateX(25deg) rotateY(180deg) rotateZ(180deg); }
+            100% { transform: rotateX(-25deg) rotateY(360deg) rotateZ(360deg); }
+        }
+        .cube-face {
+            position: absolute; width: 85px; height: 85px; background: rgba(4, 10, 24, 0.93);
+            border: 1.5px solid var(--asmani); box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.5), 0 0 15px rgba(0,210,255,0.2);
+            display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
+            font-weight: 800; color: #fff; text-transform: uppercase; border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+        /* Page Specific 3D Face Transforms with unique structural codes */
+        .face-front  { transform: rotateY(0deg) translateZ(42px); }
+        .face-back   { transform: rotateY(180deg) translateZ(42px); border-color: var(--purple); box-shadow: inset 0 0 20px rgba(157,78,221,0.5); }
+        .face-left   { transform: rotateY(-90deg) translateZ(42px); }
+        .face-right  { transform: rotateY(90deg) translateZ(42px); }
+        .face-top    { transform: rotateX(90deg) translateZ(42px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(42px); }
+
         .rk-showcase-wrapper {
-            width: 100%; max-width: 290px; margin: 20px auto;
+            width: 100%; max-width: 320px; margin: 20px auto;
             border-radius: 20px; overflow: hidden;
-            border: 2px solid var(--asmani);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
         .rk-showcase-img { width: 100%; display: block; height: auto; object-fit: cover; }
         
         .progress-box-wrapper {
-            margin-top: 20px; display: none; background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 14px;
+            margin-top: 25px; display: none; background: rgba(2,4,10,0.8);
+            border: 1px solid var(--border); padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .percentage-counter { font-size: 1.4rem; font-weight: 800; color: var(--asmani); margin-bottom: 8px; }
-        .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .percentage-counter { font-size: 1.8rem; font-weight: 800; color: var(--asmani); margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,210,255,0.3); }
+        .bar-track { width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .bar-fill { width: 0%; height: 100%; background: linear-gradient(to right, var(--asmani), var(--purple)); }
         
-        .helix-loading-canvas { width: 100%; height: 50px; background: transparent; margin-top: 10px; display: block; }
-
-        .stage-cube-3d { width: 100%; height: 160px; margin: 15px 0; perspective: 1000px; display: flex; align-items: center; justify-content: center; }
-        .matrix-cube-core {
-            width: 90px; height: 90px; position: relative; transform-style: preserve-3d;
-            animation: cubeAutoSpin 16s linear infinite;
-        }
-        @keyframes cubeAutoSpin {
-            from { transform: rotateX(-20deg) rotateY(0deg); }
-            to { transform: rotateX(-20deg) rotateY(360deg); }
-        }
-        .cube-face {
-            position: absolute; width: 90px; height: 90px; background: rgba(13, 21, 39, 0.85);
-            border: 2px solid var(--asmani); box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.5);
-            display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
-            font-weight: 800; color: #fff; text-transform: uppercase; border-radius: 8px;
-        }
-        .face-front  { transform: rotateY(0deg) translateZ(45px); }
-        .face-back   { transform: rotateY(180deg) translateZ(45px); border-color: var(--purple); }
-        .face-left   { transform: rotateY(-90deg) translateZ(45px); }
-        .face-right  { transform: rotateY(90deg) translateZ(45px); }
-        .face-top    { transform: rotateX(90deg) translateZ(45px); }
-        .face-bottom { transform: rotateX(-90deg) translateZ(45px); }
+        .helix-loading-canvas { width: 100%; height: 45px; background: transparent; margin-top: 12px; display: block; }
 
         .scene-3d-presenter {
-            margin-top: 25px; display: none; width: 100%; min-height: 300px; background: rgba(5,11,26,0.5);
-            border-radius: 16px; border: 1px dashed rgba(0,210,255,0.2); overflow: hidden; position: relative;
+            margin-top: 25px; display: none; width: 100%; min-height: 320px; background: rgba(2,4,10,0.6);
+            border-radius: 20px; border: 1px dashed rgba(0,210,255,0.3); overflow: hidden; position: relative;
         }
         .anime-boy-avatar {
-            position: absolute; bottom: 15px; left: 50%; width: 120px; height: 35px;
-            transform: translateX(-50%); background: linear-gradient(to right, var(--asmani), var(--purple));
-            border-radius: 8px; border: 1px solid white;
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); width: 130px; height: 36px;
+            background: linear-gradient(90deg, var(--asmani), var(--purple));
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; font-weight: 800; color: #fff; z-index: 10;
+            font-size: 0.85rem; font-weight: 800; color: #fff; z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
         .payload-display-frame {
-            width: 85%; margin: 25px auto; background: #000; border-radius: 12px;
-            border: 2px solid var(--purple); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            width: 90%; margin: 20px auto; background: #000; border-radius: 16px;
+            border: 1px solid var(--purple); overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.7);
         }
         .payload-display-frame img, .payload-display-frame video, .payload-display-frame audio { width: 100%; display: block; height: auto; }
 
         .btn-download-trigger {
-            display: inline-block; width: 85%; padding: 14px; margin: 5px 0 25px 0;
+            display: inline-block; width: 90%; padding: 15px; margin: 5px 0 20px 0;
             background: linear-gradient(135deg, var(--emerald-green), #059669);
-            color: #030712; text-decoration: none; border-radius: 12px; font-weight: 800;
+            color: #02040a; text-decoration: none; border-radius: 14px; font-weight: 800;
             font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.2);
         }
 
-        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 5px 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: var(--asmani); margin-bottom: 10px; }
-        h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .description { font-size: 0.88rem; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
+        .cursive-title { font-family: 'Great Vibes', cursive; font-size: 4.8rem; margin: 0; background: linear-gradient(to right, #ffffff, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cursive-subtitle { font-family: 'Great Vibes', cursive; font-size: 2.4rem; color: var(--asmani); margin-bottom: 5px; }
+        h2 { font-size: 1.8rem; font-weight: 800; margin-top: 0; background: linear-gradient(to right, var(--asmani), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.5px; }
+        .description { font-size: 0.9rem; opacity: 0.65; margin-bottom: 25px; line-height: 1.5; }
 
-        .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
-        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        .input-wrapper { text-align: left; margin-top: 16px; width: 100%; }
+        label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        input[type="text"], input[type="file"] { width: 100%; padding: 15px; background: rgba(2, 4, 10, 0.6); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 14px; font-family: inherit; outline: none; box-sizing: border-box; transition: 0.3s; }
+        input[type="text"]:focus { border-color: var(--asmani); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
         
-        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
+        .btn-action { position: relative; overflow: hidden; width: 100%; padding: 16px; border: none; border-radius: 16px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 800; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,210,255,0.2); }
+        .btn-action:active { transform: scale(0.98); }
         
-        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 35px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 10px; }
+        .devotional-outro { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 40px; background: linear-gradient(to right, #ff9933, #ffffff, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 5px; margin-bottom: 15px; font-weight: 700; }
 
-        .canvas-3d-stage-wrapper { width: 100%; max-width: 440px; height: 220px; display: flex; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 25px; }
-        #matrix100CirclesCanvas { width: 100%; height: 100%; background: transparent; border-radius: 16px; }
+        .canvas-3d-stage-wrapper { width: 100%; max-width: 440px; height: 180px; display: flex; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 20px; }
+        #matrix100CirclesCanvas { width: 100%; height: 100%; background: transparent; border-radius: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="global-bg-overlay" id="globalBgOverlay"></div>
+    <div id="pointer-trail-container"></div>
+    <div class="global-bg-overlay"></div>
 
     <header>
         <div class="rk-logo-trigger" onclick="toggleNavigationMenu()">
@@ -196,11 +236,13 @@
         
         <div class="dropdown-menu" id="navDropdown">
             <a href="#" onclick="switchPanel('home')">🏠 Dashboard Home</a>
-            <a href="#" onclick="switchPanel('photo-to-video')">🎬 1. Photo to Video</a>
-            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 2. Photo+Text to Video</a>
+            <a href="#" onclick="switchPanel('photo-to-video')">🎬 1. Photo to Video Workspace</a>
+            <a href="#" onclick="switchPanel('photo-text-video')">🎞️ 2. Photo+Text Hybrid Engine</a>
             <a href="#" onclick="switchPanel('text-to-voice')">🎵 3. Text to Voice Suite</a>
             <a href="#" onclick="switchPanel('ig-panel')">❤️ 4. Premium Growth Panel</a>
-            <a href="#" onclick="switchPanel('about')">ℹ️ 5. About Website</a>
+            <a href="#" onclick="switchPanel('img-enhancer')">✨ 5. AI Image Enhancer</a>
+            <a href="#" onclick="switchPanel('bg-remover')">✂️ 6. Ultra BG Remover Node</a>
+            <a href="#" onclick="switchPanel('about')">ℹ️ About Website Matrix</a>
         </div>
     </header>
 
@@ -210,22 +252,32 @@
         <div class="stage-cube-3d">
             <div class="matrix-cube-core">
                 <div class="cube-face face-front">Vidtor</div>
-                <div class="cube-face face-back">AI Core</div>
+                <div class="cube-face face-back">Home</div>
                 <div class="cube-face face-left">Secure</div>
                 <div class="cube-face face-right">Premium</div>
                 <div class="cube-face face-top">Rajkumar</div>
-                <div class="cube-face face-bottom">API Node</div>
+                <div class="cube-face face-bottom">OS Core</div>
             </div>
         </div>
         <div class="rk-showcase-wrapper">
-            <img src="1000006041.jpg" alt="Vidtor Dashboard Layout" class="rk-showcase-img">
+            <img src="1000006041.jpg" alt="Vidtor Layout" class="rk-showcase-img">
         </div>
-        <button class="btn-action" onclick="toggleNavigationMenu()">Open 6-Tool Explorer Matrix</button>
+        <button class="btn-action" onclick="toggleNavigationMenu()">Launch 6-Tool System Grid</button>
     </div>
 
     <div class="page-panel" id="panel-photo-to-video">
         <h2>Photo to Video</h2>
-        <p class="description">100% Secure Generative AI Video Render Node</p>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Photo</div>
+                <div class="cube-face face-back">To Video</div>
+                <div class="cube-face face-left">Render</div>
+                <div class="cube-face face-right">Node 1</div>
+                <div class="cube-face face-top">Motion</div>
+                <div class="cube-face face-bottom">Engine</div>
+            </div>
+        </div>
+        <p class="description">Secure Low-Latency Generative Cloud Node</p>
         <div class="input-wrapper">
             <label>Upload Source Image:</label>
             <input type="file" id="p2vFileInput" accept="image/*">
@@ -236,7 +288,7 @@
         </div>
         <div class="input-wrapper">
             <label>AI Motion Prompt / Camera Action:</label>
-            <input type="text" id="p2vMotionPrompt" placeholder="e.g. dramatic drone zoom, cinematic hyperlapse, slow motion...">
+            <input type="text" id="p2vMotionPrompt" placeholder="e.g. dramatic drone zoom, cinematic panning...">
         </div>
         <button class="btn-action" onclick="generateSecureAIVideo('p2vUrlInput', 'p2vFileInput', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '', 'p2vMotionPrompt')">Compile Real AI Video</button>
 
@@ -250,7 +302,17 @@
 
     <div class="page-panel" id="panel-photo-text-video">
         <h2>Photo + Text to Video</h2>
-        <p class="description">Integrated AI Subtitle Video Matrix</p>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Hybrid</div>
+                <div class="cube-face face-back">Overlay</div>
+                <div class="cube-face face-left">Node 2</div>
+                <div class="cube-face face-right">Subtitle</div>
+                <div class="cube-face face-top">Text</div>
+                <div class="cube-face face-bottom">Matrix</div>
+            </div>
+        </div>
+        <p class="description">Integrated Dynamic Subtitle Core Engine</p>
         <div class="input-wrapper">
             <label>Upload Base Graphic:</label>
             <input type="file" id="p2vtFileInput" accept="image/*">
@@ -261,7 +323,7 @@
         </div>
         <div class="input-wrapper">
             <label>AI Motion Prompt:</label>
-            <input type="text" id="p2vtMotionPrompt" placeholder="e.g. smooth cinematic pan, cinematic lighting movement...">
+            <input type="text" id="p2vtMotionPrompt" placeholder="e.g. smooth cinematic zoom, panning track...">
         </div>
         <div class="input-wrapper">
             <label>Subtitle / Text Script Overlay:</label>
@@ -279,7 +341,17 @@
 
     <div class="page-panel" id="panel-text-to-voice">
         <h2>Text to Voice Suite</h2>
-        <p class="description">High Speed Speech Wave Synthesizer Node</p>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Voice</div>
+                <div class="cube-face face-back">Synth</div>
+                <div class="cube-face face-left">Node 3</div>
+                <div class="cube-face face-right">Speech</div>
+                <div class="cube-face face-top">Audio</div>
+                <div class="cube-face face-bottom">Stream</div>
+            </div>
+        </div>
+        <p class="description">High-Fidelity Speech Audio Synthesizer Matrix</p>
         <div class="input-wrapper">
             <label>Script Voice Text Content:</label>
             <input type="text" id="t2vPrompt" placeholder="Type script lines here...">
@@ -294,16 +366,76 @@
     </div>
 
     <div class="page-panel" id="panel-ig-panel">
-        <h2>Premium Growth Business Hub</h2>
+        <h2>Premium Growth Panel</h2>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Growth</div>
+                <div class="cube-face face-back">Insta</div>
+                <div class="cube-face face-left">Node 4</div>
+                <div class="cube-face face-right">Metrics</div>
+                <div class="cube-face face-top">Target</div>
+                <div class="cube-face face-bottom">Hub</div>
+            </div>
+        </div>
         <p class="description">Target Metric Optimization Pipeline</p>
         <button class="btn-action" style="background:linear-gradient(135deg, #ff3366, #9d4edd);" onclick="window.open('https://www.instagram.com/', '_blank')">Contact Rajkumar on Instagram</button>
     </div>
 
+    <div class="page-panel" id="panel-img-enhancer">
+        <h2>AI Image Enhancer</h2>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Enhance</div>
+                <div class="cube-face face-back">Ultra</div>
+                <div class="cube-face face-left">Node 5</div>
+                <div class="cube-face face-right">HD 4K</div>
+                <div class="cube-face face-top">Matrix</div>
+                <div class="cube-face face-bottom">Clarity</div>
+            </div>
+        </div>
+        <p class="description">Upscale and Clear Low-Resolution Media Arrays</p>
+        <div class="input-wrapper">
+            <label>Select Low-Res File:</label>
+            <input type="file" id="enhancerFile" accept="image/*">
+        </div>
+        <button class="btn-action" onclick="alert('Image Enhancer Processing Node Booting...')">Enhance Resolution Matrix</button>
+    </div>
+
+    <div class="page-panel" id="panel-bg-remover">
+        <h2>Ultra BG Remover</h2>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">Cutout</div>
+                <div class="cube-face face-back">BG Erase</div>
+                <div class="cube-face face-left">Node 6</div>
+                <div class="cube-face face-right">Mask</div>
+                <div class="cube-face face-top">Alpha</div>
+                <div class="cube-face face-bottom">Vector</div>
+            </div>
+        </div>
+        <p class="description">Precision Background Eraser Engine Pipeline</p>
+        <div class="input-wrapper">
+            <label>Select Target File:</label>
+            <input type="file" id="bgFile" accept="image/*">
+        </div>
+        <button class="btn-action" onclick="alert('Background Eraser Node Initializing...')">Isolate Alpha Matte</button>
+    </div>
+
     <div class="page-panel" id="panel-about">
-        <h2>About Website</h2>
-        <p class="description">Engineered entirely by Rajkumar, featuring low-latency system architectures.</p>
+        <h2>About Workspace</h2>
+        <div class="stage-cube-3d">
+            <div class="matrix-cube-core">
+                <div class="cube-face face-front">About</div>
+                <div class="cube-face face-back">Rajkumar</div>
+                <div class="cube-face face-left">System</div>
+                <div class="cube-face face-right">Info</div>
+                <div class="cube-face face-top">Cyber</div>
+                <div class="cube-face face-bottom">Node</div>
+            </div>
+        </div>
+        <p class="description">Engineered entirely by Rajkumar, featuring low-latency cyber architectures.</p>
         <div class="rk-showcase-wrapper">
-            <img src="1000041122.jpg" alt="About App Showcase" class="rk-showcase-img">
+            <img src="1000041122.jpg" alt="About Layout" class="rk-showcase-img">
         </div>
         <button class="btn-action" onclick="switchPanel('home')">Back to Dashboard Home</button>
     </div>
@@ -315,8 +447,40 @@
     </div>
 
     <script>
-        // Target endpoint link configuration
         const SECURE_API_ENDPOINT = "https://vidtor-api-1.onrender.com/v1/generate-video";
+
+        // ✨ 1. CYBERPUNK NEON GLOW TRAIL LOGIC (TOUCH & DRAG)
+        const trailContainer = document.getElementById('pointer-trail-container');
+        function createTrailParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'trail-particle';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            trailContainer.appendChild(particle);
+            setTimeout(() => particle.remove(), 600);
+        }
+        window.addEventListener('mousemove', (e) => createTrailParticle(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) {
+                createTrailParticle(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        });
+
+        // ✨ 2. PREMIUM 3D TILT EFFECT ON ACTIVE PANELS
+        const panels = document.querySelectorAll('.page-panel');
+        panels.forEach(panel => {
+            panel.addEventListener('mousemove', (e) => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width/2);
+                const y = e.clientY - rect.top - (rect.height/2);
+                panel.style.transform = `perspective(1000px) rotateY(${x / 25}deg) rotateX(${-y / 25}deg) scale(1.01)`;
+                panel.style.boxShadow = `0 35px 80px rgba(0, 210, 255, 0.15)`;
+            });
+            panel.addEventListener('mouseleave', () => {
+                panel.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)`;
+                panel.style.boxShadow = `0 30px 70px rgba(0,0,0,0.6)`;
+            });
+        });
 
         function toggleNavigationMenu() {
             const dropdown = document.getElementById('navDropdown');
@@ -334,14 +498,14 @@
         let loadingTimers = {};
         function startHelixAnimation(canvasId) {
             const hCanvas = document.getElementById(canvasId); if(!hCanvas) return;
-            const hCtx = hCanvas.getContext('2d'); hCanvas.width = hCanvas.parentElement.clientWidth; hCanvas.height = 50;
+            const hCtx = hCanvas.getContext('2d'); hCanvas.width = hCanvas.parentElement.clientWidth; hCanvas.height = 45;
             let t = 0;
             function animate() {
                 hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height); t += 0.08;
-                for(let i=0; i<30; i++) {
-                    let x = (hCanvas.width / 30) * i;
-                    let y1 = hCanvas.height/2 + Math.sin(t + i*0.3) * 15;
-                    let y2 = hCanvas.height/2 + Math.sin(t + i*0.3 + Math.PI) * 15;
+                for(let i=0; i<25; i++) {
+                    let x = (hCanvas.width / 25) * i;
+                    let y1 = hCanvas.height/2 + Math.sin(t + i*0.35) * 12;
+                    let y2 = hCanvas.height/2 + Math.sin(t + i*0.35 + Math.PI) * 12;
                     hCtx.beginPath(); hCtx.arc(x, y1, 3, 0, Math.PI*2); hCtx.fillStyle = '#00d2ff'; hCtx.fill();
                     hCtx.beginPath(); hCtx.arc(x, y2, 3, 0, Math.PI*2); hCtx.fillStyle = '#9d4edd'; hCtx.fill();
                 }
@@ -369,28 +533,25 @@
         function processTextToVoice() {
             const textScript = document.getElementById('t2vPrompt').value.trim();
             const progBox = document.getElementById('t2vPromptProgressBox'); const scene3D = document.getElementById('t2v3DScene');
-            if (!textScript) { alert("Please input text documentation script!"); return; }
+            if (!textScript) { alert("Please input text document script line!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
             runPercentageEngine('t2vPercentText', 't2vBarFill', 2000, 't2vHelixCanvas', () => {
                 const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(textScript)}`;
                 progBox.style.display = "none"; scene3D.style.display = "block";
-                scene3D.innerHTML = `<div class="anime-boy-avatar">VOICE ASSIGN</div><div class="payload-display-frame"><audio src="${audioUrl}" controls autoplay></audio></div>`;
+                scene3D.innerHTML = `<div class="anime-boy-avatar">VOICE SYNTH</div><div class="payload-display-frame"><audio src="${audioUrl}" controls autoplay></audio></div>`;
             });
         }
 
-        // ⚡ MULTI-FUNCTIONAL SECURE VIDEO COMPILER WITH CLEAN RUNNERS
         async function generateSecureAIVideo(urlFieldId, fileFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type, motionPromptId) {
             const imgUrlInput = document.getElementById(urlFieldId).value.trim();
             const fileInput = document.getElementById(fileFieldId);
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
             const subtitleVal = type === 'subtitle' ? document.getElementById('p2vtPrompt').value.trim() : '';
-            const motionPromptVal = document.getElementById(motionPromptId).value.trim();
 
             let targetImgUrl = imgUrlInput;
 
-            // Handle Local File Upload Convert with Smart Auto-Compression
             if (fileInput.files && fileInput.files[0]) {
                 const localFile = fileInput.files[0];
                 targetImgUrl = await new Promise((resolve) => {
@@ -412,7 +573,7 @@
                 });
             }
 
-            if (!targetImgUrl) { alert("Bhai, pehle photo upload karo ya uska URL link paste karo!"); return; }
+            if (!targetImgUrl) { alert("Bhai, pehle koi photo upload karo!"); return; }
             
             progBox.style.display = "block"; 
             scene3D.style.display = "none";
@@ -445,7 +606,7 @@
                             <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
                             ${subtitleHTML}
                         </div>
-                        <a href="${finalVideoUrl}" download="VIDTOR_RENDER_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
+                        <a href="${finalVideoUrl}" download="VIDTOR_REAL_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
                     `;
                 } catch (err) { 
                     alert("Render Engine Serverless Update: Node took too long to respond. Please wait 10 seconds and submit again."); 
@@ -454,18 +615,18 @@
             });
         }
 
-        // 3D Visual Stage Engine
+        // ✨ 3. AUTOMATED FLOATING CYBER TUNNEL BACKGROUND ENGINE
         const canvas = document.getElementById('matrix100CirclesCanvas'); const ctx = canvas.getContext('2d');
         function resizeCanvasEngine() { canvas.width = canvas.parentElement.clientWidth * 2; canvas.height = canvas.parentElement.clientHeight * 2; }
         resizeCanvasEngine();
         let animationFrameTimer = 0;
         function draw3DTunnelMatrix() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); animationFrameTimer += 0.05;
+            ctx.clearRect(0, 0, canvas.width, canvas.height); animationFrameTimer += 0.04;
             ctx.save(); ctx.translate(canvas.width/2, canvas.height/2); ctx.scale(1, 0.45); ctx.translate(-canvas.width/2, -canvas.height/2);
-            for (let i = 0; i < 150; i++) {
-                let radius = 15 + (i * 3);
-                ctx.beginPath(); ctx.arc(canvas.width/2, canvas.height/2 + Math.sin(animationFrameTimer + i*0.08)*20, radius, 0, Math.PI*2);
-                ctx.strokeStyle = `rgba(0, 210, 255, ${0.1 + (1 - i/150)*0.5})`; ctx.stroke();
+            for (let i = 0; i < 120; i++) {
+                let radius = 10 + (i * 3.5);
+                ctx.beginPath(); ctx.arc(canvas.width/2, canvas.height/2 + Math.sin(animationFrameTimer + i*0.06)*15, radius, 0, Math.PI*2);
+                ctx.strokeStyle = `rgba(0, 210, 255, ${0.08 + (1 - i/120)*0.45})`; ctx.stroke();
             }
             ctx.restore(); requestAnimationFrame(draw3DTunnelMatrix);
         }
