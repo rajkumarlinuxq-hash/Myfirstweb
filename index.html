@@ -404,7 +404,7 @@
             progBox.style.display = "block"; 
             scene3D.style.display = "none";
 
-            runPercentageEngine(percentTextId, barFillId, 60000, helixId, async () => {
+            runPercentageEngine(percentTextId, barFillId, 120000, helixId, async () => {
                 try {
                     // Send to your Render Python Core Network Node
                     const response = await fetch(SECURE_API_ENDPOINT, {
@@ -461,3 +461,4 @@
     </script>
 </body>
 </html>
+
