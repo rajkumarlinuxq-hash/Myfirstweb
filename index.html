@@ -172,7 +172,7 @@
 
         .input-wrapper { text-align: left; margin-top: 15px; width: 100%; }
         label { font-size: 0.8rem; font-weight: 700; color: var(--asmani); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        input[type="text"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.7); border: 1px solid var(--border); color: white; border-radius: 12px; font-family: inherit; outline: none; box-sizing: border-box; }
         
         .btn-action { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--asmani), var(--purple)); color: white; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,0.3); }
@@ -227,10 +227,18 @@
         <h2>Photo to Video</h2>
         <p class="description">100% Secure Generative AI Video Render Node</p>
         <div class="input-wrapper">
-            <label>Paste Target Image URL:</label>
+            <label>Upload Source Image:</label>
+            <input type="file" id="p2vFileInput" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>OR Paste Target Image URL:</label>
             <input type="text" id="p2vUrlInput" placeholder="https://image-link.com/photo.jpg">
         </div>
-        <button class="btn-action" onclick="generateSecureAIVideo('p2vUrlInput', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '')">Compile Real AI Video</button>
+        <div class="input-wrapper">
+            <label>AI Motion Prompt / Camera Action:</label>
+            <input type="text" id="p2vMotionPrompt" placeholder="e.g. dramatic drone zoom, cinematic hyperlapse, slow motion...">
+        </div>
+        <button class="btn-action" onclick="generateSecureAIVideo('p2vUrlInput', 'p2vFileInput', 'p2vProgressBox', 'p2vPercentText', 'p2vBarFill', 'p2v3DScene', 'p2vHelixCanvas', '', 'p2vMotionPrompt')">Compile Real AI Video</button>
 
         <div class="progress-box-wrapper" id="p2vProgressBox">
             <div class="percentage-counter" id="p2vPercentText">0%</div>
@@ -244,14 +252,22 @@
         <h2>Photo + Text to Video</h2>
         <p class="description">Integrated AI Subtitle Video Matrix</p>
         <div class="input-wrapper">
-            <label>Paste Base Graphic URL:</label>
+            <label>Upload Base Graphic:</label>
+            <input type="file" id="p2vtFileInput" accept="image/*">
+        </div>
+        <div class="input-wrapper">
+            <label>OR Paste Base Graphic URL:</label>
             <input type="text" id="p2vtUrlInput" placeholder="https://image-link.com/layout.jpg">
+        </div>
+        <div class="input-wrapper">
+            <label>AI Motion Prompt:</label>
+            <input type="text" id="p2vtMotionPrompt" placeholder="e.g. smooth cinematic pan, cinematic lighting movement...">
         </div>
         <div class="input-wrapper">
             <label>Subtitle / Text Script Overlay:</label>
             <input type="text" id="p2vtPrompt" placeholder="Type text overlay details...">
         </div>
-        <button class="btn-action" onclick="generateSecureAIVideo('p2vtUrlInput', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas', 'subtitle')">Generate Hybrid AI Video</button>
+        <button class="btn-action" onclick="generateSecureAIVideo('p2vtUrlInput', 'p2vtFileInput', 'p2vtProgressBox', 'p2vtPercentText', 'p2vtBarFill', 'p2vt3DScene', 'p2vtHelixCanvas', 'subtitle', 'p2vtMotionPrompt')">Generate Hybrid AI Video</button>
 
         <div class="progress-box-wrapper" id="p2vtProgressBox">
             <div class="percentage-counter" id="p2vtPercentText">0%</div>
@@ -299,7 +315,6 @@
     </div>
 
     <script>
-        // 🚀 AAPKI LIVE RENDER CLUSTER API ka address
         const SECURE_API_ENDPOINT = "https://vidtor-api-1.onrender.com/v1/generate-video";
 
         function toggleNavigationMenu() {
@@ -363,25 +378,39 @@
             });
         }
 
-        // ⚡ NEW SECURE RENDER ENGINE CONTROLLER FOR VIDEOS
-        async function generateSecureAIVideo(urlFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type) {
-            const imgUrl = document.getElementById(urlFieldId).value.trim();
+        // ⚡ MULTI-FUNCTIONAL SECURE VIDEO COMPILER
+        async function generateSecureAIVideo(urlFieldId, fileFieldId, progBoxId, percentTextId, barFillId, scene3DId, helixId, type, motionPromptId) {
+            const imgUrlInput = document.getElementById(urlFieldId).value.trim();
+            const fileInput = document.getElementById(fileFieldId);
             const progBox = document.getElementById(progBoxId);
             const scene3D = document.getElementById(scene3DId);
-            const promptVal = type === 'subtitle' ? document.getElementById('p2vtPrompt').value.trim() : '';
+            const subtitleVal = type === 'subtitle' ? document.getElementById('p2vtPrompt').value.trim() : '';
+            const motionPromptVal = document.getElementById(motionPromptId).value.trim();
 
-            if (!imgUrl) { alert("Bhai, pehle target image ka URL link paste karo!"); return; }
+            let targetImgUrl = imgUrlInput;
+
+            // Handle Local File Upload Convert if available
+            if (fileInput.files && fileInput.files[0]) {
+                const localFile = fileInput.files[0];
+                targetImgUrl = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(localFile);
+                });
+            }
+
+            if (!targetImgUrl) { alert("Bhai, pehle photo upload karo ya uska URL link paste karo!"); return; }
             
             progBox.style.display = "block"; 
             scene3D.style.display = "none";
 
             runPercentageEngine(percentTextId, barFillId, 60000, helixId, async () => {
                 try {
-                    // Direct Secure API Fetch Call to Render Python Backend Node
+                    // Send to your Render Python Core Network Node
                     const response = await fetch(SECURE_API_ENDPOINT, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ image_url: imgUrl })
+                        body: JSON.stringify({ image_url: targetImgUrl })
                     });
 
                     if (!response.ok) throw new Error();
@@ -394,8 +423,8 @@
                     scene3D.style.display = "block";
                     
                     let subtitleHTML = "";
-                    if (type === 'subtitle' && promptVal) {
-                        subtitleHTML = `<div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:90%; font-weight:800; text-shadow:2px 2px 4px #000; color:#fff; font-size:1.2rem; text-align:center; z-index:20;">${promptVal}</div>`;
+                    if (type === 'subtitle' && subtitleVal) {
+                        subtitleHTML = `<div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:90%; font-weight:800; text-shadow:2px 2px 4px #000; color:#fff; font-size:1.2rem; text-align:center; z-index:20;">${subtitleVal}</div>`;
                     }
 
                     scene3D.innerHTML = `
@@ -407,7 +436,7 @@
                         <a href="${finalVideoUrl}" download="VIDTOR_RENDER_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
                     `;
                 } catch (err) { 
-                    alert("Render Engine Serverless Update: Node took too long to wake up or respond. Please wait 10 seconds and submit again."); 
+                    alert("Render Engine Serverless Update: Node took too long to respond. Please wait 10 seconds and submit again."); 
                     progBox.style.display = "none";
                 }
             });
