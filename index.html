@@ -149,7 +149,6 @@
             font-weight: 800; color: #fff; text-transform: uppercase; border-radius: 12px;
             backdrop-filter: blur(5px);
         }
-        /* Page Specific 3D Face Transforms with unique structural codes */
         .face-front  { transform: rotateY(0deg) translateZ(42px); }
         .face-back   { transform: rotateY(180deg) translateZ(42px); border-color: var(--purple); box-shadow: inset 0 0 20px rgba(157,78,221,0.5); }
         .face-left   { transform: rotateY(-90deg) translateZ(42px); }
@@ -515,13 +514,27 @@
         }
         function stopHelixAnimation(canvasId) { cancelAnimationFrame(loadingTimers[canvasId]); }
 
-        function runPercentageEngine(percentTextId, barFillId, durationMs, helixId, callback) {
+        // Global storage variables to hold response asynchronously
+        let globalVideoUrl = null;
+        let globalFetchError = false;
+
+        function runPercentageEngine(percentTextId, barFillId, durationMs, helixId, on25PercentCallback, on100PercentCallback) {
             let start = 0;
             const textNode = document.getElementById(percentTextId); const barNode = document.getElementById(barFillId);
             startHelixAnimation(helixId);
             const interval = setInterval(() => {
                 start++; textNode.innerText = `${start}%`; barNode.style.width = `${start}%`;
-                if (start >= 100) { clearInterval(interval); stopHelixAnimation(helixId); if(callback) callback(); }
+                
+                // 🔥 TRIGGER BACKEND REQUEST EXACTLY AT 25% TO DEFEAT SERVER COLD-STARTS
+                if (start === 25) {
+                    if (on25PercentCallback) on25PercentCallback();
+                }
+
+                if (start >= 100) { 
+                    clearInterval(interval); 
+                    stopHelixAnimation(helixId); 
+                    if(on100PercentCallback) on100PercentCallback(); 
+                }
             }, durationMs / 100);
         }
 
@@ -536,7 +549,7 @@
             if (!textScript) { alert("Please input text document script line!"); return; }
             progBox.style.display = "block"; scene3D.style.display = "none";
 
-            runPercentageEngine('t2vPercentText', 't2vBarFill', 2000, 't2vHelixCanvas', () => {
+            runPercentageEngine('t2vPercentText', 't2vBarFill', 2000, 't2vHelixCanvas', null, () => {
                 const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(textScript)}`;
                 progBox.style.display = "none"; scene3D.style.display = "block";
                 scene3D.innerHTML = `<div class="anime-boy-avatar">VOICE SYNTH</div><div class="payload-display-frame"><audio src="${audioUrl}" controls autoplay></audio></div>`;
@@ -575,44 +588,67 @@
 
             if (!targetImgUrl) { alert("Bhai, pehle koi photo upload karo!"); return; }
             
+            // Reset state variables
+            globalVideoUrl = null;
+            globalFetchError = false;
             progBox.style.display = "block"; 
             scene3D.style.display = "none";
 
-            runPercentageEngine(percentTextId, barFillId, 120000, helixId, async () => {
-                try {
-                    const response = await fetch(SECURE_API_ENDPOINT, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ image_url: targetImgUrl })
-                    });
+            // Total loader duration is 120 seconds (2 minutes). 25% means request goes out at 30 seconds mark!
+            runPercentageEngine(percentTextId, barFillId, 120000, helixId, 
+                // 🚀 25% Callback: Trigger API immediately in background
+                async () => {
+                    try {
+                        const response = await fetch(SECURE_API_ENDPOINT, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ image_url: targetImgUrl })
+                        });
 
-                    if (!response.ok) throw new Error();
+                        if (!response.ok) throw new Error("API Failure");
 
-                    const data = await response.json();
-                    const videoBlob = hexToBlob(data.video_bytes, "video/mp4");
-                    const finalVideoUrl = URL.createObjectURL(videoBlob);
-                    
-                    progBox.style.display = "none";
-                    scene3D.style.display = "block";
-                    
-                    let subtitleHTML = "";
-                    if (type === 'subtitle' && subtitleVal) {
-                        subtitleHTML = `<div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:90%; font-weight:800; text-shadow:2px 2px 4px #000; color:#fff; font-size:1.2rem; text-align:center; z-index:20;">${subtitleVal}</div>`;
+                        const data = await response.json();
+                        const videoBlob = hexToBlob(data.video_bytes, "video/mp4");
+                        globalVideoUrl = URL.createObjectURL(videoBlob);
+                    } catch (err) {
+                        console.error("Background fetch error:", err);
+                        globalFetchError = true;
                     }
-
-                    scene3D.innerHTML = `
-                        <div class="anime-boy-avatar">100% REAL AI</div>
-                        <div class="payload-display-frame" style="position:relative;">
-                            <video src="${finalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
-                            ${subtitleHTML}
-                        </div>
-                        <a href="${finalVideoUrl}" download="VIDTOR_REAL_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
-                    `;
-                } catch (err) { 
-                    alert("Render Engine Serverless Update: Node took too long to respond. Please wait 10 seconds and submit again."); 
+                },
+                // 🏁 100% Callback: Check data state and output final structural design
+                () => {
                     progBox.style.display = "none";
+                    
+                    // Loop checking system if response is slightly delayed past 100%
+                    function checkAndRenderOutput() {
+                        if (globalVideoUrl) {
+                            scene3D.style.display = "block";
+                            let subtitleHTML = "";
+                            if (type === 'subtitle' && subtitleVal) {
+                                subtitleHTML = `<div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:90%; font-weight:800; text-shadow:2px 2px 4px #000; color:#fff; font-size:1.2rem; text-align:center; z-index:20;">${subtitleVal}</div>`;
+                            }
+
+                            scene3D.innerHTML = `
+                                <div class="anime-boy-avatar">100% REAL AI</div>
+                                <div class="payload-display-frame" style="position:relative;">
+                                    <video src="${globalVideoUrl}" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+                                    ${subtitleHTML}
+                                </div>
+                                <a href="${globalVideoUrl}" download="VIDTOR_REAL_AI_${Date.now()}.mp4" class="btn-download-trigger">⬇️ Download Secure AI Video File</a>
+                            `;
+                        } else if (globalFetchError) {
+                            alert("Render Engine Serverless Update: Node took too long to respond. Please wait 10 seconds and submit again.");
+                        } else {
+                            // If backend is still running, check again in 2 seconds seamlessly without breaking layout
+                            progBox.style.display = "block";
+                            document.getElementById(percentTextId).innerText = "Finalizing...";
+                            setTimeout(checkAndRenderOutput, 2000);
+                        }
+                    }
+                    
+                    checkAndRenderOutput();
                 }
-            });
+            );
         }
 
         // ✨ 3. AUTOMATED FLOATING CYBER TUNNEL BACKGROUND ENGINE
